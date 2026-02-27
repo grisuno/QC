@@ -725,12 +725,12 @@ MeasurementResult (2 qubits)
 
 # Apendix B. Repository
 
-- **Github** : https://github.com/grisuno/QC
-- **Doi** : 10.5281/zenodo.18795538
+- **Github** : [https://github.com/grisuno/QC](https://github.com/grisuno/QC)
+- **Doi** : [10.5281/zenodo.18795538](https://doi.org/10.5281/zenodo.18795537)
 ---
 
-*grisun0*  
-*ORCID: 0009-0002-7622-3916*  
+*[grisun0](https://github.com/grisuno)*  
+*ORCID: [0009-0002-7622-3916](https://orcid.org/0009-0002-7622-3916)*  
 *February 26, 2026*
 
 
