@@ -17,6 +17,12 @@ python3 quantum_computer.py \
   --device cpu
 
 ```
+```bash
+python3 entangled_hydrogen.py
+```
+
+![hydrogen2](https://github.com/user-attachments/assets/2e311aa8-a907-4ac0-8489-3a5acae430f5)
+
 
 # Paper. 
 
