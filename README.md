@@ -1,4 +1,24 @@
-## Chapter 8
+# Quasi Quantum Computing
+
+## Usage
+
+```bash
+python3 molecular_sim.py --molecule H2
+```
+
+```bash
+python3 quantum_computer.py \
+  --hamiltonian-checkpoint hamiltonian.pth \
+  --schrodinger-checkpoint checkpoint_phase3_training_epoch_18921_20260224_154739.pth \
+  --dirac-checkpoint       best_dirac.pth \
+  --grid-size 16 \
+  --hidden-dim 32 \
+  --expansion-dim 64 \
+  --device cpu
+
+```
+
+## Chapter QC.
 
 This chapter is not about capability. It is about exposure.
 
