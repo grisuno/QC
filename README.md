@@ -18,7 +18,7 @@ python3 quantum_computer.py \
 
 ```
 
-# Chapter 8. 
+# Paper. 
 
 ## Constraint Preservation in a Neural Quantum Simulator
 
