@@ -291,6 +291,7 @@ That is the boundary I observed.
 
 # Apendix A. Results.
 
+```text
 ❯ python3 molecular_sim.py --molecule H2
 2026-02-26 19:21:13,797 | MolecularSimulator | INFO |   Loaded H2 from PySCF: HF=-1.11699900, FCI=-1.13730604, E_nuc=0.719969
 2026-02-26 19:21:13,821 | QuantumComputer | INFO | HamiltonianBackend: loaded hamiltonian.pth
@@ -718,6 +719,7 @@ MeasurementResult (2 qubits)
 2026-02-26 19:21:27,896 | QuantumComputer | INFO | ======================================================================
 2026-02-26 19:21:27,896 | QuantumComputer | INFO | DEMO COMPLETE
 2026-02-26 19:21:27,896 | QuantumComputer | INFO | ======================================================================
+```
 
 ---
 
@@ -730,8 +732,6 @@ MeasurementResult (2 qubits)
 *grisun0*  
 *ORCID: 0009-0002-7622-3916*  
 *February 26, 2026*
-
-
 
 
 - DOI [https://doi.org/10.5281/zenodo.18407920 From Boltzmann Stochasticity to Hamiltonian Integrability: Emergence of Topological Crystals and Synthetic Planck Constants](https://doi.org/10.5281/zenodo.18407920)
