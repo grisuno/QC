@@ -1,4 +1,4 @@
-# Quasi Quantum Computing
+# Quasi Quantum Computing - Q²C
 
 ## Usage
 
