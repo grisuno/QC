@@ -733,7 +733,7 @@ MeasurementResult (2 qubits)
 *ORCID: [0009-0002-7622-3916](https://orcid.org/0009-0002-7622-3916)*  
 *February 26, 2026*
 
-
+- DOI [https://doi.org/10.5281/zenodo.18072858 Algorithmic Induction via Structural Weight Transfer ](https://doi.org/10.5281/zenodo.18072858)
 - DOI [https://doi.org/10.5281/zenodo.18407920 From Boltzmann Stochasticity to Hamiltonian Integrability: Emergence of Topological Crystals and Synthetic Planck Constants](https://doi.org/10.5281/zenodo.18407920)
 - DOI [https://doi.org/10.5281/zenodo.18725428 Schrödinger Topological Crystallization: Phase Space Discovery in Hamiltonian Neural Networks](https://doi.org/10.5281/zenodo.18725428)
 
