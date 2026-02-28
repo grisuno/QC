@@ -1,0 +1,480 @@
+[framework]
+name = "QuantumSimulationFramework"
+version = "1.0.0"
+author = "Gris Iscomeback"
+license = "AGPL v3"
+
+[simulation]
+default_backend = "schrodinger"
+default_num_samples = 100000
+random_seed = 42
+max_qubits = 8
+
+[grid]
+size = 16
+hidden_dim = 32
+expansion_dim = 64
+num_spectral_layers = 2
+
+[physics]
+c_light = 137.035999084
+alpha_fs = 0.0072973525693
+hbar = 1.0
+electron_mass = 1.0
+dt = 0.01
+normalization_eps = 1.0e-8
+potential_depth = 5.0
+potential_width = 0.3
+
+[monte_carlo]
+batch_size = 100000
+max_particles = 2000000
+min_particles = 5000
+r_max_factor = 4.0
+r_max_offset = 10.0
+probability_safety_factor = 1.05
+grid_search_r = 300
+grid_search_theta = 150
+grid_search_phi = 150
+
+[visualization]
+figure_dpi = 150
+figure_size_x = 24
+figure_size_y = 20
+histogram_bins = 300
+scatter_size_min = 1.0
+scatter_size_max = 8.0
+max_plotly_points = 100000
+colormap_3d = "inferno"
+colormap_2d = "viridis"
+background_color = "#000008"
+
+[checkpoints]
+hamiltonian = "weights/latest.pth"
+schrodinger = "weights/schrodinger_crystal_final.pth"
+dirac = "weights/dirac_phase5_latest.pth"
+
+[output]
+directory = "download"
+checkpoint_interval_minutes = 5.0
+
+[[atoms]]
+symbol = "H"
+name = "Hydrogen"
+atomic_number = 1
+mass = 1.007825
+electron_configuration = ["1s1"]
+nuclear_charge = 1.0
+
+[[atoms]]
+symbol = "He"
+name = "Helium"
+atomic_number = 2
+mass = 4.002603
+electron_configuration = ["1s2"]
+nuclear_charge = 2.0
+
+[[atoms]]
+symbol = "Li"
+name = "Lithium"
+atomic_number = 3
+mass = 7.016004
+electron_configuration = ["1s2", "2s1"]
+nuclear_charge = 3.0
+
+[[atoms]]
+symbol = "Be"
+name = "Beryllium"
+atomic_number = 4
+mass = 9.012182
+electron_configuration = ["1s2", "2s2"]
+nuclear_charge = 4.0
+
+[[atoms]]
+symbol = "B"
+name = "Boron"
+atomic_number = 5
+mass = 11.009305
+electron_configuration = ["1s2", "2s2", "2p1"]
+nuclear_charge = 5.0
+
+[[atoms]]
+symbol = "C"
+name = "Carbon"
+atomic_number = 6
+mass = 12.0
+electron_configuration = ["1s2", "2s2", "2p2"]
+nuclear_charge = 6.0
+
+[[atoms]]
+symbol = "N"
+name = "Nitrogen"
+atomic_number = 7
+mass = 14.003074
+electron_configuration = ["1s2", "2s2", "2p3"]
+nuclear_charge = 7.0
+
+[[atoms]]
+symbol = "O"
+name = "Oxygen"
+atomic_number = 8
+mass = 15.994915
+electron_configuration = ["1s2", "2s2", "2p4"]
+nuclear_charge = 8.0
+
+[[atoms]]
+symbol = "F"
+name = "Fluorine"
+atomic_number = 9
+mass = 18.998403
+electron_configuration = ["1s2", "2s2", "2p5"]
+nuclear_charge = 9.0
+
+[[atoms]]
+symbol = "Ne"
+name = "Neon"
+atomic_number = 10
+mass = 19.99244
+electron_configuration = ["1s2", "2s2", "2p6"]
+nuclear_charge = 10.0
+
+[[molecules]]
+name = "H2"
+formula = "H2"
+description = "Hydrogen molecule"
+atoms = ["H", "H"]
+n_electrons = 2
+n_orbitals = 2
+n_qubits = 4
+bond_length_angstrom = 0.735
+hf_energy_hartree = -1.11675928
+fci_energy_hartree = -1.13728383
+nuclear_repulsion_hartree = 0.71997
+
+[molecules.geometry]
+type = "diatomic"
+coords = [
+    ["H", 0.0, 0.0, 0.0],
+    ["H", 0.0, 0.0, 0.735]
+]
+
+[[molecules]]
+name = "LiH"
+formula = "LiH"
+description = "Lithium hydride"
+atoms = ["Li", "H"]
+n_electrons = 4
+n_orbitals = 4
+n_qubits = 8
+bond_length_angstrom = 1.595
+hf_energy_hartree = -7.9875
+fci_energy_hartree = -8.0149
+nuclear_repulsion_hartree = 0.9653
+
+[molecules.geometry]
+type = "diatomic"
+coords = [
+    ["Li", 0.0, 0.0, 0.0],
+    ["H", 0.0, 0.0, 1.595]
+]
+
+[[molecules]]
+name = "HeHplus"
+formula = "HeH+"
+description = "Helium hydride ion"
+atoms = ["He", "H"]
+n_electrons = 2
+n_orbitals = 2
+n_qubits = 4
+bond_length_angstrom = 0.772
+hf_energy_hartree = -2.9696
+fci_energy_hartree = -2.9778
+nuclear_repulsion_hartree = 2.0
+
+[molecules.geometry]
+type = "diatomic"
+coords = [
+    ["He", 0.0, 0.0, 0.0],
+    ["H", 0.0, 0.0, 0.772]
+]
+
+[[molecules]]
+name = "H2O"
+formula = "H2O"
+description = "Water molecule"
+atoms = ["O", "H", "H"]
+n_electrons = 10
+n_orbitals = 7
+n_qubits = 14
+bond_length_angstrom = 0.9578
+bond_angle_degrees = 104.5
+hf_energy_hartree = -75.9867
+fci_energy_hartree = -76.1128
+nuclear_repulsion_hartree = 9.1754
+
+[molecules.geometry]
+type = "triangular"
+coords = [
+    ["O", 0.0, 0.0, 0.0],
+    ["H", 0.9578, 0.0, 0.0],
+    ["H", -0.239, 0.927, 0.0]
+]
+
+[[molecules]]
+name = "N2"
+formula = "N2"
+description = "Nitrogen molecule"
+atoms = ["N", "N"]
+n_electrons = 14
+n_orbitals = 10
+n_qubits = 20
+bond_length_angstrom = 1.0977
+hf_energy_hartree = -108.5352
+fci_energy_hartree = -108.6895
+nuclear_repulsion_hartree = 12.4537
+
+[molecules.geometry]
+type = "diatomic"
+coords = [
+    ["N", 0.0, 0.0, 0.0],
+    ["N", 0.0, 0.0, 1.0977]
+]
+
+[[molecules]]
+name = "CO"
+formula = "CO"
+description = "Carbon monoxide"
+atoms = ["C", "O"]
+n_electrons = 14
+n_orbitals = 10
+n_qubits = 20
+bond_length_angstrom = 1.128
+hf_energy_hartree = -112.4876
+fci_energy_hartree = -112.6489
+nuclear_repulsion_hartree = 11.4321
+
+[molecules.geometry]
+type = "diatomic"
+coords = [
+    ["C", 0.0, 0.0, 0.0],
+    ["O", 0.0, 0.0, 1.128]
+]
+
+[[molecules]]
+name = "CH4"
+formula = "CH4"
+description = "Methane"
+atoms = ["C", "H", "H", "H", "H"]
+n_electrons = 10
+n_orbitals = 9
+n_qubits = 18
+bond_length_angstrom = 1.087
+hf_energy_hartree = -40.1952
+fci_energy_hartree = -40.3428
+nuclear_repulsion_hartree = 13.4621
+
+[molecules.geometry]
+type = "tetrahedral"
+coords = [
+    ["C", 0.0, 0.0, 0.0],
+    ["H", 0.6276, 0.6276, 0.6276],
+    ["H", -0.6276, -0.6276, 0.6276],
+    ["H", -0.6276, 0.6276, -0.6276],
+    ["H", 0.6276, -0.6276, -0.6276]
+]
+
+[[orbitals]]
+name = "1s"
+n = 1
+l = 0
+m = 0
+description = "1s orbital"
+
+[[orbitals]]
+name = "2s"
+n = 2
+l = 0
+m = 0
+description = "2s orbital"
+
+[[orbitals]]
+name = "2p_z"
+n = 2
+l = 1
+m = 0
+description = "2p_z orbital"
+
+[[orbitals]]
+name = "2p_x"
+n = 2
+l = 1
+m = 1
+description = "2p_x orbital"
+
+[[orbitals]]
+name = "2p_y"
+n = 2
+l = 1
+m = -1
+description = "2p_y orbital"
+
+[[orbitals]]
+name = "3s"
+n = 3
+l = 0
+m = 0
+description = "3s orbital"
+
+[[orbitals]]
+name = "3p_z"
+n = 3
+l = 1
+m = 0
+description = "3p_z orbital"
+
+[[orbitals]]
+name = "3p_x"
+n = 3
+l = 1
+m = 1
+description = "3p_x orbital"
+
+[[orbitals]]
+name = "3p_y"
+n = 3
+l = 1
+m = -1
+description = "3p_y orbital"
+
+[[orbitals]]
+name = "3d_z2"
+n = 3
+l = 2
+m = 0
+description = "3d_z2 orbital"
+
+[[orbitals]]
+name = "3d_xz"
+n = 3
+l = 2
+m = 1
+description = "3d_xz orbital"
+
+[[orbitals]]
+name = "3d_yz"
+n = 3
+l = 2
+m = -1
+description = "3d_yz orbital"
+
+[[orbitals]]
+name = "3d_xy"
+n = 3
+l = 2
+m = 2
+description = "3d_xy orbital"
+
+[[orbitals]]
+name = "3d_x2-y2"
+n = 3
+l = 2
+m = -2
+description = "3d_x2-y2 orbital"
+
+[[orbitals]]
+name = "4s"
+n = 4
+l = 0
+m = 0
+description = "4s orbital"
+
+[[orbitals]]
+name = "4p_z"
+n = 4
+l = 1
+m = 0
+description = "4p_z orbital"
+
+[[orbitals]]
+name = "4d_z2"
+n = 4
+l = 2
+m = 0
+description = "4d_z2 orbital"
+
+[[orbitals]]
+name = "4f_z3"
+n = 4
+l = 3
+m = 0
+description = "4f_z3 orbital"
+
+[[orbitals]]
+name = "4f_xz2"
+n = 4
+l = 3
+m = 1
+description = "4f_xz2 orbital"
+
+[[orbitals]]
+name = "4f_yz2"
+n = 4
+l = 3
+m = -1
+description = "4f_yz2 orbital"
+
+[[orbitals]]
+name = "4f_xyz"
+n = 4
+l = 3
+m = 2
+description = "4f_xyz orbital"
+
+[[orbitals]]
+name = "4f_z(x2-y2)"
+n = 4
+l = 3
+m = -2
+description = "4f_z(x2-y2) orbital"
+
+[[orbitals]]
+name = "5s"
+n = 5
+l = 0
+m = 0
+description = "5s orbital"
+
+[[orbitals]]
+name = "5p_z"
+n = 5
+l = 1
+m = 0
+description = "5p_z orbital"
+
+[[orbitals]]
+name = "5d_z2"
+n = 5
+l = 2
+m = 0
+description = "5d_z2 orbital"
+
+[[orbitals]]
+name = "6s"
+n = 6
+l = 0
+m = 0
+description = "6s orbital"
+
+[[orbitals]]
+name = "6p_z"
+n = 6
+l = 1
+m = 0
+description = "6p_z orbital"
+
+[[orbitals]]
+name = "7s"
+n = 7
+l = 0
+m = 0
+description = "7s orbital"
