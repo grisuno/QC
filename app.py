@@ -10,18 +10,6 @@ This ADDS an electron at v without REMOVING from o, producing |1110⟩
 instead of |0110⟩. The states reachable by uccsd never include |0110⟩ 
 or |1001⟩, which are exactly the states the dipole operator connects 
 to |1100⟩ (HF). Hence <μ>=0 always, giving α=0.
-
-Fix: Implement proper Givens-rotation-based singles that conserve 
-particle number. For adjacent qubits, Givens(o,v,θ) is:
-    CNOT(v,o) → RY(v, 2θ) → CNOT(v,o)
-This rotates in the {|10⟩, |01⟩} subspace: 
-    |1_o 0_v⟩ → cos(θ)|1_o 0_v⟩ + sin(θ)|0_o 1_v⟩
-
-For non-adjacent qubits, we SWAP to make them adjacent, apply Givens,
-then SWAP back. This preserves all quantum numbers.
-
-We keep the doubles excitation from uccsd since it works correctly 
-(verified: it produces |1100⟩↔|0011⟩ rotation properly).
 """
 
 from __future__ import annotations
