@@ -568,153 +568,107 @@ Correlation Energy: 0.049517 Ha
 ======================================================================
 2026-03-01 05:05:20,038 | AdvancedExperiments | INFO | ALL EXPERIMENTS COMPLETE
 2026-03-01 05:05:20,038 | AdvancedExperiments | INFO | ======================================================================
+
 ❯ python3 app.py
-2026-03-01 05:05:25,945 | MolecularSimulator | INFO |   Loaded H2 from PySCF: HF=-1.11699900, FCI=-1.13730604, E_nuc=0.719969
-2026-03-01 05:05:26,833 | QuantumComputer | INFO | HamiltonianBackend: loaded weights/latest.pth
-2026-03-01 05:05:26,833 | QuantumComputer | INFO | HamiltonianBackend: loaded weights/latest.pth
-2026-03-01 05:05:26,863 | QuantumComputer | INFO | SchrodingerBackend: loaded weights/schrodinger_crystal_final.pth
-2026-03-01 05:05:26,863 | QuantumComputer | INFO | SchrodingerBackend: loaded weights/schrodinger_crystal_final.pth
-2026-03-01 05:05:26,887 | QuantumComputer | INFO | DiracBackend: loaded weights/dirac_phase5_latest.pth
-2026-03-01 05:05:26,887 | QuantumComputer | INFO | DiracBackend: loaded weights/dirac_phase5_latest.pth
-Dipole MO:
-[[-1.05084410e-16 -9.27833470e-01]
- [-9.27833470e-01  1.05084416e-16]]
-2026-03-01 05:05:26,932 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:26,932 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:26,945 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:26,946 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:26,946 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:26,957 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-2026-03-01 05:05:26,957 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
+2026-03-01 16:51:27,096 | MolecularSimulator | INFO |   Loaded H2 from PySCF: HF=-1.11699900, FCI=-1.13730604, E_nuc=0.719969
+2026-03-01 16:51:28,097 | QuantumComputer | INFO | HamiltonianBackend: loaded weights/latest.pth
+2026-03-01 16:51:28,122 | QuantumComputer | INFO | SchrodingerBackend: loaded weights/schrodinger_crystal_final.pth
+2026-03-01 16:51:28,148 | QuantumComputer | INFO | DiracBackend: loaded weights/dirac_phase5_latest.pth
+Dipole MO matrix:
+[[-3.28091797e-10 -9.27833470e-01]
+ [-9.27833470e-01 -3.28091741e-10]]
+Dipole: 4 Pauli terms, identity=0.000000
 
-==================================================
-TESTING HAMILTONIAN AT F = 0.0000
-==================================================
-2026-03-01 05:05:26,986 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:26,986 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:27,003 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:27,014 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-2026-03-01 05:05:27,014 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-HF state (theta=0): E=-1.11699900, diff vs base=0.00000000
-Excited (theta=[0.2,0,0,0,0]): E=-1.09030434, diff vs base=0.00000000
-Optimized from HF: E=-1.13730604, theta=[-1.37173968e-08 -1.37173968e-08 -1.37173968e-08 -1.37173968e-08
- -1.11769651e-01]
-Optimized from excited: E=-1.13730596, theta=[ 9.34329008e-02 -7.03528790e-10  9.33618224e-02 -1.61403782e-08
- -1.11554538e-01]
+Building base Hamiltonian...
+2026-03-01 16:51:28,197 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
+2026-03-01 16:51:28,214 | MolecularSimulator | INFO |   OpenFermion verification:
+2026-03-01 16:51:28,214 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
+2026-03-01 16:51:28,214 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
+2026-03-01 16:51:28,215 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
+2026-03-01 16:51:28,215 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
+2026-03-01 16:51:28,215 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
+2026-03-01 16:51:28,226 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
+  Singles: [(0, 2), (0, 3), (1, 2), (1, 3)]
+  Doubles: [(0, 1, 2, 3)]
+  Total params: 5
 
-==================================================
-TESTING HAMILTONIAN AT F = 0.0100
-==================================================
-2026-03-01 05:05:42,045 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:42,045 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:42,061 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:42,062 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:42,062 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:42,073 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-2026-03-01 05:05:42,073 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-  Dipole operator has 4 non-trivial terms
-  Example: (((0, 'Y'), (1, 'Z'), (2, 'Y')), np.complex128(0.004639167352296161+0j))
-2026-03-01 05:05:42,106 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:42,106 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:42,123 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:42,134 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-2026-03-01 05:05:42,134 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-HF state (theta=0): E=-1.11699900, diff vs base=0.00000000
-Excited (theta=[0.2,0,0,0,0]): E=-1.09030434, diff vs base=0.00000000
-Optimized from HF: E=-1.13375152, theta=[ 0.00000000e+00 -9.72271115e-09  0.00000000e+00 -9.72271115e-09
- -1.58449419e-01]
-Optimized from excited: E=-1.13730604, theta=[ 0.10430967  0.          0.10433393  0.         -0.11178036]
+============================================================
+ANSATZ VERIFICATION
+============================================================
 
-==================================================
-TESTING HAMILTONIAN AT F = -0.0100
-==================================================
-2026-03-01 05:05:47,741 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:47,741 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:47,757 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:47,757 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:47,758 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:47,769 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-2026-03-01 05:05:47,769 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-  Dipole operator has 4 non-trivial terms
-  Example: (((0, 'Y'), (1, 'Z'), (2, 'Y')), np.complex128(-0.004639167352296161+0j))
-2026-03-01 05:05:47,799 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:47,799 | MolecularSimulator | INFO |   OpenFermion-PySCF: HF=-1.11699900, FCI=-1.13730604
-2026-03-01 05:05:47,816 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:47,816 | MolecularSimulator | INFO |   OpenFermion verification:
-2026-03-01 05:05:47,816 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:47,816 | MolecularSimulator | INFO |     Ground state: -1.13730604 Ha (FCI target: -1.13730604)
-2026-03-01 05:05:47,816 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:47,816 | MolecularSimulator | INFO |     HF idx=3:  0.47475070 Ha
-2026-03-01 05:05:47,817 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:47,817 | MolecularSimulator | INFO |     HF idx=12: -1.11699900 Ha
-2026-03-01 05:05:47,817 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:47,817 | MolecularSimulator | INFO |     ✓ OpenFermion Hamiltonian verified
-2026-03-01 05:05:47,817 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:47,817 | MolecularSimulator | INFO |   Using OpenFermion JW: 14 Pauli terms, E_nuc=-0.090579 Ha
-2026-03-01 05:05:47,828 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-2026-03-01 05:05:47,828 | MolecularSimulator | INFO |   Verification: E_HF(calc)=-1.11699900 Ha, E_HF(target)=-1.11699900 Ha
-HF state (theta=0): E=-1.11699900, diff vs base=0.00000000
-Excited (theta=[0.2,0,0,0,0]): E=-1.09030434, diff vs base=0.00000000
-Optimized from HF: E=-1.13730604, theta=[-2.01561046e-08 -2.01561046e-08 -2.01561046e-08 -2.01561046e-08
- -1.11768939e-01]
-Optimized from excited: E=-1.10395499, theta=[ 1.99785802e-01 -1.57529358e-08  2.73692787e-01 -1.57533226e-08
- -2.46585234e-01]
+  Single (0→2), θ=0.3:
+    |1100> (2e): 14.448608
+    |0110> (2e): 1.382571
 
-==================================================
-RESUMEN
-==================================================
-F=-0.010: E=-1.13730604 Ha
-F=+0.000: E=-1.13730604 Ha
-F=+0.010: E=-1.13375152 Ha
+  Single (0→3), θ=0.3:
+    |1100> (2e): 14.428297
+    |0101> (2e): 1.380628
+
+  Single (1→2), θ=0.3:
+    |1100> (2e): 14.509766
+    |1010> (2e): 1.388424
+
+  Single (1→3), θ=0.3:
+    |1100> (2e): 14.486293
+    |1001> (2e): 1.386178
+
+  Dipole scan with single (0→2):
+    θ₀=-0.30: E=-1.07150715, <μ>=-0.40752082
+    θ₀=-0.10: E=-1.12979672, <μ>=-0.14338610
+    θ₀=+0.00: E=-1.13730595, <μ>=+0.00000000
+    θ₀=+0.10: E=-1.12979672, <μ>=+0.14338609
+    θ₀=+0.30: E=-1.07150715, <μ>=+0.40752084
+
+============================================================
+STEP 1: ZERO-FIELD REFERENCE
+============================================================
+E(0) = -1.1373060358
+θ = [-6.77278357e-09 -1.03333271e-08 -8.66274926e-09 -5.65363690e-08
+ -1.11768514e-01]
+ΔE_FCI = 2.89e-15
+
+--- Diagnostic: same θ, different H(F) ---
+  [zero-field θ] F=+0.00000: <H₀>=-1.1373060358, <μ>=0.0000000925, -F<μ>=-0.0000000000, E=-1.1373060358
+  [zero-field θ] F=+0.00500: <H₀>=-1.1373060358, <μ>=0.0000000925, -F<μ>=-0.0000000005, E=-1.1373060362
+  [zero-field θ] F=+0.01000: <H₀>=-1.1373060358, <μ>=0.0000000925, -F<μ>=-0.0000000009, E=-1.1373060367
+  [zero-field θ] F=+0.02000: <H₀>=-1.1373060358, <μ>=0.0000000925, -F<μ>=-0.0000000019, E=-1.1373060376
+
+============================================================
+STEP 2: FIELD SWEEP
+============================================================
+  F=-0.00500: E=-1.1373404123, ΔE=-0.0000343765
+  F=+0.00500: E=-1.1373404123, ΔE=-0.0000343765
+  F=-0.01000: E=-1.1374435409, ΔE=-0.0001375052
+  F=+0.01000: E=-1.1374435409, ΔE=-0.0001375052
+  F=-0.01500: E=-1.1376154189, ΔE=-0.0003093832
+  F=+0.01500: E=-1.1376154189, ΔE=-0.0003093832
+  F=-0.02000: E=-1.1378560417, ΔE=-0.0005500059
+  F=+0.02000: E=-1.1378560417, ΔE=-0.0005500059
+
+============================================================
+POLARIZABILITY ANALYSIS
+============================================================
+
+         F               E(F)             ΔE
+  -0.02000      -1.1378560417  -0.0005500059
+  -0.01500      -1.1376154189  -0.0003093832
+  -0.01000      -1.1374435409  -0.0001375052
+  -0.00500      -1.1373404123  -0.0000343765
+  +0.00000      -1.1373060358  +0.0000000000
+  +0.00500      -1.1373404123  -0.0000343765
+  +0.01000      -1.1374435409  -0.0001375052
+  +0.01500      -1.1376154189  -0.0003093832
+  +0.02000      -1.1378560417  -0.0005500059
+
+Symmetry |E(+F)-E(-F)|:
+  ±0.0050: 2.22e-16
+  ±0.0100: 3.11e-15
+  ±0.0150: 2.36e-12
+  ±0.0200: 1.11e-15
+
+  α (VQE)  = 2.7500 a₀³
+  α (exact diag, STO-3G) ≈ 2.750 a₀³
+  Error = 0.0%
 
 ```
 
