@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-polarizability_v3.py — Corrected with proper particle-conserving ansatz
+app.py — Corrected with proper particle-conserving ansatz
 =======================================================================
 
 Root cause identified: The uccsd() function in molecular_sim.py implements
