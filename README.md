@@ -743,6 +743,54 @@ MeasurementResult (2 qubits)
 - DOI [https://doi.org/10.5281/zenodo.18407920 From Boltzmann Stochasticity to Hamiltonian Integrability: Emergence of Topological Crystals and Synthetic Planck Constants](https://doi.org/10.5281/zenodo.18407920)
 - DOI [https://doi.org/10.5281/zenodo.18725428 Schrödinger Topological Crystallization: Phase Space Discovery in Hamiltonian Neural Networks](https://doi.org/10.5281/zenodo.18725428)
 
+
+<img width="2035" height="1684" alt="grover_3q_m5_summary" src="https://github.com/user-attachments/assets/077ce6fa-be1b-4541-bc23-d89c8642b70d" />
+
+<img width="3854" height="3233" alt="grover_3q_m5" src="https://github.com/user-attachments/assets/5c5aef9f-b5e6-43f9-8301-d723dc4ba523" />
+
+<img width="2050" height="1684" alt="qft_3q_summary" src="https://github.com/user-attachments/assets/b73fa3c9-0c96-44f1-8626-e9292f707aba" />
+
+<img width="3868" height="3233" alt="qft_3q" src="https://github.com/user-attachments/assets/fb9a727c-b7a8-4d9a-8e8d-f961c3b30c45" />
+
+<img width="2035" height="1684" alt="ghz_3q_summary" src="https://github.com/user-attachments/assets/f71a6459-cdf5-4f52-9b13-26dafeb869a8" />
+
+<img width="3854" height="3233" alt="ghz_3q" src="https://github.com/user-attachments/assets/3daa4560-f2d2-4d0e-b602-658240f05507" />
+
+<img width="2035" height="1684" alt="bell_state_summary" src="https://github.com/user-attachments/assets/69f2e2e5-cd13-46a3-ac7e-2c76388fb228" />
+
+<img width="3854" height="3224" alt="bell_state" src="https://github.com/user-attachments/assets/3d62f56f-9cff-4a6c-b160-e430d4f92bdc" />
+
+<img width="3585" height="2985" alt="grover_3q_m5_visualization" src="https://github.com/user-attachments/assets/349e1279-b19f-4535-a556-68a91de5eee1" />
+
+<img width="3585" height="2985" alt="qft_3q_visualization" src="https://github.com/user-attachments/assets/7f03f374-156c-407d-803f-4c9beb43e41e" />
+
+<img width="3585" height="2985" alt="ghz_3q_visualization" src="https://github.com/user-attachments/assets/eb1d1ee1-167d-4a1d-907a-a88841575946" />
+
+<img width="3585" height="2985" alt="bell_state_visualization" src="https://github.com/user-attachments/assets/4b9dd643-54a9-449d-a44a-ec5eca52e64c" />
+
+<img width="3585" height="2980" alt="bell_entangled_h_1s_2s" src="https://github.com/user-attachments/assets/f1140238-80a3-40c3-8f21-013ac72c5a2d" />
+
+<img width="3528" height="2985" alt="bell_entangled_h_1s_2p" src="https://github.com/user-attachments/assets/063669b7-0029-43a8-a5e8-514c4fd201d3" />
+
+<img width="3498" height="2985" alt="ghz_entangled_h_1s_2s_2p" src="https://github.com/user-attachments/assets/4cd21dbe-5a4b-4b38-a113-e80d5f3dc008" />
+
+<img width="3585" height="2985" alt="bell_entangled_h_1s_2s_molecular" src="https://github.com/user-attachments/assets/81e9efce-eca6-46e0-9fe5-c49328e23c44" />
+
+<img width="3585" height="2985" alt="bell_entangled_h_1s_2s_relativistic" src="https://github.com/user-attachments/assets/26bd7dec-3695-4cf6-9674-1f0909ca41dc" />
+
+<img width="3585" height="2989" alt="orbital_3d_z2_100000" src="https://github.com/user-attachments/assets/b660e445-5439-42fe-acad-dc544b24f333" />
+
+<img width="3374" height="2985" alt="entangled_2p_y_2p_z_100000" src="https://github.com/user-attachments/assets/587a50fd-d2bc-406c-b443-3284cac509b9" />
+
+<img width="3521" height="2985" alt="entangled_2p_z_2p_x_100000" src="https://github.com/user-attachments/assets/54e2febe-3c95-461f-881f-6cb1f41828d7" />
+
+<img width="3497" height="2985" alt="atom_Li_orbital_1s_m0" src="https://github.com/user-attachments/assets/ead06c9f-a932-4242-92a1-b78ebd95f633" />
+
+<img width="3461" height="2985" alt="atom_Li_orbital_2s_m0" src="https://github.com/user-attachments/assets/e261bd57-77f3-4c10-b449-6e64fab47e33" />
+
+
+
+
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) [![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y2Z73AV)
