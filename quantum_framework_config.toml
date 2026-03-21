@@ -1,0 +1,170 @@
+# =============================================================================
+# Quantum Framework Configuration
+# =============================================================================
+# Production configuration for molecular VQE simulations
+# NO hardcoded values in code - all parameters from this file
+
+[simulation]
+# Precision mode: true = direct statevector, false = MPS compression
+precision_mode = false
+
+# Maximum qubits for direct mode (switches to MPS if exceeded)
+max_qubits_direct = 14
+
+# Device for computation
+device = "cpu"  # "cuda" if available
+
+# Random seed for reproducibility
+random_seed = 42
+
+# Verbosity
+verbose = true
+
+# =============================================================================
+# MPS (Matrix Product State) Settings
+# =============================================================================
+[mps]
+# Initial bond dimension
+bond_dimension = 16
+
+# Maximum bond dimension
+max_bond_dimension = 64
+
+# SVD truncation threshold
+svd_threshold = 1e-10
+
+# Truncation error tolerance
+truncation_error = 1e-8
+
+# Adaptive bond dimension based on entanglement
+adaptive_bond = true
+
+# =============================================================================
+# VQE Settings
+# =============================================================================
+[vqe]
+# Maximum optimization iterations
+max_iterations = 200
+
+# Convergence tolerance for energy
+convergence_tolerance = 1e-8
+
+# Gradient tolerance for optimizer
+gradient_tolerance = 1e-7
+
+# Backend to use (hamiltonian, schrodinger, dirac)
+backend = "hamiltonian"
+
+# Number of samples for parameter scan
+scan_samples = 21
+
+# Range for parameter scan
+scan_range = 0.5
+
+# Use MP2 initial guess
+use_mp2_init = true
+
+# Enable caching of operations
+use_cache = true
+
+# Cache size for LRU cache
+cache_size = 1000
+
+# =============================================================================
+# Physics Constants
+# =============================================================================
+[physics]
+# Speed of light (atomic units)
+c_light = 137.035999084
+
+# Fine structure constant
+alpha_fs = 0.0072973525693
+
+# Reduced Planck constant
+hbar = 1.0
+
+# Electron mass (atomic units)
+electron_mass = 1.0
+
+# =============================================================================
+# Output Settings
+# =============================================================================
+[output]
+# Output directory for results
+directory = "download"
+
+# Figure DPI for visualizations
+figure_dpi = 150
+
+# =============================================================================
+# Backend Models
+# =============================================================================
+[checkpoints]
+# Pre-trained model paths
+hamiltonian = "hamiltonian.pth"
+schrodinger = "checkpoint_phase3_training_epoch_18921_20260224_154739.pth"
+dirac = "best_dirac.pth"
+
+# =============================================================================
+# Molecular Definitions
+# =============================================================================
+[[molecules]]
+name = "H2"
+formula = "H2"
+description = "Hydrogen molecule at equilibrium"
+geometry = [
+    ["H", [0.0, 0.0, 0.0]],
+    ["H", [0.0, 0.0, 0.735]]
+]
+basis = "sto-3g"
+charge = 0
+multiplicity = 1
+
+[[molecules]]
+name = "H2O"
+formula = "H2O"
+description = "Water molecule at equilibrium"
+geometry = [
+    ["O", [0.0, 0.0, 0.0]],
+    ["H", [0.9575, 0.0, 0.0]],
+    ["H", [-0.239987, 0.927297, 0.0]]
+]
+basis = "sto-3g"
+charge = 0
+multiplicity = 1
+
+[[molecules]]
+name = "LiH"
+formula = "LiH"
+description = "Lithium hydride at equilibrium"
+geometry = [
+    ["Li", [0.0, 0.0, 0.0]],
+    ["H", [0.0, 0.0, 1.546]]
+]
+basis = "sto-3g"
+charge = 0
+multiplicity = 1
+
+# =============================================================================
+# Experiments
+# =============================================================================
+[[experiments]]
+name = "vqe_h2"
+description = "VQE ground state for H2"
+category = "molecular"
+molecule = "H2"
+default_qubits = 4
+
+[[experiments]]
+name = "vqe_h2o"
+description = "VQE ground state for H2O"
+category = "molecular"
+molecule = "H2O"
+default_qubits = 7
+
+[[experiments]]
+name = "vqe_lih"
+description = "VQE ground state for LiH"
+category = "molecular"
+molecule = "LiH"
+default_qubits = 8

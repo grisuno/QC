@@ -1,1 +1,19 @@
+# Q²C - Quasi Quantum Computing Simulator
+# Core requirements
+torch>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+matplotlib>=3.7.0
 
+# Optional: Molecular simulations
+openfermion>=1.6.0
+pyscf>=2.3.0
+
+# Optional: 3D holographic visualization
+plotly>=5.14.0
+
+# Optional: Audio sonification in quantum_3dview.py
+# scipy already covers WAV output
+
+# Development
+pytest>=7.4.0
