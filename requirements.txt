@@ -5,6 +5,9 @@ numpy>=1.24.0
 scipy>=1.10.0
 matplotlib>=3.7.0
 
+# Educational TUI (Quantum Lab)
+rich>=13.0.0
+
 # Optional: Molecular simulations
 openfermion>=1.6.0
 pyscf>=2.3.0

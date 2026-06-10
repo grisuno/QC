@@ -10,6 +10,7 @@ Usage:
 
 Options:
     --config PATH       Path to TOML configuration file
+    --learn             Launch the educational Quantum Lab TUI (EN/ES)
     --interactive       Launch interactive menu mode
     --all               Run ALL experiments automatically (for debugging)
     --experiment NAME   Run specific experiment by name
@@ -307,6 +308,18 @@ def main() -> None:
         help="Launch interactive menu mode"
     )
     parser.add_argument(
+        "--learn", "-l",
+        action="store_true",
+        help="Launch the educational Quantum Lab TUI (bilingual EN/ES)"
+    )
+    parser.add_argument(
+        "--lang",
+        type=str,
+        choices=["en", "es"],
+        default=None,
+        help="Language for the Quantum Lab (en or es)"
+    )
+    parser.add_argument(
         "--all", "-a",
         action="store_true",
         help="Run ALL experiments automatically (for debugging)"
@@ -383,6 +396,11 @@ def main() -> None:
         print_info(config, config_loader)
         return
     
+    if args.learn:
+        from quantum_lab import launch_quantum_lab
+        launch_quantum_lab(config, config_loader, lang=args.lang)
+        return
+
     if args.all:
         run_all_experiments(config, config_loader)
         return

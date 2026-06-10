@@ -112,6 +112,14 @@ dirac = "best_dirac.pth"
 name = "H2"
 formula = "H2"
 description = "Hydrogen molecule at equilibrium"
+atoms = ["H", "H"]
+n_electrons = 2
+n_orbitals = 2
+n_qubits = 4
+bond_length_angstrom = 0.735
+hf_energy_hartree = -1.11675928
+fci_energy_hartree = -1.13728383
+nuclear_repulsion_hartree = 0.7199689944
 geometry = [
     ["H", [0.0, 0.0, 0.0]],
     ["H", [0.0, 0.0, 0.735]]
@@ -124,6 +132,14 @@ multiplicity = 1
 name = "H2O"
 formula = "H2O"
 description = "Water molecule at equilibrium"
+atoms = ["O", "H", "H"]
+n_electrons = 10
+n_orbitals = 7
+n_qubits = 14
+bond_length_angstrom = 0.9575
+hf_energy_hartree = -74.963
+fci_energy_hartree = -75.012
+nuclear_repulsion_hartree = 9.1894
 geometry = [
     ["O", [0.0, 0.0, 0.0]],
     ["H", [0.9575, 0.0, 0.0]],
@@ -137,6 +153,14 @@ multiplicity = 1
 name = "LiH"
 formula = "LiH"
 description = "Lithium hydride at equilibrium"
+atoms = ["Li", "H"]
+n_electrons = 4
+n_orbitals = 6
+n_qubits = 12
+bond_length_angstrom = 1.546
+hf_energy_hartree = -7.87
+fci_energy_hartree = -7.882
+nuclear_repulsion_hartree = 1.0268
 geometry = [
     ["Li", [0.0, 0.0, 0.0]],
     ["H", [0.0, 0.0, 1.546]]
@@ -144,6 +168,81 @@ geometry = [
 basis = "sto-3g"
 charge = 0
 multiplicity = 1
+
+# =============================================================================
+# Atoms
+# =============================================================================
+[[atoms]]
+symbol = "H"
+name = "Hydrogen"
+atomic_number = 1
+mass = 1.007825
+nuclear_charge = 1.0
+electron_configuration = ["1s1"]
+max_qubits_needed = 2
+
+[[atoms]]
+symbol = "He"
+name = "Helium"
+atomic_number = 2
+mass = 4.002603
+nuclear_charge = 2.0
+electron_configuration = ["1s2"]
+max_qubits_needed = 2
+
+[[atoms]]
+symbol = "Li"
+name = "Lithium"
+atomic_number = 3
+mass = 7.016004
+nuclear_charge = 3.0
+electron_configuration = ["1s2", "2s1"]
+max_qubits_needed = 6
+
+# =============================================================================
+# Orbitals
+# =============================================================================
+[[orbitals]]
+name = "1s"
+n = 1
+l = 0
+m = 0
+description = "Ground state, spherically symmetric"
+
+[[orbitals]]
+name = "2s"
+n = 2
+l = 0
+m = 0
+description = "Second shell s orbital with one radial node"
+
+[[orbitals]]
+name = "2p"
+n = 2
+l = 1
+m = 0
+description = "Dumbbell-shaped p orbital (m=0, aligned with z)"
+
+[[orbitals]]
+name = "3s"
+n = 3
+l = 0
+m = 0
+description = "Third shell s orbital with two radial nodes"
+
+[[orbitals]]
+name = "3p"
+n = 3
+l = 1
+m = 0
+description = "Third shell p orbital with one radial node"
+
+[[orbitals]]
+name = "3d"
+n = 3
+l = 2
+m = 0
+description = "d_z2 orbital, donut with two lobes"
 
 # =============================================================================
 # Experiments

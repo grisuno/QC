@@ -25,6 +25,7 @@ Both modes share the same gate library, algorithms, and physics backends. The us
 
 ```
 quantum_framework_main.py        ← CLI entry point
+quantum_lab.py                   ← 🎓 Educational TUI (bilingual EN/ES)
 quantum_framework_menu.py        ← Interactive menu (11 sections)
     │
     ├── quantum_framework_core.py     ← MPS tensor network engine
@@ -96,6 +97,26 @@ quantum_framework_menu.py        ← Interactive menu (11 sections)
 
 ## Quick Start
 
+### 🎓 Quantum Lab — educational TUI (start here if you are new)
+
+```bash
+python3 quantum_framework_main.py --learn          # or: python3 quantum_lab.py
+python3 quantum_lab.py --lang es                   # interfaz en español
+python3 quantum_lab.py --lesson 3                  # jump to lesson 3
+```
+
+A bilingual (English/Spanish) interactive terminal experience built on the
+real simulation engine — nothing is pre-recorded:
+
+| Section | What you do |
+|---------|-------------|
+| **Lessons** | 5-lesson guided course: qubits & superposition, measurement, entanglement & Bell states, Grover search, quantum chemistry. Live simulations + quizzes. |
+| **Playground** | Build circuits gate by gate (`h 0`, `cnot 0 1`, `ry 0 pi/3`, ...) and watch probability bars, amplitudes/phases and entanglement entropy update live. |
+| **Chemistry lab** | Molecule cards (H2, LiH, H2O) with HF/FCI/correlation energies, and a colored ASCII hydrogen-orbital viewer (1s → 3d) showing lobes, signs and nodes. |
+| **Glossary** | Quick reference for all the vocabulary used in the lessons. |
+
+Requires only `rich` on top of the core dependencies.
+
 ### Interactive Menu
 ```bash
 python3 quantum_framework_main.py
@@ -114,6 +135,7 @@ pytest test_quantum_framework.py -v
 ### CLI options
 ```bash
 python3 quantum_framework_main.py --help
+python3 quantum_framework_main.py --learn --lang es
 python3 quantum_framework_main.py --benchmark --max-qubits 20
 python3 quantum_framework_main.py --info
 ```
