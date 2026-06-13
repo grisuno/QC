@@ -8,6 +8,17 @@
 
 ---
 
+## Screenshots:
+
+<img width="3521" height="2985" alt="image" src="https://github.com/user-attachments/assets/761270b6-58a6-4b42-9c57-3f7038af9d85" />
+
+<img width="3374" height="2985" alt="image" src="https://github.com/user-attachments/assets/5bf2e34a-2552-4e02-8b8f-2d2b3deb3dd9" />
+
+<img width="3497" height="2985" alt="image" src="https://github.com/user-attachments/assets/93d9d5ef-d7e8-4f3d-8db5-2e1d56fe0bb5" />
+
+<img width="3461" height="2985" alt="image" src="https://github.com/user-attachments/assets/3a47d377-bc2c-4d63-ba67-929e0bd2db56" />
+
+
 ## What is Q²C?
 
 Q²C simulates quantum systems on classical hardware through two complementary modes selectable at runtime:
