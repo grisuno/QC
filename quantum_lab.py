@@ -31,6 +31,7 @@ import argparse
 import math
 import os
 import sys
+import time
 from dataclasses import dataclass, field
 from typing import Callable, Dict, List, Optional, Tuple
 
@@ -43,13 +44,15 @@ except ImportError:
     sys.exit(1)
 
 try:
-    from rich.console import Console
+    from rich.console import Console, Group
     from rich.panel import Panel
     from rich.table import Table
     from rich.text import Text
     from rich.rule import Rule
     from rich.prompt import Prompt
     from rich.align import Align
+    from rich.columns import Columns
+    from rich.live import Live
 except ImportError:
     print("This program requires 'rich':  pip install rich")
     sys.exit(1)
@@ -156,6 +159,22 @@ TEXT: Dict[str, Dict[str, str]] = {
         "run_demo": "[bold yellow]>>> Running live simulation...[/bold yellow]",
         "theory": "theory",
         "simulated": "simulated",
+        "clouds_bonding": "Bonding cloud (qubit 0)",
+        "clouds_antibonding": "Antibonding cloud (qubit 1)",
+        "clouds_note": (
+            "Two protons sit on the horizontal axis, 0.74 A apart.\n"
+            "[cyan]Bonding[/cyan]: the electron cloud piles up BETWEEN the nuclei and\n"
+            "glues the molecule together. In the [bold]antibonding[/bold] cloud the\n"
+            "wavefunction changes sign ([cyan]cyan[/cyan] -> [magenta]magenta[/magenta]) halfway: that empty\n"
+            "vertical gap is a node, and an electron living there pushes the\n"
+            "atoms apart instead of binding them."
+        ),
+        "vqe_ansatz_title": "The ansatz circuit (one knob: theta)",
+        "vqe_landscape_title": "Energy landscape E(theta) - every dot is a live circuit run",
+        "vqe_live_title": "VQE live - gradient descent on the landscape",
+        "vqe_corr_label": "correlation captured",
+        "vqe_final": ("Converged in {it} iterations:  E = {e:+.6f} Ha   "
+                      "(FCI {fci:+.6f} Ha, error {err:.1e} Ha)"),
     },
     "es": {
         "title": "Q2C LABORATORIO CUANTICO",
@@ -240,6 +259,22 @@ TEXT: Dict[str, Dict[str, str]] = {
         "run_demo": "[bold yellow]>>> Ejecutando simulacion en vivo...[/bold yellow]",
         "theory": "teoria",
         "simulated": "simulado",
+        "clouds_bonding": "Nube enlazante (qubit 0)",
+        "clouds_antibonding": "Nube antienlazante (qubit 1)",
+        "clouds_note": (
+            "Dos protones estan sobre el eje horizontal, a 0.74 A.\n"
+            "[cyan]Enlazante[/cyan]: la nube electronica se acumula ENTRE los nucleos y\n"
+            "pega la molecula. En la nube [bold]antienlazante[/bold] la funcion de onda\n"
+            "cambia de signo ([cyan]cian[/cyan] -> [magenta]magenta[/magenta]) a mitad de camino: ese hueco\n"
+            "vertical vacio es un nodo, y un electron que viva ahi separa los\n"
+            "atomos en vez de unirlos."
+        ),
+        "vqe_ansatz_title": "El circuito ansatz (una perilla: theta)",
+        "vqe_landscape_title": "Paisaje de energia E(theta) - cada punto es un circuito en vivo",
+        "vqe_live_title": "VQE en vivo - descenso por gradiente sobre el paisaje",
+        "vqe_corr_label": "correlacion capturada",
+        "vqe_final": ("Convergio en {it} iteraciones:  E = {e:+.6f} Ha   "
+                      "(FCI {fci:+.6f} Ha, error {err:.1e} Ha)"),
     },
 }
 
@@ -452,20 +487,9 @@ ORBITAL_SPECS: List[OrbitalSpec] = [
 ]
 
 
-def render_orbital(spec: OrbitalSpec, rows: int = 27, cols: int = 64) -> Tuple[Text, float]:
-    """Render |psi|^2 of a hydrogen orbital on a plane slice as colored ASCII."""
-    extent = 1.8 * spec.n * spec.n + 3.0
-    horizontal = np.linspace(-extent, extent, cols)
-    vertical = np.linspace(extent, -extent, rows)
-    hh, vv = np.meshgrid(horizontal, vertical)
-
-    if spec.plane == "xz":
-        x, y, z = hh, np.zeros_like(hh), vv
-    else:
-        x, y, z = hh, vv, np.zeros_like(hh)
-
-    r = np.sqrt(x * x + y * y + z * z)
-    psi = _radial(spec.n, spec.l, r) * spec.angular(x, y, z, r)
+def field_to_text(psi: np.ndarray) -> Text:
+    """Render a real scalar field as colored ASCII: brightness = |psi|^2, color = sign."""
+    rows, cols = psi.shape
     density = psi * psi
     peak = density.max()
     if peak <= 0:
@@ -486,7 +510,145 @@ def render_orbital(spec: OrbitalSpec, rows: int = 27, cols: int = 64) -> Tuple[T
                     style = "bold bright_" + style
                 text.append(ch, style=style)
         text.append("\n")
-    return text, extent
+    return text
+
+
+def render_orbital(spec: OrbitalSpec, rows: int = 27, cols: int = 64) -> Tuple[Text, float]:
+    """Render |psi|^2 of a hydrogen orbital on a plane slice as colored ASCII."""
+    extent = 1.8 * spec.n * spec.n + 3.0
+    horizontal = np.linspace(-extent, extent, cols)
+    vertical = np.linspace(extent, -extent, rows)
+    hh, vv = np.meshgrid(horizontal, vertical)
+
+    if spec.plane == "xz":
+        x, y, z = hh, np.zeros_like(hh), vv
+    else:
+        x, y, z = hh, vv, np.zeros_like(hh)
+
+    r = np.sqrt(x * x + y * y + z * z)
+    psi = _radial(spec.n, spec.l, r) * spec.angular(x, y, z, r)
+    return field_to_text(psi), extent
+
+
+H2_BOND_BOHR = 1.4
+
+
+def render_h2_molecular_orbital(kind: str, rows: int = 19, cols: int = 38) -> Text:
+    """Render the bonding or antibonding LCAO molecular orbital of H2."""
+    extent = 5.0
+    horizontal = np.linspace(-extent, extent, cols)
+    vertical = np.linspace(extent, -extent, rows)
+    zz, xx = np.meshgrid(horizontal, vertical)
+    half = H2_BOND_BOHR / 2.0
+    r1 = np.sqrt(xx * xx + (zz - half) ** 2)
+    r2 = np.sqrt(xx * xx + (zz + half) ** 2)
+    if kind == "bonding":
+        psi = np.exp(-r1) + np.exp(-r2)
+    else:
+        psi = np.exp(-r1) - np.exp(-r2)
+    return field_to_text(psi)
+
+
+# =============================================================================
+# VQE energy landscape plot
+# =============================================================================
+
+def landscape_plot(energies: List[float], e_hf: float, e_fci: float,
+                   marker: Optional[int] = None, rows: int = 14) -> Text:
+    """
+    Draw an ASCII plot of E(theta) over one full period with HF and FCI
+    reference lines and an optional optimizer marker.
+    """
+    cols = len(energies)
+    e_top = max(max(energies), e_hf) + 0.003
+    e_bot = min(min(energies), e_fci) - 0.003
+    span = e_top - e_bot
+
+    def row_of(e: float) -> int:
+        frac = (e - e_bot) / span
+        return min(rows - 1, max(0, int(round((1.0 - frac) * (rows - 1)))))
+
+    grid = [[(" ", None) for _ in range(cols)] for _ in range(rows)]
+    hf_row, fci_row = row_of(e_hf), row_of(e_fci)
+    for j in range(0, cols, 2):
+        grid[hf_row][j] = ("╌", "yellow")
+        grid[fci_row][j] = ("╌", "green")
+    for j, e in enumerate(energies):
+        grid[row_of(e)][j] = ("·", "bold cyan")
+    if marker is not None:
+        j = min(cols - 1, max(0, marker))
+        grid[row_of(energies[j])][j] = ("◆", "bold red")
+
+    label_width = 11
+    text = Text()
+    for i in range(rows):
+        if i == hf_row:
+            text.append(f"{e_hf:>9.4f} ─", style="yellow")
+        elif i == fci_row:
+            text.append(f"{e_fci:>9.4f} ─", style="green")
+        else:
+            text.append(" " * (label_width - 1) + "│", style="dim")
+        for ch, style in grid[i]:
+            text.append(ch, style=style)
+        if i == hf_row:
+            text.append("  HF", style="yellow")
+        elif i == fci_row:
+            text.append("  FCI", style="green")
+        text.append("\n")
+    text.append(" " * (label_width - 1) + "└" + "─" * cols + "\n", style="dim")
+    axis = " " * label_width + "0" + "π".center(cols // 2 - 1) + "  " + "2π".rjust(cols // 2 - 2)
+    text.append(axis + "\n", style="dim")
+    return text
+
+
+class H2VQEEngine:
+    """
+    Minimal live VQE for H2 in the 2-qubit active space.
+
+    The trial state cos(theta/2)|01> + sin(theta/2)|10> is prepared with a
+    real circuit (Ry, CNOT, X) on the MPS engine, and the energy is read
+    from the Jordan-Wigner H2 Hamiltonian of quantum_framework_molecular.
+    """
+
+    def __init__(self, qc: MPSQuantumComputer) -> None:
+        from quantum_framework_molecular import MoleculeBuilder, ExactJWEnergy
+        self.qc = qc
+        self.mol = MoleculeBuilder.h2_sto3g()
+        self.evaluator = ExactJWEnergy(self.mol, self.mol.n_qubits)
+        self.e_hf = self.mol.hf_energy
+        self.e_fci = self.mol.fci_energy
+
+    def ansatz_instructions(self, theta: float) -> List[Tuple[str, List[int]]]:
+        return [("RY", [0]), ("CNOT", [0, 1]), ("X", [1])]
+
+    def energy(self, theta: float) -> float:
+        state = self.qc.create_state(2)
+        circuit = self.qc.create_circuit(2)
+        circuit.ry(0, theta)
+        circuit.cnot(0, 1)
+        circuit.x(1)
+        state = circuit.run(state)
+        return float(self.evaluator.evaluate(state.to_statevector()))
+
+    def correlation_pct(self, e: float) -> float:
+        return (self.e_hf - e) / (self.e_hf - self.e_fci) * 100.0
+
+    def landscape(self, cols: int = 58) -> Tuple[List[float], List[float]]:
+        thetas = [2.0 * math.pi * j / (cols - 1) for j in range(cols)]
+        return thetas, [self.energy(t) for t in thetas]
+
+    def optimize(self, theta0: float = math.pi, lr: float = 25.0,
+                 max_iters: int = 40, tol: float = 1e-7):
+        """Gradient descent; yields (iteration, theta, energy) live."""
+        theta = theta0
+        eps = 1e-4
+        for it in range(1, max_iters + 1):
+            e = self.energy(theta)
+            yield it, theta % (2.0 * math.pi), e
+            grad = (self.energy(theta + eps) - self.energy(theta - eps)) / (2.0 * eps)
+            if abs(grad) < tol:
+                return
+            theta -= lr * grad
 
 
 # =============================================================================
@@ -527,7 +689,10 @@ class QuantumLab:
 
     def pause(self) -> None:
         console.print()
-        Prompt.ask(self.t("press_enter"), default="", show_default=False)
+        try:
+            Prompt.ask(self.t("press_enter"), default="", show_default=False)
+        except (EOFError, KeyboardInterrupt):
+            pass
 
     def panel(self, body: str, title: str = "", style: str = "cyan") -> None:
         console.print(Panel(body, title=f"[bold]{title}[/bold]" if title else None,
@@ -545,7 +710,10 @@ class QuantumLab:
         for i, opt in enumerate(quiz.options, start=1):
             console.print(f"  [cyan]{i}[/cyan]. {opt}")
         choices = [str(i) for i in range(1, len(quiz.options) + 1)]
-        answer = Prompt.ask(f"\n{self.t('your_answer')}", choices=choices, default="1")
+        try:
+            answer = Prompt.ask(f"\n{self.t('your_answer')}", choices=choices, default="1")
+        except (EOFError, KeyboardInterrupt):
+            return
         if int(answer) - 1 == quiz.correct:
             console.print(f"\n[bold green]{self.t('quiz_correct')}[/bold green] {quiz.explanation}\n")
         else:
@@ -650,6 +818,60 @@ class QuantumLab:
         if mol is not None:
             self._molecule_card(mol)
 
+    def _vqe(self) -> H2VQEEngine:
+        if not hasattr(self, "_vqe_engine"):
+            self._vqe_engine = H2VQEEngine(self.qc)
+        return self._vqe_engine
+
+    def _demo_h2_clouds(self) -> None:
+        console.print(self.t("run_demo"))
+        bonding = Panel(render_h2_molecular_orbital("bonding"),
+                        title=self.t("clouds_bonding"), border_style="green")
+        antibonding = Panel(render_h2_molecular_orbital("antibonding"),
+                            title=self.t("clouds_antibonding"), border_style="red")
+        console.print(Columns([bonding, antibonding]))
+        console.print(Panel(self.t("clouds_note"), border_style="dim"))
+
+    def _demo_vqe_ansatz(self) -> None:
+        drawn = [("RY(θ)", [0]), ("CNOT", [0, 1]), ("X", [1])]
+        console.print(Panel(draw_circuit(2, drawn),
+                            title=self.t("vqe_ansatz_title"), border_style="blue"))
+
+    def _demo_vqe_landscape(self) -> None:
+        console.print(self.t("run_demo"))
+        engine = self._vqe()
+        _, energies = engine.landscape()
+        console.print(Panel(landscape_plot(energies, engine.e_hf, engine.e_fci),
+                            title=self.t("vqe_landscape_title"), border_style="blue"))
+
+    def _demo_vqe_live(self) -> None:
+        console.print(self.t("run_demo"))
+        engine = self._vqe()
+        _, energies = engine.landscape()
+        cols = len(energies)
+        final_it, final_e = 0, engine.e_hf
+        with Live(console=console, refresh_per_second=12) as live:
+            for it, theta, e in engine.optimize():
+                marker = int(round(theta / (2.0 * math.pi) * (cols - 1))) % cols
+                pct = max(0.0, min(100.0, engine.correlation_pct(e)))
+                filled = int(round(pct / 100.0 * BAR_WIDTH))
+                gauge = Text("█" * filled, style="green")
+                gauge.append("░" * (BAR_WIDTH - filled), style="grey30")
+                footer = Text.assemble(
+                    (f" iter {it:>2}   θ = {theta:4.2f} rad   E = {e:+.6f} Ha\n", "bold"),
+                    (f" {self.t('vqe_corr_label')}: ", ""),
+                )
+                footer.append_text(gauge)
+                footer.append(f" {pct:5.1f}%", style="bold green")
+                plot = landscape_plot(energies, engine.e_hf, engine.e_fci, marker=marker)
+                live.update(Panel(Group(plot, footer),
+                                  title=self.t("vqe_live_title"), border_style="blue"))
+                final_it, final_e = it, e
+                time.sleep(0.15)
+        err = abs(final_e - engine.e_fci)
+        console.print("\n[bold green]✓[/bold green] " + self.t("vqe_final").format(
+            it=final_it, e=final_e, fci=engine.e_fci, err=err))
+
     def _lessons_en(self) -> List[Lesson]:
         return [
             Lesson("1. The qubit and superposition", [
@@ -742,6 +964,51 @@ class QuantumLab:
                 Quiz("In the Jordan-Wigner mapping, what does one qubit represent?",
                      ["One atom", "One molecule", "One spin-orbital (occupied or empty)", "One electron pair"], 2,
                      "Each spin-orbital becomes a qubit: |1> = occupied, |0> = empty. H2 in a minimal basis needs 4."),
+            ]),
+            Lesson("6. VQE live: hunting the ground state of H2", [
+                ("The variational principle",
+                 "Nature is lazy: a molecule settles into its state of [bold]lowest\n"
+                 "energy[/bold]. Quantum mechanics adds a guarantee: ANY trial\n"
+                 "wavefunction you can dream up has an energy [bold]>=[/bold] the true\n"
+                 "ground-state energy. You can approach the floor, never cross it.\n\n"
+                 "The [bold]VQE[/bold] recipe follows directly: prepare a trial state with\n"
+                 "a quantum circuit that has tunable knobs, measure its energy,\n"
+                 "and let a classical optimizer turn the knobs until the energy\n"
+                 "stops dropping. Where it stops is (approximately) the molecule."),
+                ("The electron clouds of H2",
+                 "When two hydrogen atoms meet, their 1s clouds merge into two\n"
+                 "[bold]molecular orbitals[/bold]: the bonding combination (1s + 1s) piles\n"
+                 "electron density between the protons and glues them together;\n"
+                 "the antibonding one (1s - 1s) has a node between them.\n\n"
+                 "Our 2-qubit model uses exactly these clouds:\n"
+                 "qubit 0 = bonding, qubit 1 = antibonding. The Hartree-Fock\n"
+                 "state is |10>: bonding occupied, antibonding empty."),
+                self._demo_h2_clouds,
+                ("A circuit with one knob",
+                 "The trial state is  cos(θ/2)|01> + sin(θ/2)|10> :  a single\n"
+                 "continuous knob θ mixes 'electron in bonding' with 'electron\n"
+                 "in antibonding'. At θ = π it is exactly the Hartree-Fock state.\n"
+                 "Ry(θ) creates the mixture, CNOT entangles, X flips:"),
+                self._demo_vqe_ansatz,
+                ("The energy landscape",
+                 "Sweep θ around a full turn, run the circuit for each value on\n"
+                 "the MPS engine, and ask the real H2 Hamiltonian for the energy.\n"
+                 "The [yellow]yellow dashed line[/yellow] is Hartree-Fock; the [green]green one[/green] is the\n"
+                 "exact (FCI) answer. The valley dipping below HF [bold]is[/bold] the\n"
+                 "correlation energy:"),
+                self._demo_vqe_landscape,
+                ("Watch the optimizer descend",
+                 "Now the real thing. Gradient descent starts at the Hartree-Fock\n"
+                 "state (θ = π) and follows the slope downhill. The [red]red diamond[/red]\n"
+                 "is the optimizer walking on the landscape; the bar fills up as\n"
+                 "correlation energy is captured:"),
+                self._demo_vqe_live,
+                Quiz("Why can the VQE energy never drop below the FCI (exact) value?",
+                     ["The optimizer is too slow",
+                      "The variational principle: any trial state has E >= the true ground energy",
+                      "Rounding errors prevent it",
+                      "Because the circuit has only one parameter"], 1,
+                     "That is the safety net of VQE: the exact ground state is a hard floor. The whole game is approaching it from above."),
             ]),
         ]
 
@@ -838,6 +1105,54 @@ class QuantumLab:
                 Quiz("En el mapeo Jordan-Wigner, que representa un qubit?",
                      ["Un atomo", "Una molecula", "Un espin-orbital (ocupado o vacio)", "Un par de electrones"], 2,
                      "Cada espin-orbital se vuelve un qubit: |1> = ocupado, |0> = vacio. H2 en base minima necesita 4."),
+            ]),
+            Lesson("6. VQE en vivo: cazando el estado base de H2", [
+                ("El principio variacional",
+                 "La naturaleza es perezosa: una molecula se acomoda en su estado\n"
+                 "de [bold]minima energia[/bold]. La mecanica cuantica agrega una garantia:\n"
+                 "CUALQUIER funcion de onda de prueba que imagines tiene energia\n"
+                 "[bold]>=[/bold] la energia real del estado base. Puedes acercarte al piso,\n"
+                 "nunca atravesarlo.\n\n"
+                 "La receta de [bold]VQE[/bold] sale directo de ahi: prepara un estado de\n"
+                 "prueba con un circuito cuantico con perillas ajustables, mide su\n"
+                 "energia, y deja que un optimizador clasico gire las perillas\n"
+                 "hasta que la energia deje de bajar. Donde se detiene esta\n"
+                 "(aproximadamente) la molecula."),
+                ("Las nubes de electrones de H2",
+                 "Cuando dos atomos de hidrogeno se encuentran, sus nubes 1s se\n"
+                 "fusionan en dos [bold]orbitales moleculares[/bold]: la combinacion\n"
+                 "enlazante (1s + 1s) acumula densidad electronica entre los\n"
+                 "protones y los pega; la antienlazante (1s - 1s) tiene un nodo\n"
+                 "entre ellos.\n\n"
+                 "Nuestro modelo de 2 qubits usa exactamente estas nubes:\n"
+                 "qubit 0 = enlazante, qubit 1 = antienlazante. El estado\n"
+                 "Hartree-Fock es |10>: enlazante ocupado, antienlazante vacio."),
+                self._demo_h2_clouds,
+                ("Un circuito con una perilla",
+                 "El estado de prueba es  cos(θ/2)|01> + sin(θ/2)|10> :  una sola\n"
+                 "perilla continua θ mezcla 'electron en enlazante' con 'electron\n"
+                 "en antienlazante'. En θ = π es exactamente el estado\n"
+                 "Hartree-Fock. Ry(θ) crea la mezcla, CNOT entrelaza, X voltea:"),
+                self._demo_vqe_ansatz,
+                ("El paisaje de energia",
+                 "Barre θ en una vuelta completa, corre el circuito para cada\n"
+                 "valor en el motor MPS, y preguntale al Hamiltoniano real de H2\n"
+                 "por la energia. La [yellow]linea amarilla punteada[/yellow] es Hartree-Fock; la\n"
+                 "[green]verde[/green] es la respuesta exacta (FCI). El valle que baja de HF\n"
+                 "[bold]es[/bold] la energia de correlacion:"),
+                self._demo_vqe_landscape,
+                ("Mira al optimizador descender",
+                 "Ahora lo real. El descenso por gradiente arranca en el estado\n"
+                 "Hartree-Fock (θ = π) y sigue la pendiente cuesta abajo. El\n"
+                 "[red]diamante rojo[/red] es el optimizador caminando sobre el paisaje;\n"
+                 "la barra se llena a medida que captura energia de correlacion:"),
+                self._demo_vqe_live,
+                Quiz("Por que la energia de VQE nunca puede bajar del valor FCI (exacto)?",
+                     ["El optimizador es muy lento",
+                      "El principio variacional: todo estado de prueba tiene E >= la energia base real",
+                      "Los errores de redondeo lo impiden",
+                      "Porque el circuito tiene un solo parametro"], 1,
+                     "Esa es la red de seguridad de VQE: el estado base exacto es un piso duro. Todo el juego es acercarse desde arriba."),
             ]),
         ]
 
@@ -1187,7 +1502,7 @@ def main() -> None:
     parser.add_argument("--lang", choices=["en", "es"], default=None,
                         help="Interface language (en or es)")
     parser.add_argument("--lesson", type=int, default=None,
-                        help="Jump straight into lesson N (1-5)")
+                        help="Jump straight into lesson N (1-6)")
     args = parser.parse_args()
     try:
         launch_quantum_lab(lang=args.lang, lesson=args.lesson)

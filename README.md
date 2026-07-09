@@ -110,7 +110,7 @@ real simulation engine — nothing is pre-recorded:
 
 | Section | What you do |
 |---------|-------------|
-| **Lessons** | 5-lesson guided course: qubits & superposition, measurement, entanglement & Bell states, Grover search, quantum chemistry. Live simulations + quizzes. |
+| **Lessons** | 6-lesson guided course: qubits & superposition, measurement, entanglement & Bell states, Grover search, quantum chemistry, and a **live VQE** of H2 — animated gradient descent on the real energy landscape, with ASCII electron-cloud renderings of the bonding/antibonding molecular orbitals. Live simulations + quizzes. |
 | **Playground** | Build circuits gate by gate (`h 0`, `cnot 0 1`, `ry 0 pi/3`, ...) and watch probability bars, amplitudes/phases and entanglement entropy update live. |
 | **Chemistry lab** | Molecule cards (H2, LiH, H2O) with HF/FCI/correlation energies, and a colored ASCII hydrogen-orbital viewer (1s → 3d) showing lobes, signs and nodes. |
 | **Glossary** | Quick reference for all the vocabulary used in the lessons. |
