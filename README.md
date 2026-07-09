@@ -25,7 +25,7 @@ Both modes share the same gate library, algorithms, and physics backends. The us
 
 ```
 quantum_framework_main.py        ← CLI entry point
-quantum_lab.py                   ← 🎓 Educational TUI (bilingual EN/ES)
+quantum_lab.py                   ← Educational TUI (bilingual EN/ES)
 quantum_framework_menu.py        ← Interactive menu (11 sections)
     │
     ├── quantum_framework_core.py     ← MPS tensor network engine
@@ -56,7 +56,7 @@ quantum_framework_menu.py        ← Interactive menu (11 sections)
     ├── topological_hilbert_compression2.py  ← Topological Hilbert space analysis
     ├── advanced_experiments.py       ← Grover, QFT, phase estimation, Simon
     │
-    ├── **qc_integration.py**          ← 🔌 **SDD: OpenQASM 2.0 / Qiskit / PennyLane bridge**
+    ├── **qc_integration.py**          ← **SDD: OpenQASM 2.0 / Qiskit / PennyLane bridge**
     │     ├── OpenQasmAdapter          ← Export / Import OpenQASM 2.0 circuits
     │     ├── QiskitAdapter            ← Convert to/from Qiskit QuantumCircuit
     │     ├── PennyLaneAdapter         ← Convert to/from PennyLane tapes / QNode
@@ -64,14 +64,18 @@ quantum_framework_menu.py        ← Interactive menu (11 sections)
     │     ├── IntegrationBridge        ← One-shot export → run → diagram
     │     └── IntegrationConfig        ← Centralized gate map, names, version
     │
-    ├── **qc_dashboard.py**            ← 📊 **SDD: Streamlit real-time playground**
-    │     ├── StateManager             ← Session state, lock, queue, persistence
-    │     ├── SimulatorBackend         ← Swappable MPS / exact backend adapter
-    │     ├── VisualisationEngine      ← Density, phase-space, Bloch, entropy, heatmap
-    │     ├── SidebarPanel             ← Config panel for precision, MPS bond dim
-    │     └── DashboardConfig          ← Centralized port, theme, refresh rate
+    ├── **qc_dashboard.py**            ← **SDD: Streamlit real-time playground**
+    │     ├── DashboardConfig          ← Centralized theme, gates, session defaults
+    │     ├── H2VQESolver              ← Self-contained H2 VQE (numpy, no PySCF)
+    │     ├── VisualisationEngine      ← Matplotlib: probabilities, Bloch, phase, entropy
+    │     ├── Plotly3DEngine           ← 3D Bloch spheres, probability bars, state scatter
+    │     ├── RealOrbitalEngine        ← Hydrogen orbital sampling bridge
+    │     ├── BrutalVizEngine          ← Legacy brutalist matplotlib visualizer
+    │     ├── BackendComparator        ← Side-by-side backend comparison
+    │     ├── SimulatorBackend         ← MPS / statevector / synthetic backend adapter
+    │     └── DashboardApp             ← Streamlit orchestrator (7 tabs)
     │
-    ├── **test_qc_integration.py**     ← 🧪 **69 BDD tests (100% pass rate)** for both modules
+    ├── **test_qc_integration.py**     ← **69 BDD tests (100% pass rate)** for both modules
     └── test_quantum_framework.py     ← 34 pytest tests (100% pass rate)
 ```
 
@@ -114,7 +118,7 @@ quantum_framework_menu.py        ← Interactive menu (11 sections)
 
 ## Quick Start
 
-### 🎓 Quantum Lab — educational TUI (start here if you are new)
+### Quantum Lab — educational TUI (start here if you are new)
 
 ```bash
 python3 quantum_framework_main.py --learn          # or: python3 quantum_lab.py
@@ -220,23 +224,23 @@ pip install -r requirements.txt
 
 | Package | Required | Purpose |
 |---------|----------|---------|
-| torch | ✅ | MPS tensors, neural backends |
-| numpy | ✅ | Numerical computation |
-| scipy | ✅ | VQE optimizer (L-BFGS-B) |
-| matplotlib | ✅ | Visualization |
-| tomllib/tomli | ✅ | TOML config (Python 3.11+ built-in) |
-| plotly | ⚡ Optional | 3D holographic visualization |
-| openfermion | ⚡ Optional | Molecular Hamiltonians |
-| pyscf | ⚡ Optional | Ab initio molecular integrals |
-| pytest | 🔧 Dev | Test suite |
-| pyqasm | 🔌 Optional | OpenQASM 2.0 parsing (qc_integration.py) |
-| qiskit | 🔌 Optional | Qiskit adapter (qc_integration.py) |
-| pennylane | 🔌 Optional | PennyLane adapter (qc_integration.py) |
-| streamlit | 🔌 Optional | Web dashboard (qc_dashboard.py) |
+| torch | Yes | MPS tensors, neural backends |
+| numpy | Yes | Numerical computation |
+| scipy | Yes | VQE optimizer (L-BFGS-B) |
+| matplotlib | Yes | Visualization |
+| tomllib/tomli | Required | TOML config (Python 3.11+ built-in) |
+| plotly | Optional | 3D holographic visualization |
+| openfermion | Optional | Molecular Hamiltonians |
+| pyscf | Optional | Ab initio molecular integrals |
+| pytest | Dev | Test suite |
+| pyqasm | Optional | OpenQASM 2.0 parsing (qc_integration.py) |
+| qiskit | Optional | Qiskit adapter (qc_integration.py) |
+| pennylane | Optional | PennyLane adapter (qc_integration.py) |
+| streamlit | Optional | Web dashboard (qc_dashboard.py) |
 
 ---
 
-## 🔌 Integration & Dashboard (New in v2)
+## Integration & Dashboard (New in v2)
 
 ### OpenQASM 2.0 / Qiskit / PennyLane Bridge
 
@@ -267,28 +271,29 @@ bell = QiskitAdapter.from_qiskit(qiskit_qc)
 | `PennyLaneAdapter` | `.to_pennylane()` / `.from_pennylane()` | QNode support | Optional import |
 | `StandardCircuitFactory` | Bell, GHZ, W-state, QFT, Grover | Randomized benchmarks | Custom `Parameter` support |
 
-### Real-Time Web Dashboard
+### Real-Time Web Dashboard (Streamlit)
 
-`qc_dashboard.py` is a **Streamlit playground** with live circuit building and 5 visualizations:
+`qc_dashboard.py` provides a **Streamlit web playground** with 7 interactive tabs:
 
 ```bash
-streamlit run qc_dashboard.py -- --port 8501
+streamlit run qc_dashboard.py
 ```
 
-| Widget | Type |
-|--------|------|
-| Gate palette | Pick H, X, Y, Z, S, T, CNOT, CZ, Rx, Ry, Rz, SWAP |
-| Precision toggle | `exact` (statevector) / `mps` (tensor network) |
-| MPS bond dimension | Slider 4–128 |
-| Snapshot & step | Snapshot at any depth, step through snapshots |
-| Auto-demo | Play through pre-built circuits (Bell, GHZ, QFT, Grover) |
+| Tab | Features |
+|-----|----------|
+| **Playground** | Interactive circuit builder (gate palette, qubit slider), real-time state visualisation (probabilities, Bloch spheres, phase-space), step metrics |
+| **OpenQASM Editor** | QASM 2.0 code editor with export/import, file download, playground integration |
+| **Entropy** | Entropy evolution chart, step-by-step snapshot data table |
+| **Entanglement** | Entropy vs cut-position profile, entropy scaling with system size, Schmidt decomposition |
+| **Molecules** | Self-contained H2 VQE solver (numpy, no PySCF), energy convergence, landscape sweep, orbital visualisation |
+| **3D Viz** | 3D Bloch spheres, probability bars, state scatter (Plotly), snapshot slider navigation |
+| **Orbitals** | Hydrogen orbital sampling (1s to 4f), single and entangled modes |
 
-**5 visualisations:**
-1. **Density matrix** — 2D heatmap of ρ
-2. **Phase-space** — Wigner-like distribution (Q-function)
-3. **Bloch sphere** — Per-qubit Bloch vectors
-4. **Entanglement entropy** — Von Neumann entropy per cut position
-5. **Probability heatmap** — All amplitudes bar chart
+**Circuit Builder sidebar:**
+- Gates: H, X, Y, Z, S, T, CNOT, CZ, SWAP, Rx, Ry, Rz
+- Qubit count slider (1-8), parameter control for rotation gates
+- Standard circuit presets: Bell, GHZ, W-state
+- Clear and Run controls
 
 ---
 
@@ -318,10 +323,10 @@ This will:
 | Max qubits | 8 | **33+** (MPS) / 14 (exact) |
 | Architecture | Monolithic files | **Modular** (7+ framework modules + 3 new) |
 | Tests | None | **103 pytest tests (100% pass)** |
-| OpenQASM / Qiskit / PennyLane | ❌ | **Bridge module (qc_integration.py)** |
-| Web dashboard | ❌ | **Streamlit (qc_dashboard.py)** |
-| Particle physics | ❌ | **Higgs 4-lepton + CMS data** |
-| 3D visualization | ❌ | **Holographic Plotly dashboard** |
+| OpenQASM / Qiskit / PennyLane | No | **Bridge module (qc_integration.py)** |
+| Web dashboard | No | **Streamlit (qc_dashboard.py)** |
+| Particle physics | No | **Higgs 4-lepton + CMS data** |
+| 3D visualization | No | **Plotly holographic dashboard + 3D visualizer** |
 | Polarizability VQE | Separate script | **Integrated in menu** |
 | Grover (framework) | via advanced_experiments | **run_grover_search() in core** |
 | Configuration | Basic TOML | **Extended TOML (9 sections)** |
@@ -336,7 +341,7 @@ This will:
 - PySCF/OpenFermion required for full molecular VQE (graceful fallback otherwise)
 - Polarizability (app.py) tested only for H2 STO-3G
 - Integration bridge (`qc_integration.py`): Qiskit/PennyLane adapters require optional packages (qiskit, pennylane)
-- Dashboard (`qc_dashboard.py`): requires `streamlit`; auto-demo busy-loops on 100ms timer; MPS visualisation truncates to first 5 qubits
+- Dashboard (`qc_dashboard.py`): requires `streamlit`; MPS visualisation truncates to first 5 qubits; Plotly 3D requires the plotly package
 
 ---
 
