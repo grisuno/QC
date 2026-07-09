@@ -55,6 +55,23 @@ quantum_framework_menu.py        ← Interactive menu (11 sections)
     ├── entangled_hydrogen.py         ← Entangled hydrogen orbital simulations
     ├── topological_hilbert_compression2.py  ← Topological Hilbert space analysis
     ├── advanced_experiments.py       ← Grover, QFT, phase estimation, Simon
+    │
+    ├── **qc_integration.py**          ← 🔌 **SDD: OpenQASM 2.0 / Qiskit / PennyLane bridge**
+    │     ├── OpenQasmAdapter          ← Export / Import OpenQASM 2.0 circuits
+    │     ├── QiskitAdapter            ← Convert to/from Qiskit QuantumCircuit
+    │     ├── PennyLaneAdapter         ← Convert to/from PennyLane tapes / QNode
+    │     ├── StandardCircuitFactory   ← Bell, GHZ, W-state, QFT, Grover generators
+    │     ├── IntegrationBridge        ← One-shot export → run → diagram
+    │     └── IntegrationConfig        ← Centralized gate map, names, version
+    │
+    ├── **qc_dashboard.py**            ← 📊 **SDD: Streamlit real-time playground**
+    │     ├── StateManager             ← Session state, lock, queue, persistence
+    │     ├── SimulatorBackend         ← Swappable MPS / exact backend adapter
+    │     ├── VisualisationEngine      ← Density, phase-space, Bloch, entropy, heatmap
+    │     ├── SidebarPanel             ← Config panel for precision, MPS bond dim
+    │     └── DashboardConfig          ← Centralized port, theme, refresh rate
+    │
+    ├── **test_qc_integration.py**     ← 🧪 **69 BDD tests (100% pass rate)** for both modules
     └── test_quantum_framework.py     ← 34 pytest tests (100% pass rate)
 ```
 
@@ -130,6 +147,8 @@ python3 quantum_framework_main.py --run-all
 ### Run tests
 ```bash
 pytest test_quantum_framework.py -v
+pytest test_qc_integration.py -v   # 69 integration & dashboard tests
+pytest test_quantum_framework.py test_qc_integration.py -v  # all 103
 ```
 
 ### CLI options
@@ -210,6 +229,66 @@ pip install -r requirements.txt
 | openfermion | ⚡ Optional | Molecular Hamiltonians |
 | pyscf | ⚡ Optional | Ab initio molecular integrals |
 | pytest | 🔧 Dev | Test suite |
+| pyqasm | 🔌 Optional | OpenQASM 2.0 parsing (qc_integration.py) |
+| qiskit | 🔌 Optional | Qiskit adapter (qc_integration.py) |
+| pennylane | 🔌 Optional | PennyLane adapter (qc_integration.py) |
+| streamlit | 🔌 Optional | Web dashboard (qc_dashboard.py) |
+
+---
+
+## 🔌 Integration & Dashboard (New in v2)
+
+### OpenQASM 2.0 / Qiskit / PennyLane Bridge
+
+`qc_integration.py` provides a **single-file, self-contained** bridge between the Q²C framework and three external standards:
+
+```python
+from qc_integration import IntegrationBridge, StandardCircuitFactory
+
+bridge = IntegrationBridge()
+
+# Build → export → run → diagram (one shot)
+result = bridge.run_export_diagram("ghz", 4, backend="mps")
+print(result["qasm"])          # OpenQASM 2.0 string
+print(result["probabilities"]) # measurement outcomes
+print(result["diagram"])       # ASCII circuit diagram
+
+# Qiskit interop (if qiskit installed)
+qc = StandardCircuitFactory.bell_state()
+qiskit_qc = QiskitAdapter.to_qiskit(qc)
+bell = QiskitAdapter.from_qiskit(qiskit_qc)
+```
+
+| Feature | Description |
+|---------|-------------|
+| `IntegrationBridge` | One-shot `run_export_diagram()` | 4 variants (MPS / exact) | QASM → CircuitIR → framework |
+| `OpenQasmAdapter` | `.export()` / `.import_qasm()` | Reverse gate map | Centralized `IntegrationConfig` |
+| `QiskitAdapter` | `.to_qiskit()` / `.from_qiskit()` | Optional import | Fallback if qiskit absent |
+| `PennyLaneAdapter` | `.to_pennylane()` / `.from_pennylane()` | QNode support | Optional import |
+| `StandardCircuitFactory` | Bell, GHZ, W-state, QFT, Grover | Randomized benchmarks | Custom `Parameter` support |
+
+### Real-Time Web Dashboard
+
+`qc_dashboard.py` is a **Streamlit playground** with live circuit building and 5 visualizations:
+
+```bash
+streamlit run qc_dashboard.py -- --port 8501
+```
+
+| Widget | Type |
+|--------|------|
+| Gate palette | Pick H, X, Y, Z, S, T, CNOT, CZ, Rx, Ry, Rz, SWAP |
+| Precision toggle | `exact` (statevector) / `mps` (tensor network) |
+| MPS bond dimension | Slider 4–128 |
+| Snapshot & step | Snapshot at any depth, step through snapshots |
+| Auto-demo | Play through pre-built circuits (Bell, GHZ, QFT, Grover) |
+
+**5 visualisations:**
+1. **Density matrix** — 2D heatmap of ρ
+2. **Phase-space** — Wigner-like distribution (Q-function)
+3. **Bloch sphere** — Per-qubit Bloch vectors
+4. **Entanglement entropy** — Von Neumann entropy per cut position
+5. **Probability heatmap** — All amplitudes bar chart
 
 ---
 
@@ -237,8 +316,10 @@ This will:
 | State representation | Full statevector (2^n, 2, G, G) | **MPS** O(n·χ²) + exact mode |
 | Numerical precision | float32 | **float64** |
 | Max qubits | 8 | **33+** (MPS) / 14 (exact) |
-| Architecture | Monolithic files | **Modular** (7 framework modules) |
-| Tests | None | **34 pytest tests (100% pass)** |
+| Architecture | Monolithic files | **Modular** (7+ framework modules + 3 new) |
+| Tests | None | **103 pytest tests (100% pass)** |
+| OpenQASM / Qiskit / PennyLane | ❌ | **Bridge module (qc_integration.py)** |
+| Web dashboard | ❌ | **Streamlit (qc_dashboard.py)** |
 | Particle physics | ❌ | **Higgs 4-lepton + CMS data** |
 | 3D visualization | ❌ | **Holographic Plotly dashboard** |
 | Polarizability VQE | Separate script | **Integrated in menu** |
@@ -254,6 +335,8 @@ This will:
 - Higgs analysis requires internet connection for CMS data download
 - PySCF/OpenFermion required for full molecular VQE (graceful fallback otherwise)
 - Polarizability (app.py) tested only for H2 STO-3G
+- Integration bridge (`qc_integration.py`): Qiskit/PennyLane adapters require optional packages (qiskit, pennylane)
+- Dashboard (`qc_dashboard.py`): requires `streamlit`; auto-demo busy-loops on 100ms timer; MPS visualisation truncates to first 5 qubits
 
 ---
 

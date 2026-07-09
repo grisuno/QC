@@ -29,7 +29,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("once", category=DeprecationWarning)
+warnings.filterwarnings("once", category=FutureWarning)
+warnings.filterwarnings("module")
 
 try:
     import tomllib

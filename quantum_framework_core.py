@@ -33,7 +33,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("once", category=DeprecationWarning)
+warnings.filterwarnings("once", category=FutureWarning)
+warnings.filterwarnings("module")
 
 try:
     import tomllib
@@ -1793,6 +1795,14 @@ class QuantumCircuit:
     def swap(self, qubit1: int, qubit2: int) -> None:
         self._append("SWAP", [qubit1, qubit2])
     
+    def __len__(self) -> int:
+        """Return number of instructions."""
+        return len(self._instructions)
+
+    def __bool__(self) -> bool:
+        """True if circuit has instructions."""
+        return len(self._instructions) > 0
+
     def run(self, state: MPSState) -> MPSState:
         """Execute circuit on state."""
         for inst in self._instructions:
