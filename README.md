@@ -357,3 +357,9 @@ This will:
   orcid   = {0009-0002-7622-3916}
 }
 ```
+
+
+---
+### Intelligence and Analysis Ecosystem
+- [ReadMenator](https://github.com/grisuno/ReadMenator): Offline code knowledge graph generator.
+- [FreeDom](https://github.com/grisuno/FreeDom): Minimalist Zero Trust web browser.
