@@ -1,0 +1,22 @@
+{
+  "tool": "readmenator",
+  "generated_at": "2026-09-08T18:05:40Z",
+  "project_root": "/tmp/push_QC_20260908_131917",
+  "files": 30,
+  "symbols": 1790,
+  "imports": 12095,
+  "resolved_imports": 78,
+  "security_findings": 0,
+  "languages": {
+    "py": 29,
+    "sh": 1
+  },
+  "entrypoints": [],
+  "start_here": "INDEX.md",
+  "workflow": [
+    "grep -n '<keyword>' INDEX.md",
+    "cat KB_<subsystem>.md",
+    "grep -n '<file>' ARCHITECTURE.md SYMBOLS.md"
+  ],
+  "regenerate": "readmenator . --rebuild"
+}

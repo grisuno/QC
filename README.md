@@ -357,3 +357,29 @@ This will:
   orcid   = {0009-0002-7622-3916}
 }
 ```
+
+
+---
+### Intelligence and Analysis Ecosystem
+- [ReadMenator](https://github.com/grisuno/ReadMenator): Offline code knowledge graph generator.
+- [FreeDom](https://github.com/grisuno/FreeDom): Minimalist Zero Trust web browser.
+
+<!-- readmenator-kb-link -->
+## Knowledge Base
+
+This project has been analyzed by [ReadMenator](https://github.com/grisuno/ReadMenator),
+a zero-token polyglot static analysis tool. Analysis outputs are available:
+
+- **[KNOWLEDGE_BASE.md](./KNOWLEDGE_BASE.md)** -- Full architecture reference with all
+  classes, functions, imports, dependency graphs, UML class diagrams, security
+  audit findings, community analysis, and more.
+- **[readmenator-agent/](./readmenator-agent/)** -- Agent-friendly, grep-optimized index.
+  - `INDEX.md` -- Quick reference: what each file does
+  - `API.md` -- Public function contracts
+  - `GOTCHAS.md` -- Change warnings
+  - `SECURITY.md` -- Findings by severity
+
+AI agents: Read `readmenator-agent/INDEX.md` for fast project context.
+Developers: Read `KNOWLEDGE_BASE.md` for full architecture reference.
+<!-- /readmenator-kb-link -->
+
