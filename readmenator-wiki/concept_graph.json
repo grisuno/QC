@@ -1,0 +1,3009 @@
+{
+  "concepts": [
+    {
+      "name": "quantum",
+      "files": [
+        "advanced_experiments.py",
+        "demo_molecular_vqe.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "polarizability_v3.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 229,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "run",
+      "files": [
+        "advanced_experiments.py",
+        "app.py",
+        "demo_molecular_vqe.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "molecular_sim.py",
+        "polarizability_v3.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 126,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "state",
+      "files": [
+        "advanced_experiments.py",
+        "app.py",
+        "entangled_hydrogen.py",
+        "polarizability_v3.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 227,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "config",
+      "files": [
+        "advanced_experiments.py",
+        "demo_molecular_vqe.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 58,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "author",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_visualizer.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 19,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "gris",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_visualizer.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 19,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "iscomeback",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_visualizer.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 19,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "agpl",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_visualizer.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 18,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "license",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_visualizer.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 18,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "energy",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "molecular_sim.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "relativistic_hydrogen.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 76,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "all",
+      "files": [
+        "advanced_experiments.py",
+        "demo_molecular_vqe.py",
+        "entangled_hydrogen.py",
+        "polarizability_v3.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 66,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "molecular",
+      "files": [
+        "advanced_experiments.py",
+        "app.py",
+        "demo_molecular_vqe.py",
+        "entangled_hydrogen.py",
+        "molecular_sim.py",
+        "polarizability_v3.py",
+        "qc_dashboard.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 55,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "hamiltonian",
+      "files": [
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "molecular_sim.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py"
+      ],
+      "mentions": 85,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "compute",
+      "files": [
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 71,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "create",
+      "files": [
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 47,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "single",
+      "files": [
+        "app.py",
+        "entangled_hydrogen.py",
+        "polarizability_v3.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_simulator.py",
+        "relativistic_hydrogen.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 41,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "make",
+      "files": [
+        "advanced_experiments.py",
+        "app.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "molecular_sim.py",
+        "polarizability_v3.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_visualization.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py"
+      ],
+      "mentions": 17,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "framework",
+      "files": [
+        "demo_molecular_vqe.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py"
+      ],
+      "mentions": 63,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "using",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 59,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "entropy",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "qc_dashboard.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 56,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "full",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "qc_dashboard.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_lab.py",
+        "relativistic_hydrogen.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 35,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "uses",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "orbital_visualizer2.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py"
+      ],
+      "mentions": 35,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "logger",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "molecular_sim.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_visualization.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py"
+      ],
+      "mentions": 19,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "apply",
+      "files": [
+        "advanced_experiments.py",
+        "app.py",
+        "molecular_sim.py",
+        "polarizability_v3.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_simulator.py",
+        "relativistic_hydrogen.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 150,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "circuit",
+      "files": [
+        "app.py",
+        "polarizability_v3.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 103,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "qubits",
+      "files": [
+        "app.py",
+        "entangled_hydrogen.py",
+        "polarizability_v3.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 69,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "build",
+      "files": [
+        "advanced_experiments.py",
+        "molecular_sim.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py"
+      ],
+      "mentions": 60,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "wavefunction",
+      "files": [
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "relativistic_hydrogen.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 42,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "data",
+      "files": [
+        "advanced_experiments.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "molecular_sim.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_simulator.py",
+        "test_qc_integration.py"
+      ],
+      "mentions": 41,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "states",
+      "files": [
+        "advanced_experiments.py",
+        "app.py",
+        "entangled_hydrogen.py",
+        "polarizability_v3.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "relativistic_hydrogen.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 40,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "dirac",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_framework_physics.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py"
+      ],
+      "mentions": 114,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "backend",
+      "files": [
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "molecular_sim.py",
+        "qc_dashboard.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 83,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "configuration",
+      "files": [
+        "advanced_experiments.py",
+        "demo_molecular_vqe.py",
+        "entangled_hydrogen.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_simulator.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py"
+      ],
+      "mentions": 36,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "simulation",
+      "files": [
+        "entangled_hydrogen.py",
+        "qc_dashboard.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "relativistic_hydrogen.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 26,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "gate",
+      "files": [
+        "advanced_experiments.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 119,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "mps",
+      "files": [
+        "demo_molecular_vqe.py",
+        "qc_dashboard.py",
+        "qc_integration.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 51,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "molecule",
+      "files": [
+        "advanced_experiments.py",
+        "demo_molecular_vqe.py",
+        "molecular_sim.py",
+        "qc_dashboard.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_lab.py",
+        "quantum_simulator.py"
+      ],
+      "mentions": 49,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "visualization",
+      "files": [
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "orbital_visualizer2.py",
+        "quantum_3dview.py",
+        "quantum_dash.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_visualization.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py"
+      ],
+      "mentions": 49,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "bell",
+      "files": [
+        "entangled_hydrogen.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 41,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "computer",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 37,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "ghz",
+      "files": [
+        "entangled_hydrogen.py",
+        "qc_integration.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 36,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "real",
+      "files": [
+        "entangled_hydrogen.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py"
+      ],
+      "mentions": 35,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "builder",
+      "files": [
+        "advanced_experiments.py",
+        "app.py",
+        "demo_molecular_vqe.py",
+        "polarizability_v3.py",
+        "qc_dashboard.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_visualizer.py",
+        "test_qc_integration.py"
+      ],
+      "mentions": 16,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "orbital",
+      "files": [
+        "entangled_hydrogen.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "quantum_framework_core.py",
+        "quantum_framework_main.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "relativistic_hydrogen.py"
+      ],
+      "mentions": 68,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "amplitude",
+      "files": [
+        "advanced_experiments.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "quantum_3dview.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_simulator.py",
+        "relativistic_hydrogen.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 54,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "phase",
+      "files": [
+        "advanced_experiments.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_menu.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py",
+        "test_quantum_framework.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 52,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "psi",
+      "files": [
+        "entangled_hydrogen.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_physics.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "relativistic_hydrogen.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 50,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "pauli",
+      "files": [
+        "app.py",
+        "demo_molecular_vqe.py",
+        "polarizability_v3.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_molecular.py",
+        "quantum_framework_molecular_fixed.py",
+        "quantum_framework_molecular_v2.py",
+        "quantum_simulator.py",
+        "test_quantum_framework.py"
+      ],
+      "mentions": 40,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "evolution",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "higgs_four_lepton_analysis.py",
+        "higgs_quantum_analysis.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_framework_core.py",
+        "quantum_framework_physics.py",
+        "quantum_visualizer.py",
+        "relativistic_hydrogen.py",
+        "topological_hilbert_compression2.py"
+      ],
+      "mentions": 32,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "probability",
+      "files": [
+        "advanced_experiments.py",
+        "entangled_hydrogen.py",
+        "orbital_visualizer2.py",
+        "qc_dashboard.py",
+        "quantum_computer.py",
+        "quantum_dash.py",
+        "quantum_framework_core.py",
+        "quantum_framework_visualization.py",
+        "quantum_lab.py",
+        "quantum_simulator.py",
+        "quantum_visualizer.py"
+      ],
+      "mentions": 31,
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "relations": [
+    {
+      "source": "quantum",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 1.0,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "hamiltonian",
+      "verb": "depends_on",
+      "strength": 0.95,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "build",
+      "verb": "depends_on",
+      "strength": 0.92,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "logger",
+      "verb": "depends_on",
+      "strength": 0.92,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "state",
+      "verb": "depends_on",
+      "strength": 0.92,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "hamiltonian",
+      "verb": "depends_on",
+      "strength": 0.92,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "quantum",
+      "verb": "depends_on",
+      "strength": 0.92,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "quantum",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->orbital_visualizer2.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "make",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "build",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "logger",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.9,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->molecular_sim.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "make",
+      "verb": "depends_on",
+      "strength": 0.87,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "state",
+      "verb": "depends_on",
+      "strength": 0.87,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "hamiltonian",
+      "verb": "depends_on",
+      "strength": 0.87,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->molecular_sim.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "logger",
+      "verb": "depends_on",
+      "strength": 0.87,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->molecular_sim.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "hamiltonian",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "state",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "backend",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "build",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "make",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "quantum",
+      "verb": "depends_on",
+      "strength": 0.85,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "build",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "logger",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "apply",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "author",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "compute",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->orbital_visualizer2.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "gris",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "iscomeback",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "apply",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "backend",
+      "verb": "depends_on",
+      "strength": 0.82,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "quantum",
+      "verb": "depends_on",
+      "strength": 0.79,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "make",
+      "verb": "depends_on",
+      "strength": 0.79,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "molecular",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.79,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "backend",
+      "verb": "depends_on",
+      "strength": 0.79,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.79,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->orbital_visualizer2.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "hamiltonian",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "backend",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "agpl",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py",
+        "qc_dashboard.py->quantum_framework_visualization.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "create",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "entropy",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "license",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py",
+        "qc_dashboard.py->quantum_framework_visualization.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "using",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "author",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "compute",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "gris",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "iscomeback",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.77,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "build",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->orbital_visualizer2.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "logger",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "state",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "author",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "quantum_3dview.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "author",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py",
+        "qc_dashboard.py->quantum_framework_visualization.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "compute",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->orbital_visualizer2.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "gris",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py",
+        "qc_dashboard.py->quantum_framework_visualization.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "iscomeback",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py",
+        "qc_dashboard.py->quantum_framework_visualization.py"
+      ]
+    },
+    {
+      "source": "entropy",
+      "target": "quantum",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "entropy",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "gris",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "quantum_3dview.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "iscomeback",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "quantum_3dview.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "molecular",
+      "target": "hamiltonian",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py"
+      ]
+    },
+    {
+      "source": "molecular",
+      "target": "logger",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py"
+      ]
+    },
+    {
+      "source": "molecular",
+      "target": "quantum",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "all",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "circuit",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "dirac",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "full",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "apply",
+      "verb": "depends_on",
+      "strength": 0.74,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->molecular_sim.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "make",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "apply",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "create",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "entropy",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "entropy",
+      "target": "hamiltonian",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "qc_dashboard.py->orbital_visualizer2.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "entropy",
+      "target": "logger",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "molecular",
+      "target": "make",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->molecular_sim.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "probability",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->orbital_visualizer2.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "single",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py"
+      ]
+    },
+    {
+      "source": "quantum",
+      "target": "uses",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->orbital_visualizer2.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_framework_core.py",
+        "qc_dashboard.py->quantum_framework_visualization.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "agpl",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "create",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "entropy",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "full",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "license",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "using",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "molecular_sim.py->quantum_computer.py",
+        "polarizability_v3.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "state",
+      "target": "compute",
+      "verb": "depends_on",
+      "strength": 0.72,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "app.py->quantum_computer.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->orbital_visualizer2.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "agpl",
+      "target": "run",
+      "verb": "depends_on",
+      "strength": 0.69,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "quantum_dash.py->molecular_sim.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "backend",
+      "verb": "depends_on",
+      "strength": 0.69,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_3dview.py",
+        "qc_dashboard.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "all",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.69,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->molecular_sim.py",
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->molecular_sim.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "polarizability_v3.py->molecular_sim.py",
+        "polarizability_v3.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "agpl",
+      "verb": "depends_on",
+      "strength": 0.69,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py",
+        "qc_dashboard.py->quantum_framework_visualization.py",
+        "qc_integration.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "all",
+      "verb": "depends_on",
+      "strength": 0.69,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "circuit",
+      "verb": "depends_on",
+      "strength": 0.69,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->qc_integration.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py",
+        "qc_dashboard.py->quantum_framework_core.py",
+        "qc_integration.py->quantum_computer.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "dirac",
+      "verb": "depends_on",
+      "strength": 0.69,
+      "confidence": "INFERRED",
+      "evidence": [
+        "advanced_experiments.py->quantum_computer.py",
+        "advanced_experiments.py->quantum_simulator.py",
+        "advanced_experiments.py->relativistic_hydrogen.py",
+        "demo_molecular_vqe.py->quantum_framework_molecular_v2.py",
+        "entangled_hydrogen.py->quantum_computer.py",
+        "entangled_hydrogen.py->relativistic_hydrogen.py",
+        "higgs_four_lepton_analysis.py->quantum_computer.py",
+        "higgs_quantum_analysis.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_computer.py",
+        "qc_dashboard.py->quantum_dash.py"
+      ]
+    }
+  ],
+  "dialectic": [
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `all` pulls 17 files with 11 shared (Jaccard 0.46); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `amplitude` pulls 11 files with 8 shared (Jaccard 0.38); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `apply` pulls 14 files with 9 shared (Jaccard 0.39); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `author` pulls 19 files with 18 shared (Jaccard 0.95); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `backend` pulls 13 files with 8 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `bell` pulls 12 files with 9 shared (Jaccard 0.43); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `build` pulls 14 files with 9 shared (Jaccard 0.39); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `builder` pulls 12 files with 7 shared (Jaccard 0.30); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `circuit` pulls 14 files with 8 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `agpl` centralizes 18 files; Antithesis: `compute` pulls 16 files with 12 shared (Jaccard 0.55); Synthesis: should they merge, split by layer, or keep `bridges` explicit?"
+  ]
+}
