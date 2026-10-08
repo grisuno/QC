@@ -1,0 +1,447 @@
+# Subsystem: root (page 3 of 5)
+Previous: [KB_root_p2.md](KB_root_p2.md)
+
+## quantum_framework_core.py
+- Doc: Quantum Framework Core Module
+- Layer: utility
+- Language: py
+- Symbols:
+  - `_make_logger` (function, line 46) `def _make_logger(name, level)`
+  - `HilbertPhase` (class, line 62) `class HilbertPhase(Enum)`
+  - `FrameworkConfig` (class, line 72) `class FrameworkConfig`
+  - `AtomData` (class, line 218) `class AtomData`
+  - `MoleculeData` (class, line 230) `class MoleculeData`
+  - `OrbitalData` (class, line 250) `class OrbitalData`
+  - `ConfigLoader` (class, line 259) `class ConfigLoader`
+  - `ITensorNetwork` (class, line 435) `class ITensorNetwork(ABC)`
+  - `MPSCore` (class, line 480) `class MPSCore`
+  - `MPSState` (class, line 554) `class MPSState(ITensorNetwork)`
+  - `VacuumCore` (class, line 916) `class VacuumCore`
+  - `TopologicalProtector` (class, line 988) `class TopologicalProtector`
+  - `SpectralLayer` (class, line 1040) `class SpectralLayer(Module)`
+  - `HamiltonianBackboneNet` (class, line 1076) `class HamiltonianBackboneNet(Module)`
+  - `SchrodingerSpectralNet` (class, line 1102) `class SchrodingerSpectralNet(Module)`
+  - `DiracSpectralNet` (class, line 1133) `class DiracSpectralNet(Module)`
+  - `GammaMatrices` (class, line 1164) `class GammaMatrices`
+  - `IPhysicsBackend` (class, line 1215) `class IPhysicsBackend(ABC)`
+  - `HamiltonianBackend` (class, line 1229) `class HamiltonianBackend(IPhysicsBackend)`
+  - `SchrodingerBackend` (class, line 1305) `class SchrodingerBackend(IPhysicsBackend)`
+  - `DiracBackend` (class, line 1358) `class DiracBackend(IPhysicsBackend)`
+  - `IQuantumGate` (class, line 1476) `class IQuantumGate(ABC)`
+  - `HadamardGate` (class, line 1496) `class HadamardGate(IQuantumGate)`
+  - `PauliXGate` (class, line 1511) `class PauliXGate(IQuantumGate)`
+  - `PauliYGate` (class, line 1525) `class PauliYGate(IQuantumGate)`
+  - `PauliZGate` (class, line 1539) `class PauliZGate(IQuantumGate)`
+  - `SGate` (class, line 1553) `class SGate(IQuantumGate)`
+  - `TGate` (class, line 1567) `class TGate(IQuantumGate)`
+  - `RxGate` (class, line 1582) `class RxGate(IQuantumGate)`
+  - `RyGate` (class, line 1598) `class RyGate(IQuantumGate)`
+  - `RzGate` (class, line 1614) `class RzGate(IQuantumGate)`
+  - `CRzGate` (class, line 1631) `class CRzGate(IQuantumGate)`
+  - `CNOTGate` (class, line 1656) `class CNOTGate(IQuantumGate)`
+  - `CZGate` (class, line 1676) `class CZGate(IQuantumGate)`
+  - `SWAPGate` (class, line 1696) `class SWAPGate(IQuantumGate)`
+  - `CircuitInstruction` (class, line 1734) `class CircuitInstruction`
+  - `QuantumCircuit` (class, line 1741) `class QuantumCircuit`
+  - `MPSQuantumComputer` (class, line 1816) `class MPSQuantumComputer`
+  - `run_scaling_benchmark` (method, line 2045) `def run_scaling_benchmark(config, max_qubits)`
+  - `run_grover_search` (method, line 2098) `def run_grover_search(qc, n_qubits, marked_states)`
+  - `__post_init__` (method, line 139) `def __post_init__(self)`
+  - `from_toml` (method, line 147) `def from_toml(cls, toml_path)`
+  - `__init__` (method, line 265) `def __init__(self, config_path)`
+  - `_find_config` (method, line 274) `def _find_config(self)`
+  - `_load` (method, line 286) `def _load(self)`
+  - `_load_defaults` (method, line 300) `def _load_defaults(self)`
+  - `_parse_atoms` (method, line 318) `def _parse_atoms(self)`
+  - `_parse_molecules` (method, line 332) `def _parse_molecules(self)`
+  - `_parse_orbitals` (method, line 352) `def _parse_orbitals(self)`
+  - `_parse_experiments` (method, line 364) `def _parse_experiments(self)`
+  - `get_atom` (method, line 375) `def get_atom(self, symbol)`
+  - `get_molecule` (method, line 384) `def get_molecule(self, name)`
+  - `get_orbital` (method, line 393) `def get_orbital(self, name)`
+  - `get_experiment` (method, line 402) `def get_experiment(self, name)`
+  - `atoms` (method, line 407) `def atoms(self)`
+  - `molecules` (method, line 412) `def molecules(self)`
+  - `orbitals` (method, line 417) `def orbitals(self)`
+  - `experiments` (method, line 422) `def experiments(self)`
+  - `get_molecules_by_qubits` (method, line 426) `def get_molecules_by_qubits(self, max_qubits)`
+  - `get_atoms_by_qubits` (method, line 430) `def get_atoms_by_qubits(self, max_qubits)`
+  - `n_qubits` (method, line 440) `def n_qubits(self)`
+  - `amplitude` (method, line 445) `def amplitude(self, basis_index)`
+  - `apply_single_qubit_gate` (method, line 450) `def apply_single_qubit_gate(self, qubit, gate)`
+  - `apply_two_qubit_gate` (method, line 455) `def apply_two_qubit_gate(self, qubit_a, qubit_b, gate)`
+  - `norm` (method, line 460) `def norm(self)`
+  - `probabilities` (method, line 465) `def probabilities(self)`
+  - `entropy` (method, line 470) `def entropy(self)`
+  - `memory_bytes` (method, line 475) `def memory_bytes(self)`
+  - `__init__` (method, line 488) `def __init__(self, chi_left, chi_right, d, device, dtype)`
+  - `_initialize` (method, line 504) `def _initialize(self)`
+  - `tensor` (method, line 517) `def tensor(self)`
+  - `tensor` (method, line 524) `def tensor(self, value)`
+  - `left_canonicalize` (method, line 533) `def left_canonicalize(self)`
+  - `right_canonicalize` (method, line 543) `def right_canonicalize(self)`
+  - `__init__` (method, line 567) `def __init__(self, n_qubits, config)`
+  - `_initialize` (method, line 576) `def _initialize(self)`
+  - `n_qubits` (method, line 600) `def n_qubits(self)`
+  - `_bond_dimension` (method, line 603) `def _bond_dimension(self, site)`
+  - `amplitude` (method, line 610) `def amplitude(self, basis_index)`
+  - `apply_single_qubit_gate` (method, line 631) `def apply_single_qubit_gate(self, qubit, gate)`
+  - `apply_two_qubit_gate` (method, line 655) `def apply_two_qubit_gate(self, qubit_a, qubit_b, gate)`
+  - `_swap_qubits_in_gate` (method, line 674) `def _swap_qubits_in_gate(self, gate)`
+  - `_apply_adjacent_gate` (method, line 684) `def _apply_adjacent_gate(self, qubit, gate)`
+  - `_apply_nonadjacent_gate` (method, line 747) `def _apply_nonadjacent_gate(self, qubit_a, qubit_b, gate)`
+  - `norm` (method, line 762) `def norm(self)`
+  - `_canonicalize` (method, line 770) `def _canonicalize(self)`
+  - `probabilities` (method, line 778) `def probabilities(self)`
+  - `entropy` (method, line 795) `def entropy(self)`
+  - `memory_bytes` (method, line 822) `def memory_bytes(self)`
+  - `entanglement_entropy` (method, line 829) `def entanglement_entropy(self, cut)`
+  - `to_statevector` (method, line 874) `def to_statevector(self)`
+  - `most_probable_bitstring` (method, line 890) `def most_probable_bitstring(self)`
+  - `clone` (method, line 896) `def clone(self)`
+  - `__init__` (method, line 924) `def __init__(self, n_qubits, config)`
+  - `_initialize` (method, line 935) `def _initialize(self)`
+  - `_compute_berry_phases` (method, line 941) `def _compute_berry_phases(self)`
+  - `add_active_state` (method, line 948) `def add_active_state(self, basis_index, winding_number)`
+  - `_compute_winding_number` (method, line 962) `def _compute_winding_number(self, basis_index)`
+  - `is_topologically_protected` (method, line 968) `def is_topologically_protected(self, basis_index)`
+  - `sparsity` (method, line 973) `def sparsity(self)`
+  - `project_to_active` (method, line 979) `def project_to_active(self, state)`
+  - `__init__` (method, line 998) `def __init__(self, config)`
+  - `compute_winding_number` (method, line 1003) `def compute_winding_number(self, state, qubit)`
+  - `compute_berry_phase` (method, line 1015) `def compute_berry_phase(self, state, qubit_a, qubit_b)`
+  - `is_protected` (method, line 1031) `def is_protected(self, state, vacuum_core)`
+  - `__init__` (method, line 1043) `def __init__(self, channels, grid_size)`
+  - `forward` (method, line 1053) `def forward(self, x)`
+  - `__init__` (method, line 1079) `def __init__(self, grid_size, hidden_dim, num_spectral_layers)`
+  - `forward` (method, line 1088) `def forward(self, x)`
+  - `__init__` (method, line 1105) `def __init__(self, grid_size, hidden_dim, expansion_dim, num_spectral_layers)`
+  - `forward` (method, line 1119) `def forward(self, x)`
+  - `__init__` (method, line 1136) `def __init__(self, grid_size, hidden_dim, expansion_dim, num_spectral_layers)`
+  - `forward` (method, line 1150) `def forward(self, x)`
+  - `__init__` (method, line 1167) `def __init__(self, representation, device)`
+  - `_init_matrices` (method, line 1172) `def _init_matrices(self)`
+  - `to` (method, line 1208) `def to(self, device)`
+  - `evolve_amplitude` (method, line 1219) `def evolve_amplitude(self, amp, dt)`
+  - `apply_phase` (method, line 1224) `def apply_phase(self, amp, phase_angle)`
+  - `__init__` (method, line 1237) `def __init__(self, config)`
+  - `_load` (method, line 1245) `def _load(self)`
+  - `_precompute_laplacian` (method, line 1266) `def _precompute_laplacian(self)`
+  - `_apply_h` (method, line 1274) `def _apply_h(self, field)`
+  - `evolve_amplitude` (method, line 1284) `def evolve_amplitude(self, amp, dt)`
+  - `apply_phase` (method, line 1298) `def apply_phase(self, amp, phase_angle)`
+  - `__init__` (method, line 1312) `def __init__(self, config, hamiltonian)`
+  - `_load` (method, line 1319) `def _load(self)`
+  - `evolve_amplitude` (method, line 1342) `def evolve_amplitude(self, amp, dt)`
+  - `apply_phase` (method, line 1353) `def apply_phase(self, amp, phase_angle)`
+  - `__init__` (method, line 1366) `def __init__(self, config, hamiltonian)`
+  - `_load` (method, line 1375) `def _load(self)`
+  - `_precompute_dirac` (method, line 1398) `def _precompute_dirac(self)`
+  - `_pack` (method, line 1407) `def _pack(self, amp)`
+  - `_unpack` (method, line 1421) `def _unpack(self, spinor)`
+  - `_analytical_dirac` (method, line 1428) `def _analytical_dirac(self, spinor)`
+  - `evolve_amplitude` (method, line 1447) `def evolve_amplitude(self, amp, dt)`
+  - `apply_phase` (method, line 1463) `def apply_phase(self, amp, phase_angle)`
+  - `evolve_spinor` (method, line 1467) `def evolve_spinor(self, spinor, dt)`
+  - `name` (method, line 1481) `def name(self)`
+  - `apply` (method, line 1486) `def apply(self, state, targets, params)`
+  - `name` (method, line 1500) `def name(self)`
+  - `apply` (method, line 1503) `def apply(self, state, targets, params)`
+  - `name` (method, line 1515) `def name(self)`
+  - `apply` (method, line 1518) `def apply(self, state, targets, params)`
+  - `name` (method, line 1529) `def name(self)`
+  - `apply` (method, line 1532) `def apply(self, state, targets, params)`
+  - `name` (method, line 1543) `def name(self)`
+  - `apply` (method, line 1546) `def apply(self, state, targets, params)`
+  - `name` (method, line 1557) `def name(self)`
+  - `apply` (method, line 1560) `def apply(self, state, targets, params)`
+  - `name` (method, line 1571) `def name(self)`
+  - `apply` (method, line 1574) `def apply(self, state, targets, params)`
+  - `name` (method, line 1586) `def name(self)`
+  - `apply` (method, line 1589) `def apply(self, state, targets, params)`
+  - `name` (method, line 1602) `def name(self)`
+  - `apply` (method, line 1605) `def apply(self, state, targets, params)`
+  - `name` (method, line 1618) `def name(self)`
+  - `apply` (method, line 1621) `def apply(self, state, targets, params)`
+  - `name` (method, line 1635) `def name(self)`
+  - `apply` (method, line 1638) `def apply(self, state, targets, params)`
+  - `name` (method, line 1660) `def name(self)`
+  - `apply` (method, line 1663) `def apply(self, state, targets, params)`
+  - `name` (method, line 1680) `def name(self)`
+  - `apply` (method, line 1683) `def apply(self, state, targets, params)`
+  - `name` (method, line 1700) `def name(self)`
+  - `apply` (method, line 1703) `def apply(self, state, targets, params)`
+  - `__init__` (method, line 1744) `def __init__(self, n_qubits)`
+  - `_append` (method, line 1748) `def _append(self, gate_name, targets, params)`
+  - `h` (method, line 1759) `def h(self, qubit)`
+  - `x` (method, line 1762) `def x(self, qubit)`
+  - `y` (method, line 1765) `def y(self, qubit)`
+  - `z` (method, line 1768) `def z(self, qubit)`
+  - `s` (method, line 1771) `def s(self, qubit)`
+  - `t` (method, line 1774) `def t(self, qubit)`
+  - `rx` (method, line 1777) `def rx(self, qubit, theta)`
+  - `ry` (method, line 1780) `def ry(self, qubit, theta)`
+  - `rz` (method, line 1783) `def rz(self, qubit, theta)`
+  - `crz` (method, line 1786) `def crz(self, control, target, theta)`
+  - `cnot` (method, line 1789) `def cnot(self, control, target)`
+  - `cz` (method, line 1792) `def cz(self, control, target)`
+  - `swap` (method, line 1795) `def swap(self, qubit1, qubit2)`
+  - `__len__` (method, line 1798) `def __len__(self)`
+  - `__bool__` (method, line 1802) `def __bool__(self)`
+  - `run` (method, line 1806) `def run(self, state)`
+  - `__init__` (method, line 1827) `def __init__(self, config)`
+  - `create_circuit` (method, line 1843) `def create_circuit(self, n_qubits)`
+  - `create_state` (method, line 1851) `def create_state(self, n_qubits)`
+  - `bell_state` (method, line 1865) `def bell_state(self, n_qubits)`
+  - `ghz_state` (method, line 1873) `def ghz_state(self, n_qubits)`
+  - `w_state` (method, line 1882) `def w_state(self, n_qubits)`
+  - `_build_w_state_direct` (method, line 1905) `def _build_w_state_direct(self, n_qubits, max_bond)`
+  - `run_circuit` (method, line 1985) `def run_circuit(self, circuit, initial_state)`
+  - `get_backend` (method, line 1995) `def get_backend(self, name)`
+  - `memory_usage` (method, line 1999) `def memory_usage(self, state)`
+  - `compression_ratio` (method, line 2012) `def compression_ratio(self, state)`
+  - `detect_phase` (method, line 2019) `def detect_phase(self, state)`
+  - `_compute_average_bond_dimension` (method, line 2037) `def _compute_average_bond_dimension(self, state)`
+- Imported by: `qc_dashboard.py`, `qc_integration.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`, `quantum_lab.py`, `test_qc_integration.py`, `test_quantum_framework.py`
+
+## quantum_framework_main.py
+- Doc: Quantum Simulation Framework - Main Entry Point
+- Layer: utility
+- Language: py
+- Symbols:
+  - `setup_logging` (function, line 52) `def setup_logging(verbose)`
+  - `run_benchmark` (function, line 61) `def run_benchmark(args, config)`
+  - `run_experiment` (function, line 101) `def run_experiment(args, config, config_loader)`
+  - `run_molecular_simulation` (function, line 173) `def run_molecular_simulation(args, config, config_loader)`
+  - `run_orbital_visualization` (function, line 210) `def run_orbital_visualization(args, config, config_loader)`
+  - `print_info` (function, line 242) `def print_info(config, config_loader)`
+  - `main` (function, line 292) `def main()`
+- Depends on: `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_lab.py`
+
+## quantum_framework_menu.py
+- Doc: Quantum Framework Interactive Menu System
+- Layer: utility
+- Language: py
+- Symbols:
+  - `MenuSystem` (class, line 64) `class MenuSystem`
+  - `run_interactive_menu` (method, line 2357) `def run_interactive_menu(config, config_loader)`
+  - `run_all_experiments` (method, line 2363) `def run_all_experiments(config, config_loader)`
+  - `__init__` (method, line 72) `def __init__(self, config, config_loader)`
+  - `clear_screen` (method, line 79) `def clear_screen(self)`
+  - `print_header` (method, line 83) `def print_header(self, title)`
+  - `print_menu` (method, line 90) `def print_menu(self, title, options)`
+  - `get_input` (method, line 97) `def get_input(self, prompt)`
+  - `pause` (method, line 106) `def pause(self, message)`
+  - `run` (method, line 113) `def run(self)`
+  - `_show_main_menu` (method, line 118) `def _show_main_menu(self)`
+  - `_show_circuit_menu` (method, line 163) `def _show_circuit_menu(self)`
+  - `_custom_circuit` (method, line 197) `def _custom_circuit(self)`
+  - `_bell_state_demo` (method, line 279) `def _bell_state_demo(self)`
+  - `_ghz_state_demo` (method, line 299) `def _ghz_state_demo(self)`
+  - `_w_state_demo` (method, line 328) `def _w_state_demo(self)`
+  - `_single_qubit_gates_demo` (method, line 356) `def _single_qubit_gates_demo(self)`
+  - `_two_qubit_gates_demo` (method, line 397) `def _two_qubit_gates_demo(self)`
+  - `_show_entanglement_menu` (method, line 431) `def _show_entanglement_menu(self)`
+  - `_bell_entropy_experiment` (method, line 459) `def _bell_entropy_experiment(self)`
+  - `_ghz_scaling_experiment` (method, line 472) `def _ghz_scaling_experiment(self)`
+  - `_entropy_by_cut_experiment` (method, line 497) `def _entropy_by_cut_experiment(self)`
+  - `_entropy_heatmap_experiment` (method, line 522) `def _entropy_heatmap_experiment(self)`
+  - `_show_molecular_menu` (method, line 583) `def _show_molecular_menu(self)`
+  - `_list_molecules` (method, line 617) `def _list_molecules(self)`
+  - `_molecule_info` (method, line 636) `def _molecule_info(self)`
+  - `_vqe_ground_state` (method, line 667) `def _vqe_ground_state(self)`
+  - `_energy_landscape` (method, line 751) `def _energy_landscape(self)`
+  - `_bond_dissociation` (method, line 808) `def _bond_dissociation(self)`
+  - `_show_orbital_menu` (method, line 868) `def _show_orbital_menu(self)`
+  - `_list_orbitals` (method, line 899) `def _list_orbitals(self)`
+  - `_visualize_orbital` (method, line 915) `def _visualize_orbital(self)`
+  - `_generate_orbital_plot` (method, line 947) `def _generate_orbital_plot(self, orb, num_samples)`
+  - `_compare_orbitals` (method, line 1064) `def _compare_orbitals(self)`
+  - `_radial_wavefunction` (method, line 1146) `def _radial_wavefunction(self)`
+  - `_angular_wavefunction` (method, line 1202) `def _angular_wavefunction(self)`
+  - `_show_relativistic_menu` (method, line 1264) `def _show_relativistic_menu(self)`
+  - `_dirac_energy_levels` (method, line 1292) `def _dirac_energy_levels(self)`
+  - `_dirac_energy` (method, line 1321) `def _dirac_energy(self, n, kappa, alpha, c)`
+  - `_fine_structure` (method, line 1329) `def _fine_structure(self)`
+  - `_zitterbewegung` (method, line 1347) `def _zitterbewegung(self)`
+  - `_spin_orbit` (method, line 1363) `def _spin_orbit(self)`
+  - `_show_qed_menu` (method, line 1378) `def _show_qed_menu(self)`
+  - `_lamb_shift` (method, line 1406) `def _lamb_shift(self)`
+  - `_anomalous_moment` (method, line 1426) `def _anomalous_moment(self)`
+  - `_vacuum_polarization` (method, line 1453) `def _vacuum_polarization(self)`
+  - `_full_qed` (method, line 1468) `def _full_qed(self)`
+  - `_show_algorithms_menu` (method, line 1482) `def _show_algorithms_menu(self)`
+  - `_grover_search` (method, line 1510) `def _grover_search(self)`
+  - `_apply_grover_iteration` (method, line 1558) `def _apply_grover_iteration(self, state, marked, n_qubits)`
+  - `_qft_demo` (method, line 1607) `def _qft_demo(self)`
+  - `_phase_estimation` (method, line 1669) `def _phase_estimation(self)`
+  - `_vqe_demo` (method, line 1746) `def _vqe_demo(self)`
+  - `_show_benchmark_menu` (method, line 1816) `def _show_benchmark_menu(self)`
+  - `_mps_scaling_benchmark` (method, line 1844) `def _mps_scaling_benchmark(self)`
+  - `_gate_performance` (method, line 1872) `def _gate_performance(self)`
+  - `_memory_comparison` (method, line 1907) `def _memory_comparison(self)`
+  - `_entanglement_scaling` (method, line 1927) `def _entanglement_scaling(self)`
+  - `_show_config_menu` (method, line 1953) `def _show_config_menu(self)`
+  - `_view_config` (method, line 1984) `def _view_config(self)`
+  - `_list_atoms` (method, line 1999) `def _list_atoms(self)`
+  - `_list_molecules_config` (method, line 2016) `def _list_molecules_config(self)`
+  - `_list_experiments` (method, line 2020) `def _list_experiments(self)`
+  - `_system_info` (method, line 2036) `def _system_info(self)`
+  - `_show_particle_physics_menu` (method, line 2055) `def _show_particle_physics_menu(self)`
+  - `_run_higgs_analysis` (method, line 2077) `def _run_higgs_analysis(self)`
+  - `_higgs_about` (method, line 2101) `def _higgs_about(self)`
+  - `_show_visualization_menu` (method, line 2129) `def _show_visualization_menu(self)`
+  - `_run_quantum_dash` (method, line 2154) `def _run_quantum_dash(self)`
+  - `_run_quantum_3dview` (method, line 2201) `def _run_quantum_3dview(self)`
+  - `_run_quantum_visualizer` (method, line 2247) `def _run_quantum_visualizer(self)`
+  - `_run_polarizability_vqe` (method, line 2285) `def _run_polarizability_vqe(self)`
+  - `_show_help` (method, line 2316) `def _show_help(self)`
+  - `_quit` (method, line 2350) `def _quit(self)`
+  - `test_header` (method, line 2379) `def test_header(name)`
+  - `radial_wf` (method, line 951) `def radial_wf(n, l, r)`
+  - `spherical_harm_real` (method, line 959) `def spherical_harm_real(l, m, theta, phi)`
+  - `compute_energy` (method, line 1764) `def compute_energy(state, n_qubits)`
+- Depends on: `app.py`, `higgs_four_lepton_analysis.py`, `quantum_3dview.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`, `quantum_visualizer.py`
+- Imported by: `quantum_framework_main.py`
+
+## quantum_framework_molecular.py
+- Doc: Quantum Framework Molecular Module - CORRECTED VERSION
+- Layer: utility
+- Language: py
+- Symbols:
+  - `_make_logger` (function, line 58) `def _make_logger(name)`
+  - `MoleculeData` (class, line 72) `class MoleculeData`
+  - `MoleculeBuilder` (class, line 85) `class MoleculeBuilder`
+  - `ExactJWEnergy` (class, line 156) `class ExactJWEnergy`
+  - `UCCSDAnsatz` (class, line 334) `class UCCSDAnsatz`
+  - `VQEResult` (class, line 476) `class VQEResult`
+  - `VQESolver` (class, line 510) `class VQESolver`
+  - `run_vqe_h2` (method, line 630) `def run_vqe_h2(max_iter)`
+  - `h2_sto3g` (method, line 89) `def h2_sto3g(bond_length)`
+  - `_h2_pyscf` (method, line 96) `def _h2_pyscf(bond_length)`
+  - `_h2_hardcoded` (method, line 128) `def _h2_hardcoded(bond_length)`
+  - `__init__` (method, line 163) `def __init__(self, mol, n_qubits)`
+  - `_build_hamiltonian` (method, line 170) `def _build_hamiltonian(self)`
+  - `_build_openfermion_hamiltonian` (method, line 178) `def _build_openfermion_hamiltonian(self)`
+  - `_build_hardcoded_hamiltonian` (method, line 231) `def _build_hardcoded_hamiltonian(self)`
+  - `_apply_pauli` (method, line 276) `def _apply_pauli(self, state, pauli)`
+  - `expectation_value` (method, line 302) `def expectation_value(self, state)`
+  - `evaluate` (method, line 318) `def evaluate(self, amps)`
+  - `__call__` (method, line 330) `def __call__(self, amps)`
+  - `__init__` (method, line 345) `def __init__(self, n_qubits, n_electrons)`
+  - `apply_double_excitation_2q` (method, line 373) `def apply_double_excitation_2q(self, state, theta)`
+  - `apply_single_excitation` (method, line 395) `def apply_single_excitation(self, state, o, v, theta)`
+  - `apply_double_excitation` (method, line 416) `def apply_double_excitation(self, state, o1, o2, v1, v2, theta)`
+  - `apply` (method, line 443) `def apply(self, state, thetas)`
+  - `__repr__` (method, line 490) `def __repr__(self)`
+  - `__init__` (method, line 517) `def __init__(self, mol)`
+  - `prepare_hf_state` (method, line 528) `def prepare_hf_state(self)`
+  - `run` (method, line 546) `def run(self, max_iter, tol)`
+  - `cost` (method, line 566) `def cost(thetas)`
+- Imported by: `quantum_framework_menu.py`, `quantum_lab.py`
+
+## quantum_framework_molecular_fixed.py
+- Doc: Quantum Framework Molecular Module - FIXED VERSION
+- Layer: utility
+- Language: py
+- Symbols:
+  - `_make_logger` (function, line 50) `def _make_logger(name)`
+  - `MoleculeData` (class, line 64) `class MoleculeData`
+  - `MoleculeBuilder` (class, line 77) `class MoleculeBuilder`
+  - `ExactJWEnergy` (class, line 147) `class ExactJWEnergy`
+  - `_get_sd_indices` (method, line 323) `def _get_sd_indices(n_electrons, n_qubits)`
+  - `UCCSDAnsatz` (class, line 343) `class UCCSDAnsatz`
+  - `VQEResult` (class, line 457) `class VQEResult`
+  - `VQESolver` (class, line 491) `class VQESolver`
+  - `run_vqe_demo` (method, line 614) `def run_vqe_demo()`
+  - `h2_sto3g` (method, line 84) `def h2_sto3g(bond_length)`
+  - `_h2_pyscf` (method, line 91) `def _h2_pyscf(bond_length)`
+  - `_h2_hardcoded` (method, line 126) `def _h2_hardcoded()`
+  - `__init__` (method, line 155) `def __init__(self, mol, n_qubits)`
+  - `_build_hamiltonian` (method, line 162) `def _build_hamiltonian(self)`
+  - `_build_openfermion_hamiltonian` (method, line 169) `def _build_openfermion_hamiltonian(self)`
+  - `_build_hardcoded_hamiltonian` (method, line 215) `def _build_hardcoded_hamiltonian(self)`
+  - `_apply_pauli` (method, line 247) `def _apply_pauli(self, state, pauli)`
+  - `expectation_value` (method, line 281) `def expectation_value(self, state)`
+  - `evaluate` (method, line 305) `def evaluate(self, amps)`
+  - `__call__` (method, line 319) `def __call__(self, amps)`
+  - `__init__` (method, line 350) `def __init__(self, n_qubits, n_electrons, backend)`
+  - `apply_single_excitation` (method, line 359) `def apply_single_excitation(self, state, o, v, theta)`
+  - `apply_double_excitation` (method, line 387) `def apply_double_excitation(self, state, o1, o2, v1, v2, theta)`
+  - `apply` (method, line 419) `def apply(self, state, thetas)`
+  - `__repr__` (method, line 471) `def __repr__(self)`
+  - `__init__` (method, line 498) `def __init__(self, qc, config)`
+  - `prepare_hf_state` (method, line 502) `def prepare_hf_state(self, mol)`
+  - `run` (method, line 525) `def run(self, mol, backend, max_iter, tol)`
+  - `cost` (method, line 556) `def cost(thetas)`
+
+## quantum_framework_molecular_v2.py
+- Doc: Quantum Framework Molecular Module - Production Version
+- Layer: utility
+- Language: py
+- Symbols:
+  - `_make_logger` (function, line 75) `def _make_logger(name)`
+  - `MolecularConfig` (class, line 95) `class MolecularConfig`
+  - `MoleculeData` (class, line 172) `class MoleculeData`
+  - `MoleculeBuilder` (class, line 200) `class MoleculeBuilder`
+  - `HamiltonianBuilder` (class, line 352) `class HamiltonianBuilder`
+  - `CachedPauliOperation` (class, line 468) `class CachedPauliOperation`
+  - `CachedHamiltonianEvaluator` (class, line 477) `class CachedHamiltonianEvaluator`
+  - `SmartInitializer` (class, line 613) `class SmartInitializer`
+  - `UCCSDAnsatz` (class, line 746) `class UCCSDAnsatz`
+  - `MPSState` (class, line 879) `class MPSState`
+  - `ParticleConservingState` (class, line 982) `class ParticleConservingState`
+  - `VQEResult` (class, line 1064) `class VQEResult`
+  - `VQESolver` (class, line 1104) `class VQESolver`
+  - `BackendIntegrator` (class, line 1287) `class BackendIntegrator`
+  - `run_vqe` (method, line 1332) `def run_vqe(molecule, precision_mode, config_path)`
+  - `from_toml` (method, line 131) `def from_toml(cls, toml_path)`
+  - `build` (method, line 208) `def build(name, geometry, basis, charge, multiplicity, description)`
+  - `_run_pyscf_direct` (method, line 289) `def _run_pyscf_direct(geometry, basis, charge, multiplicity)`
+  - `h2` (method, line 324) `def h2(bond_length, basis)`
+  - `h2o` (method, line 330) `def h2o(bond_length_oh, angle_hoh, basis)`
+  - `lih` (method, line 342) `def lih(bond_length, basis)`
+  - `build_jw_hamiltonian` (method, line 360) `def build_jw_hamiltonian(mol)`
+  - `build_hamiltonian_matrix` (method, line 417) `def build_hamiltonian_matrix(mol, n_qubits)`
+  - `_pauli_matrix` (method, line 441) `def _pauli_matrix(pauli_list, n_qubits)`
+  - `__init__` (method, line 484) `def __init__(self, mol, config)`
+  - `_precompute_operations` (method, line 503) `def _precompute_operations(self)`
+  - `_compute_pauli_mapping` (method, line 522) `def _compute_pauli_mapping(self, pauli_list)`
+  - `apply_pauli_fast` (method, line 561) `def apply_pauli_fast(self, state, op)`
+  - `expectation_value` (method, line 568) `def expectation_value(self, state)`
+  - `batch_expectation` (method, line 587) `def batch_expectation(self, states)`
+  - `__init__` (method, line 624) `def __init__(self, mol, ansatz, evaluator, config)`
+  - `estimate_mp2_amplitude` (method, line 630) `def estimate_mp2_amplitude(self)`
+  - `scan_parameter_space` (method, line 657) `def scan_parameter_space(self, hf_state, n_samples, param_range)`
+  - `_parabolic_refinement` (method, line 712) `def _parabolic_refinement(self, x_vals, y_vals, best_idx, n_params)`
+  - `initialize` (method, line 735) `def initialize(self, hf_state)`
+  - `__init__` (method, line 756) `def __init__(self, n_qubits, n_electrons, config)`
+  - `_generate_excitations` (method, line 764) `def _generate_excitations(self)`
+  - `apply` (method, line 785) `def apply(self, state, thetas)`
+  - `_apply_single` (method, line 817) `def _apply_single(self, state, i, a, theta)`
+  - `_apply_double` (method, line 838) `def _apply_double(self, state, i, j, a, b, theta)`
+  - `verify_identity` (method, line 862) `def verify_identity(self, hf_state, evaluator, hf_energy)`
+  - `__init__` (method, line 889) `def __init__(self, n_qubits, config)`
+  - `to_statevector` (method, line 910) `def to_statevector(self)`
+  - `from_statevector` (method, line 918) `def from_statevector(cls, state, n_qubits, config)`
+  - `compute_entanglement` (method, line 953) `def compute_entanglement(self, bond_idx)`
+  - `__init__` (method, line 989) `def __init__(self, n_qubits, n_particles)`
+  - `_generate_fock_states` (method, line 1000) `def _generate_fock_states(self)`
+  - `hf_state` (method, line 1013) `def hf_state(self)`
+  - `apply_excitation` (method, line 1027) `def apply_excitation(self, state, occ, vir, theta)`
+  - `to_full_statevector` (method, line 1051) `def to_full_statevector(self, state)`
+  - `__repr__` (method, line 1081) `def __repr__(self)`
+  - `__init__` (method, line 1117) `def __init__(self, mol, config)`
+  - `prepare_hf_state` (method, line 1137) `def prepare_hf_state(self)`
+  - `evaluate` (method, line 1152) `def evaluate(self, state)`
+  - `apply_ansatz` (method, line 1159) `def apply_ansatz(self, state, thetas)`
+  - `run` (method, line 1184) `def run(self)`
+  - `__init__` (method, line 1294) `def __init__(self, config)`
+  - `_load_models` (method, line 1301) `def _load_models(self)`
+  - `get_backend_energy` (method, line 1318) `def get_backend_energy(self, state, backend_name)`
+  - `PseudoMolData` (class, line 301) `class PseudoMolData`
+  - `cost` (method, line 1212) `def cost(thetas)`
+- Imported by: `demo_molecular_vqe.py`
+
+
+Next: [KB_root_p4.md](KB_root_p4.md)

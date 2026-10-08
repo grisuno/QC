@@ -1,0 +1,320 @@
+# Subsystem: root (page 5 of 5)
+Previous: [KB_root_p4.md](KB_root_p4.md)
+
+## relativistic_hydrogen.py
+- Doc: Dirac Relativistic Hydrogen Visualizer
+- Layer: utility
+- Language: py
+- Symbols:
+  - `Config` (class, line 41) `class Config`
+  - `LoggerFactory` (class, line 95) `class LoggerFactory`
+  - `GammaMatrices` (class, line 113) `class GammaMatrices`
+  - `DiracHamiltonianOperator` (class, line 199) `class DiracHamiltonianOperator`
+  - `SpectralLayer` (class, line 310) `class SpectralLayer(Module)`
+  - `DiracSpectralNetwork` (class, line 351) `class DiracSpectralNetwork(Module)`
+  - `DiracModelWrapper` (class, line 393) `class DiracModelWrapper`
+  - `DiracHydrogenAtom` (class, line 516) `class DiracHydrogenAtom`
+  - `ZitterbewegungSimulator` (class, line 640) `class ZitterbewegungSimulator`
+  - `DiracWavefunctionCalculator` (class, line 833) `class DiracWavefunctionCalculator`
+  - `DiracMonteCarloSampler` (class, line 956) `class DiracMonteCarloSampler`
+  - `DiracVisualizer` (class, line 1075) `class DiracVisualizer`
+  - `DiracValidationSuite` (class, line 1370) `class DiracValidationSuite`
+  - `main` (method, line 1613) `def main()`
+  - `create_logger` (method, line 97) `def create_logger(name, level)`
+  - `__init__` (method, line 118) `def __init__(self, device)`
+  - `_init_matrices` (method, line 122) `def _init_matrices(self)`
+  - `__init__` (method, line 207) `def __init__(self, config)`
+  - `_precompute_operators` (method, line 215) `def _precompute_operators(self)`
+  - `apply_dirac_hamiltonian` (method, line 223) `def apply_dirac_hamiltonian(self, spinor, potential)`
+  - `time_evolution` (method, line 282) `def time_evolution(self, spinor, dt, potential)`
+  - `__init__` (method, line 311) `def __init__(self, channels, grid_size)`
+  - `forward` (method, line 322) `def forward(self, x)`
+  - `__init__` (method, line 356) `def __init__(self, grid_size, hidden_dim, expansion_dim, num_spectral_layers, spinor_components)`
+  - `forward` (method, line 379) `def forward(self, x)`
+  - `__init__` (method, line 397) `def __init__(self, config)`
+  - `_find_best_checkpoint` (method, line 406) `def _find_best_checkpoint(self)`
+  - `_load_model` (method, line 452) `def _load_model(self)`
+  - `apply_hamiltonian` (method, line 498) `def apply_hamiltonian(self, spinor, potential)`
+  - `evolve_spinor` (method, line 506) `def evolve_spinor(self, spinor, dt, potential)`
+  - `__init__` (method, line 521) `def __init__(self, config)`
+  - `energy_level_dirac` (method, line 526) `def energy_level_dirac(self, n, kappa)`
+  - `fine_structure_splitting` (method, line 556) `def fine_structure_splitting(self, n, l)`
+  - `energy_spectrum` (method, line 597) `def energy_spectrum(self, n_max)`
+  - `__init__` (method, line 650) `def __init__(self, config, model_wrapper)`
+  - `create_gaussian_wave_packet` (method, line 657) `def create_gaussian_wave_packet(self, sigma, momentum)`
+  - `compute_position_expectation` (method, line 702) `def compute_position_expectation(self, spinor)`
+  - `compute_velocity_expectation` (method, line 724) `def compute_velocity_expectation(self, spinor)`
+  - `simulate` (method, line 750) `def simulate(self, duration, dt, sigma)`
+  - `__init__` (method, line 837) `def __init__(self, config)`
+  - `radial_wavefunction_schrodinger` (method, line 843) `def radial_wavefunction_schrodinger(n, l, r)`
+  - `radial_wavefunction_dirac` (method, line 853) `def radial_wavefunction_dirac(self, n, kappa, r, Z)`
+  - `spherical_harmonic_real` (method, line 900) `def spherical_harmonic_real(self, l, m, theta, phi)`
+  - `spin_angular_function` (method, line 910) `def spin_angular_function(self, kappa, m_j, theta, phi)`
+  - `__init__` (method, line 960) `def __init__(self, config, model_wrapper)`
+  - `sample_orbital` (method, line 966) `def sample_orbital(self, n, l, j, num_samples)`
+  - `__init__` (method, line 1079) `def __init__(self, config)`
+  - `visualize_orbital` (method, line 1082) `def visualize_orbital(self, data, save_path)`
+  - `visualize_energy_spectrum` (method, line 1213) `def visualize_energy_spectrum(self, spectrum, save_path)`
+  - `visualize_zitterbewegung` (method, line 1296) `def visualize_zitterbewegung(self, zbw_data, save_path)`
+  - `__init__` (method, line 1374) `def __init__(self, config)`
+  - `print_header` (method, line 1398) `def print_header(self)`
+  - `validate_fine_structure` (method, line 1419) `def validate_fine_structure(self)`
+  - `validate_zitterbewegung` (method, line 1477) `def validate_zitterbewegung(self)`
+  - `validate_energy_spectrum` (method, line 1509) `def validate_energy_spectrum(self)`
+  - `validate_orbital` (method, line 1524) `def validate_orbital(self, orbital_name, num_samples)`
+  - `run_full_validation` (method, line 1541) `def run_full_validation(self)`
+  - `interactive_mode` (method, line 1575) `def interactive_mode(self)`
+- Imported by: `advanced_experiments.py`, `entangled_hydrogen.py`
+
+## test_qc_integration.py
+- Doc: BDD-style integration tests for qc_integration.py and qc_dashboard.py.
+- Layer: testing
+- Language: py
+- Symbols:
+  - `config` (function, line 42) `def config()`
+  - `bridge` (function, line 47) `def bridge(config)`
+  - `qasm_adapter` (function, line 52) `def qasm_adapter(config)`
+  - `bell_circuit` (function, line 57) `def bell_circuit()`
+  - `ghz_circuit` (function, line 62) `def ghz_circuit()`
+  - `TestIntegrationConfig` (class, line 70) `class TestIntegrationConfig`
+  - `TestGateInstruction` (class, line 100) `class TestGateInstruction`
+  - `TestCircuitIR` (class, line 128) `class TestCircuitIR`
+  - `TestOpenQasmAdapter` (class, line 165) `class TestOpenQasmAdapter`
+  - `TestStandardCircuitFactory` (class, line 260) `class TestStandardCircuitFactory`
+  - `TestIntegrationBridge` (class, line 292) `class TestIntegrationBridge`
+  - `TestGateItem` (class, line 346) `class TestGateItem`
+  - `TestDashboardConfig` (class, line 372) `class TestDashboardConfig`
+  - `TestVisualisationEngine` (class, line 400) `class TestVisualisationEngine`
+  - `TestSimulatorBackend` (class, line 441) `class TestSimulatorBackend`
+  - `TestSnapshotData` (class, line 473) `class TestSnapshotData`
+  - `TestSadPaths` (class, line 517) `class TestSadPaths`
+  - `TestEndToEnd` (class, line 585) `class TestEndToEnd`
+  - `test_default_config_has_supported_gates` (method, line 73) `def test_default_config_has_supported_gates(self, config)`
+  - `test_gate_name_map_is_complete` (method, line 79) `def test_gate_name_map_is_complete(self, config)`
+  - `test_reverse_gate_name_map_is_consistent` (method, line 83) `def test_reverse_gate_name_map_is_consistent(self, config)`
+  - `test_qasm_version_default` (method, line 87) `def test_qasm_version_default(self, config)`
+  - `test_max_qubits_defaults_are_positive` (method, line 90) `def test_max_qubits_defaults_are_positive(self, config)`
+  - `test_create_single_qubit_gate` (method, line 103) `def test_create_single_qubit_gate(self)`
+  - `test_create_two_qubit_gate` (method, line 109) `def test_create_two_qubit_gate(self)`
+  - `test_create_gate_with_params` (method, line 114) `def test_create_gate_with_params(self)`
+  - `test_targets_are_immutable` (method, line 118) `def test_targets_are_immutable(self)`
+  - `test_create_empty_circuit` (method, line 131) `def test_create_empty_circuit(self)`
+  - `test_append_gate` (method, line 136) `def test_append_gate(self)`
+  - `test_append_gate_out_of_range_raises` (method, line 141) `def test_append_gate_out_of_range_raises(self)`
+  - `test_multiple_gates` (method, line 146) `def test_multiple_gates(self)`
+  - `test_repr_includes_qubits_and_gates` (method, line 152) `def test_repr_includes_qubits_and_gates(self)`
+  - `test_export_bell_state_contains_header` (method, line 168) `def test_export_bell_state_contains_header(self, qasm_adapter, bell_circuit)`
+  - `test_export_bell_state_has_qreg_and_creg` (method, line 173) `def test_export_bell_state_has_qreg_and_creg(self, qasm_adapter, bell_circuit)`
+  - `test_export_bell_state_has_gates` (method, line 178) `def test_export_bell_state_has_gates(self, qasm_adapter, bell_circuit)`
+  - `test_export_ghz_state` (method, line 183) `def test_export_ghz_state(self, qasm_adapter, ghz_circuit)`
+  - `test_export_qft_has_swap` (method, line 189) `def test_export_qft_has_swap(self, qasm_adapter, config)`
+  - `test_export_parametric_gate` (method, line 194) `def test_export_parametric_gate(self, qasm_adapter)`
+  - `test_export_exceeds_max_qubits_raises` (method, line 201) `def test_export_exceeds_max_qubits_raises(self, qasm_adapter)`
+  - `test_import_bell_state_roundtrip` (method, line 206) `def test_import_bell_state_roundtrip(self, qasm_adapter, bell_circuit)`
+  - `test_import_ghz_roundtrip` (method, line 214) `def test_import_ghz_roundtrip(self, qasm_adapter, ghz_circuit)`
+  - `test_import_from_standard_qasm_string` (method, line 220) `def test_import_from_standard_qasm_string(self, qasm_adapter)`
+  - `test_import_with_parametric_gates` (method, line 234) `def test_import_with_parametric_gates(self, qasm_adapter)`
+  - `test_import_empty_qasm_returns_zero_qubit_circuit` (method, line 247) `def test_import_empty_qasm_returns_zero_qubit_circuit(self, qasm_adapter)`
+  - `test_bell_state_has_two_gates` (method, line 263) `def test_bell_state_has_two_gates(self)`
+  - `test_bell_state_has_two_qubits` (method, line 269) `def test_bell_state_has_two_qubits(self)`
+  - `test_ghz_state` (method, line 273) `def test_ghz_state(self)`
+  - `test_qft_three_qubits` (method, line 278) `def test_qft_three_qubits(self)`
+  - `test_grover_iterations` (method, line 283) `def test_grover_iterations(self)`
+  - `test_export_qasm_returns_string` (method, line 295) `def test_export_qasm_returns_string(self, bridge, bell_circuit)`
+  - `test_import_qasm_roundtrip` (method, line 300) `def test_import_qasm_roundtrip(self, bridge, bell_circuit)`
+  - `test_full_openqasm_roundtrip_bell` (method, line 306) `def test_full_openqasm_roundtrip_bell(self, bridge)`
+  - `test_full_openqasm_roundtrip_ghz` (method, line 313) `def test_full_openqasm_roundtrip_ghz(self, bridge)`
+  - `test_full_openqasm_roundtrip_qft` (method, line 320) `def test_full_openqasm_roundtrip_qft(self, bridge)`
+  - `test_qiskit_not_available_by_default` (method, line 327) `def test_qiskit_not_available_by_default(self, bridge)`
+  - `test_pennylane_not_available_by_default` (method, line 332) `def test_pennylane_not_available_by_default(self, bridge)`
+  - `test_export_qasm_custom_qreg_name` (method, line 337) `def test_export_qasm_custom_qreg_name(self, bridge, bell_circuit)`
+  - `test_create_single_qubit_gate` (method, line 349) `def test_create_single_qubit_gate(self)`
+  - `test_create_two_qubit_gate` (method, line 357) `def test_create_two_qubit_gate(self)`
+  - `test_create_parametric_gate` (method, line 362) `def test_create_parametric_gate(self)`
+  - `test_default_values` (method, line 375) `def test_default_values(self)`
+  - `test_gate_list_includes_standard_gates` (method, line 382) `def test_gate_list_includes_standard_gates(self)`
+  - `test_qasm_initial_contains_header` (method, line 389) `def test_qasm_initial_contains_header(self)`
+  - `test_engine_available_with_matplotlib` (method, line 403) `def test_engine_available_with_matplotlib(self)`
+  - `test_render_full_dashboard_returns_bytes` (method, line 415) `def test_render_full_dashboard_returns_bytes(self)`
+  - `test_synthetic_execute_returns_snapshots` (method, line 444) `def test_synthetic_execute_returns_snapshots(self)`
+  - `test_empty_circuit_returns_init_snapshot` (method, line 457) `def test_empty_circuit_returns_init_snapshot(self)`
+  - `test_create_snapshot` (method, line 476) `def test_create_snapshot(self)`
+  - `test_entropy_updates` (method, line 489) `def test_entropy_updates(self)`
+  - `test_probabilities_normalized` (method, line 500) `def test_probabilities_normalized(self)`
+  - `test_gate_instruction_empty_targets` (method, line 520) `def test_gate_instruction_empty_targets(self)`
+  - `test_circuit_ir_append_negative_qubit_raises` (method, line 524) `def test_circuit_ir_append_negative_qubit_raises(self)`
+  - `test_openqasm_import_empty_string` (method, line 529) `def test_openqasm_import_empty_string(self, qasm_adapter)`
+  - `test_openqasm_import_garbage_string` (method, line 534) `def test_openqasm_import_garbage_string(self, qasm_adapter)`
+  - `test_openqasm_export_zero_qubit_circuit` (method, line 538) `def test_openqasm_export_zero_qubit_circuit(self, qasm_adapter)`
+  - `test_standard_circuit_factory_qft_one_qubit` (method, line 543) `def test_standard_circuit_factory_qft_one_qubit(self)`
+  - `test_standard_circuit_factory_grover_minimal` (method, line 548) `def test_standard_circuit_factory_grover_minimal(self)`
+  - `test_circuit_ir_repr_no_gates` (method, line 552) `def test_circuit_ir_repr_no_gates(self)`
+  - `test_synthetic_snapshot_probabilities_sum_to_one` (method, line 557) `def test_synthetic_snapshot_probabilities_sum_to_one(self)`
+  - `test_visualisation_engine_handles_no_snapshots` (method, line 570) `def test_visualisation_engine_handles_no_snapshots(self)`
+  - `test_build_export_import_qasm_roundtrip` (method, line 588) `def test_build_export_import_qasm_roundtrip(self, bridge)`
+  - `test_qasm_to_circuitir_to_framework_mps` (method, line 598) `def test_qasm_to_circuitir_to_framework_mps(self, bridge)`
+  - `test_ghz_export_qasm_and_reimport_matches` (method, line 609) `def test_ghz_export_qasm_and_reimport_matches(self, bridge)`
+  - `test_qft_circuit_qasm_roundtrip` (method, line 616) `def test_qft_circuit_qasm_roundtrip(self, bridge)`
+  - `test_export_qasm_with_custom_names` (method, line 622) `def test_export_qasm_with_custom_names(self, bridge)`
+  - `test_import_qasm_preserves_gate_order` (method, line 628) `def test_import_qasm_preserves_gate_order(self, bridge)`
+  - `test_full_pipeline_build_export_import_to_mps` (method, line 644) `def test_full_pipeline_build_export_import_to_mps(self, bridge)`
+- Depends on: `qc_dashboard.py`, `qc_integration.py`, `quantum_framework_core.py`
+
+## test_quantum_framework.py
+- Doc: Quantum Framework Test Suite
+- Layer: testing
+- Language: py
+- Symbols:
+  - `config` (function, line 43) `def config()`
+  - `qc` (function, line 53) `def qc(config)`
+  - `config_precision` (function, line 59) `def config_precision()`
+  - `TestFrameworkConfig` (class, line 72) `class TestFrameworkConfig`
+  - `TestMPSState` (class, line 95) `class TestMPSState`
+  - `TestBellState` (class, line 130) `class TestBellState`
+  - `TestGHZState` (class, line 167) `class TestGHZState`
+  - `TestWState` (class, line 209) `class TestWState`
+  - `TestQuantumGates` (class, line 261) `class TestQuantumGates`
+  - `TestPhaseCoherence` (class, line 338) `class TestPhaseCoherence`
+  - `TestGroverAlgorithm` (class, line 403) `class TestGroverAlgorithm`
+  - `TestQFT` (class, line 431) `class TestQFT`
+  - `TestMemoryScaling` (class, line 458) `class TestMemoryScaling`
+  - `TestPrecisionMode` (class, line 501) `class TestPrecisionMode`
+  - `TestEdgeCases` (class, line 525) `class TestEdgeCases`
+  - `test_default_config` (method, line 75) `def test_default_config(self)`
+  - `test_custom_config` (method, line 83) `def test_custom_config(self)`
+  - `test_create_state` (method, line 98) `def test_create_state(self, config)`
+  - `test_initial_state` (method, line 104) `def test_initial_state(self, qc)`
+  - `test_clone_state` (method, line 113) `def test_clone_state(self, qc)`
+  - `test_bell_entropy` (method, line 133) `def test_bell_entropy(self, qc)`
+  - `test_bell_probabilities` (method, line 141) `def test_bell_probabilities(self, qc)`
+  - `test_bell_entanglement` (method, line 154) `def test_bell_entanglement(self, qc)`
+  - `test_ghz_entropy` (method, line 170) `def test_ghz_entropy(self, qc)`
+  - `test_ghz_probabilities` (method, line 179) `def test_ghz_probabilities(self, qc)`
+  - `test_ghz_scaling` (method, line 192) `def test_ghz_scaling(self, qc)`
+  - `test_w_state_probabilities` (method, line 212) `def test_w_state_probabilities(self, qc)`
+  - `test_w_state_entropy` (method, line 227) `def test_w_state_entropy(self, qc)`
+  - `test_w_state_no_zero_probabilities` (method, line 247) `def test_w_state_no_zero_probabilities(self, qc)`
+  - `test_hadamard_gate` (method, line 264) `def test_hadamard_gate(self, qc)`
+  - `test_pauli_x_gate` (method, line 275) `def test_pauli_x_gate(self, qc)`
+  - `test_pauli_z_gate` (method, line 285) `def test_pauli_z_gate(self, qc)`
+  - `test_cnot_gate` (method, line 297) `def test_cnot_gate(self, qc)`
+  - `test_swap_gate` (method, line 309) `def test_swap_gate(self, qc)`
+  - `test_rotation_gates` (method, line 321) `def test_rotation_gates(self, qc)`
+  - `test_hzh_equals_x` (method, line 341) `def test_hzh_equals_x(self, qc)`
+  - `test_xx_equals_identity` (method, line 354) `def test_xx_equals_identity(self, qc)`
+  - `test_cnot_cnot_equals_identity` (method, line 366) `def test_cnot_cnot_equals_identity(self, qc)`
+  - `test_norm_preservation` (method, line 381) `def test_norm_preservation(self, qc)`
+  - `test_grover_3_qubits` (method, line 406) `def test_grover_3_qubits(self, qc)`
+  - `test_grover_speedup` (method, line 417) `def test_grover_speedup(self, qc)`
+  - `test_qft_entropy` (method, line 434) `def test_qft_entropy(self, qc)`
+  - `test_memory_linear_scaling` (method, line 461) `def test_memory_linear_scaling(self)`
+  - `test_compression_ratio` (method, line 478) `def test_compression_ratio(self)`
+  - `test_precision_mode_config` (method, line 504) `def test_precision_mode_config(self)`
+  - `test_precision_mode_bell_state` (method, line 510) `def test_precision_mode_bell_state(self, config_precision)`
+  - `test_single_qubit` (method, line 528) `def test_single_qubit(self, qc)`
+  - `test_large_bond_dimension` (method, line 539) `def test_large_bond_dimension(self)`
+  - `test_empty_circuit` (method, line 549) `def test_empty_circuit(self, qc)`
+- Depends on: `quantum_framework_core.py`
+
+## topological_hilbert_compression2.py
+- Doc: Topological Hilbert Space Compression
+- Layer: utility
+- Language: py
+- Symbols:
+  - `HilbertPhase` (class, line 47) `class HilbertPhase(Enum)`
+  - `TopologicalCompressionConfig` (class, line 56) `class TopologicalCompressionConfig`
+  - `ITensorNetwork` (class, line 85) `class ITensorNetwork(ABC)`
+  - `MPSCore` (class, line 115) `class MPSCore`
+  - `MPSState` (class, line 162) `class MPSState(ITensorNetwork)`
+  - `VacuumCore` (class, line 351) `class VacuumCore`
+  - `TopologicalProtector` (class, line 411) `class TopologicalProtector`
+  - `HybridBackend` (class, line 452) `class HybridBackend(ABC)`
+  - `DirectBackend` (class, line 466) `class DirectBackend(HybridBackend)`
+  - `MPSBackend` (class, line 515) `class MPSBackend(HybridBackend)`
+  - `TopologicalHilbertSimulator` (class, line 572) `class TopologicalHilbertSimulator`
+  - `Schrodinger20Experiment` (class, line 723) `class Schrodinger20Experiment`
+  - `main` (method, line 956) `def main()`
+  - `__post_init__` (method, line 80) `def __post_init__(self)`
+  - `amplitude` (method, line 87) `def amplitude(self, basis_index)`
+  - `apply_single_qubit_gate` (method, line 91) `def apply_single_qubit_gate(self, qubit, gate)`
+  - `apply_two_qubit_gate` (method, line 95) `def apply_two_qubit_gate(self, qubit_a, qubit_b, gate)`
+  - `norm` (method, line 99) `def norm(self)`
+  - `probabilities` (method, line 103) `def probabilities(self)`
+  - `entropy` (method, line 107) `def entropy(self)`
+  - `memory_bytes` (method, line 111) `def memory_bytes(self)`
+  - `__init__` (method, line 121) `def __init__(self, chi_left, chi_right, d, device, dtype)`
+  - `_initialize` (method, line 130) `def _initialize(self)`
+  - `tensor` (method, line 136) `def tensor(self)`
+  - `tensor` (method, line 142) `def tensor(self, value)`
+  - `left_canonicalize` (method, line 147) `def left_canonicalize(self)`
+  - `right_canonicalize` (method, line 154) `def right_canonicalize(self)`
+  - `__init__` (method, line 172) `def __init__(self, n_qubits, config)`
+  - `_initialize` (method, line 181) `def _initialize(self)`
+  - `_bond_dimension` (method, line 195) `def _bond_dimension(self, site)`
+  - `amplitude` (method, line 198) `def amplitude(self, basis_index)`
+  - `apply_single_qubit_gate` (method, line 209) `def apply_single_qubit_gate(self, qubit, gate)`
+  - `apply_two_qubit_gate` (method, line 219) `def apply_two_qubit_gate(self, qubit_a, qubit_b, gate)`
+  - `_swap_qubits_in_gate` (method, line 236) `def _swap_qubits_in_gate(self, gate)`
+  - `_apply_adjacent_gate` (method, line 245) `def _apply_adjacent_gate(self, qubit, gate)`
+  - `_apply_nonadjacent_gate` (method, line 285) `def _apply_nonadjacent_gate(self, qubit_a, qubit_b, gate)`
+  - `norm` (method, line 294) `def norm(self)`
+  - `_canonicalize` (method, line 301) `def _canonicalize(self)`
+  - `probabilities` (method, line 308) `def probabilities(self)`
+  - `entropy` (method, line 318) `def entropy(self)`
+  - `memory_bytes` (method, line 329) `def memory_bytes(self)`
+  - `entanglement_entropy` (method, line 335) `def entanglement_entropy(self, cut)`
+  - `__init__` (method, line 361) `def __init__(self, n_qubits, config)`
+  - `_initialize` (method, line 370) `def _initialize(self)`
+  - `_compute_berry_phases` (method, line 375) `def _compute_berry_phases(self)`
+  - `add_active_state` (method, line 381) `def add_active_state(self, basis_index, winding_number)`
+  - `_compute_winding_number` (method, line 389) `def _compute_winding_number(self, basis_index)`
+  - `is_topologically_protected` (method, line 394) `def is_topologically_protected(self, basis_index)`
+  - `sparsity` (method, line 398) `def sparsity(self)`
+  - `project_to_active` (method, line 403) `def project_to_active(self, state)`
+  - `__init__` (method, line 419) `def __init__(self, config)`
+  - `compute_winding_number` (method, line 424) `def compute_winding_number(self, state, qubit)`
+  - `compute_berry_phase` (method, line 433) `def compute_berry_phase(self, state, qubit_a, qubit_b)`
+  - `is_protected` (method, line 444) `def is_protected(self, state, vacuum_core)`
+  - `can_handle` (method, line 454) `def can_handle(self, n_qubits)`
+  - `create_state` (method, line 458) `def create_state(self, n_qubits)`
+  - `apply_gate` (method, line 462) `def apply_gate(self, state, gate_name, targets, params)`
+  - `__init__` (method, line 472) `def __init__(self, config)`
+  - `_load_quantum_computer` (method, line 479) `def _load_quantum_computer(self)`
+  - `can_handle` (method, line 497) `def can_handle(self, n_qubits)`
+  - `create_state` (method, line 500) `def create_state(self, n_qubits)`
+  - `apply_gate` (method, line 507) `def apply_gate(self, state, gate_name, targets, params)`
+  - `__init__` (method, line 521) `def __init__(self, config)`
+  - `_initialize_gate_cache` (method, line 526) `def _initialize_gate_cache(self)`
+  - `can_handle` (method, line 537) `def can_handle(self, n_qubits)`
+  - `create_state` (method, line 540) `def create_state(self, n_qubits)`
+  - `apply_gate` (method, line 543) `def apply_gate(self, state, gate_name, targets, params)`
+  - `__init__` (method, line 581) `def __init__(self, config)`
+  - `_select_backend` (method, line 590) `def _select_backend(self, n_qubits, force_mps)`
+  - `create_circuit` (method, line 602) `def create_circuit(self, n_qubits, force_mps)`
+  - `h` (method, line 610) `def h(self, qubit)`
+  - `x` (method, line 613) `def x(self, qubit)`
+  - `y` (method, line 616) `def y(self, qubit)`
+  - `z` (method, line 619) `def z(self, qubit)`
+  - `rx` (method, line 622) `def rx(self, qubit, theta)`
+  - `ry` (method, line 625) `def ry(self, qubit, theta)`
+  - `rz` (method, line 628) `def rz(self, qubit, theta)`
+  - `cnot` (method, line 631) `def cnot(self, control, target)`
+  - `cz` (method, line 634) `def cz(self, control, target)`
+  - `swap` (method, line 637) `def swap(self, qubit_a, qubit_b)`
+  - `run` (method, line 640) `def run(self)`
+  - `probabilities` (method, line 650) `def probabilities(self)`
+  - `entropy` (method, line 655) `def entropy(self)`
+  - `memory_usage` (method, line 666) `def memory_usage(self)`
+  - `compression_ratio` (method, line 682) `def compression_ratio(self)`
+  - `detect_phase` (method, line 691) `def detect_phase(self)`
+  - `_compute_average_bond_dimension` (method, line 714) `def _compute_average_bond_dimension(self)`
+  - `__init__` (method, line 734) `def __init__(self, config)`
+  - `run_bell_state` (method, line 739) `def run_bell_state(self, n_qubits, use_mps)`
+  - `run_ghz_state` (method, line 758) `def run_ghz_state(self, n_qubits, use_mps)`
+  - `run_w_state` (method, line 777) `def run_w_state(self, n_qubits, use_mps)`
+  - `prepare_ghz_state` (method, line 798) `def prepare_ghz_state(self, n_qubits, force_mps)`
+  - `run_scaling_benchmark` (method, line 844) `def run_scaling_benchmark(self, max_qubits, use_mps)`
+  - `run_all` (method, line 897) `def run_all(self)`
+  - `_print_summary` (method, line 909) `def _print_summary(self)`
+- Depends on: `quantum_computer.py`
+
