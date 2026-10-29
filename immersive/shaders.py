@@ -160,6 +160,7 @@ uniform float uAtR[12];
 uniform int uNBd;
 uniform vec3 uBdA[16];
 uniform vec3 uBdB[16];
+uniform float uBdR;
 
 #define STEPS 200
 
@@ -296,7 +297,7 @@ float geomHit(vec3 ro, vec3 rd, out vec3 gcol) {
     }
     for (int i = 0; i < 16; i++) {
         if (i >= uNBd) break;
-        float t = capIntersect(ro, rd, uBdA[i], uBdB[i], 0.10);
+        float t = capIntersect(ro, rd, uBdA[i], uBdB[i], max(uBdR, 0.10));
         if (t > 0.0 && t < best) {
             best = t;
             gcol = lit(capNormal(ro + rd * t, uBdA[i], uBdB[i]), rd, vec3(0.62, 0.68, 0.80));
@@ -565,6 +566,140 @@ void main() {
 }
 """
 
+
+SURFACE_BODY = """
+uniform sampler2DArray uPlates;
+uniform int uNP;
+uniform vec3 uPlateC[4];
+uniform int uPlateMode[4];
+uniform float uHalf;
+uniform float uHeight;
+uniform float uPulse;
+
+const int PLATE_STEPS = 96;
+const float TEX_EPS = 1.0 / 64.0;
+
+float solidH(int i, vec2 uv) { return texture(uPlates, vec3(uv, float(i))).r * uHeight; }
+float ghostH(int i, vec2 uv) { return texture(uPlates, vec3(uv, float(i))).g * uHeight; }
+float tint(int i, vec2 uv) { return texture(uPlates, vec3(uv, float(i))).b; }
+
+bool boxHit(vec3 ro, vec3 rd, vec3 lo, vec3 hi, out float tin, out float tout) {
+    vec3 inv = 1.0 / rd;
+    vec3 t0 = (lo - ro) * inv;
+    vec3 t1 = (hi - ro) * inv;
+    vec3 tmin = min(t0, t1);
+    vec3 tmax = max(t0, t1);
+    tin = max(max(tmin.x, tmin.y), max(tmin.z, 0.0));
+    tout = min(min(tmax.x, tmax.y), tmax.z);
+    return tout > tin;
+}
+
+vec2 plateUV(int i, vec3 p) {
+    return (p.xy - uPlateC[i].xy) / (2.0 * uHalf) + 0.5;
+}
+
+float surfaceHit(int i, bool ghost, vec3 ro, vec3 rd, float tin, float tout) {
+    float dt = (tout - tin) / float(PLATE_STEPS);
+    float t = tin;
+    float prevT = t;
+    vec3 p = ro + rd * t;
+    float prev = p.z - uPlateC[i].z - (ghost ? ghostH(i, plateUV(i, p)) : solidH(i, plateUV(i, p)));
+    for (int k = 0; k < PLATE_STEPS; k++) {
+        t += dt;
+        p = ro + rd * t;
+        vec2 uv = plateUV(i, p);
+        float f = p.z - uPlateC[i].z - (ghost ? ghostH(i, uv) : solidH(i, uv));
+        if (f * prev <= 0.0) {
+            float a = prevT;
+            float b = t;
+            for (int r = 0; r < 6; r++) {
+                float m = 0.5 * (a + b);
+                vec3 q = ro + rd * m;
+                vec2 quv = plateUV(i, q);
+                float fm = q.z - uPlateC[i].z - (ghost ? ghostH(i, quv) : solidH(i, quv));
+                if (fm * prev <= 0.0) b = m; else a = m;
+            }
+            return 0.5 * (a + b);
+        }
+        prev = f;
+        prevT = t;
+    }
+    return -1.0;
+}
+
+vec3 surfaceNormal(int i, vec2 uv) {
+    float hx = solidH(i, uv + vec2(TEX_EPS, 0.0)) - solidH(i, uv - vec2(TEX_EPS, 0.0));
+    float hy = solidH(i, uv + vec2(0.0, TEX_EPS)) - solidH(i, uv - vec2(0.0, TEX_EPS));
+    float span = 2.0 * TEX_EPS * 2.0 * uHalf;
+    return normalize(vec3(-hx / span, -hy / span, 1.0));
+}
+
+vec3 plateColour(int i, vec2 uv) {
+    float v = tint(i, uv);
+    if (uPlateMode[i] == 1) return hsv2rgb(vec3(v * 0.5 + 0.5, 0.72, 0.96));
+    return mix(vec3(0.16, 0.50, 1.0), vec3(1.0, 0.36, 0.14), smoothstep(0.0, 0.55, v));
+}
+
+float gridWire(vec2 uv, float cells) {
+    vec2 g = uv * cells;
+    vec2 d = abs(fract(g - 0.5) - 0.5);
+    vec2 w = fwidth(g) * 1.2;
+    vec2 l = smoothstep(w, vec2(0.0), d);
+    return max(l.x, l.y);
+}
+
+void plateLayer(int i, vec3 ro, vec3 rd, inout vec3 col, inout float best) {
+    vec3 c = uPlateC[i];
+    float tin, tout;
+    if (!boxHit(ro, rd, c - vec3(uHalf, uHalf, uHeight * 1.05), c + vec3(uHalf, uHalf, uHeight * 1.05), tin, tout)) return;
+    float tb = (c.z - ro.z) / rd.z;
+    if (tb > 0.0 && tb < best) {
+        vec3 pb = ro + rd * tb;
+        vec2 buv = plateUV(i, pb);
+        if (all(greaterThan(buv, vec2(0.0))) && all(lessThan(buv, vec2(1.0)))) {
+            vec2 e = min(buv, 1.0 - buv);
+            float edge = smoothstep(0.012, 0.0, min(e.x, e.y));
+            col += vec3(0.35, 0.55, 1.0) * (0.035 + 0.30 * edge + 0.08 * gridWire(buv, 16.0));
+        }
+    }
+    float tS = surfaceHit(i, false, ro, rd, tin, tout);
+    float tG = surfaceHit(i, true, ro, rd, tin, tout);
+    float limit = tS > 0.0 ? tS : 1e9;
+    if (tS > 0.0 && tS < best) {
+        vec3 p = ro + rd * tS;
+        vec2 uv = plateUV(i, p);
+        vec3 n = surfaceNormal(i, uv);
+        vec3 base = plateColour(i, uv);
+        float diff = max(dot(n, normalize(vec3(0.4, -0.5, 0.8))), 0.0);
+        float rim = pow(1.0 - max(dot(n, -rd), 0.0), 2.5);
+        vec3 shaded = base * (0.26 + 0.74 * diff) + base * rim * 0.5 + vec3(1.0) * pow(max(dot(reflect(rd, n), normalize(vec3(0.3, -0.4, 0.85))), 0.0), 36.0) * 0.30;
+        shaded *= 1.0 - 0.28 * gridWire(uv, 16.0);
+        col = shaded * (1.0 + 0.4 * uPulse);
+        best = tS;
+    }
+    if (tG > 0.0 && tG < best + 1e-4) {
+        vec3 p = ro + rd * tG;
+        vec2 uv = plateUV(i, p);
+        float wire = gridWire(uv, 16.0);
+        float visible = tG < limit ? 1.0 : 0.22;
+        col += vec3(0.92, 0.96, 1.0) * (wire * 0.85 + 0.035) * visible;
+    }
+}
+
+void main() {
+    vec2 uv = gl_FragCoord.xy / uRes;
+    vec3 rd = rayDir(uv);
+    vec3 ro = uEye;
+    vec3 col = background(rd) * 0.8;
+    float best = 1e9;
+    for (int i = 0; i < 4; i++) {
+        if (i >= uNP) break;
+        plateLayer(i, ro, rd, col, best);
+    }
+    frag = vec4(finish(col, uv), 1.0);
+}
+"""
+
 HUD_FRAGMENT = """#version 330 core
 out vec4 frag;
 uniform sampler2D uTex;
@@ -584,3 +719,7 @@ def orbital_fragment() -> str:
 
 def bloch_fragment() -> str:
     return COMMON + GEOM + BLOCH_BODY
+
+
+def surface_fragment() -> str:
+    return COMMON + GEOM + SURFACE_BODY

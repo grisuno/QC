@@ -162,3 +162,7 @@ cython_debug/
 #.idea/
 .venv/
 screenshots/
+
+# H experiment runs (checkpoints)
+h/runs/
+h/tuned/

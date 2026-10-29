@@ -172,21 +172,73 @@ English by default; the `EN` button (or `F2`) switches to Spanish.
 
 ```bash
 python3 -m venv --system-site-packages .venv && .venv/bin/pip install pyscf   # once, for the Matter scene
-.venv/bin/python qc_launcher.py             # Textual front door
-.venv/bin/python qc_immersive.py --tour     # ~90 s cinematic tour
+.venv/bin/python qc_launcher.py                       # Textual front door
+.venv/bin/python qc_immersive.py --tour               # ~2 min cinematic tour
+.venv/bin/python qc_immersive.py --scene rydberg      # open a scene directly
+.venv/bin/python qc_immersive.py --scene atom --do preset:3,born          # Born-rule detections on 2p
 .venv/bin/python qc_immersive.py --scene spin --do preset:3 --screenshot out.png   # offscreen render
+.venv/bin/python qc_immersive.py --lang es            # start in Spanish
 ```
+
+Options: `--scene {atom,spin,matter,rydberg,tune,bloch,entangle}`, `--tour`, `--size WxH`, `--lang {en,es}`,
+`--do cmd1,cmd2` (scene commands such as `preset:5`, `cut`, `born`, `sys:H2O`), `--screenshot FILE --frames N`.
 
 | Scene | What it shows | Where the numbers come from |
 |-------|---------------|-----------------------------|
-| **Atom** | Hydrogenic clouds up to 4f, slicing with probability contours, phase as colour, beating superpositions. | Exact analytic wavefunctions (cross-checked against SciPy in the tests). Energy panel: your `DiracHydrogenAtom`. |
+| **Atom** | Hydrogenic clouds up to 4f, slicing with probability contours, phase as colour, beating superpositions. `B` switches to **Born-rule detections**: glowing dots drawn from |psi|^2 with a live check of the measured mean radius against the exact one. | Exact analytic wavefunctions (cross-checked against SciPy in the tests). Energy panel: your `DiracHydrogenAtom` plus the **Lamb shift** from your `LambShiftCalculator`. |
 | **Spin** | Pauli-spinor states |n l j m_j>: spin arrows inside the cloud, Larmor precession in a magnetic field, spin-orbit beating. | Exact Clebsch-Gordan spinors; level energies and fine-structure splitting from `relativistic_hydrogen.DiracHydrogenAtom`. |
 | **Matter** | H to Ne and 10 molecules: density, molecular orbitals, spin density, FCI density (H2), ball-and-stick geometry. | PySCF (UHF/RHF 6-31G). Integrals are checked against the electron count. Panel for H2 runs the project's own VQE. |
-| **Qubit / Entanglement** | Bloch spheres, animated gates, Bell pairs, entropy, measurement. | Every state is a `JointHilbertState` from `quantum_computer.QuantumComputer`; the NN checkpoints are loaded and the spatial fields they evolve are shown (`K` switches backend, `V` evolves). An ideal-unitary reference runs in lockstep and its gap is displayed. |
+| **Rydberg** | A wave packet of circular states |n, l=n-1, m=n-1> around n0 (8/10/12/14) that orbits like a classical planet at the Kepler frequency 1/n0^3, then spreads and revives. The quantum packet angle and the classical angle are printed side by side. | Exact hydrogenic eigenstates and energies -1/2n^2; the classical orbit is drawn for comparison only. |
+| **Fine-tune** | Fine-tunes copies of the backend's real networks (Hamiltonian, Schrodinger, Dirac) against the exact results of the backend's own analytical path, live. Four 3D plates: the field update (net solid, exact wire), the operator rate versus wavevector (net surface against the exact one), and the spectral kernels of both layers (height = magnitude, colour = phase, wire = the original weights). Metrics on **seen** (training set) and **unseen** (held-out, per data family) data, plus delta, alpha, kappa, T_eff, Berry phase and winding. | Targets: `ifft(fft*0.5k^2)` (Hamiltonian), the exact spectral propagator at `propagator_dt` (Schrodinger), `DiracBackend._analytical_dirac` on spinors from `DiracBackend._pack` (Dirac). `A` pushes the tuned weights into the running backend (Qubit/Entanglement use them), `R` restores the originals, `E` exports a project-format checkpoint to `h/tuned/`. |
+| **Qubit / Entanglement** | Bloch spheres, animated gates, Bell pairs, entropy, measurement. | Every state is a `JointHilbertState` from `quantum_computer.QuantumComputer`; the NN checkpoints are loaded and the spatial fields they evolve are shown (`K` switches backend, `V` evolves). An ideal-unitary reference runs in lockstep and its gap is displayed. The panel also carries a **Hamiltonian-network audit** (Hermiticity defect, distance from -laplacian/2, fidelity after 200 steps versus the exact propagator and versus doing nothing). Caveat added later: these are measured against a free-particle reference with hbar=1, while the checkpoint was trained with another objective (hbar=1e-6, Poynting/entropy terms); I have not yet verified them against the training code. |
 
-Controls: drag = orbit, wheel = zoom, `Tab` = next scene, `T`/`F5` = tour, `F11` = fullscreen, `F12` = screenshot.
+Controls: drag = orbit, wheel = zoom, `Tab` = next scene, `T`/`F5` = tour, `F2` = language, `F11` = fullscreen, `F12` = screenshot.
+Fine-tune: `Space` tune/pause, `1 2 3` network, up/down learning rate, left/right sample, `L` loss (relative or MSE), `D` data family, `N` new data, `R` reset, `A` apply to backend, `E` export. Atom: `1-9,0` presets, `N L M` quantum numbers, `B` Born detections. Rydberg: left/right = time speed, `P` pause, `R` restart, up/down = shell, `O` classical orbit.
+Every volume scene: `X` slice, `Z` slice axis, `S` sweep, `C` colour, `-`/`=` density.
 Requires OpenGL 3.3+, `pygame`, `PyOpenGL`, `torch`; `textual` for the launcher, `pyscf` for Matter.
 Keep running the terminal lab (`quantum_lab.py`) with the system Python: with PySCF installed `MoleculeBuilder.h2_sto3g` switches to the 4-qubit branch that `H2VQEEngine` does not expect.
+
+### Fixes to the project backend made for the viewer
+
+- `JointHilbertState.bloch_vector` had the y axis mirrored; Rx(pi/2)|0> now gives -y as in the standard convention.
+- `DiracBackend.evolve_amplitude` crashed when the `Evolve` gate passed float64 data to the float32 network.
+- `LambShiftCalculator` now uses the leading-order formula with tabulated Bethe logarithms: 1S 8127 MHz (literature 8172), 2S-2P1/2 1052 MHz (1057.8), and the Uehling term has the right sign.
+
+Known limits, not fixed: the learned Hamiltonian network is not Hermitian (about 11 % defect) and acts almost as the identity (the audit panel shows it; see the caveat above, this is relative to a free-particle reference), and the 4-qubit `VQESolver` returns the Hartree-Fock energy when PySCF is installed.
+
+## Tests and deployment
+
+```bash
+python3 -m pytest tests -q                       # deploy gate: ~4 s, no GPU needed
+Q2C_GL_TESTS=1 python3 -m pytest tests -q        # also renders every scene (needs a display + OpenGL 3.3)
+.venv/bin/python -m pytest test_immersive.py -q  # extended suite incl. PySCF conservation and the project VQE
+python3 -m pytest test_quantum_framework.py test_qc_integration.py -q   # original suites
+```
+
+`tests/` is the release gate used by [deploynator](https://github.com/grisuno/deploynator): `deploynator.toml` declares
+`python3 -m pytest tests -q` as the `[tests]` command, so a failing physics or backend check aborts the release.
+
+```bash
+deploynator status                                  # project and git state
+deploynator release --dry-run --project . --type feat --subject "immersive viewer" --scope viewer
+deploynator release --project . --no-docs --type feat --subject "immersive viewer" --scope viewer
+```
+
+## H: a Hamiltonian network that computes H (`h/`)
+
+A proof of concept that retrains the Hamiltonian network with the same architecture and checkpoint layout as the project's
+`HamiltonianBackboneNet`, so it loads as `hamiltonian.pth`. It fixes the training objective (relative error instead of an MSE
+the zero map already satisfies, adaptive lambda pressure) and adds the Maxwell protocol: GOE/GUE ratio scan, batch-size
+prospecting, seed mining, long training. Details and the reasoning are in `h/README.md`.
+
+```bash
+python3 -m h.train --out h/runs/run1                              # phases 0-3, long run
+python3 -m h.train --out h/runs/quick --quick                     # minutes
+python3 -m h.validate h/weights/hamiltonian_h.pth                 # through the project's HamiltonianBackend
+python3 -m h.research list                                        # research-suite experiments
+python3 -m h.research run maxwell                                 # audit of the Maxwell checkpoint
+Q2C_HAMILTONIAN=$PWD/h/weights/hamiltonian_h.pth .venv/bin/python qc_immersive.py --scene entangle
+```
 
 ## Menu Sections
 
@@ -437,3 +489,10 @@ AI agents: Read `readmenator-wiki/index.md` first for the big picture, then `rea
 Developers: Read `KNOWLEDGE_BASE.md` for full architecture reference, open `readmenator-maps/index.html` for the visual gallery.
 <!-- /readmenator-kb-link -->
 
+<!-- deploynator-footer -->
+
+---
+
+Deployed with [deploynator](https://github.com/grisuno/deploynator)
+
+<!-- /deploynator-footer -->

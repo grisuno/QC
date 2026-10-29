@@ -1,0 +1,22 @@
+# deploynator: https://github.com/grisuno/deploynator
+# The release pipeline runs the [tests] commands first and aborts the release if any fails.
+
+[project]
+name = "Q2C"
+
+[tests]
+commands = ["python3 -m pytest tests -q -p no:cacheprovider"]
+timeout_s = 600
+
+[docs]
+auto = false
+
+[pypi]
+enabled = false
+
+[deb]
+enabled = false
+
+[deploy]
+branch = "main"
+remote = "origin"

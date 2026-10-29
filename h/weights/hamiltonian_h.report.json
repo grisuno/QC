@@ -1,0 +1,88 @@
+{
+ "config": {
+  "grid_size": 16,
+  "hidden_dim": 32,
+  "num_spectral_layers": 2,
+  "mass": 1.0,
+  "hbar": 1.0,
+  "kinetic_prefactor": 0.5,
+  "cutoff_min": 1.0,
+  "cutoff_max": 3.14,
+  "scale_min": 0.2,
+  "scale_max": 1.0,
+  "train_samples": 1024,
+  "val_samples": 256,
+  "data_seed": 999,
+  "batch_size": 64,
+  "learning_rate": 0.002,
+  "weight_decay": 0.0,
+  "epochs": 900,
+  "grad_clip": 1.0,
+  "cosine_floor": 0.01,
+  "accuracy_target": 0.01,
+  "accuracy_tolerance": 0.03,
+  "norm_ratio_tolerance": 0.02,
+  "batch_candidates": [
+   32,
+   64
+  ],
+  "batch_prospect_epochs": 40,
+  "batch_prospect_seed": 42,
+  "mining_attempts": 3,
+  "mining_start_seed": 1,
+  "mining_prospect_epochs": 40,
+  "mining_report_interval": 20,
+  "ratio_candidates": [
+   0.0,
+   0.1,
+   0.18,
+   0.3,
+   0.5,
+   0.75,
+   1.0
+  ],
+  "ensemble_size": 96,
+  "ensemble_matrices": 4,
+  "spacing_weight": 0.5,
+  "correlation_weight": 0.5,
+  "init_std": 0.1,
+  "lambda_initial": 1e-08,
+  "lambda_floor": 1e-12,
+  "lambda_max": 1e+35,
+  "lambda_growth": 10.0,
+  "lambda_backoff": 100.0,
+  "lambda_interval_epochs": 40,
+  "lattice_step": 1.0,
+  "checkpoint_every_epochs": 100,
+  "max_checkpoints": 10,
+  "log_every_epochs": 20,
+  "device": "cpu"
+ },
+ "phase3": {
+  "seed": 3,
+  "batch": 32,
+  "ratio": 0.1,
+  "final": {
+   "rel_error": 0.016101760789752007,
+   "rel_error_max": 0.03458166867494583,
+   "accuracy": 0.2265625,
+   "norm_ratio": 0.9995554089546204,
+   "hermiticity_defect": 0.0015552882105112076,
+   "energy_error": 0.002161875832825899
+  },
+  "best": {
+   "rel_error": 0.0028357631526887417,
+   "epoch": 240,
+   "metrics": {
+    "rel_error": 0.0028357631526887417,
+    "rel_error_max": 0.005424260627478361,
+    "accuracy": 1.0,
+    "norm_ratio": 1.0000786781311035,
+    "hermiticity_defect": 0.0002766063262242824,
+    "energy_error": 0.0005681476905010641
+   }
+  },
+  "lambda": 1.0,
+  "seconds": 291.3678684234619
+ }
+}

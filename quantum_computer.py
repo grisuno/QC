@@ -190,7 +190,7 @@ class JointHilbertState:
 
         rho_j[0,0] = P(qubit=0), rho_j[1,1] = P(qubit=1)
         rho_j[0,1] = sum_{pairs} alpha_{k0}^* alpha_{k1} (off-diagonal coherence)
-        bx = 2 Re(rho_j[0,1]), by = -2 Im(rho_j[0,1]), bz = P(0) - P(1)
+        bx = 2 Re(rho_j[0,1]), by = 2 Im(rho_j[1,0]), bz = P(0) - P(1)
         """
         probs = self.probabilities()
         bit_pos = self.n_qubits - 1 - qubit
@@ -215,7 +215,7 @@ class JointHilbertState:
             (self.amplitudes[:, 0] ** 2 + self.amplitudes[:, 1] ** 2).sum()
         ) + 1e-12
         bx = 2.0 * re_offdiag / total_weight
-        by = -2.0 * im_offdiag / total_weight
+        by = 2.0 * im_offdiag / total_weight
 
         mag = math.sqrt(bx ** 2 + by ** 2 + bz ** 2) + 1e-12
         if mag > 1.0:

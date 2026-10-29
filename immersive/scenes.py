@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 import os
+import threading
 from collections import deque
 from typing import Dict, List, Tuple
 
@@ -11,10 +12,11 @@ import numpy as np
 import pygame
 from OpenGL import GL as gl
 
-from . import matter, spin
-from .backend import BackendRegister, run_project_vqe
+from . import extras, matter, spin, tuning
+from .backend import BackendRegister, hamiltonian_check, run_project_vqe
 from .glkit import OrbitCamera, make_texture, upload_radial, upload_volume
 from .hud import ACCENT, DIM, INK, WARM, Hud, Lang
+from .points import LIFETIME_SECONDS, PointCloud
 from .physics import (MAX_STATES, PRESETS, SINGLE_GATES, HARTREE_EV, QubitRegister, density_peak, energy_ev,
                       orbital_label, overlap_1s, radial_table, view_radius)
 
@@ -22,6 +24,69 @@ TEXT: Dict[str, Dict[str, str]] = {
     "tab_atom": {"en": "Atom", "es": "Atomo"},
     "tab_spin": {"en": "Spin", "es": "Spin"},
     "tab_matter": {"en": "Matter", "es": "Materia"},
+    "tab_rydberg": {"en": "Rydberg", "es": "Rydberg"},
+    "tab_tune": {"en": "Fine-tune", "es": "Ajuste"},
+    "hint_tune": {"en": "drag: orbit | wheel: zoom | Space: tune/pause | 1 2 3: network | up/down: learning rate | left/right: sample | L: loss | D: data | N: new data | R: reset | A: apply to backend | E: export",
+                  "es": "arrastra: orbitar | rueda: zoom | Espacio: ajustar/pausa | 1 2 3: red | arriba/abajo: tasa de aprendizaje | izq/der: muestra | L: perdida | D: datos | N: datos nuevos | R: reiniciar | A: aplicar al backend | E: exportar"},
+    "tune_title": {"en": "Fine-tuning the backend networks", "es": "Ajuste fino de las redes del backend"},
+    "tune_hamiltonian": {"en": "net(psi) = H psi, exact H = 0.5 k^2 (backend analytical path)", "es": "net(psi) = H psi, H exacto = 0.5 k^2 (ruta analitica del backend)"},
+    "tune_schrodinger": {"en": "net(psi) = psi(t+dt), exact spectral propagator", "es": "net(psi) = psi(t+dt), propagador espectral exacto"},
+    "tune_dirac": {"en": "net(spinor) = spinor - i dt H_D spinor, exact H_D of the backend", "es": "net(espinor) = espinor - i dt H_D espinor, H_D exacto del backend"},
+    "tune_preparing": {"en": "Preparing the exact data...", "es": "Preparando los datos exactos..."},
+    "tune_status_paused": {"en": "paused: press Space to tune", "es": "en pausa: Espacio para ajustar"},
+    "tune_status_tuning": {"en": "tuning", "es": "ajustando"},
+    "tune_seen": {"en": "SEEN DATA (training set)", "es": "DATOS VISTOS (entrenamiento)"},
+    "tune_unseen": {"en": "UNSEEN DATA (held out)", "es": "DATOS NO VISTOS (reservados)"},
+    "tune_err": {"en": "error / baseline", "es": "error / base"},
+    "tune_acc": {"en": "accuracy", "es": "precision"},
+    "tune_note_err": {"en": "1.0 = no better than doing nothing, 0 = exact. Accuracy: error < 1% of the update.", "es": "1.0 = igual que no hacer nada, 0 = exacto. Precision: error < 1% de la actualizacion."},
+    "tune_weights": {"en": "WEIGHTS", "es": "PESOS"},
+    "tune_sample": {"en": "sample", "es": "muestra"},
+    "tune_applied": {"en": "APPLIED to the backend (Qubit/Entanglement use these weights)", "es": "APLICADO al backend (Qubit/Entrelazamiento usan estos pesos)"},
+    "tune_not_applied": {"en": "backend keeps the original weights", "es": "el backend conserva los pesos originales"},
+    "tune_loss": {"en": "loss", "es": "perdida"},
+    "tune_loss_relative": {"en": "relative", "es": "relativa"},
+    "tune_loss_mse": {"en": "MSE", "es": "MSE"},
+    "tune_data": {"en": "data", "es": "datos"},
+    "tune_curves": {"en": "error / baseline vs step (log)", "es": "error / base vs paso (log)"},
+    "tune_legend_seen": {"en": "seen", "es": "vistos"},
+    "tune_legend_same": {"en": "unseen, same family", "es": "no vistos, misma familia"},
+    "tune_legend_other": {"en": "unseen, other families", "es": "no vistos, otras familias"},
+    "plate_field": {"en": "field update: net (solid) vs exact (wire)", "es": "actualizacion del campo: red (solido) vs exacta (malla)"},
+    "plate_rate": {"en": "operator rate vs wavevector: net vs exact", "es": "tasa del operador vs vector de onda: red vs exacta"},
+    "plate_k0": {"en": "kernel layer 0: |K| height, phase colour, wire = original", "es": "kernel capa 0: |K| altura, fase color, malla = original"},
+    "plate_k1": {"en": "kernel layer 1: |K| height, phase colour, wire = original", "es": "kernel capa 1: |K| altura, fase color, malla = original"},
+    "hint_rydberg": {"en": "drag: orbit | wheel: zoom | left/right: time speed | P: pause | R: restart | up/down: shell n0 | O: classical orbit | X: slice",
+                     "es": "arrastra: orbitar | rueda: zoom | izq/der: velocidad | P: pausa | R: reiniciar | arriba/abajo: capa n0 | O: orbita clasica | X: corte"},
+    "rydberg_title": {"en": "Rydberg wave packet", "es": "Paquete de ondas de Rydberg"},
+    "rydberg_note": {"en": "A superposition of circular states |n, l=n-1, m=n-1> around n0 moves like a classical planet at the Kepler frequency, then spreads and revives.",
+                     "es": "Una superposicion de estados circulares |n, l=n-1, m=n-1> alrededor de n0 se mueve como un planeta clasico a la frecuencia de Kepler, luego se dispersa y revive."},
+    "rydberg_building": {"en": "Building the wave packet...", "es": "Construyendo el paquete de ondas..."},
+    "kepler_period": {"en": "Kepler period 2 pi n0^3", "es": "Periodo de Kepler 2 pi n0^3"},
+    "real_period": {"en": "= {t} in real time", "es": "= {t} en tiempo real"},
+    "mean_radius": {"en": "<r> = n0^2 + n0/2", "es": "<r> = n0^2 + n0/2"},
+    "packet_angle": {"en": "Packet angle", "es": "Angulo del paquete"},
+    "classical_angle": {"en": "Kepler angle", "es": "Angulo de Kepler"},
+    "packet_norm": {"en": "Norm on grid", "es": "Norma en la malla"},
+    "orbit_on": {"en": "classical orbit shown", "es": "orbita clasica visible"},
+    "orbit_off": {"en": "classical orbit hidden", "es": "orbita clasica oculta"},
+    "speed": {"en": "Speed", "es": "Velocidad"},
+    "born_title": {"en": "BORN RULE  (B to leave)", "es": "REGLA DE BORN  (B para salir)"},
+    "born_note": {"en": "Each dot is one position measurement drawn from |psi|^2. The cloud is only the pile-up of many dots.",
+                  "es": "Cada punto es una medicion de posicion tomada de |psi|^2. La nube es solo la acumulacion de muchos puntos."},
+    "born_count": {"en": "detections", "es": "detecciones"},
+    "born_mean": {"en": "<r> measured", "es": "<r> medido"},
+    "born_exact": {"en": "exact", "es": "exacto"},
+    "lamb": {"en": "Lamb shift", "es": "Lamb shift"},
+    "h_expect": {"en": "<H> with your Hamiltonian operator", "es": "<H> con tu operador Hamiltoniano"},
+    "h_network": {"en": "network H", "es": "H de la red"},
+    "h_reference": {"en": "-lap/2 reference", "es": "referencia -lap/2"},
+    "nn_audit": {"en": "NN HAMILTONIAN AUDIT", "es": "AUDITORIA DE LA RED H"},
+    "nn_running": {"en": "running audit...", "es": "auditando..."},
+    "nn_herm": {"en": "Hermiticity defect", "es": "Defecto de hermiticidad"},
+    "nn_kin": {"en": "|H nn - (-lap/2)| / |.|", "es": "|H nn - (-lap/2)| / |.|"},
+    "nn_fid": {"en": "Fidelity after {n} steps", "es": "Fidelidad tras {n} pasos"},
+    "nn_idle": {"en": "doing nothing", "es": "no hacer nada"},
     "hint_spin": {"en": "drag: orbit | wheel: zoom | 1-6: spin states | A: arrows | up/down: magnetic field | X: slice | S: sweep | C: colour",
                   "es": "arrastra: orbitar | rueda: zoom | 1-6: estados de spin | A: flechas | arriba/abajo: campo magnetico | X: corte | S: barrido | C: color"},
     "energy_backend": {"en": "ENERGIES - project backend", "es": "ENERGIAS - backend del proyecto"},
@@ -55,8 +120,8 @@ TEXT: Dict[str, Dict[str, str]] = {
     "mode_heat": {"en": "heat", "es": "calor"},
     "mode_spin": {"en": "spin direction", "es": "direccion de spin"},
     "mode_ice": {"en": "ice", "es": "hielo"},
-    "hint_atom": {"en": "drag: orbit | wheel: zoom | 1-9,0: orbitals | N L M: quantum numbers | X: slice | Z: slice axis | S: sweep | C: colour | -/=: density",
-                  "es": "arrastra: orbitar | rueda: zoom | 1-9,0: orbitales | N L M: numeros cuanticos | X: corte | Z: eje del corte | S: barrido | C: color | -/=: densidad"},
+    "hint_atom": {"en": "drag: orbit | wheel: zoom | 1-9,0: orbitals | N L M: quantum numbers | X: slice | Z: slice axis | S: sweep | C: colour | B: Born-rule detections | -/=: density",
+                  "es": "arrastra: orbitar | rueda: zoom | 1-9,0: orbitales | N L M: numeros cuanticos | X: corte | Z: eje del corte | S: barrido | C: color | B: detecciones de Born | -/=: densidad"},
     "hint_molecule": {"en": "drag: orbit | wheel: zoom | left/right: bond length | B: bonding/antibonding | X: slice | S: sweep | C: colour",
                       "es": "arrastra: orbitar | rueda: zoom | izq/der: longitud de enlace | B: enlazante/antienlazante | X: corte | S: barrido | C: color"},
     "hint_bloch": {"en": "drag: orbit | wheel: zoom | H X Y Z S T: gates | R: reset | 0 1 +: prepare state | K: backend | V: evolve",
@@ -283,6 +348,8 @@ class AtomScene(VolumeScene):
     key = "atom"
     tab_key = "tab_atom"
     hint_key = "hint_atom"
+    BORN_RATE = 220.0
+    BORN_CLOUD_DIM = 0.10
 
     def __init__(self, app):
         super().__init__(app)
@@ -294,8 +361,16 @@ class AtomScene(VolumeScene):
         self.note_key = ""
         self.clock_au = 0.0
         self.spin = False
+        self.born = False
+        self.cloud: PointCloud | None = None
+        self.sampler: extras.BornSampler | None = None
+        self.sampler_clock = 0.0
+        self.emit_budget = 0.0
+        self.rng = np.random.default_rng(7)
+        self.radius_sum = 0.0
+        self.radius_count = 0
         self.keymap.update({
-            pygame.K_n: "n+", pygame.K_l: "l+", pygame.K_m: "m+",
+            pygame.K_n: "n+", pygame.K_l: "l+", pygame.K_m: "m+", pygame.K_b: "born",
         })
         for p in PRESETS:
             self.keymap[getattr(pygame, f"K_{p.key}")] = f"preset:{p.key}"
@@ -324,8 +399,42 @@ class AtomScene(VolumeScene):
         self.rows = len(qn)
         self.reveal = 0.0
         self.camera.fly_to(self.rmax * 2.15)
+        self.reset_born()
+
+    def reset_born(self):
+        self.sampler = None
+        self.radius_sum = 0.0
+        self.radius_count = 0
+        if self.cloud is not None:
+            self.cloud.clear()
+
+    def refresh_sampler(self):
+        coefs = self.coefficients()[1]
+        z = coefs[:, 0] + 1j * coefs[:, 1]
+        self.sampler = extras.BornSampler.build(self.states, z[: len(self.states)], self.rmax * 0.9)
+        self.sampler_clock = 0.0
+
+    def emit_detections(self, dt: float):
+        if self.cloud is None:
+            self.cloud = PointCloud()
+        dynamic = len(self.states) > 1
+        self.sampler_clock += dt
+        if self.sampler is None or (dynamic and self.sampler_clock > 0.3):
+            self.refresh_sampler()
+        self.emit_budget += dt * self.BORN_RATE
+        count = int(self.emit_budget)
+        self.emit_budget -= count
+        if count:
+            points = self.sampler.draw(count, self.rng)
+            self.cloud.add(points, self.app.time)
+            self.radius_sum += float(np.linalg.norm(points, axis=1).sum())
+            self.radius_count += count
 
     def command(self, cmd: str):
+        if cmd == "born":
+            self.born = not self.born
+            self.reset_born()
+            return
         if cmd.startswith("preset:"):
             key = cmd.split(":")[1]
             self.load_preset(next(p for p in PRESETS if p.key == key))
@@ -364,6 +473,10 @@ class AtomScene(VolumeScene):
     def update(self, dt: float):
         super().update(dt)
         self.clock_au += dt * 3.0
+        goal = self.BORN_CLOUD_DIM if self.born else 1.0
+        self.fade_density += (goal - self.fade_density) * (1 - math.exp(-dt * 4.0))
+        if self.born:
+            self.emit_detections(dt)
 
     def render(self):
         self.set_volume_uniforms()
@@ -375,6 +488,8 @@ class AtomScene(VolumeScene):
         p.v2a("uCoef[0]", co)
         p.f1("uRows", max(1, len(self.states)))
         self.app.fullscreen.draw()
+        if self.born and self.cloud is not None:
+            self.cloud.draw(self.camera, self.app.size, self.app.time)
 
     def draw_hud(self, hud: Hud, tr: Lang):
         preset = None if self.manual else PRESETS[self.preset]
@@ -412,10 +527,40 @@ class AtomScene(VolumeScene):
         self.cut_hud(hud, tr, rect.x + hud.s(18), rect.bottom - hud.s(34))
         self.phase_legend(hud, tr, hud.size[0] - hud.s(248), hud.s(78))
         self.draw_energy_panel(hud, tr, rect.bottom / hud.scale + 12)
+        if self.born:
+            self.draw_born(hud, tr)
+
+    def draw_born(self, hud: Hud, tr: Lang):
+        w, h = hud.size
+        rect = pygame.Rect(0, 0, hud.s(560), hud.s(92))
+        rect.midbottom = (w // 2, h - hud.s(40))
+        hud.panel(rect)
+        x, y = rect.x + hud.s(16), rect.y + hud.s(10)
+        hud.text(tr("born_title"), x, y, 14, ACCENT, True)
+        y += hud.s(22)
+        for line in hud.wrap(tr("born_note"), rect.width - hud.s(32), 13):
+            hud.text(line, x, y, 13, DIM)
+            y += hud.s(18)
+        if self.radius_count and self.sampler is not None:
+            measured = self.radius_sum / self.radius_count
+            hud.text(f"{self.radius_count} {tr('born_count')}    {tr('born_mean')} = {measured:.2f} a0    {tr('born_exact')} = {self.sampler.mean_radius_exact:.2f} a0", x, y, 13, WARM)
+
+    _lamb = None
+
+    def lamb_mhz(self, comp):
+        """Leading-order QED shift from the project's LambShiftCalculator."""
+        try:
+            if AtomScene._lamb is None:
+                from quantum_framework_physics import LambShiftCalculator
+
+                AtomScene._lamb = LambShiftCalculator()
+            return AtomScene._lamb.full_lamb_shift(comp.n, comp.l, comp.j)["total_MHz"]
+        except Exception:
+            return None
 
     def draw_energy_panel(self, hud: Hud, tr: Lang, top: float):
         link = spin.shared_link()
-        rect = self.panel_rect(hud, 18, top, 330, 150)
+        rect = self.panel_rect(hud, 18, top, 330, 196)
         x, y = rect.x + hud.s(14), rect.y + hud.s(10)
         hud.text(tr("energy_backend"), x, y, 14, ACCENT, True)
         y += hud.s(22)
@@ -434,6 +579,12 @@ class AtomScene(VolumeScene):
                 y += hud.s(20)
             if len(energies) == 2:
                 hud.text(f"{tr('splitting')} = {abs(energies[0] - energies[1]) * spin.HARTREE_HZ / 1e9:.2f} GHz", x, y, 13, WARM, True)
+                y += hud.s(20)
+            for comp in comps:
+                shift = self.lamb_mhz(comp)
+                if shift is not None:
+                    hud.text(f"{tr('lamb')} {comp.label}  {shift:+.1f} MHz", x, y, 13, INK)
+                    y += hud.s(20)
         else:
             energies = sorted({-0.5 / n**2 for n, *_ in states})
             delta = abs(energies[-1] - energies[0])
@@ -864,12 +1015,236 @@ def backend_command(reg: BackendRegister, cmd: str):
         reg.live_evolve = not reg.live_evolve
 
 
+class RydbergScene(VolumeScene):
+    """Wave packet of circular Rydberg states: exact hydrogenic eigenstates whose beating moves the density like a planet."""
+
+    key = "rydberg"
+    tab_key = "tab_rydberg"
+    hint_key = "hint_rydberg"
+    DISPLAY_POWER = 1.0
+    ORBIT_SCREEN_SECONDS = 9.0
+    SHELLS = (8, 10, 12, 14)
+    ORBIT_SEGMENTS = 16
+    ELECTRON_RADIUS_FRACTION = 0.05
+    NUCLEUS_RADIUS_FRACTION = 0.03
+    RING_RADIUS_FRACTION = 0.006
+
+    def __init__(self, app):
+        super().__init__(app)
+        self.vol_tex = gl.glGenTextures(1)
+        self.packet: extras.RydbergPacket | None = None
+        self._pending: extras.RydbergPacket | None = None
+        self._building = False
+        self.shell_index = 2
+        self.clock_au = 0.0
+        self.speed = 1.0
+        self.paused = False
+        self.show_orbit = True
+        self.cut_axis = 2
+        self.density = 0.3
+        self.angle_quantum = 0.0
+        self.norm_grid = 1.0
+        self.keymap.update({
+            pygame.K_LEFT: "slower", pygame.K_RIGHT: "faster", pygame.K_p: "pause", pygame.K_r: "restart",
+            pygame.K_UP: "shell+", pygame.K_DOWN: "shell-", pygame.K_o: "orbit",
+        })
+
+    def enter(self):
+        self.reveal = 0.0
+        if self.packet is None:
+            self.build(self.SHELLS[self.shell_index])
+
+    def build(self, n0: int):
+        if self._building:
+            return
+        self._building = True
+
+        def work():
+            self._pending = extras.RydbergPacket(n0)
+            self._building = False
+
+        threading.Thread(target=work, daemon=True).start()
+
+    def loading(self) -> bool:
+        return self.packet is None or self._building
+
+    def command(self, cmd: str):
+        if cmd == "slower":
+            self.speed = max(0.125, self.speed / 2)
+        elif cmd == "faster":
+            self.speed = min(16.0, self.speed * 2)
+        elif cmd == "pause":
+            self.paused = not self.paused
+        elif cmd == "restart":
+            self.clock_au = 0.0
+        elif cmd == "orbit":
+            self.show_orbit = not self.show_orbit
+        elif cmd in ("shell+", "shell-"):
+            step = 1 if cmd == "shell+" else -1
+            self.shell_index = (self.shell_index + step) % len(self.SHELLS)
+            self.build(self.SHELLS[self.shell_index])
+        else:
+            super().command(cmd)
+
+    def adopt(self, packet: extras.RydbergPacket):
+        self.packet = packet
+        self.rmax = packet.rmax
+        self.clock_au = 0.0
+        shown = self.shown(packet.density(0.0))
+        self.norm = 1.0 / max(float(shown.max()) ** 2, 1e-12)
+        self.reveal = 0.0
+        self.camera.fly_to(packet.rmax * 2.4)
+        self.camera.pitch = 0.75
+        upload_volume(self.vol_tex, shown)
+
+    def shown(self, rho: np.ndarray) -> np.ndarray:
+        return np.power(rho, self.DISPLAY_POWER / 2.0).astype(np.float32)
+
+    @property
+    def au_per_second(self) -> float:
+        return self.packet.period / self.ORBIT_SCREEN_SECONDS * self.speed
+
+    def kepler_angle(self) -> float:
+        return (self.clock_au / self.packet.n0**3) % (2 * math.pi)
+
+    def update(self, dt: float):
+        super().update(dt)
+        if self._pending is not None:
+            packet, self._pending = self._pending, None
+            self.adopt(packet)
+        if self.packet is None:
+            return
+        if not self.paused:
+            self.clock_au += dt * self.au_per_second
+        rho = self.packet.density(self.clock_au)
+        upload_volume(self.vol_tex, self.shown(rho))
+        axis = np.linspace(-self.packet.rmax, self.packet.rmax, self.packet.grid)
+        total = float(rho.sum()) + 1e-30
+        cx = float((rho.sum(axis=(1, 2)) * axis).sum() / total)
+        cy = float((rho.sum(axis=(0, 2)) * axis).sum() / total)
+        self.angle_quantum = math.atan2(cy, cx) % (2 * math.pi)
+        self.norm_grid = total * self.packet.dv
+
+    def render(self):
+        self.set_volume_uniforms()
+        p = self.prog
+        p.i1("uMode", 3)
+        p.i1("uCount", 0)
+        p.f1("uRows", 1.0)
+        if self.packet is not None and self.show_orbit:
+            packet = self.packet
+            radius, angle = packet.mean_radius, self.kepler_angle()
+            pos, col, rad = np.zeros((12, 3)), np.zeros((12, 3)), np.zeros(12)
+            pos[1] = (radius * math.cos(angle), radius * math.sin(angle), 0.0)
+            col[0], col[1] = (1.0, 0.82, 0.35), (0.35, 0.95, 1.0)
+            rad[0], rad[1] = self.rmax * self.NUCLEUS_RADIUS_FRACTION, self.rmax * self.ELECTRON_RADIUS_FRACTION
+            a, b = np.zeros((16, 3)), np.zeros((16, 3))
+            for k in range(self.ORBIT_SEGMENTS):
+                t0, t1 = 2 * math.pi * k / self.ORBIT_SEGMENTS, 2 * math.pi * (k + 1) / self.ORBIT_SEGMENTS
+                a[k], b[k] = (radius * math.cos(t0), radius * math.sin(t0), 0.0), (radius * math.cos(t1), radius * math.sin(t1), 0.0)
+            p.i1("uNAt", 2)
+            p.v3a("uAtP[0]", pos)
+            p.v3a("uAtC[0]", col)
+            gl.glUniform1fv(p.loc("uAtR[0]"), 12, np.ascontiguousarray(rad, dtype=np.float32))
+            p.i1("uNBd", self.ORBIT_SEGMENTS)
+            p.v3a("uBdA[0]", a)
+            p.v3a("uBdB[0]", b)
+            p.f1("uBdR", self.rmax * self.RING_RADIUS_FRACTION)
+        else:
+            p.i1("uNAt", 0)
+            p.i1("uNBd", 0)
+        if self.packet is None:
+            p.f1("uReveal", 0.0)
+        gl.glActiveTexture(gl.GL_TEXTURE2)
+        gl.glBindTexture(gl.GL_TEXTURE_3D, self.vol_tex)
+        p.i1("uVol", 2)
+        self.app.fullscreen.draw()
+        gl.glActiveTexture(gl.GL_TEXTURE0)
+        if self.packet is not None:
+            p.use()
+            p.f1("uBdR", 0.0)
+
+    def draw_hud(self, hud: Hud, tr: Lang):
+        rect = self.panel_rect(hud, 18, 70, 360, 330)
+        x, y = rect.x + hud.s(18), rect.y + hud.s(14)
+        hud.text(tr("rydberg_title"), x, y, 26, INK, True)
+        y += hud.s(40)
+        if self.packet is None:
+            hud.text(tr("rydberg_building"), x, y, 15, WARM)
+            return
+        packet = self.packet
+        shells = ", ".join(str(n) for n, _ in packet.weights)
+        hud.text(f"n0 = {packet.n0}     n = {shells}", x, y, 15, ACCENT, True)
+        y += hud.s(26)
+        hud.text(f"{tr('mean_radius')} = {packet.mean_radius:.0f} a0", x, y, 14, INK)
+        y += hud.s(22)
+        real = spin.real_time_label(packet.period)
+        hud.text(f"{tr('kepler_period')} = {packet.period:.0f} au", x, y, 14, INK)
+        y += hud.s(20)
+        hud.text(tr("real_period", t=real), x, y, 14, DIM)
+        y += hud.s(26)
+        quantum, classical = math.degrees(self.angle_quantum), math.degrees(self.kepler_angle())
+        hud.text(f"{tr('packet_angle')}: {quantum:6.1f} deg", x, y, 14, (140, 235, 255))
+        y += hud.s(20)
+        hud.text(f"{tr('classical_angle')}: {classical:6.1f} deg", x, y, 14, WARM)
+        y += hud.s(20)
+        hud.text(f"{tr('packet_norm')}: {self.norm_grid:.4f}", x, y, 13, DIM)
+        y += hud.s(24)
+        for line in hud.wrap(tr("rydberg_note"), rect.width - hud.s(36), 13):
+            hud.text(line, x, y, 13, DIM)
+            y += hud.s(18)
+        y += hud.s(4)
+        orbit = tr("orbit_on") if self.show_orbit else tr("orbit_off")
+        hud.text(f"{tr('speed')} x{self.speed:g}{'  ||' if self.paused else ''}   {orbit}", x, rect.bottom - hud.s(54), 13, DIM)
+        self.cut_hud(hud, tr, x, rect.bottom - hud.s(32))
+
+
+AUDIT = {"value": None, "running": False}
+
+
+def start_audit():
+    if AUDIT["value"] is not None or AUDIT["running"]:
+        return
+    AUDIT["running"] = True
+
+    def work():
+        try:
+            AUDIT["value"] = hamiltonian_check()
+        except Exception as exc:
+            AUDIT["value"] = {"error": f"{type(exc).__name__}: {str(exc)[:60]}"}
+        AUDIT["running"] = False
+
+    threading.Thread(target=work, daemon=True).start()
+
+
+def draw_audit(hud: Hud, tr: Lang, px: int, py: int):
+    start_audit()
+    hud.text(tr("nn_audit"), px, py, 13, ACCENT, True)
+    py += hud.s(20)
+    result = AUDIT["value"]
+    if result is None:
+        hud.text(tr("nn_running"), px, py, 12, DIM)
+        return
+    if "error" in result:
+        hud.text(result["error"], px, py, 11, (255, 140, 120))
+        return
+    bad, good = (255, 150, 120), (130, 235, 160)
+    hud.text(f"{tr('nn_herm')}: {abs(result['hermiticity']) * 100:.1f} %", px, py, 12, bad if abs(result["hermiticity"]) > 1e-3 else good)
+    py += hud.s(18)
+    hud.text(f"{tr('nn_kin')} = {result['kinetic_gap']:.2f}", px, py, 12, INK)
+    py += hud.s(18)
+    beats = result["fidelity"] > result["idle_fidelity"] + 1e-3
+    hud.text(f"{tr('nn_fid', n=int(result['steps']))}: {result['fidelity']:.5f}", px, py, 12, good if beats else bad)
+    py += hud.s(18)
+    hud.text(f"{tr('nn_idle')}: {result['idle_fidelity']:.5f}", px, py, 12, DIM)
+
+
 def draw_backend_panel(hud: Hud, tr: Lang, reg: BackendRegister, x: float, y: float):
     """Show which engine produced the picture, plus the backend's spatial wavefunction fields."""
     info = reg.describe()
     fields = reg.fields()
     count = len(fields)
-    height = 214 if count <= 2 else 262
+    height = (214 if count <= 2 else 262) + 104 + 46
     rect = pygame.Rect(hud.s(x), hud.s(y), hud.s(318), hud.s(height))
     hud.panel(rect)
     px, py = rect.x + hud.s(14), rect.y + hud.s(10)
@@ -889,7 +1264,14 @@ def draw_backend_panel(hud: Hud, tr: Lang, reg: BackendRegister, x: float, y: fl
     py += hud.s(20)
     if info["error"]:
         hud.text(info["error"], px, py, 11, (255, 140, 120))
-    py += hud.s(16)
+    py += hud.s(4)
+    energy = reg.hamiltonian_expectation()
+    hud.text(tr("h_expect"), px, py, 12, ACCENT, True)
+    py += hud.s(18)
+    hud.text(f"{tr('h_network')} = {energy['network']:+.3e}", px, py, 12, INK)
+    py += hud.s(17)
+    hud.text(f"{tr('h_reference')} = {energy['reference']:+.3e}", px, py, 12, DIM)
+    py += hud.s(24)
     size = hud.s(64)
     prob = np.abs(fields) ** 2
     peak = float(prob.max()) or 1.0
@@ -898,6 +1280,8 @@ def draw_backend_panel(hud: Hud, tr: Lang, reg: BackendRegister, x: float, y: fl
         cell = pygame.Rect(px + col * (size + hud.s(8)), py + row * (size + hud.s(18)), size, size)
         hud.heatmap(prob[k], cell, peak)
         hud.text(f"|{k:0{reg.n}b}\u27e9", cell.centerx, cell.bottom + hud.s(2), 11, DIM, anchor="tc")
+    rows = 1 + (min(count, 4) - 1) // 4
+    draw_audit(hud, tr, px, py + rows * (size + hud.s(18)) + hud.s(6))
 
 
 class BlochScene(Scene):
@@ -1199,3 +1583,208 @@ class EntangleScene(Scene):
                 hud.bar(pygame.Rect(px + hud.s(52), py + hud.s(4), hud.s(170), hud.s(11)), count / total * self.results_anim, (255, 140, 220))
                 hud.text(f"{count:3d}", px + hud.s(236), py, 14, DIM)
                 py += hud.s(26)
+
+
+class TuneScene(Scene):
+    """Fine-tune the backend's own networks against its exact operators and watch the weights move in 3D."""
+
+    key = "tune"
+    tab_key = "tab_tune"
+    hint_key = "hint_tune"
+    PLATE_CENTERS = ((-1.15, 1.15, 0.0), (1.15, 1.15, 0.0), (-1.15, -1.15, 0.0), (1.15, -1.15, 0.0))
+    PLATE_MODES = (0, 0, 1, 1)
+    PLATE_HALF = 0.88
+    PLATE_HEIGHT = 0.5
+    LABEL_EDGE = 1.12
+    CURVE_FLOOR = 1e-4
+    CURVE_CEIL = 1e2
+    PLATE_KEYS = ("plate_field", "plate_rate", "plate_k0", "plate_k1")
+    CAMERA_DISTANCE = 9.0
+    CAMERA_PITCH = 0.85
+
+    def __init__(self, app):
+        super().__init__(app)
+        self.prog = app.programs["surface"]
+        self.camera = OrbitCamera(dist=self.CAMERA_DISTANCE, yaw=-math.pi / 2 + 0.35, pitch=self.CAMERA_PITCH)
+        self.camera.auto_speed = 0.0
+        self.session: tuning.TuneSession | None = None
+        self.kind = "hamiltonian"
+        self.data_index = tuning.DATA_MODES.index("mixed")
+        self.tex = gl.glGenTextures(1)
+        gl.glBindTexture(gl.GL_TEXTURE_2D_ARRAY, self.tex)
+        gl.glTexImage3D(gl.GL_TEXTURE_2D_ARRAY, 0, gl.GL_RGBA32F, tuning.PLATE_RES, tuning.PLATE_RES, 4, 0, gl.GL_RGBA, gl.GL_FLOAT, None)
+        gl.glTexParameteri(gl.GL_TEXTURE_2D_ARRAY, gl.GL_TEXTURE_MIN_FILTER, gl.GL_LINEAR)
+        gl.glTexParameteri(gl.GL_TEXTURE_2D_ARRAY, gl.GL_TEXTURE_MAG_FILTER, gl.GL_LINEAR)
+        for axis in (gl.GL_TEXTURE_WRAP_S, gl.GL_TEXTURE_WRAP_T):
+            gl.glTexParameteri(gl.GL_TEXTURE_2D_ARRAY, axis, gl.GL_CLAMP_TO_EDGE)
+        self.uploaded = -1
+        self.has_plates = False
+        self.keymap.update({
+            pygame.K_SPACE: "toggle", pygame.K_UP: "faster", pygame.K_DOWN: "slower", pygame.K_LEFT: "probe-", pygame.K_RIGHT: "probe+",
+            pygame.K_l: "loss", pygame.K_d: "data", pygame.K_n: "newdata", pygame.K_r: "reset", pygame.K_a: "apply", pygame.K_e: "export",
+            pygame.K_1: "net:hamiltonian", pygame.K_2: "net:schrodinger", pygame.K_3: "net:dirac",
+        })
+
+    def enter(self):
+        if self.session is None:
+            self.session = tuning.TuneSession(self.kind, tuning.DATA_MODES[self.data_index])
+
+    def loading(self) -> bool:
+        return self.session is None or not self.session.read().ready
+
+    def command(self, cmd: str):
+        if cmd.startswith("net:"):
+            kind = cmd.split(":")[1]
+            if kind != self.kind and self.session is not None:
+                self.session.stop()
+                self.kind = kind
+                self.has_plates = False
+                self.uploaded = -1
+                self.session = tuning.TuneSession(kind, tuning.DATA_MODES[self.data_index])
+            return
+        if self.session is None:
+            return
+        if cmd == "data":
+            self.data_index = (self.data_index + 1) % len(tuning.DATA_MODES)
+            self.session.request(f"data:{tuning.DATA_MODES[self.data_index]}")
+        else:
+            self.session.request(cmd)
+
+    def update(self, dt: float):
+        super().update(dt)
+        if self.session is None:
+            return
+        snap = self.session.read()
+        if snap.plates is not None and snap.version != self.uploaded:
+            gl.glBindTexture(gl.GL_TEXTURE_2D_ARRAY, self.tex)
+            gl.glPixelStorei(gl.GL_UNPACK_ALIGNMENT, 1)
+            gl.glTexSubImage3D(gl.GL_TEXTURE_2D_ARRAY, 0, 0, 0, 0, tuning.PLATE_RES, tuning.PLATE_RES, 4, gl.GL_RGBA, gl.GL_FLOAT,
+                               np.ascontiguousarray(snap.plates, dtype=np.float32))
+            self.uploaded = snap.version
+            self.has_plates = True
+
+    def render(self):
+        p = self.prog
+        p.use()
+        self.camera.set_uniforms(p, *self.app.size)
+        p.f1("uTime", self.app.time)
+        p.f1("uFade", 1.0)
+        p.f1("uPulse", 0.0)
+        p.i1("uNP", 4 if self.has_plates else 0)
+        p.v3a("uPlateC[0]", np.array(self.PLATE_CENTERS))
+        gl.glUniform1iv(p.loc("uPlateMode[0]"), 4, np.array(self.PLATE_MODES, dtype=np.int32))
+        p.f1("uHalf", self.PLATE_HALF)
+        p.f1("uHeight", self.PLATE_HEIGHT)
+        gl.glActiveTexture(gl.GL_TEXTURE3)
+        gl.glBindTexture(gl.GL_TEXTURE_2D_ARRAY, self.tex)
+        p.i1("uPlates", 3)
+        self.app.fullscreen.draw()
+        gl.glActiveTexture(gl.GL_TEXTURE0)
+
+    def draw_hud(self, hud: Hud, tr: Lang):
+        snap = self.session.read() if self.session is not None else tuning.Snapshot()
+        w, h = hud.size
+        self.draw_buttons(hud, tr, snap)
+        left = self.panel_rect(hud, 18, 70, 372, 350)
+        x, y = left.x + hud.s(16), left.y + hud.s(12)
+        hud.text(tr("tune_title"), x, y, 17, INK, True)
+        y += hud.s(26)
+        hud.text(f"{tuning.KIND_LABEL[self.kind]}: " + tr(f"tune_{self.kind}"), x, y, 12, DIM)
+        y += hud.s(20)
+        if not snap.ready or snap.seen is None:
+            hud.text(tr("tune_preparing") if not snap.status.startswith("error") else snap.status, x, y, 14, WARM)
+            return
+        status = tr("tune_status_tuning") if snap.running else tr("tune_status_paused")
+        hud.text(f"{status}   step {snap.step}   lr {snap.lr:.1e}", x, y, 13, WARM if snap.running else DIM, True)
+        y += hud.s(20)
+        loss_name = tr("tune_loss_relative") if snap.loss_kind == "relative" else tr("tune_loss_mse")
+        hud.text(f"{tr('tune_loss')}: {loss_name}    {tr('tune_data')}: {snap.data_mode}    seed {snap.seed}", x, y, 12, DIM)
+        y += hud.s(26)
+        hud.text(tr("tune_seen"), x, y, 13, ACCENT, True)
+        y += hud.s(19)
+        seen = snap.seen
+        hud.text(f"{tr('tune_err')} {seen['err_baseline']:.4f}   {tr('tune_acc')} {seen['accuracy'] * 100:.0f}%   MSE {seen['mse']:.2e}", x, y, 12, INK)
+        y += hud.s(25)
+        hud.text(tr("tune_unseen"), x, y, 13, ACCENT, True)
+        y += hud.s(19)
+        for family, row in snap.unseen.items():
+            mark = "*" if family == snap.probe_family else " "
+            hud.text(f"{mark}{family:8s} {tr('tune_err')} {row['err_baseline']:.4f}   {tr('tune_acc')} {row['accuracy'] * 100:.0f}%   MSE {row['mse']:.2e}", x, y, 12, INK)
+            y += hud.s(18)
+        y += hud.s(6)
+        for line in hud.wrap(tr("tune_note_err"), left.width - hud.s(32), 11):
+            hud.text(line, x, y, 11, DIM)
+            y += hud.s(15)
+        right = self.panel_rect(hud, w / hud.scale - 390, 70, 372, 262)
+        x, y = right.x + hud.s(16), right.y + hud.s(12)
+        wt = snap.weights
+        hud.text(tr("tune_weights"), x, y, 13, ACCENT, True)
+        y += hud.s(21)
+        kappa = "inf" if not math.isfinite(wt["kappa"]) else f"{wt['kappa']:.2e}"
+        for text in (
+            f"delta {wt['delta']:.4f}    alpha {wt['alpha']:.3f}    |dW| {wt['step_change']:.2e}/step",
+            f"kappa {kappa}    T_eff {wt['t_eff_book']:.2e}  (code: lr x {wt['t_eff_code_over_lr']:.2e})",
+            f"Berry {wt['berry_total']:+.4f} rad    winding {int(wt['winding_total'])}",
+            f"layer 0: Berry {wt['berry_0']:+.4f}  winding {int(wt['winding_0'])}  boundary {wt['boundary_winding_0']:+.2f}",
+            f"layer 1: Berry {wt['berry_1']:+.4f}  winding {int(wt['winding_1'])}  boundary {wt['boundary_winding_1']:+.2f}",
+        ):
+            hud.text(text, x, y, 12, INK)
+            y += hud.s(19)
+        y += hud.s(6)
+        hud.text(f"{tr('tune_sample')} {snap.probe_index % tuning.VAL_SIZE} / {tuning.VAL_SIZE}  ({snap.probe_family}, unseen)", x, y, 12, DIM)
+        y += hud.s(22)
+        hud.text(tr("tune_applied") if snap.applied else tr("tune_not_applied"), x, y, 12, WARM if snap.applied else DIM, snap.applied)
+        y += hud.s(20)
+        if snap.note:
+            hud.text(snap.note[-48:], x, y, 11, DIM)
+        self.draw_curves(hud, tr, snap)
+        self.draw_plate_labels(hud, tr, snap)
+
+    def draw_buttons(self, hud: Hud, tr: Lang, snap):
+        w, h = hud.size
+        x, y, gap, height = hud.s(18), h - hud.s(72), hud.s(8), hud.s(34)
+        specs = [(tuning.KIND_LABEL[k], f"net:{k}", self.kind == k, 112) for k in tuning.KINDS]
+        specs += [("||" if snap.running else ">", "toggle", snap.running, 44), ("Reset", "reset", False, 74), ("Apply", "apply", snap.applied, 74),
+                  ("Export", "export", False, 80), (f"data: {snap.data_mode}", "data", False, 140),
+                  (f"loss: {snap.loss_kind}", "loss", False, 140), ("new data", "newdata", False, 100)]
+        for label, action, hot, width in specs:
+            rect = pygame.Rect(x, y, hud.s(width), height)
+            hud.button(rect, label, action, hot)
+            x += rect.width + gap
+
+    def draw_curves(self, hud: Hud, tr: Lang, snap):
+        w, h = hud.size
+        rect = pygame.Rect(0, 0, hud.s(430), hud.s(150))
+        rect.bottomright = (w - hud.s(18), h - hud.s(120))
+        hud.panel(rect)
+        hud.text(tr("tune_curves"), rect.x + hud.s(12), rect.y + hud.s(8), 12, DIM)
+        area = pygame.Rect(rect.x + hud.s(12), rect.y + hud.s(28), rect.width - hud.s(24), rect.height - hud.s(62))
+        curves = snap.curves or []
+        if len(curves) >= 2:
+            lo, hi = math.log10(self.CURVE_FLOOR), math.log10(self.CURVE_CEIL)
+            steps = [c[0] for c in curves]
+            span = max(steps[-1] - steps[0], 1)
+            for column, color in ((1, (240, 240, 250)), (2, (110, 215, 255)), (3, (255, 170, 90))):
+                pts = []
+                for c in curves:
+                    value = min(max(c[column], self.CURVE_FLOOR), self.CURVE_CEIL)
+                    pts.append((area.x + (c[0] - steps[0]) / span * area.width, area.bottom - (math.log10(value) - lo) / (hi - lo) * area.height))
+                pygame.draw.lines(hud.surface, color, False, pts, max(1, hud.s(2)))
+        pygame.draw.rect(hud.surface, (255, 255, 255, 40), area, 1)
+        lx = rect.x + hud.s(12)
+        for key, color in (("tune_legend_seen", (240, 240, 250)), ("tune_legend_same", (110, 215, 255)), ("tune_legend_other", (255, 170, 90))):
+            label = tr(key)
+            hud.text(label, lx, rect.bottom - hud.s(26), 11, color)
+            lx += hud.font(11).size(label)[0] + hud.s(18)
+
+    def draw_plate_labels(self, hud: Hud, tr: Lang, snap):
+        if snap.plate_scales is None:
+            return
+        w, h = hud.size
+        for i, centre in enumerate(self.PLATE_CENTERS):
+            px, py, front = self.camera.project(np.array(centre) + np.array([0.0, self.PLATE_HALF * self.LABEL_EDGE, 0.0]), w, h)
+            if not front:
+                continue
+            for k, line in enumerate(hud.wrap(tr(self.PLATE_KEYS[i]), hud.s(190), 11)):
+                hud.text(line, px, py - hud.s(52) + k * hud.s(14), 11, INK, anchor="tc")
+            hud.text(f"max {snap.plate_scales[i]:.2e}", px, py - hud.s(14), 11, DIM, anchor="tc")

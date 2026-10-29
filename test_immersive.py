@@ -101,7 +101,6 @@ def test_backend_single_gates_match_ideal(backend, gate):
     assert reg.deviation() < 1e-5
 
 
-@pytest.mark.xfail(strict=False, reason="JointHilbertState.bloch_vector mirrors the y axis (Rx(pi/2)|0> gives +y, standard is -y)")
 def test_project_bloch_vector_uses_standard_y_convention(backend):
     reg = backend.BackendRegister(1)
     reg.queue(reg.single("Rx", 0))

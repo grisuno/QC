@@ -20,10 +20,10 @@ from .backend import BackendHub
 from .glkit import FullscreenPass, Program
 from .postfx import PostProcess
 from .hud import ACCENT, DIM, INK, WARM, Hud, Lang
-from .scenes import TEXT, AtomScene, BlochScene, EntangleScene, MatterScene, SpinScene
-from .shaders import bloch_fragment, orbital_fragment
+from .scenes import TEXT, AtomScene, BlochScene, EntangleScene, MatterScene, RydbergScene, SpinScene, TuneScene
+from .shaders import bloch_fragment, orbital_fragment, surface_fragment
 
-SCENE_ORDER = ("atom", "spin", "matter", "bloch", "entangle")
+SCENE_ORDER = ("atom", "spin", "matter", "rydberg", "tune", "bloch", "entangle")
 FADE_SECONDS = 0.45
 LETTERBOX = 0.085
 SCREENSHOT_DT = 1.0 / 30.0
@@ -37,6 +37,10 @@ TOUR_TEXT = {
            "es": "Abramos la nube en tajadas. Los huecos oscuros son nodos: lugares que el electron jamas visita."},
     "t4": {"en": "Mix two states and the cloud breathes. This oscillating charge is how atoms emit light.",
            "es": "Mezcla dos estados y la nube respira. Esta carga oscilante es como los atomos emiten luz."},
+    "t3b": {"en": "Every dot is one measurement. Measure the electron again and again and the cloud builds up: this is the Born rule.",
+            "es": "Cada punto es una medicion. Mide el electron una y otra vez y la nube se va formando: esta es la regla de Born."},
+    "t4c": {"en": "Mix many shells of a circular orbit and a wave packet emerges: a quantum electron that moves like a classical planet.",
+            "es": "Mezcla muchas capas de una orbita circular y emerge un paquete de ondas: un electron cuantico que se mueve como un planeta clasico."},
     "t4b": {"en": "The electron also has spin. Colour and arrows show its direction; in a magnetic field it precesses.",
             "es": "El electron tambien tiene spin. Color y flechas muestran su direccion; en un campo magnetico precesa."},
     "t5": {"en": "Bring two atoms together and their clouds merge into a chemical bond.",
@@ -80,6 +84,8 @@ def build_tour() -> List[Step]:
         Step(7.0, "t2", "atom", [(0.0, cmd("preset:3"))]),
         Step(10.0, "t3", "atom", [(0.0, cmd("preset:5")), (1.8, cmd("sweep"))]),
         Step(9.0, "t4", "atom", [(0.0, cmd("sweep", "preset:9", "cut")), (0.1, lambda app: setattr(app.scene, "cut", False))]),
+        Step(9.0, "t3b", "atom", [(0.0, cmd("preset:3", "born"))]),
+        Step(12.0, "t4c", "rydberg", [(0.0, spin(0.10)), (0.0, lambda app: setattr(app.scenes["atom"], "born", False))]),
         Step(10.0, "t4b", "spin", [(0.0, cmd("preset:2"))]),
         Step(9.0, "t5", "matter", [(0.0, spin(0.28)), (0.0, cmd("sys:H2O"))]),
         Step(9.0, "t6", "matter", [(0.0, cmd("sys:O2", "kind:spin")), (3.0, cmd("sys:C2H4", "kind:density", "homo")), (4.5, cmd("cut"))]),
@@ -106,7 +112,8 @@ class App:
         self.size = pygame.display.get_window_size()
         gl.glViewport(0, 0, *self.size)
         self.lang = Lang(TEXT, args.lang)
-        self.programs = {"orbital": Program(orbital_fragment(), "orbital"), "bloch": Program(bloch_fragment(), "bloch")}
+        self.programs = {"orbital": Program(orbital_fragment(), "orbital"), "bloch": Program(bloch_fragment(), "bloch"),
+                         "surface": Program(surface_fragment(), "surface")}
         self.fullscreen = FullscreenPass()
         self.post = PostProcess(*self.size)
         BackendHub.preload()
@@ -118,7 +125,7 @@ class App:
         self.hud = Hud(*self.size)
         self.scenes: Dict[str, object] = {
             "atom": AtomScene(self), "spin": SpinScene(self), "matter": MatterScene(self), "bloch": BlochScene(self),
-            "entangle": EntangleScene(self),
+            "entangle": EntangleScene(self), "rydberg": RydbergScene(self), "tune": TuneScene(self),
         }
         self.scene = self.scenes[args.scene]
         self.scene.enter()
@@ -168,6 +175,9 @@ class App:
 
     def start_tour(self):
         self.scenes["matter"].warm_up(("H2O", "O2", "C2H4"))
+        rydberg = self.scenes["rydberg"]
+        if rydberg.packet is None:
+            rydberg.build(rydberg.SHELLS[rydberg.shell_index])
         self.tour = build_tour()
         self.tour_index = -1
         self.tour_clock = 0.0

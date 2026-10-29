@@ -591,10 +591,11 @@ class DiracBackend(IPhysicsBackend):
 
         spinor = self._pack(amp)
         if self.net is not None:
-            channels = torch.cat([spinor.real, spinor.imag], dim=0).unsqueeze(0)
+            net_dtype = next(self.net.parameters()).dtype
+            channels = torch.cat([spinor.real, spinor.imag], dim=0).unsqueeze(0).to(net_dtype)
             with torch.no_grad():
                 net_out = self.net(channels).squeeze(0)
-            net_spinor = torch.complex(net_out[:4], net_out[4:])
+            net_spinor = torch.complex(net_out[:4], net_out[4:]).to(spinor.dtype)
             scale = dt / self.config.propagator_dt
             spinor_out = spinor + scale * (net_spinor - spinor)
         else:
@@ -760,7 +761,23 @@ class DiracHamiltonianOperator:
 
 
 class LambShiftCalculator:
-    """Lamb shift via Bethe's formula (self-energy + Uehling term)."""
+    """
+    Lamb shift of hydrogenic levels at leading order (alpha (Z alpha)^4 m c^2).
+
+    S states:  dE = 4 alpha^3 Z^4 / (3 pi n^3) [ln(1/(Z alpha)^2) - ln k0(n,0) + 5/6]
+    plus the Uehling vacuum-polarisation term -4 alpha^3 Z^4 / (15 pi n^3).
+    l > 0:     dE = 4 alpha^3 Z^4 / (3 pi n^3) [-ln k0(n,l) - 3/(8 kappa (2l+1))],
+    where the last term is the electron anomalous magnetic moment (kappa = -(l+1) for
+    j = l+1/2 and kappa = l for j = l-1/2).  Atomic units, alpha c = 1.
+    """
+
+    BETHE_LOG = {
+        (1, 0): 2.984128, (2, 0): 2.811769, (3, 0): 2.767664, (4, 0): 2.749824, (5, 0): 2.740823,
+        (2, 1): -0.030017, (3, 1): -0.038191, (3, 2): -0.005232,
+        (4, 1): -0.041954, (4, 2): -0.008148, (4, 3): -0.001755,
+    }
+    HARTREE_MHZ = 6.579683920502e9
+    BETHE_LOG_S_LIMIT = 2.72
 
     def __init__(self, alpha_fs: float = 0.0072973525693,
                  c_light: float = 137.035999084, electron_mass: float = 1.0) -> None:
@@ -768,34 +785,32 @@ class LambShiftCalculator:
         self.c = c_light
         self.mass = electron_mass
 
-    def bethe_formula(self, n: int, l: int, Z: int = 1) -> float:
-        if l != 0:
-            return self._higher_l_shift(n, l, Z)
-        alpha = self.alpha
-        bethe_log = 2.984 - 0.173 * (n - 1)
-        psi_sq = Z ** 3 / (math.pi * n ** 3)
-        return (8 * alpha ** 3 / (3 * math.pi * n ** 3)) * psi_sq * bethe_log
+    def _prefactor(self, n: int, Z: int) -> float:
+        return 4 * self.alpha ** 3 * Z ** 4 / (3 * math.pi * n ** 3)
 
-    def _higher_l_shift(self, n: int, l: int, Z: int) -> float:
-        return self.alpha ** 3 * Z ** 4 / (n ** 3 * l * (l + 1)) * 0.001
+    def bethe_log(self, n: int, l: int) -> float:
+        if (n, l) in self.BETHE_LOG:
+            return self.BETHE_LOG[(n, l)]
+        return self.BETHE_LOG_S_LIMIT if l == 0 else 0.0
+
+    def bethe_formula(self, n: int, l: int, Z: int = 1, j: float | None = None) -> float:
+        """Self-energy part of the shift in Hartree."""
+        if l == 0:
+            return self._prefactor(n, Z) * (math.log(1.0 / (Z * self.alpha) ** 2) - self.bethe_log(n, 0) + 5.0 / 6.0)
+        j = l + 0.5 if j is None else j
+        kappa = -(l + 1) if j > l else l
+        return self._prefactor(n, Z) * (-self.bethe_log(n, l) - 3.0 / (8.0 * kappa * (2 * l + 1)))
 
     def full_lamb_shift(self, n: int, l: int, j: float, Z: int = 1) -> Dict[str, float]:
-        alpha = self.alpha
-        m = self.mass
-        c = self.c
-        E_SE = self.bethe_formula(n, l, Z)
-        E_Uehling = (
-            (4 * alpha / (15 * math.pi)) * (Z * alpha) ** 4 * m * c ** 2 / n ** 3
-            if l == 0 else 0.0
-        )
-        E_total = E_SE + E_Uehling
-        E_MHz = E_total * 6.57968e9  # 1 Hartree = 6.57968e9 MHz (Planck)
+        e_se = self.bethe_formula(n, l, Z, j)
+        e_uehling = -4 * self.alpha ** 3 * Z ** 4 / (15 * math.pi * n ** 3) if l == 0 else 0.0
+        total = e_se + e_uehling
         return {
             "n": n, "l": l, "j": j, "Z": Z,
-            "self_energy_au": E_SE,
-            "vacuum_polarization_au": E_Uehling,
-            "total_au": E_total,
-            "total_MHz": E_MHz,
+            "self_energy_au": e_se,
+            "vacuum_polarization_au": e_uehling,
+            "total_au": total,
+            "total_MHz": total * self.HARTREE_MHZ,
         }
 
 

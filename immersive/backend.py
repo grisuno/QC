@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import logging
 import math
+import os
 import sys
 import threading
 from pathlib import Path
@@ -56,7 +57,7 @@ class BackendHub:
         self.qcm = qcm
         cfg = qcm.SimulatorConfig(
             device="cpu",
-            hamiltonian_checkpoint=str(ROOT / "hamiltonian.pth"),
+            hamiltonian_checkpoint=os.environ.get("Q2C_HAMILTONIAN", str(ROOT / "hamiltonian.pth")),
             schrodinger_checkpoint=str(ROOT / "checkpoint_phase3_training_epoch_18921_20260224_154739.pth"),
             dirac_checkpoint=str(ROOT / "best_dirac.pth"),
         )
@@ -194,8 +195,8 @@ class BackendRegister:
         if self.live_evolve:
             self.evolve(1)
 
-    def evolve(self, steps: int = 1, dt: float = 0.05):
-        """Advance every spatial amplitude field with the selected physics backend (EvolveGate)."""
+    def evolve(self, steps: int = 1, dt: float | None = None):
+        """Advance every spatial amplitude field with the selected physics backend (EvolveGate); dt=None uses the backend config dt."""
         try:
             gate = self.hub.qcm._GATE_REGISTRY["Evolve"]
             self.committed = gate.apply(self.committed, self.be, [0], {"dt": dt, "steps": steps})
@@ -239,6 +240,32 @@ class BackendRegister:
     def deviation(self) -> float:
         """Largest gap between the project's Bloch vectors and the ideal-unitary reference."""
         return max(float(np.linalg.norm(self.bloch(q) - self.ideal.bloch(q))) for q in range(self.n))
+
+    def hamiltonian_expectation(self) -> Dict[str, float]:
+        """<H> of the register state with the project's HamiltonianBackend operator, as the backend applies it (per real channel).
+
+        Each basis amplitude is a 2-channel field (re, im) on the grid; H acts on each channel through
+        HamiltonianBackend._apply_h. The analytic free-particle -laplacian/2 on the same fields is returned for reference.
+        """
+        torch = _torch()
+        backend = self.hub.backend("hamiltonian")
+        amps = self.view.amplitudes.detach().cpu()
+        probs = self.view.probabilities().detach().cpu()
+        grid = self.hub.grid
+        e_net = e_ref = 0.0
+        for k in range(amps.shape[0]):
+            psi_r, psi_i = amps[k, 0].reshape(grid, grid), amps[k, 1].reshape(grid, grid)
+            norm = float((psi_r**2 + psi_i**2).sum())
+            if norm < 1e-12:
+                continue
+            h_r, h_i = backend._apply_h(psi_r).reshape(grid, grid), backend._apply_h(psi_i).reshape(grid, grid)
+            fft_r, fft_i = torch.fft.fft2(psi_r), torch.fft.fft2(psi_i)
+            ref_r = torch.fft.ifft2(fft_r * 0.5 * backend._k_squared).real
+            ref_i = torch.fft.ifft2(fft_i * 0.5 * backend._k_squared).real
+            weight = float(probs[k])
+            e_net += weight * float((psi_r * h_r + psi_i * h_i).sum()) / norm
+            e_ref += weight * float((psi_r * ref_r + psi_i * ref_i).sum()) / norm
+        return {"network": e_net, "reference": e_ref}
 
     def measure(self, shots: int, rng: np.random.Generator | None = None) -> Dict[str, int]:
         rng = rng or np.random.default_rng()
@@ -285,3 +312,45 @@ def run_project_vqe() -> Dict[str, object]:
         "history": [e for _, _, e in trace],
     })
     return dict(_vqe_cache)
+
+
+HCHECK_SIGMA = 2.0
+HCHECK_STEPS = 200
+HCHECK_DT = 0.01
+
+
+def hamiltonian_check() -> Dict[str, float]:
+    """Audit the project's Hamiltonian network against exact free-particle quantum mechanics on its own grid.
+
+    Reports (1) the Hermiticity defect of the learned operator (a true Hamiltonian has zero),
+    (2) the relative distance of H(psi) from the exact -laplacian/2 on a Gaussian probe,
+    (3) the fidelity |<exact|nn>|^2 after HCHECK_STEPS Euler steps of the project's own HamiltonianBackend
+    versus the exact spectral propagator, and (4) the fidelity of doing nothing, the baseline the network must beat.
+    """
+    torch = _torch()
+    hub = BackendHub.shared()
+    backend = hub.backend("hamiltonian")
+    grid = hub.grid
+    axis = torch.arange(grid, dtype=torch.float32) - grid / 2
+    xs, ys = torch.meshgrid(axis, axis, indexing="ij")
+    probe = torch.exp(-(xs**2 + ys**2) / (2 * HCHECK_SIGMA**2))
+    gen = torch.Generator().manual_seed(0)
+    a, b = torch.randn(grid, grid, generator=gen), torch.randn(grid, grid, generator=gen)
+    h_a, h_b = backend._apply_h(a).reshape(grid, grid), backend._apply_h(b).reshape(grid, grid)
+    hermiticity = float(((b * h_a).sum() - (a * h_b).sum()) / (torch.norm(a) * torch.norm(h_a) + 1e-12))
+    exact = torch.fft.ifft2(torch.fft.fft2(probe) * (0.5 * backend._k_squared)).real
+    h_probe = backend._apply_h(probe).reshape(grid, grid)
+    kinetic_gap = float(torch.norm(h_probe - exact) / (torch.norm(exact) + 1e-12))
+    amp = torch.stack([probe, torch.zeros_like(probe)])
+    evolved, reference = amp.clone(), torch.complex(probe, torch.zeros_like(probe))
+    phase = torch.exp(-0.5j * backend._k_squared.to(reference.dtype) * HCHECK_DT)
+    for _ in range(HCHECK_STEPS):
+        evolved = backend.evolve_amplitude(evolved, HCHECK_DT)
+        reference = torch.fft.ifft2(torch.fft.fft2(reference) * phase)
+    state = torch.complex(evolved[0], evolved[1])
+    overlap = (reference.conj() * state).sum()
+    fidelity = float(overlap.abs() ** 2 / ((reference.abs() ** 2).sum() * (state.abs() ** 2).sum()))
+    start = torch.complex(probe, torch.zeros_like(probe))
+    baseline = float((reference.conj() * start).sum().abs() ** 2 / ((reference.abs() ** 2).sum() * (start.abs() ** 2).sum()))
+    return {"hermiticity": hermiticity, "kinetic_gap": kinetic_gap, "fidelity": fidelity, "idle_fidelity": baseline,
+            "trained": float(backend.net is not None), "steps": float(HCHECK_STEPS)}
