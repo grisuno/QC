@@ -48,8 +48,21 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
+
+# Canonical neural physics stack (single source of truth lives in
+# quantum_framework_physics.py; re-exported here for backward compatibility).
+from quantum_framework_physics import (
+    SpectralLayer,
+    HamiltonianBackboneNet,
+    SchrodingerSpectralNet,
+    DiracSpectralNet,
+    GammaMatrices,
+    IPhysicsBackend,
+    HamiltonianBackend,
+    SchrodingerBackend,
+    DiracBackend,
+    load_checkpoint,
+)
 
 warnings.filterwarnings("once", category=DeprecationWarning)
 warnings.filterwarnings("once", category=FutureWarning)
@@ -93,187 +106,14 @@ class SimulatorConfig:
     potential_depth: float = 5.0
     potential_width: float = 0.3
 
-    hamiltonian_checkpoint: str = "weights/latest.pth"
-    schrodinger_checkpoint: str = "weights/schrodinger_crystal_final.pth"
-    dirac_checkpoint: str = "weights/dirac_phase5_latest.pth"
+    hamiltonian_checkpoint: str = "hamiltonian.pth"
+    schrodinger_checkpoint: str = "checkpoint_phase3_training_epoch_18921_20260224_154739.pth"
+    dirac_checkpoint: str = "best_dirac.pth"
 
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
     random_seed: int = 42
     max_qubits: int = 8
-
-
-class SpectralLayer(nn.Module):
-    """
-    Spectral convolution in frequency domain.
-
-    Learns complex kernels that modulate Fourier coefficients.
-    Architecture is identical to the training scripts.
-    """
-
-    def __init__(self, channels: int, grid_size: int) -> None:
-        super().__init__()
-        self.channels = channels
-        self.grid_size = grid_size
-        self.kernel_real = nn.Parameter(
-            torch.randn(channels, channels, grid_size // 2 + 1, grid_size) * 0.1
-        )
-        self.kernel_imag = nn.Parameter(
-            torch.randn(channels, channels, grid_size // 2 + 1, grid_size) * 0.1
-        )
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply spectral convolution via RFFT2."""
-        x_fft = torch.fft.rfft2(x)
-        _b, _c, freq_h, freq_w = x_fft.shape
-        kr = F.interpolate(
-            self.kernel_real.mean(dim=0).unsqueeze(0),
-            size=(freq_h, freq_w), mode="bilinear", align_corners=False,
-        ).squeeze(0)
-        ki = F.interpolate(
-            self.kernel_imag.mean(dim=0).unsqueeze(0),
-            size=(freq_h, freq_w), mode="bilinear", align_corners=False,
-        ).squeeze(0)
-        real_part = x_fft.real * kr - x_fft.imag * ki
-        imag_part = x_fft.real * ki + x_fft.imag * kr
-        return torch.fft.irfft2(
-            torch.complex(real_part, imag_part),
-            s=(self.grid_size, self.grid_size),
-        )
-
-
-class HamiltonianBackboneNet(nn.Module):
-    """
-    Hamiltonian backbone: single-channel field -> H|psi>.
-    Shared by all physics backends as the H operator.
-    """
-
-    def __init__(self, grid_size: int, hidden_dim: int, num_spectral_layers: int) -> None:
-        super().__init__()
-        self.grid_size = grid_size
-        self.input_proj = nn.Conv2d(1, hidden_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList(
-            [SpectralLayer(hidden_dim, grid_size) for _ in range(num_spectral_layers)]
-        )
-        self.output_proj = nn.Conv2d(hidden_dim, 1, kernel_size=1)
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Accepts (G,G), (1,G,G), or (B,1,G,G). Returns squeezed output."""
-        if x.dim() == 2:
-            x = x.unsqueeze(0).unsqueeze(0)
-        elif x.dim() == 3:
-            x = x.unsqueeze(1)
-        x = F.gelu(self.input_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        return self.output_proj(x).squeeze(1)
-
-
-class SchrodingerSpectralNet(nn.Module):
-    """
-    Schrodinger network: 2-channel [psi_real, psi_imag] -> evolved wavefunction.
-    """
-
-    def __init__(self, grid_size: int, hidden_dim: int, expansion_dim: int,
-                 num_spectral_layers: int) -> None:
-        super().__init__()
-        self.grid_size = grid_size
-        self.input_proj = nn.Conv2d(2, hidden_dim, kernel_size=1)
-        self.expansion_proj = nn.Conv2d(hidden_dim, expansion_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList(
-            [SpectralLayer(expansion_dim, grid_size) for _ in range(num_spectral_layers)]
-        )
-        self.contraction_proj = nn.Conv2d(expansion_dim, hidden_dim, kernel_size=1)
-        self.output_proj = nn.Conv2d(hidden_dim, 2, kernel_size=1)
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """(2,G,G) or (B,2,G,G) -> same shape."""
-        if x.dim() == 3:
-            x = x.unsqueeze(0)
-        x = F.gelu(self.input_proj(x))
-        x = F.gelu(self.expansion_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        x = F.gelu(self.contraction_proj(x))
-        return self.output_proj(x)
-
-
-class DiracSpectralNet(nn.Module):
-    """
-    Dirac network: 8-channel spinor [4 components x (real,imag)] -> evolved spinor.
-    """
-
-    def __init__(self, grid_size: int, hidden_dim: int, expansion_dim: int,
-                 num_spectral_layers: int) -> None:
-        super().__init__()
-        self.grid_size = grid_size
-        self.input_proj = nn.Conv2d(8, hidden_dim, kernel_size=1)
-        self.expansion_proj = nn.Conv2d(hidden_dim, expansion_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList(
-            [SpectralLayer(expansion_dim, grid_size) for _ in range(num_spectral_layers)]
-        )
-        self.contraction_proj = nn.Conv2d(expansion_dim, hidden_dim, kernel_size=1)
-        self.output_proj = nn.Conv2d(hidden_dim, 8, kernel_size=1)
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """(8,G,G) or (B,8,G,G) -> same shape."""
-        if x.dim() == 3:
-            x = x.unsqueeze(0)
-        x = F.gelu(self.input_proj(x))
-        x = F.gelu(self.expansion_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        x = F.gelu(self.contraction_proj(x))
-        return self.output_proj(x)
-
-
-# ---------------------------------------------------------------------------
-# Gamma matrices
-# ---------------------------------------------------------------------------
-
-class GammaMatrices:
-    """Dirac gamma matrices in Dirac or Weyl representation."""
-
-    def __init__(self, representation: str = "dirac", device: str = "cpu") -> None:
-        self.representation = representation
-        self.device = device
-        self._init_matrices()
-
-    def _init_matrices(self) -> None:
-        if self.representation == "dirac":
-            self.gamma0 = torch.tensor(
-                [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, -1, 0], [0, 0, 0, -1]],
-                dtype=torch.complex64, device=self.device)
-            self.gamma1 = torch.tensor(
-                [[0, 0, 0, 1], [0, 0, 1, 0], [0, -1, 0, 0], [-1, 0, 0, 0]],
-                dtype=torch.complex64, device=self.device)
-            self.gamma2 = torch.tensor(
-                [[0, 0, 0, -1j], [0, 0, 1j, 0], [0, 1j, 0, 0], [-1j, 0, 0, 0]],
-                dtype=torch.complex64, device=self.device)
-            self.gamma3 = torch.tensor(
-                [[0, 0, 1, 0], [0, 0, 0, -1], [-1, 0, 0, 0], [0, 1, 0, 0]],
-                dtype=torch.complex64, device=self.device)
-        elif self.representation == "weyl":
-            self.gamma0 = torch.tensor(
-                [[0, 0, 1, 0], [0, 0, 0, 1], [1, 0, 0, 0], [0, 1, 0, 0]],
-                dtype=torch.complex64, device=self.device)
-            self.gamma1 = torch.tensor(
-                [[0, 0, 0, 1], [0, 0, 1, 0], [0, -1, 0, 0], [-1, 0, 0, 0]],
-                dtype=torch.complex64, device=self.device)
-            self.gamma2 = torch.tensor(
-                [[0, 0, 0, -1j], [0, 0, 1j, 0], [0, 1j, 0, 0], [-1j, 0, 0, 0]],
-                dtype=torch.complex64, device=self.device)
-            self.gamma3 = torch.tensor(
-                [[0, 0, 1, 0], [0, 0, 0, -1], [-1, 0, 0, 0], [0, 1, 0, 0]],
-                dtype=torch.complex64, device=self.device)
-        else:
-            raise ValueError(f"Unknown gamma representation: {self.representation}")
-        self.gammas = [self.gamma0, self.gamma1, self.gamma2, self.gamma3]
-
-    def to(self, device: str) -> "GammaMatrices":
-        """Move all matrices to device."""
-        self.device = device
-        self._init_matrices()
-        return self
+    propagator_dt: float = 0.01
 
 
 class JointHilbertState:
@@ -437,10 +277,18 @@ class PotentialGenerator:
         return result
 
 
-def _solve_eigenstate(config: SimulatorConfig, potential: torch.Tensor, n: int) -> torch.Tensor:
+def _solve_eigenstate(
+    config: SimulatorConfig,
+    potential: torch.Tensor,
+    n: int,
+    generator: Optional[torch.Generator] = None,
+) -> torch.Tensor:
     """
     Solve the 1D marginal Hamiltonian and return the n-th eigenstate
     as a normalized 2-channel (2, G, G) real tensor.
+
+    Uses a caller-provided torch.Generator for the random phase so the
+    global RNG state is never touched (reproducibility).
     """
     G = config.grid_size
     kx = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
@@ -452,13 +300,17 @@ def _solve_eigenstate(config: SimulatorConfig, potential: torch.Tensor, n: int) 
     n_clamped = min(n, G - 1)
     psi_1d = eigenvectors[:, n_clamped]
     psi_2d = psi_1d.unsqueeze(1).expand(-1, G).clone()
-    phase = torch.randn(G, G) * 0.1
+    phase = torch.randn(G, G, generator=generator) * 0.1
     psi = torch.stack([psi_2d * torch.cos(phase), psi_2d * torch.sin(phase)], dim=0)
     norm = torch.sqrt((psi ** 2).sum()) + 1e-8
     return psi / norm
 
 
-def _build_basis_amplitude(config: SimulatorConfig, basis_idx: int) -> torch.Tensor:
+def _build_basis_amplitude(
+    config: SimulatorConfig,
+    basis_idx: int,
+    generator: Optional[torch.Generator] = None,
+) -> torch.Tensor:
     """
     Build the (2, G, G) spatial wavefunction for amplitude at basis index basis_idx.
 
@@ -468,7 +320,7 @@ def _build_basis_amplitude(config: SimulatorConfig, basis_idx: int) -> torch.Ten
     pot_gen = PotentialGenerator(config)
     popcount = bin(basis_idx).count("1")
     potential = pot_gen.mixed(seed=basis_idx * 17 + 3)
-    return _solve_eigenstate(config, potential, n=popcount)
+    return _solve_eigenstate(config, potential, n=popcount, generator=generator)
 
 
 class JointStateFactory:
@@ -476,6 +328,8 @@ class JointStateFactory:
 
     def __init__(self, config: SimulatorConfig) -> None:
         self.config = config
+        # Dedicated generator: reproducible without touching the global RNG.
+        self._generator = torch.Generator().manual_seed(config.random_seed)
 
     def _empty(self, n_qubits: int) -> torch.Tensor:
         return torch.zeros(2 ** n_qubits, 2, self.config.grid_size, self.config.grid_size,
@@ -484,7 +338,7 @@ class JointStateFactory:
     def all_zeros(self, n_qubits: int) -> JointHilbertState:
         """Initialize register in |00...0>."""
         amps = self._empty(n_qubits)
-        amps[0] = _build_basis_amplitude(self.config, 0).to(self.config.device)
+        amps[0] = _build_basis_amplitude(self.config, 0, self._generator).to(self.config.device)
         state = JointHilbertState(amps, n_qubits)
         state.normalize_()
         return state
@@ -494,7 +348,7 @@ class JointStateFactory:
         if k < 0 or k >= 2 ** n_qubits:
             raise ValueError(f"k={k} out of range for {n_qubits} qubits")
         amps = self._empty(n_qubits)
-        amps[k] = _build_basis_amplitude(self.config, k).to(self.config.device)
+        amps[k] = _build_basis_amplitude(self.config, k, self._generator).to(self.config.device)
         state = JointHilbertState(amps, n_qubits)
         state.normalize_()
         return state
@@ -502,238 +356,6 @@ class JointStateFactory:
     def from_bitstring(self, bitstring: str) -> JointHilbertState:
         """Initialize in the basis state given by binary string."""
         return self.basis_state(len(bitstring), int(bitstring, 2))
-
-
-# ---------------------------------------------------------------------------
-# Physics backends
-# ---------------------------------------------------------------------------
-
-class IPhysicsBackend(ABC):
-    """Abstract physics backend for spatial wavefunction evolution."""
-
-    @abstractmethod
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        """Evolve a single (2, G, G) wavefunction by dt under H."""
-
-    @abstractmethod
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        """Apply global phase e^{i*phi} to a (2, G, G) amplitude."""
-
-
-class HamiltonianBackend(IPhysicsBackend):
-    """
-    Physics backend driven by the Hamiltonian neural network.
-
-    Performs first-order Schrodinger time evolution:
-        psi(t+dt) = psi(t) - i*dt*H*psi(t)
-    """
-
-    def __init__(self, config: SimulatorConfig) -> None:
-        self.config = config
-        self.device = config.device
-        self.net: Optional[HamiltonianBackboneNet] = None
-        self._laplacian: Optional[torch.Tensor] = None
-        self._load()
-        self._precompute_laplacian()
-
-    def _load(self) -> None:
-        net = HamiltonianBackboneNet(
-            self.config.grid_size, self.config.hidden_dim, self.config.num_spectral_layers
-        ).to(self.device)
-        path = self.config.hamiltonian_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("HamiltonianBackend: loaded %s", path)
-            except Exception as exc:
-                _LOG.warning("HamiltonianBackend: load failed (%s), random init", exc)
-        else:
-            _LOG.info("HamiltonianBackend: no checkpoint at %s, random init", path)
-        net.eval()
-        for p in net.parameters():
-            p.requires_grad_(False)
-        self.net = net
-
-    def _precompute_laplacian(self) -> None:
-        G = self.config.grid_size
-        kx = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        ky = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        KX, KY = torch.meshgrid(kx, ky, indexing="ij")
-        self._laplacian = (-(KX ** 2 + KY ** 2)).float().to(self.device)
-
-    def _apply_h(self, field: torch.Tensor) -> torch.Tensor:
-        if self.net is not None:
-            with torch.no_grad():
-                result = self.net(field.to(self.device))
-                return result.squeeze() if result.dim() > 2 else result
-        fft = torch.fft.fft2(field.to(self.device))
-        return torch.fft.ifft2(fft * self._laplacian).real
-
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        """dpsi/dt = -i H psi  =>  psi' = psi + dt * (-i H psi) = psi + dt*(H_i*r - H_r*i)."""
-        psi_r = amp[0].to(self.device)
-        psi_i = amp[1].to(self.device)
-        h_r = self._apply_h(psi_r)
-        h_i = self._apply_h(psi_i)
-        new_r = psi_r + dt * h_i
-        new_i = psi_i - dt * h_r
-        out = torch.stack([new_r, new_i], dim=0)
-        norm = torch.sqrt((out ** 2).sum()) + 1e-8
-        return out / norm
-
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        c = math.cos(phase_angle)
-        s = math.sin(phase_angle)
-        return torch.stack([c * amp[0] - s * amp[1], s * amp[0] + c * amp[1]], dim=0)
-
-
-class SchrodingerBackend(IPhysicsBackend):
-    """
-    Physics backend driven by the Schrodinger network.
-
-    Uses the learned 2-channel spectral network for wavefunction propagation.
-    Falls back to HamiltonianBackend if checkpoint is unavailable.
-    """
-
-    def __init__(self, config: SimulatorConfig, hamiltonian: HamiltonianBackend) -> None:
-        self.config = config
-        self.device = config.device
-        self.hamiltonian = hamiltonian
-        self.net: Optional[SchrodingerSpectralNet] = None
-        self._load()
-
-    def _load(self) -> None:
-        net = SchrodingerSpectralNet(
-            self.config.grid_size, self.config.hidden_dim,
-            self.config.expansion_dim, self.config.num_spectral_layers
-        ).to(self.device)
-        path = self.config.schrodinger_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("SchrodingerBackend: loaded %s", path)
-            except Exception as exc:
-                _LOG.warning("SchrodingerBackend: load failed (%s), using H-only", exc)
-                return
-        else:
-            _LOG.info("SchrodingerBackend: no checkpoint at %s, using H-only", path)
-            return
-        net.eval()
-        for p in net.parameters():
-            p.requires_grad_(False)
-        self.net = net
-
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        if self.net is None:
-            return self.hamiltonian.evolve_amplitude(amp, dt)
-        with torch.no_grad():
-            out = self.net(amp.unsqueeze(0).to(self.device)).squeeze(0)
-        norm = torch.sqrt((out ** 2).sum()) + 1e-8
-        return out / norm
-
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        return self.hamiltonian.apply_phase(amp, phase_angle)
-
-
-class DiracBackend(IPhysicsBackend):
-    """
-    Physics backend driven by the Dirac network.
-
-    Expands each (2,G,G) amplitude to a 4-component spinor, propagates
-    via the Dirac network, then projects back to (2,G,G).
-    """
-
-    def __init__(self, config: SimulatorConfig, hamiltonian: HamiltonianBackend) -> None:
-        self.config = config
-        self.device = config.device
-        self.hamiltonian = hamiltonian
-        self.gamma = GammaMatrices(config.gamma_representation, config.device)
-        self.net: Optional[DiracSpectralNet] = None
-        self._load()
-        self._precompute_dirac()
-
-    def _load(self) -> None:
-        net = DiracSpectralNet(
-            self.config.grid_size, self.config.hidden_dim,
-            self.config.expansion_dim, self.config.num_spectral_layers
-        ).to(self.device)
-        path = self.config.dirac_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("DiracBackend: loaded %s", path)
-            except Exception as exc:
-                _LOG.warning("DiracBackend: load failed (%s), using H-only", exc)
-                return
-        else:
-            _LOG.info("DiracBackend: no checkpoint at %s, using H-only", path)
-            return
-        net.eval()
-        for p in net.parameters():
-            p.requires_grad_(False)
-        self.net = net
-
-    def _precompute_dirac(self) -> None:
-        G = self.config.grid_size
-        kx = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        ky = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        KX, KY = torch.meshgrid(kx, ky, indexing="ij")
-        self.kx_grid = KX.to(self.device)
-        self.ky_grid = KY.to(self.device)
-        self.alpha_x = (self.gamma.gamma0 @ self.gamma.gamma1).to(self.device)
-        self.alpha_y = (self.gamma.gamma0 @ self.gamma.gamma2).to(self.device)
-        self.beta = self.gamma.gamma0.to(self.device)
-
-    def _pack(self, amp: torch.Tensor) -> torch.Tensor:
-        G = self.config.grid_size
-        psi_c = torch.complex(amp[0].to(self.device), amp[1].to(self.device))
-        s = math.sqrt(0.5)
-        spinor = torch.zeros(4, G, G, dtype=torch.complex64, device=self.device)
-        spinor[0] = psi_c * s
-        spinor[1] = psi_c * s
-        spinor[2] = psi_c.conj() * s
-        spinor[3] = psi_c.conj() * s
-        return spinor
-
-    def _unpack(self, spinor: torch.Tensor) -> torch.Tensor:
-        particle = spinor[:2].mean(dim=0)
-        out = torch.stack([particle.real, particle.imag], dim=0)
-        norm = torch.sqrt((out ** 2).sum()) + 1e-8
-        return out / norm
-
-    def _analytical_dirac(self, spinor: torch.Tensor) -> torch.Tensor:
-        m, c = self.config.dirac_mass, self.config.dirac_c
-        result = torch.zeros_like(spinor)
-        for comp in range(4):
-            fft = torch.fft.fft2(spinor[comp])
-            px = torch.fft.ifft2(fft * self.kx_grid)
-            py = torch.fft.ifft2(fft * self.ky_grid)
-            for row in range(4):
-                result[row] += (
-                    c * self.alpha_x[row, comp] * px
-                    + c * self.alpha_y[row, comp] * py
-                    + m * c ** 2 * self.beta[row, comp] * spinor[comp]
-                )
-        return result
-
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        spinor = self._pack(amp)
-        if self.net is not None:
-            channels = torch.cat([spinor.real, spinor.imag], dim=0).unsqueeze(0)
-            with torch.no_grad():
-                out = self.net(channels).squeeze(0)
-            spinor_out = torch.complex(out[:4], out[4:])
-        else:
-            h_spinor = self._analytical_dirac(spinor)
-            spinor_out = spinor - 1j * dt * h_spinor
-        norm = torch.sqrt((spinor_out.abs() ** 2).sum()) + 1e-8
-        return self._unpack(spinor_out / norm)
-
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        return self.hamiltonian.apply_phase(amp, phase_angle)
 
 
 def _single_qubit_unitary(
@@ -1090,9 +712,8 @@ class ToffoliGate(IQuantumGate):
                 k_flip = k | (1 << tgt_bit)
                 new_amps[k] = state.amplitudes[k_flip].clone()
                 new_amps[k_flip] = state.amplitudes[k].clone()
-        new_state = JointHilbertState(new_amps, n)
-        new_state.normalize_()
-        return new_state
+        # Exact permutation: unitary by construction, preserves total norm.
+        return JointHilbertState(new_amps, n)
 
 
 class MCZGate(IQuantumGate):
@@ -1131,7 +752,17 @@ class EvolveGate(IQuantumGate):
     """
     Free Hamiltonian evolution applied to every amplitude in the joint state.
 
-    Uses the active physics backend.
+    Uses the active physics backend.  The evolution preserves each
+    amplitude's norm (unitary dynamics keeps ||U psi|| = ||psi||), so the
+    Born weights of a superposition are conserved -- previously each
+    amplitude was renormalized to 1, which silently flattened any
+    non-uniform superposition into a uniform one.
+
+    Note: in the joint Hilbert space representation every computational
+    basis amplitude is a full spatial wavefunction, so the evolution is
+    inherently global; ``targets`` is accepted for API compatibility.
+    ``dt`` defaults to the backend configuration value.
+
     params: {"dt": float, "steps": int}
     """
 
@@ -1141,7 +772,8 @@ class EvolveGate(IQuantumGate):
 
     def apply(self, state, backend, targets, params):
         p = params or {}
-        dt = p.get("dt", 0.01)
+        default_dt = getattr(getattr(backend, "config", None), "dt", 0.01)
+        dt = p.get("dt") if p.get("dt") is not None else default_dt
         steps = int(p.get("steps", 1))
         new_amps = state.amplitudes.clone()
         for k in range(state.dim):
@@ -1151,9 +783,9 @@ class EvolveGate(IQuantumGate):
             for _ in range(steps):
                 amp = backend.evolve_amplitude(amp, dt)
             new_amps[k] = amp
-        new_state = JointHilbertState(new_amps, state.n_qubits)
-        new_state.normalize_()
-        return new_state
+        # Per-amplitude norm preservation implies global norm preservation;
+        # no renormalization is applied (that would mask physics errors).
+        return JointHilbertState(new_amps, state.n_qubits)
 
 
 _GATE_REGISTRY: Dict[str, IQuantumGate] = {
@@ -1248,7 +880,7 @@ class QuantumCircuit:
     def ccx(self, c0: int, c1: int, tgt: int) -> "QuantumCircuit":
         return self.toffoli(c0, c1, tgt)
 
-    def evolve(self, qubits: List[int], dt: float = 0.01, steps: int = 1) -> "QuantumCircuit":
+    def evolve(self, qubits: List[int], dt: Optional[float] = None, steps: int = 1) -> "QuantumCircuit":
         return self._append("Evolve", qubits, {"dt": dt, "steps": steps})
 
     def barrier(self) -> "QuantumCircuit":
@@ -1360,8 +992,8 @@ class QuantumComputer:
 
     def __init__(self, config: Optional[SimulatorConfig] = None) -> None:
         self.config = config or SimulatorConfig()
-        torch.manual_seed(self.config.random_seed)
-        np.random.seed(self.config.random_seed)
+        # No global RNG seeding: randomness flows through the dedicated
+        # generator owned by JointStateFactory (see _build_basis_amplitude).
         self._h_backend = HamiltonianBackend(self.config)
         self._s_backend = SchrodingerBackend(self.config, self._h_backend)
         self._d_backend = DiracBackend(self.config, self._h_backend)
@@ -1599,8 +1231,12 @@ class QuantumComputer:
             c.h(i)
         return self.run(c, backend=backend)
 
+_CHECK_LOG: List[bool] = []
+
+
 def _check(label: str, condition: bool) -> bool:
     """Print PASS/FAIL for a single assertion. Returns True if passed."""
+    _CHECK_LOG.append(condition)
     status = "PASS" if condition else "FAIL"
     _LOG.info("  [%s] %s", status, label)
     return condition
@@ -1622,6 +1258,7 @@ def run_phase_tests(config: SimulatorConfig) -> int:
     _LOG.info("=" * 70)
     _LOG.info("PHASE COHERENCE & UNITARITY TEST SUITE")
     _LOG.info("=" * 70)
+    _CHECK_LOG.clear()
     failures = 0
     tol = 0.05  
     _LOG.info("\n--- Group 1: Single-qubit phase algebra ---")
@@ -1649,7 +1286,7 @@ def run_phase_tests(config: SimulatorConfig) -> int:
     # H S H applied twice = H S^2 H = H Z H = X  =>  |0> -> |1>  (P(1) = 1.0)
     
     c = QuantumCircuit(1)
-    c.h(0).s(0).s(0).h(0)   # HSS†H = HZH = X
+    c.h(0).s(0).s(0).h(0)   # H S S H = H Z H = X
     r = qc.run(c)
     p1 = r.marginal_p1[0]
     ok = abs(p1 - 1.0) < tol
@@ -1820,8 +1457,9 @@ def run_phase_tests(config: SimulatorConfig) -> int:
     _check(f"|0> entropy = 0 bits  (got {ent:.4f})", ok)
 
     
-    # Summary
-    total = 22  # total assertions above
+    # Summary (counted programmatically from the checks actually executed)
+    total = len(_CHECK_LOG)
+    failures = _CHECK_LOG.count(False)
     passed = total - failures
     _LOG.info("")
     _LOG.info("=" * 70)
@@ -1895,9 +1533,9 @@ if __name__ == "__main__":
     parser.add_argument("--hidden-dim",             type=int,   default=32)
     parser.add_argument("--expansion-dim",          type=int,   default=64)
     parser.add_argument("--num-spectral-layers",    type=int,   default=2)
-    parser.add_argument("--hamiltonian-checkpoint", type=str,   default="weights/latest.pth")
-    parser.add_argument("--schrodinger-checkpoint", type=str,   default="weights/schrodinger_crystal_final.pth")
-    parser.add_argument("--dirac-checkpoint",       type=str,   default="weights/dirac_phase5_latest.pth")
+    parser.add_argument("--hamiltonian-checkpoint", type=str,   default="hamiltonian.pth")
+    parser.add_argument("--schrodinger-checkpoint", type=str,   default="checkpoint_phase3_training_epoch_18921_20260224_154739.pth")
+    parser.add_argument("--dirac-checkpoint",       type=str,   default="best_dirac.pth")
     parser.add_argument("--dirac-mass",             type=float, default=1.0)
     parser.add_argument("--seed",                   type=int,   default=42)
     parser.add_argument("--device",                 type=str,   default=None)

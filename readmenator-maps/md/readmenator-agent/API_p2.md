@@ -1,0 +1,487 @@
+# API (page 2 of 3)
+Previous: [API.md](API.md)
+
+## qc_dashboard.py
+Depends on: `orbital_visualizer2.py`, `qc_integration.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_visualization.py`
+Imported by: `test_qc_integration.py`
+- `H2VQESolver.__init__` (method) `qc_dashboard.py:166` `def __init__(self, config)`
+- `H2VQESolver.run_vqe` (method) `qc_dashboard.py:248` `def run_vqe(self, bond_length, max_iter)`
+- `H2VQESolver.energy_landscape` (method) `qc_dashboard.py:293` `def energy_landscape(self)` -- Sweep bond length and return VQE energy curve.
+- `H2VQESolver.orbital_wavefunction` (method) `qc_dashboard.py:318` `def orbital_wavefunction(bond_length, grid_points)` -- Compute hydrogen 1s orbital wavefunction along the internuclear axis.
+- `VisualisationEngine.__init__` (method) `qc_dashboard.py:343` `def __init__(self, config)`
+- `VisualisationEngine.available` (method) `qc_dashboard.py:362` `def available(self)`
+- `VisualisationEngine.render_full_dashboard` (method) `qc_dashboard.py:365` `def render_full_dashboard(self, snapshots, current)`
+- `VisualisationEngine.render_entropy_chart` (method) `qc_dashboard.py:403` `def render_entropy_chart(self, snapshots)`
+- `VisualisationEngine.render_entanglement_profile` (method) `qc_dashboard.py:429` `def render_entanglement_profile(self, snapshots)` -- Entropy vs cut position for the latest snapshot.
+- `VisualisationEngine.render_vqe_convergence` (method) `qc_dashboard.py:474` `def render_vqe_convergence(self, convergence, e_hf, e_fci)`
+- `VisualisationEngine.render_energy_landscape` (method) `qc_dashboard.py:501` `def render_energy_landscape(self, bond_lengths, vqe_energies, hf_energies, fci_energies)`
+- `VisualisationEngine.render_orbital_plot` (method) `qc_dashboard.py:533` `def render_orbital_plot(self, orbital_data)`
+- `VisualisationEngine.render_entropy_scaling` (method) `qc_dashboard.py:562` `def render_entropy_scaling(self, data)`
+- `VisualisationEngine.render_orbital_2d_projections` (method) `qc_dashboard.py:670` `def render_orbital_2d_projections(self, data)`
+- `SimulatorBackend.__init__` (method) `qc_dashboard.py:728` `def __init__(self, config)`
+- `SimulatorBackend.execute_circuit` (method) `qc_dashboard.py:775` `def execute_circuit(self, gates, n_qubits)`
+- `Plotly3DEngine.__init__` (method) `qc_dashboard.py:982` `def __init__(self, config)`
+- `Plotly3DEngine.available` (method) `qc_dashboard.py:998` `def available(self)`
+- `Plotly3DEngine.render_bloch_3d` (method) `qc_dashboard.py:1001` `def render_bloch_3d(self, bloch_vectors)`
+- `Plotly3DEngine.render_probability_3d` (method) `qc_dashboard.py:1049` `def render_probability_3d(self, probabilities, n_qubits)`
+- `Plotly3DEngine.render_state_3d` (method) `qc_dashboard.py:1080` `def render_state_3d(self, probabilities, phases)` -- 3D scatter plot: X=real, Y=imaginary, Z=probability.
+- `RealOrbitalEngine.__init__` (method) `qc_dashboard.py:1154` `def __init__(self)`
+- `_FakeConfig.available` (method) `qc_dashboard.py:1210` `def available(self)`
+- `_FakeConfig.entangled_available` (method) `qc_dashboard.py:1214` `def entangled_available(self)`
+- `_FakeConfig.sample` (method) `qc_dashboard.py:1217` `def sample(self, n, l, m, num_samples)`
+- `_FakeConfig.render_to_bytes` (method) `qc_dashboard.py:1222` `def render_to_bytes(self, data)`
+- `_FakeConfig.sample_entangled` (method) `qc_dashboard.py:1240` `def sample_entangled(self, n1, l1, m1, n2, l2, m2, num_samples)`
+- `_FakeConfig.render_entangled_to_bytes` (method) `qc_dashboard.py:1250` `def render_entangled_to_bytes(self, data)`
+- `BrutalVizEngine.__init__` (method) `qc_dashboard.py:1272` `def __init__(self)`
+- `BrutalVizEngine.dash_available` (method) `qc_dashboard.py:1297` `def dash_available(self)`
+- `BrutalVizEngine.hologram_available` (method) `qc_dashboard.py:1301` `def hologram_available(self)`
+- `BrutalVizEngine.run_brutal_viz` (method) `qc_dashboard.py:1304` `def run_brutal_viz(self, circuit_name)`
+- `BrutalVizEngine.render_hologram` (method) `qc_dashboard.py:1327` `def render_hologram(self, snapshots, backend_comp)`
+- `BackendComparator.__init__` (method) `qc_dashboard.py:1347` `def __init__(self, config)`
+- `BackendComparator.run_comparison` (method) `qc_dashboard.py:1351` `def run_comparison(self, gates, n_qubits)`
+- `DashboardApp.__init__` (method) `qc_dashboard.py:1374` `def __init__(self, config)`
+- `DashboardApp.run` (method) `qc_dashboard.py:1384` `def run(self)`
+- `main` (function) `qc_dashboard.py:1994` `def main()` -- Launch the Streamlit dashboard.
+
+## qc_integration.py
+Depends on: `quantum_computer.py`, `quantum_framework_core.py`
+Imported by: `qc_dashboard.py`, `test_qc_integration.py`
+- `GateInstruction.num_qubits` (method) `qc_integration.py:141` `def num_qubits(self)`
+- `CircuitIR.append` (method) `qc_integration.py:156` `def append(self, gate)`
+- `IQCAdapter.export` (method) `qc_integration.py:185` `def export(self, circuit)` -- Export a CircuitIR to the target format.
+- `IQCAdapter.import_` (method) `qc_integration.py:189` `def import_(self, data)` -- Import from the target format into a CircuitIR.
+- `OpenQasmAdapter.__init__` (method) `qc_integration.py:238` `def __init__(self, config)`
+- `OpenQasmAdapter.export` (method) `qc_integration.py:243` `def export(self, circuit)`
+- `OpenQasmAdapter.import_` (method) `qc_integration.py:277` `def import_(self, data)` -- Parse an OpenQASM 2.0 string into a CircuitIR.
+- `QiskitAdapter.__init__` (method) `qc_integration.py:361` `def __init__(self, config)`
+- `QiskitAdapter.export` (method) `qc_integration.py:364` `def export(self, circuit)`
+- `QiskitAdapter.import_` (method) `qc_integration.py:379` `def import_(self, data)`
+- `PennyLaneAdapter.__init__` (method) `qc_integration.py:458` `def __init__(self, config)`
+- `PennyLaneAdapter.export` (method) `qc_integration.py:461` `def export(self, circuit)`
+- `circuit_fn` (function) `qc_integration.py:467` `def circuit_fn()`
+- `PennyLaneAdapter.import_` (method) `qc_integration.py:483` `def import_(self, data)`
+- `FrameworkAdapter.__init__` (method) `qc_integration.py:565` `def __init__(self, config)`
+- `FrameworkAdapter.to_circuit_ir` (method) `qc_integration.py:568` `def to_circuit_ir(self, circuit, framework_type)` -- Extract a CircuitIR from a framework circuit object.
+- `FrameworkAdapter.from_circuit_ir` (method) `qc_integration.py:584` `def from_circuit_ir(self, cir, framework_type)` -- Build a framework circuit object from a CircuitIR.
+- `StandardCircuitFactory.bell_state` (method) `qc_integration.py:663` `def bell_state()`
+- `StandardCircuitFactory.ghz_state` (method) `qc_integration.py:670` `def ghz_state(n_qubits)`
+- `StandardCircuitFactory.qft` (method) `qc_integration.py:678` `def qft(n_qubits)`
+- `StandardCircuitFactory.w_state` (method) `qc_integration.py:693` `def w_state(n_qubits)`
+- `StandardCircuitFactory.grover` (method) `qc_integration.py:701` `def grover(n_qubits, marked, iterations)`
+- `IntegrationBridge.__init__` (method) `qc_integration.py:753` `def __init__(self, config)`
+- `IntegrationBridge.export_qasm` (method) `qc_integration.py:780` `def export_qasm(self, circuit)`
+- `IntegrationBridge.import_qasm` (method) `qc_integration.py:783` `def import_qasm(self, qasm_str)`
+- `IntegrationBridge.to_qiskit` (method) `qc_integration.py:788` `def to_qiskit(self, circuit)`
+- `IntegrationBridge.from_qiskit` (method) `qc_integration.py:793` `def from_qiskit(self, qiskit_circuit)`
+- `IntegrationBridge.to_pennylane` (method) `qc_integration.py:800` `def to_pennylane(self, circuit)`
+- `IntegrationBridge.from_pennylane` (method) `qc_integration.py:805` `def from_pennylane(self, pennylane_data)`
+- `IntegrationBridge.to_circuit_ir` (method) `qc_integration.py:812` `def to_circuit_ir(self, circuit, framework_type)`
+- `IntegrationBridge.from_circuit_ir` (method) `qc_integration.py:819` `def from_circuit_ir(self, cir, framework_type)`
+- `IntegrationBridge.export_qasm_from_framework` (method) `qc_integration.py:828` `def export_qasm_from_framework(self, circuit, framework_type)`
+- `IntegrationBridge.import_qasm_to_framework` (method) `qc_integration.py:837` `def import_qasm_to_framework(self, qasm_str, framework_type)`
+- `main` (function) `qc_integration.py:851` `def main()` -- Command-line interface for the integration bridge.
+
+## qc_launcher.py
+- `Launcher.__init__` (method) `qc_launcher.py:105` `def __init__(self)`
+- `Launcher.t` (method) `qc_launcher.py:111` `def t(self, key)`
+- `Launcher.compose` (method) `qc_launcher.py:114` `def compose(self)`
+- `Launcher.on_mount` (method) `qc_launcher.py:131` `def on_mount(self)`
+- `Launcher.refresh_detail` (method) `qc_launcher.py:136` `def refresh_detail(self)`
+- `Launcher.on_option_list_option_highlighted` (method) `qc_launcher.py:143` `def on_option_list_option_highlighted(self, event)`
+- `Launcher.on_option_list_option_selected` (method) `qc_launcher.py:147` `def on_option_list_option_selected(self, event)`
+- `Launcher.action_toggle_lang` (method) `qc_launcher.py:151` `def action_toggle_lang(self)`
+- `Launcher.build_command` (method) `qc_launcher.py:159` `def build_command(self, exp)`
+- `Launcher.action_launch` (method) `qc_launcher.py:167` `def action_launch(self)`
+
+## quantum_3dview.py
+Depends on: `quantum_computer.py`, `quantum_visualizer.py`
+Imported by: `qc_dashboard.py`, `quantum_framework_menu.py`
+- `BrutalConfig.colors` (method) `quantum_3dview.py:52` `def colors(self)`
+- `QuantumHologram.__init__` (method) `quantum_3dview.py:87` `def __init__(self, config)`
+- `QuantumHologram.create_amplitude_hologram` (method) `quantum_3dview.py:92` `def create_amplitude_hologram(self, snapshots, backend_comparison)` -- Crea visualización holográfica de amplitudes en 3D con efecto de partículas
+- `hex_to_rgb` (function) `quantum_3dview.py:391` `def hex_to_rgb(hex_color)`
+- `rgb_to_hex` (function) `quantum_3dview.py:395` `def rgb_to_hex(rgb)`
+- `QuantumNeuralTopology.__init__` (method) `quantum_3dview.py:406` `def __init__(self, model)`
+- `QuantumNeuralTopology.create_topology_map` (method) `quantum_3dview.py:410` `def create_topology_map(self)` -- Crea mapa 3D de la arquitectura neuronal con activaciones en tiempo real
+- `QuantumSonification.__init__` (method) `quantum_3dview.py:503` `def __init__(self, sample_rate)`
+- `QuantumSonification.state_to_audio` (method) `quantum_3dview.py:506` `def state_to_audio(self, snapshot, duration)` -- Convierte un estado cuántico en onda de audio - Amplitudes controlan volumen - Fases controlan paneo estéreo...
+- `BrutalDashboard.__init__` (method) `quantum_3dview.py:563` `def __init__(self, config)`
+- `BrutalDashboard.generate_full_report` (method) `quantum_3dview.py:570` `def generate_full_report(self, snapshots, backend_comparison)` -- Genera reporte completo con múltiples visualizaciones
+- `demo_brutal` (function) `quantum_3dview.py:614` `def demo_brutal()` -- Demostración de visualización brutal
+- `create_synthetic_snapshots` (function) `quantum_3dview.py:653` `def create_synthetic_snapshots()` -- Crea datos sintéticos para demostración
+
+## quantum_computer.py
+Depends on: `quantum_framework_physics.py`
+Imported by: `advanced_experiments.py`, `app.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/backend.py`, `molecular_sim.py`, `polarizability_v3.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_3dview.py`, `quantum_dash.py`, `quantum_visualizer.py`, `topological_hilbert_compression2.py`
+- `JointHilbertState.__init__` (method) `quantum_computer.py:145` `def __init__(self, amplitudes, n_qubits)`
+- `JointHilbertState.normalize_` (method) `quantum_computer.py:157` `def normalize_(self)` -- In-place normalization: sum_k P(k) = 1.
+- `JointHilbertState.probabilities` (method) `quantum_computer.py:163` `def probabilities(self)` -- Return (2^n,) tensor of Born probabilities P(k) for each basis state.
+- `JointHilbertState.marginal_probability_one` (method) `quantum_computer.py:168` `def marginal_probability_one(self, qubit)` -- Marginal Born probability P(qubit_j = |1>).
+- `JointHilbertState.most_probable_basis_state` (method) `quantum_computer.py:183` `def most_probable_basis_state(self)` -- Return the index k with the highest probability.
+- `JointHilbertState.bloch_vector` (method) `quantum_computer.py:187` `def bloch_vector(self, qubit)` -- Compute the reduced Bloch vector for qubit j by partial trace.
+- `JointHilbertState.clone` (method) `quantum_computer.py:225` `def clone(self)` -- Return a deep copy.
+- `PotentialGenerator.__init__` (method) `quantum_computer.py:233` `def __init__(self, config)`
+- `PotentialGenerator.harmonic` (method) `quantum_computer.py:242` `def harmonic(self)`
+- `PotentialGenerator.double_well` (method) `quantum_computer.py:250` `def double_well(self)` -- Double-well along x.
+- `PotentialGenerator.coulomb` (method) `quantum_computer.py:257` `def coulomb(self)` -- Coulomb-like V ~ -1/r.
+- `PotentialGenerator.periodic_lattice` (method) `quantum_computer.py:264` `def periodic_lattice(self)` -- Periodic cosine lattice.
+- `PotentialGenerator.mixed` (method) `quantum_computer.py:269` `def mixed(self, seed)` -- Dirichlet-weighted mixture of all four potentials.
+- `JointStateFactory.__init__` (method) `quantum_computer.py:329` `def __init__(self, config)`
+- `JointStateFactory.all_zeros` (method) `quantum_computer.py:338` `def all_zeros(self, n_qubits)` -- Initialize register in |00...0>.
+- `JointStateFactory.basis_state` (method) `quantum_computer.py:346` `def basis_state(self, n_qubits, k)` -- Initialize register in computational basis state |k>.
+- `JointStateFactory.from_bitstring` (method) `quantum_computer.py:356` `def from_bitstring(self, bitstring)` -- Initialize in the basis state given by binary string.
+- `IQuantumGate.name` (method) `quantum_computer.py:471` `def name(self)` -- Gate identifier.
+- `IQuantumGate.apply` (method) `quantum_computer.py:475` `def apply(self, state, backend, targets, params)` -- Apply gate to joint state, return new joint state.
+- `HadamardGate.name` (method) `quantum_computer.py:489` `def name(self)`
+- `HadamardGate.apply` (method) `quantum_computer.py:492` `def apply(self, state, backend, targets, params)`
+- `PauliXGate.name` (method) `quantum_computer.py:504` `def name(self)`
+- `PauliXGate.apply` (method) `quantum_computer.py:507` `def apply(self, state, backend, targets, params)`
+- `PauliYGate.name` (method) `quantum_computer.py:518` `def name(self)`
+- `PauliYGate.apply` (method) `quantum_computer.py:521` `def apply(self, state, backend, targets, params)`
+- `PauliZGate.name` (method) `quantum_computer.py:532` `def name(self)`
+- `PauliZGate.apply` (method) `quantum_computer.py:535` `def apply(self, state, backend, targets, params)`
+- `SGate.name` (method) `quantum_computer.py:546` `def name(self)`
+- `SGate.apply` (method) `quantum_computer.py:549` `def apply(self, state, backend, targets, params)`
+- `TGate.name` (method) `quantum_computer.py:560` `def name(self)`
+- `TGate.apply` (method) `quantum_computer.py:563` `def apply(self, state, backend, targets, params)`
+- `RxGate.name` (method) `quantum_computer.py:575` `def name(self)`
+- `RxGate.apply` (method) `quantum_computer.py:578` `def apply(self, state, backend, targets, params)`
+- `RyGate.name` (method) `quantum_computer.py:591` `def name(self)`
+- `RyGate.apply` (method) `quantum_computer.py:594` `def apply(self, state, backend, targets, params)`
+- `RzGate.name` (method) `quantum_computer.py:607` `def name(self)`
+- `RzGate.apply` (method) `quantum_computer.py:610` `def apply(self, state, backend, targets, params)`
+- `CNOTGate.name` (method) `quantum_computer.py:629` `def name(self)`
+- `CNOTGate.apply` (method) `quantum_computer.py:632` `def apply(self, state, backend, targets, params)`
+- `CZGate.name` (method) `quantum_computer.py:652` `def name(self)`
+- `CZGate.apply` (method) `quantum_computer.py:655` `def apply(self, state, backend, targets, params)`
+- `SWAPGate.name` (method) `quantum_computer.py:675` `def name(self)`
+- `SWAPGate.apply` (method) `quantum_computer.py:678` `def apply(self, state, backend, targets, params)`
+- `ToffoliGate.name` (method) `quantum_computer.py:698` `def name(self)`
+- `ToffoliGate.apply` (method) `quantum_computer.py:701` `def apply(self, state, backend, targets, params)`
+- `MCZGate.name` (method) `quantum_computer.py:736` `def name(self)`
+- `MCZGate.apply` (method) `quantum_computer.py:739` `def apply(self, state, backend, targets, params)`
+- `EvolveGate.name` (method) `quantum_computer.py:770` `def name(self)`
+- `EvolveGate.apply` (method) `quantum_computer.py:773` `def apply(self, state, backend, targets, params)`
+- `register_gate` (function) `quantum_computer.py:811` `def register_gate(name, gate)` -- Register a custom gate without modifying existing code (Open/Closed Principle).
+- `QuantumCircuit.__init__` (method) `quantum_computer.py:832` `def __init__(self, n_qubits)`
+- `QuantumCircuit.h` (method) `quantum_computer.py:838` `def h(self, q)`
+- `QuantumCircuit.x` (method) `quantum_computer.py:841` `def x(self, q)`
+- `QuantumCircuit.y` (method) `quantum_computer.py:844` `def y(self, q)`
+- `QuantumCircuit.z` (method) `quantum_computer.py:847` `def z(self, q)`
+- `QuantumCircuit.s` (method) `quantum_computer.py:850` `def s(self, q)`
+- `QuantumCircuit.t` (method) `quantum_computer.py:853` `def t(self, q)`
+- `QuantumCircuit.rx` (method) `quantum_computer.py:856` `def rx(self, q, theta)`
+- `QuantumCircuit.ry` (method) `quantum_computer.py:859` `def ry(self, q, theta)`
+- `QuantumCircuit.rz` (method) `quantum_computer.py:862` `def rz(self, q, theta)`
+- `QuantumCircuit.cnot` (method) `quantum_computer.py:865` `def cnot(self, ctrl, tgt)`
+- `QuantumCircuit.cx` (method) `quantum_computer.py:868` `def cx(self, ctrl, tgt)`
+- `QuantumCircuit.cz` (method) `quantum_computer.py:871` `def cz(self, ctrl, tgt)`
+- `QuantumCircuit.swap` (method) `quantum_computer.py:874` `def swap(self, a, b)`
+- `QuantumCircuit.toffoli` (method) `quantum_computer.py:877` `def toffoli(self, c0, c1, tgt)`
+- `QuantumCircuit.ccx` (method) `quantum_computer.py:880` `def ccx(self, c0, c1, tgt)`
+- `QuantumCircuit.evolve` (method) `quantum_computer.py:883` `def evolve(self, qubits, dt, steps)`
+- `QuantumCircuit.barrier` (method) `quantum_computer.py:886` `def barrier(self)`
+- `QuantumCircuit.depth` (method) `quantum_computer.py:897` `def depth(self)`
+- `MeasurementResult.probabilities` (method) `quantum_computer.py:925` `def probabilities(self)` -- Alias: marginal P(|1>) per qubit index.
+- `MeasurementResult.most_probable_bitstring` (method) `quantum_computer.py:929` `def most_probable_bitstring(self)` -- Return the bitstring with the highest probability.
+- `MeasurementResult.expectation_z` (method) `quantum_computer.py:933` `def expectation_z(self, qubit)`
+- `MeasurementResult.entropy` (method) `quantum_computer.py:937` `def entropy(self)` -- Shannon entropy of the full probability distribution in bits.
+- `QuantumComputer.__init__` (method) `quantum_computer.py:993` `def __init__(self, config)`
+- `QuantumComputer.run` (method) `quantum_computer.py:1020` `def run(self, circuit, backend, initial_states)` -- Execute a quantum circuit on the joint Hilbert space.
+- `QuantumComputer.run_with_state_snapshots` (method) `quantum_computer.py:1052` `def run_with_state_snapshots(self, circuit, backend, snapshot_after)` -- Execute circuit with non-destructive probability snapshots.
+- `QuantumComputer.bell_state` (method) `quantum_computer.py:1081` `def bell_state(self, backend)` -- |Phi+> = (|00> + |11>) / sqrt(2).
+- `QuantumComputer.ghz_state` (method) `quantum_computer.py:1091` `def ghz_state(self, n_qubits, backend)` -- (|00...0> + |11...1>) / sqrt(2).
+- `QuantumComputer.quantum_fourier_transform` (method) `quantum_computer.py:1103` `def quantum_fourier_transform(self, n_qubits, backend)` -- QFT on |00...0>.
+- `QuantumComputer.grover_oracle_search` (method) `quantum_computer.py:1113` `def grover_oracle_search(self, n_qubits, target_bitstring, backend, n_iterations)` -- Grover's search algorithm with correct phase oracle and diffusion operator.
+- `QuantumComputer.variational_ansatz` (method) `quantum_computer.py:1191` `def variational_ansatz(self, n_qubits, n_layers, thetas, backend)` -- Hardware-efficient ansatz: Ry layers + CNOT chain. len(thetas)=n_qubits*n_layers.
+- `QuantumComputer.teleportation` (method) `quantum_computer.py:1204` `def teleportation(self, backend)` -- 3-qubit teleportation protocol.
+- `QuantumComputer.deutsch_jozsa` (method) `quantum_computer.py:1217` `def deutsch_jozsa(self, n_input_qubits, is_constant, backend)` -- Deutsch-Jozsa: constant -> all inputs |0>, balanced -> at least one |1>.
+- `run_phase_tests` (function) `quantum_computer.py:1245` `def run_phase_tests(config)` -- Property-based test suite for quantum phase coherence and unitarity.
+
+## quantum_dash.py
+Depends on: `molecular_sim.py`, `quantum_computer.py`
+Imported by: `qc_dashboard.py`, `quantum_framework_menu.py`
+- `BrutalistConfig.colors` (method) `quantum_dash.py:168` `def colors(self)`
+- `BrutalistConfig.plotly_template` (method) `quantum_dash.py:234` `def plotly_template(self)`
+- `IVisualComponent.render` (method) `quantum_dash.py:277` `def render(self, data, axes, config)`
+- `ProbabilityVisualizer.render` (method) `quantum_dash.py:282` `def render(self, snapshot, axes, config)`
+- `BlochSphereVisualizer.render` (method) `quantum_dash.py:341` `def render(self, snapshot, axes, config)`
+- `PhaseSpaceVisualizer.render` (method) `quantum_dash.py:448` `def render(self, snapshot, axes, config)`
+- `EntropyVisualizer.render` (method) `quantum_dash.py:510` `def render(self, snapshots, axes, config)`
+- `BackendComparisonVisualizer.render` (method) `quantum_dash.py:584` `def render(self, comparisons, axes, config)`
+- `FidelityVisualizer.render` (method) `quantum_dash.py:634` `def render(self, comparisons, axes, config)`
+- `QuantumStateAnalyzer.__init__` (method) `quantum_dash.py:675` `def __init__(self, config)`
+- `QuantumStateAnalyzer.compute_probabilities` (method) `quantum_dash.py:678` `def compute_probabilities(self, state)`
+- `QuantumStateAnalyzer.compute_phases` (method) `quantum_dash.py:684` `def compute_phases(self, state)`
+- `QuantumStateAnalyzer.compute_entropy` (method) `quantum_dash.py:696` `def compute_entropy(self, probs)`
+- `QuantumStateAnalyzer.compute_bloch_vectors` (method) `quantum_dash.py:704` `def compute_bloch_vectors(self, state)`
+- `QuantumStateAnalyzer.create_snapshot` (method) `quantum_dash.py:713` `def create_snapshot(self, state, step, gate_name, backend_name)`
+- `StandardCircuits.bell_state` (method) `quantum_dash.py:756` `def bell_state()`
+- `StandardCircuits.ghz_state` (method) `quantum_dash.py:760` `def ghz_state(n_qubits)`
+- `StandardCircuits.qft` (method) `quantum_dash.py:767` `def qft(n_qubits)`
+- `StandardCircuits.grover_oracle` (method) `quantum_dash.py:782` `def grover_oracle(n_qubits, marked)`
+- `StandardCircuits.grover_diffusion` (method) `quantum_dash.py:794` `def grover_diffusion(n_qubits)`
+- `CircuitExecutor.__init__` (method) `quantum_dash.py:807` `def __init__(self, qc, config)`
+- `CircuitExecutor.execute_sequence` (method) `quantum_dash.py:812` `def execute_sequence(self, gates, n_qubits, backend_name)`
+- `CircuitExecutor.compare_backends` (method) `quantum_dash.py:835` `def compare_backends(self, gates, n_qubits)`
+- `FigureBuilder.__init__` (method) `quantum_dash.py:874` `def __init__(self, config)`
+- `FigureBuilder.build_full_figure` (method) `quantum_dash.py:883` `def build_full_figure(self, snapshots, comparisons)`
+- `FigureBuilder.build_summary_figure` (method) `quantum_dash.py:923` `def build_summary_figure(self, snapshots, comparisons)`
+- `QuantumVisualizer.__init__` (method) `quantum_dash.py:959` `def __init__(self, config)`
+- `QuantumVisualizer.visualize_bell_state` (method) `quantum_dash.py:1010` `def visualize_bell_state(self)`
+- `QuantumVisualizer.visualize_ghz_state` (method) `quantum_dash.py:1016` `def visualize_ghz_state(self, n_qubits)`
+- `QuantumVisualizer.visualize_qft` (method) `quantum_dash.py:1022` `def visualize_qft(self, n_qubits)`
+- `QuantumVisualizer.visualize_grover` (method) `quantum_dash.py:1028` `def visualize_grover(self, n_qubits, marked_state)`
+- `QuantumVisualizer.run_all` (method) `quantum_dash.py:1174` `def run_all(self)`
+- `main` (function) `quantum_dash.py:1199` `def main()`
+
+## quantum_framework_core.py
+Depends on: `quantum_framework_physics.py`
+Imported by: `immersive/backend.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`, `quantum_lab.py`, `test_qc_integration.py`, `test_quantum_framework.py`
+- `FrameworkConfig.from_toml` (method) `quantum_framework_core.py:161` `def from_toml(cls, toml_path)` -- Load configuration from TOML file.
+- `ConfigLoader.__init__` (method) `quantum_framework_core.py:280` `def __init__(self, config_path)`
+- `ConfigLoader.get_atom` (method) `quantum_framework_core.py:390` `def get_atom(self, symbol)` -- Get atom data by symbol (case-insensitive).
+- `ConfigLoader.get_molecule` (method) `quantum_framework_core.py:399` `def get_molecule(self, name)` -- Get molecule data by name (case-insensitive).
+- `ConfigLoader.get_orbital` (method) `quantum_framework_core.py:408` `def get_orbital(self, name)` -- Get orbital data by name (case-insensitive).
+- `ConfigLoader.get_experiment` (method) `quantum_framework_core.py:417` `def get_experiment(self, name)` -- Get experiment data by name.
+- `ConfigLoader.atoms` (method) `quantum_framework_core.py:422` `def atoms(self)` -- Return all atoms.
+- `ConfigLoader.molecules` (method) `quantum_framework_core.py:427` `def molecules(self)` -- Return all molecules.
+- `ConfigLoader.orbitals` (method) `quantum_framework_core.py:432` `def orbitals(self)` -- Return all orbitals.
+- `ConfigLoader.experiments` (method) `quantum_framework_core.py:437` `def experiments(self)` -- Return all experiments.
+- `ConfigLoader.get_molecules_by_qubits` (method) `quantum_framework_core.py:441` `def get_molecules_by_qubits(self, max_qubits)` -- Get molecules that fit within qubit budget.
+- `ConfigLoader.get_atoms_by_qubits` (method) `quantum_framework_core.py:445` `def get_atoms_by_qubits(self, max_qubits)` -- Get atoms that fit within qubit budget.
+- `ITensorNetwork.n_qubits` (method) `quantum_framework_core.py:455` `def n_qubits(self)` -- Return number of qubits.
+- `ITensorNetwork.amplitude` (method) `quantum_framework_core.py:460` `def amplitude(self, basis_index)` -- Compute amplitude for a computational basis state.
+- `ITensorNetwork.apply_single_qubit_gate` (method) `quantum_framework_core.py:465` `def apply_single_qubit_gate(self, qubit, gate)` -- Apply single-qubit gate in-place.
+- `ITensorNetwork.apply_two_qubit_gate` (method) `quantum_framework_core.py:470` `def apply_two_qubit_gate(self, qubit_a, qubit_b, gate)` -- Apply two-qubit gate in-place.
+- `ITensorNetwork.norm` (method) `quantum_framework_core.py:475` `def norm(self)` -- Compute state norm.
+- `ITensorNetwork.probabilities` (method) `quantum_framework_core.py:480` `def probabilities(self)` -- Compute measurement probabilities.
+- `ITensorNetwork.entropy` (method) `quantum_framework_core.py:485` `def entropy(self)` -- Compute von Neumann entropy.
+- `ITensorNetwork.memory_bytes` (method) `quantum_framework_core.py:490` `def memory_bytes(self)` -- Return memory usage in bytes.
+- `MPSCore.__init__` (method) `quantum_framework_core.py:503` `def __init__(self, chi_left, chi_right, d, device, dtype)`
+- `MPSCore.tensor` (method) `quantum_framework_core.py:532` `def tensor(self)` -- Return the core tensor.
+- `MPSCore.tensor` (method) `quantum_framework_core.py:539` `def tensor(self, value)` -- Set the core tensor, preserving complex dtype when needed.
+- `MPSCore.left_canonicalize` (method) `quantum_framework_core.py:548` `def left_canonicalize(self)` -- Bring core to left-canonical form; return the residual matrix ``diag(s) @ vh`` that MUST be absorbed into the next...
+- `MPSCore.right_canonicalize` (method) `quantum_framework_core.py:563` `def right_canonicalize(self)` -- Bring core to right-canonical form; return the residual matrix ``u @ diag(s)`` that MUST be absorbed into the...
+- `MPSState.__init__` (method) `quantum_framework_core.py:590` `def __init__(self, n_qubits, config)`
+- `MPSState.n_qubits` (method) `quantum_framework_core.py:626` `def n_qubits(self)`
+- `MPSState.amplitude` (method) `quantum_framework_core.py:629` `def amplitude(self, basis_index)` -- Compute amplitude for computational basis state.
+- `MPSState.apply_single_qubit_gate` (method) `quantum_framework_core.py:650` `def apply_single_qubit_gate(self, qubit, gate)` -- Apply single-qubit gate in-place.
+- `MPSState.apply_two_qubit_gate` (method) `quantum_framework_core.py:674` `def apply_two_qubit_gate(self, qubit_a, qubit_b, gate)` -- Apply two-qubit gate in-place.
+- `MPSState.norm` (method) `quantum_framework_core.py:802` `def norm(self)` -- Compute the state norm.
+- `MPSState.probabilities` (method) `quantum_framework_core.py:846` `def probabilities(self)` -- Compute the full measurement probability distribution.
+- `MPSState.entropy` (method) `quantum_framework_core.py:876` `def entropy(self)` -- Compute maximum entanglement entropy across all cuts.
+- `MPSState.memory_bytes` (method) `quantum_framework_core.py:905` `def memory_bytes(self)` -- Return memory usage in bytes.
+- `MPSState.entanglement_entropy` (method) `quantum_framework_core.py:912` `def entanglement_entropy(self, cut)` -- Compute the entanglement entropy at the cut between qubits cut-1 and cut, from the Schmidt coefficients of the MPS.
+- `MPSState.to_statevector` (method) `quantum_framework_core.py:940` `def to_statevector(self)` -- Convert MPS to full statevector (only for small systems).
+- `MPSState.most_probable_bitstring` (method) `quantum_framework_core.py:956` `def most_probable_bitstring(self)` -- Return most probable basis state as bitstring.
+- `MPSState.truncation_error` (method) `quantum_framework_core.py:963` `def truncation_error(self)` -- Relative weight discarded by the most recent SVD truncation.
+- `MPSState.cumulative_truncation_error` (method) `quantum_framework_core.py:968` `def cumulative_truncation_error(self)` -- Sum of relative truncation errors over all two-qubit gates applied.
+- `MPSState.clone` (method) `quantum_framework_core.py:972` `def clone(self)` -- Return a deep copy.
+- `VacuumCore.__init__` (method) `quantum_framework_core.py:1003` `def __init__(self, n_qubits, config)`
+- `VacuumCore.add_active_state` (method) `quantum_framework_core.py:1027` `def add_active_state(self, basis_index, winding_number)` -- Add a basis state to the active subspace.
+- `VacuumCore.is_topologically_protected` (method) `quantum_framework_core.py:1047` `def is_topologically_protected(self, basis_index)` -- Check if state is topologically protected.
+- `VacuumCore.sparsity` (method) `quantum_framework_core.py:1052` `def sparsity(self)` -- Compute vacuum sparsity.
+- `VacuumCore.project_to_active` (method) `quantum_framework_core.py:1058` `def project_to_active(self, state)` -- Project state onto active subspace.
+- `TopologicalProtector.__init__` (method) `quantum_framework_core.py:1077` `def __init__(self, config)`
+- `TopologicalProtector.compute_winding_number` (method) `quantum_framework_core.py:1082` `def compute_winding_number(self, state, qubit)` -- Compute winding number for a qubit.
+- `TopologicalProtector.compute_berry_phase` (method) `quantum_framework_core.py:1094` `def compute_berry_phase(self, state, qubit_a, qubit_b)` -- Compute Berry phase between two qubits.
+- `TopologicalProtector.is_protected` (method) `quantum_framework_core.py:1110` `def is_protected(self, state, vacuum_core)` -- Check if state is topologically protected.
+- `IQuantumGate.name` (method) `quantum_framework_core.py:1124` `def name(self)` -- Return gate name.
+- `IQuantumGate.apply` (method) `quantum_framework_core.py:1129` `def apply(self, state, targets, params)` -- Apply gate to state and return new state.
+- `HadamardGate.name` (method) `quantum_framework_core.py:1143` `def name(self)`
+- `HadamardGate.apply` (method) `quantum_framework_core.py:1146` `def apply(self, state, targets, params)`
+- `PauliXGate.name` (method) `quantum_framework_core.py:1158` `def name(self)`
+- `PauliXGate.apply` (method) `quantum_framework_core.py:1161` `def apply(self, state, targets, params)`
+- `PauliYGate.name` (method) `quantum_framework_core.py:1172` `def name(self)`
+- `PauliYGate.apply` (method) `quantum_framework_core.py:1175` `def apply(self, state, targets, params)`
+- `PauliZGate.name` (method) `quantum_framework_core.py:1186` `def name(self)`
+- `PauliZGate.apply` (method) `quantum_framework_core.py:1189` `def apply(self, state, targets, params)`
+- `SGate.name` (method) `quantum_framework_core.py:1200` `def name(self)`
+- `SGate.apply` (method) `quantum_framework_core.py:1203` `def apply(self, state, targets, params)`
+- `TGate.name` (method) `quantum_framework_core.py:1214` `def name(self)`
+- `TGate.apply` (method) `quantum_framework_core.py:1217` `def apply(self, state, targets, params)`
+- `RxGate.name` (method) `quantum_framework_core.py:1229` `def name(self)`
+- `RxGate.apply` (method) `quantum_framework_core.py:1232` `def apply(self, state, targets, params)`
+- `RyGate.name` (method) `quantum_framework_core.py:1245` `def name(self)`
+- `RyGate.apply` (method) `quantum_framework_core.py:1248` `def apply(self, state, targets, params)`
+- `RzGate.name` (method) `quantum_framework_core.py:1261` `def name(self)`
+- `RzGate.apply` (method) `quantum_framework_core.py:1264` `def apply(self, state, targets, params)`
+- `CRzGate.name` (method) `quantum_framework_core.py:1278` `def name(self)`
+- `CRzGate.apply` (method) `quantum_framework_core.py:1281` `def apply(self, state, targets, params)`
+- `CNOTGate.name` (method) `quantum_framework_core.py:1303` `def name(self)`
+- `CNOTGate.apply` (method) `quantum_framework_core.py:1306` `def apply(self, state, targets, params)`
+- `CZGate.name` (method) `quantum_framework_core.py:1323` `def name(self)`
+- `CZGate.apply` (method) `quantum_framework_core.py:1326` `def apply(self, state, targets, params)`
+- `SWAPGate.name` (method) `quantum_framework_core.py:1343` `def name(self)`
+- `SWAPGate.apply` (method) `quantum_framework_core.py:1346` `def apply(self, state, targets, params)`
+- `QuantumCircuit.__init__` (method) `quantum_framework_core.py:1387` `def __init__(self, n_qubits)`
+- `QuantumCircuit.h` (method) `quantum_framework_core.py:1402` `def h(self, qubit)`
+- `QuantumCircuit.x` (method) `quantum_framework_core.py:1405` `def x(self, qubit)`
+- `QuantumCircuit.y` (method) `quantum_framework_core.py:1408` `def y(self, qubit)`
+- `QuantumCircuit.z` (method) `quantum_framework_core.py:1411` `def z(self, qubit)`
+- `QuantumCircuit.s` (method) `quantum_framework_core.py:1414` `def s(self, qubit)`
+- `QuantumCircuit.t` (method) `quantum_framework_core.py:1417` `def t(self, qubit)`
+- `QuantumCircuit.rx` (method) `quantum_framework_core.py:1420` `def rx(self, qubit, theta)`
+- `QuantumCircuit.ry` (method) `quantum_framework_core.py:1423` `def ry(self, qubit, theta)`
+- `QuantumCircuit.rz` (method) `quantum_framework_core.py:1426` `def rz(self, qubit, theta)`
+- `QuantumCircuit.crz` (method) `quantum_framework_core.py:1429` `def crz(self, control, target, theta)`
+- `QuantumCircuit.cnot` (method) `quantum_framework_core.py:1432` `def cnot(self, control, target)`
+- `QuantumCircuit.cz` (method) `quantum_framework_core.py:1435` `def cz(self, control, target)`
+- `QuantumCircuit.swap` (method) `quantum_framework_core.py:1438` `def swap(self, qubit1, qubit2)`
+- `QuantumCircuit.run` (method) `quantum_framework_core.py:1449` `def run(self, state)` -- Execute circuit on state.
+- `MPSQuantumComputer.__init__` (method) `quantum_framework_core.py:1470` `def __init__(self, config)`
+- `MPSQuantumComputer.create_circuit` (method) `quantum_framework_core.py:1486` `def create_circuit(self, n_qubits)` -- Create a new quantum circuit.
+- `MPSQuantumComputer.create_state` (method) `quantum_framework_core.py:1494` `def create_state(self, n_qubits)` -- Create initial state |00...0>.
+- `MPSQuantumComputer.bell_state` (method) `quantum_framework_core.py:1508` `def bell_state(self, n_qubits)` -- Prepare Bell state |Phi+> = (|00> + |11>) / sqrt(2).
+- `MPSQuantumComputer.ghz_state` (method) `quantum_framework_core.py:1516` `def ghz_state(self, n_qubits)` -- Prepare GHZ state (|00...0> + |11...1>) / sqrt(2).
+- `MPSQuantumComputer.w_state` (method) `quantum_framework_core.py:1525` `def w_state(self, n_qubits)` -- Prepare W state: |W_n⟩ = (|100...0⟩ + |010...0⟩ + ... + |000...1⟩) / √n
+- `MPSQuantumComputer.run_circuit` (method) `quantum_framework_core.py:1628` `def run_circuit(self, circuit, initial_state)` -- Execute circuit on state.
+- `MPSQuantumComputer.get_backend` (method) `quantum_framework_core.py:1638` `def get_backend(self, name)` -- Get physics backend by name.
+- `MPSQuantumComputer.memory_usage` (method) `quantum_framework_core.py:1642` `def memory_usage(self, state)` -- Compute memory usage for a state.
+- `MPSQuantumComputer.compression_ratio` (method) `quantum_framework_core.py:1655` `def compression_ratio(self, state)` -- Compute compression ratio vs a full statevector of the same qubit count (2^n complex128 amplitudes = 2^n * 16 bytes).
+- `MPSQuantumComputer.detect_phase` (method) `quantum_framework_core.py:1665` `def detect_phase(self, state)` -- Detect Hilbert space phase from state properties.
+- `run_scaling_benchmark` (function) `quantum_framework_core.py:1691` `def run_scaling_benchmark(config, max_qubits)` -- Run scaling benchmark to demonstrate MPS memory efficiency.
+- `run_grover_search` (function) `quantum_framework_core.py:1747` `def run_grover_search(qc, n_qubits, marked_states)` -- Run Grover's search algorithm and return results.
+
+## quantum_framework_main.py
+Depends on: `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_lab.py`
+- `setup_logging` (function) `quantum_framework_main.py:52` `def setup_logging(verbose)` -- Configure logging level based on verbosity.
+- `run_benchmark` (function) `quantum_framework_main.py:61` `def run_benchmark(args, config)` -- Run scaling benchmark.
+- `run_experiment` (function) `quantum_framework_main.py:101` `def run_experiment(args, config, config_loader)` -- Run a specific experiment by name.
+- `run_molecular_simulation` (function) `quantum_framework_main.py:173` `def run_molecular_simulation(args, config, config_loader)` -- Run molecular simulation.
+- `run_orbital_visualization` (function) `quantum_framework_main.py:210` `def run_orbital_visualization(args, config, config_loader)` -- Run orbital visualization.
+- `print_info` (function) `quantum_framework_main.py:242` `def print_info(config, config_loader)` -- Print framework information.
+- `main` (function) `quantum_framework_main.py:292` `def main()` -- Main entry point.
+
+## quantum_framework_menu.py
+Depends on: `app.py`, `higgs_four_lepton_analysis.py`, `quantum_3dview.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`, `quantum_visualizer.py`
+Imported by: `quantum_framework_main.py`
+- `MenuSystem.__init__` (method) `quantum_framework_menu.py:72` `def __init__(self, config, config_loader)`
+- `MenuSystem.clear_screen` (method) `quantum_framework_menu.py:79` `def clear_screen(self)` -- Clear the terminal screen.
+- `MenuSystem.print_header` (method) `quantum_framework_menu.py:83` `def print_header(self, title)` -- Print formatted header.
+- `MenuSystem.print_menu` (method) `quantum_framework_menu.py:90` `def print_menu(self, title, options)` -- Print formatted menu with options.
+- `MenuSystem.get_input` (method) `quantum_framework_menu.py:97` `def get_input(self, prompt)` -- Get user input with history tracking.
+- `MenuSystem.pause` (method) `quantum_framework_menu.py:106` `def pause(self, message)` -- Wait for user to press Enter.
+- `MenuSystem.run` (method) `quantum_framework_menu.py:113` `def run(self)` -- Run the main menu loop.
+- `radial_wf` (function) `quantum_framework_menu.py:951` `def radial_wf(n, l, r)`
+- `spherical_harm_real` (function) `quantum_framework_menu.py:959` `def spherical_harm_real(l, m, theta, phi)`
+- `compute_energy` (function) `quantum_framework_menu.py:1764` `def compute_energy(state, n_qubits)`
+- `run_interactive_menu` (function) `quantum_framework_menu.py:2357` `def run_interactive_menu(config, config_loader)` -- Run the interactive menu system.
+- `run_all_experiments` (function) `quantum_framework_menu.py:2363` `def run_all_experiments(config, config_loader)` -- Run ALL experiments automatically for debugging.
+- `test_header` (function) `quantum_framework_menu.py:2379` `def test_header(name)`
+
+## quantum_framework_molecular.py
+Imported by: `immersive/backend.py`, `quantum_framework_menu.py`, `quantum_lab.py`
+- `MoleculeBuilder.h2_sto3g` (method) `quantum_framework_molecular.py:91` `def h2_sto3g(bond_length)` -- Build H2 molecule with STO-3G basis.
+- `ExactJWEnergy.__init__` (method) `quantum_framework_molecular.py:165` `def __init__(self, mol, n_qubits)`
+- `ExactJWEnergy.expectation_value` (method) `quantum_framework_molecular.py:299` `def expectation_value(self, state)` -- Compute ⟨ψ|H|ψ⟩ for the given state.
+- `ExactJWEnergy.evaluate` (method) `quantum_framework_molecular.py:315` `def evaluate(self, amps)` -- Evaluate energy from amplitudes (supports both numpy and torch).
+- `ExactJWEnergy.__call__` (method) `quantum_framework_molecular.py:327` `def __call__(self, amps)`
+- `UCCSDAnsatz.__init__` (method) `quantum_framework_molecular.py:342` `def __init__(self, n_qubits, n_electrons)`
+- `UCCSDAnsatz.apply_double_excitation_2q` (method) `quantum_framework_molecular.py:370` `def apply_double_excitation_2q(self, state, theta)` -- Apply double excitation for 2-qubit H2 model.
+- `UCCSDAnsatz.apply_single_excitation` (method) `quantum_framework_molecular.py:447` `def apply_single_excitation(self, state, o, v, theta)` -- Apply fermionic single excitation exp(theta * (a^_v a_o - a^_o a_v)).
+- `UCCSDAnsatz.apply_double_excitation` (method) `quantum_framework_molecular.py:451` `def apply_double_excitation(self, state, o1, o2, v1, v2, theta)` -- Apply fermionic double excitation exp(theta * (a^_v1 a^_v2 a_o1 a_o2 - h.c.)).
+- `UCCSDAnsatz.apply` (method) `quantum_framework_molecular.py:462` `def apply(self, state, thetas)` -- Apply UCCSD ansatz to state.
+- `VQESolver.__init__` (method) `quantum_framework_molecular.py:536` `def __init__(self, mol)`
+- `VQESolver.prepare_hf_state` (method) `quantum_framework_molecular.py:547` `def prepare_hf_state(self)` -- Prepare Hartree-Fock state.
+- `VQESolver.run` (method) `quantum_framework_molecular.py:565` `def run(self, max_iter, tol)` -- Run VQE optimization.
+- `energy` (function) `quantum_framework_molecular.py:585` `def energy(thetas)`
+- `cost` (function) `quantum_framework_molecular.py:589` `def cost(thetas)`
+- `grad` (function) `quantum_framework_molecular.py:601` `def grad(thetas)` -- Exact analytic gradient via the generalized parameter-shift rule.
+- `run_vqe_h2` (function) `quantum_framework_molecular.py:674` `def run_vqe_h2(max_iter)` -- Run VQE for H2 molecule - convenience function.
+
+## quantum_framework_molecular_v2.py
+Imported by: `demo_molecular_vqe.py`
+- `MolecularConfig.from_toml` (method) `quantum_framework_molecular_v2.py:132` `def from_toml(cls, toml_path)` -- Load configuration from TOML file.
+- `MoleculeBuilder.build` (method) `quantum_framework_molecular_v2.py:209` `def build(name, geometry, basis, charge, multiplicity, description)` -- Build molecule using OpenFermion.
+- `PseudoMolData.h2` (method) `quantum_framework_molecular_v2.py:325` `def h2(bond_length, basis)` -- Build H2 molecule.
+- `PseudoMolData.h2o` (method) `quantum_framework_molecular_v2.py:331` `def h2o(bond_length_oh, angle_hoh, basis)` -- Build H2O molecule.
+- `PseudoMolData.lih` (method) `quantum_framework_molecular_v2.py:343` `def lih(bond_length, basis)` -- Build LiH molecule.
+- `HamiltonianBuilder.build_jw_hamiltonian` (method) `quantum_framework_molecular_v2.py:361` `def build_jw_hamiltonian(mol)` -- Build Jordan-Wigner transformed Hamiltonian using OpenFermion.
+- `HamiltonianBuilder.build_hamiltonian_matrix` (method) `quantum_framework_molecular_v2.py:418` `def build_hamiltonian_matrix(mol, n_qubits)` -- Build full Hamiltonian matrix for small systems.
+- `CachedHamiltonianEvaluator.__init__` (method) `quantum_framework_molecular_v2.py:485` `def __init__(self, mol, config)`
+- `CachedHamiltonianEvaluator.apply_pauli_fast` (method) `quantum_framework_molecular_v2.py:562` `def apply_pauli_fast(self, state, op)` -- Apply cached Pauli operation.
+- `CachedHamiltonianEvaluator.expectation_value` (method) `quantum_framework_molecular_v2.py:569` `def expectation_value(self, state)` -- Compute energy expectation value.
+- `CachedHamiltonianEvaluator.batch_expectation` (method) `quantum_framework_molecular_v2.py:588` `def batch_expectation(self, states)` -- Compute expectation for batch of states.
+- `SmartInitializer.__init__` (method) `quantum_framework_molecular_v2.py:625` `def __init__(self, mol, ansatz, evaluator, config)`
+- `SmartInitializer.estimate_mp2_amplitude` (method) `quantum_framework_molecular_v2.py:631` `def estimate_mp2_amplitude(self)` -- Estimate doubles amplitude from MP2 theory.
+- `SmartInitializer.scan_parameter_space` (method) `quantum_framework_molecular_v2.py:658` `def scan_parameter_space(self, hf_state, n_samples, param_range)` -- Systematic scan of parameter space.
+- `SmartInitializer.initialize` (method) `quantum_framework_molecular_v2.py:736` `def initialize(self, hf_state)` -- Complete initialization with all techniques.
+- `UCCSDAnsatz.__init__` (method) `quantum_framework_molecular_v2.py:757` `def __init__(self, n_qubits, n_electrons, config)`
+- `UCCSDAnsatz.apply` (method) `quantum_framework_molecular_v2.py:786` `def apply(self, state, thetas)` -- Apply UCCSD ansatz to state.
+- `UCCSDAnsatz.verify_identity` (method) `quantum_framework_molecular_v2.py:872` `def verify_identity(self, hf_state, evaluator, hf_energy)` -- Verify that θ=0 gives HF state.
+- `MPSState.__init__` (method) `quantum_framework_molecular_v2.py:899` `def __init__(self, n_qubits, config)`
+- `MPSState.to_statevector` (method) `quantum_framework_molecular_v2.py:920` `def to_statevector(self)` -- Convert MPS to full statevector.
+- `MPSState.from_statevector` (method) `quantum_framework_molecular_v2.py:928` `def from_statevector(cls, state, n_qubits, config)` -- Create MPS from statevector.
+- `MPSState.compute_entanglement` (method) `quantum_framework_molecular_v2.py:963` `def compute_entanglement(self, bond_idx)` -- Compute entanglement entropy at bond.
+- `ParticleConservingState.__init__` (method) `quantum_framework_molecular_v2.py:999` `def __init__(self, n_qubits, n_particles)`
+- `ParticleConservingState.hf_state` (method) `quantum_framework_molecular_v2.py:1023` `def hf_state(self)` -- Create HF state in subspace.
+- `ParticleConservingState.apply_excitation` (method) `quantum_framework_molecular_v2.py:1037` `def apply_excitation(self, state, occ, vir, theta)` -- Apply excitation preserving particle number.
+- `ParticleConservingState.to_full_statevector` (method) `quantum_framework_molecular_v2.py:1061` `def to_full_statevector(self, state)` -- Convert subspace state to full statevector.
+- `VQESolver.__init__` (method) `quantum_framework_molecular_v2.py:1127` `def __init__(self, mol, config)`
+- `VQESolver.prepare_hf_state` (method) `quantum_framework_molecular_v2.py:1155` `def prepare_hf_state(self)` -- Prepare Hartree-Fock state.
+- `VQESolver.evaluate` (method) `quantum_framework_molecular_v2.py:1170` `def evaluate(self, state)` -- Evaluate energy.
+- `VQESolver.apply_ansatz` (method) `quantum_framework_molecular_v2.py:1177` `def apply_ansatz(self, state, thetas)` -- Apply UCCSD ansatz.
+- `VQESolver.run` (method) `quantum_framework_molecular_v2.py:1202` `def run(self)` -- Run VQE optimization.
+- `cost` (function) `quantum_framework_molecular_v2.py:1229` `def cost(thetas)`
+- `BackendIntegrator.__init__` (method) `quantum_framework_molecular_v2.py:1311` `def __init__(self, config)`
+- `BackendIntegrator.get_backend_energy` (method) `quantum_framework_molecular_v2.py:1335` `def get_backend_energy(self, state, backend_name)` -- Get energy estimate from backend model.
+- `run_vqe` (function) `quantum_framework_molecular_v2.py:1349` `def run_vqe(molecule, precision_mode, config_path)` -- Convenience function to run VQE.
+
+## quantum_framework_physics.py
+Imported by: `quantum_computer.py`, `quantum_framework_core.py`, `quantum_simulator.py`
+- `SpectralLayer.__init__` (method) `quantum_framework_physics.py:86` `def __init__(self, channels, grid_size, channel_mixing)`
+- `SpectralLayer.forward` (method) `quantum_framework_physics.py:98` `def forward(self, x)` -- Apply spectral convolution via RFFT2.
+- `HamiltonianBackboneNet.__init__` (method) `quantum_framework_physics.py:136` `def __init__(self, grid_size, hidden_dim, num_spectral_layers)`
+- `HamiltonianBackboneNet.forward` (method) `quantum_framework_physics.py:145` `def forward(self, x)` -- Accepts (G,G), (1,G,G), or (B,1,G,G).
+- `SchrodingerSpectralNet.__init__` (method) `quantum_framework_physics.py:160` `def __init__(self, grid_size, hidden_dim, expansion_dim, num_spectral_layers)`
+- `SchrodingerSpectralNet.forward` (method) `quantum_framework_physics.py:172` `def forward(self, x)` -- (2,G,G) or (B,2,G,G) -> same shape.
+- `DiracSpectralNet.__init__` (method) `quantum_framework_physics.py:187` `def __init__(self, grid_size, hidden_dim, expansion_dim, num_spectral_layers)`
+- `DiracSpectralNet.forward` (method) `quantum_framework_physics.py:199` `def forward(self, x)` -- (8,G,G) or (B,8,G,G) -> same shape.
+- `GammaMatrices.__init__` (method) `quantum_framework_physics.py:224` `def __init__(self, representation, device)`
+- `GammaMatrices.to` (method) `quantum_framework_physics.py:269` `def to(self, device)` -- Move all matrices to device.
+- `load_checkpoint` (function) `quantum_framework_physics.py:280` `def load_checkpoint(net, path, device, name)` -- Load ``net`` weights from ``path`` with validation.
+- `_ConfigView.__init__` (method) `quantum_framework_physics.py:358` `def __init__(self, config)`
+- `IPhysicsBackend.evolve_amplitude` (method) `quantum_framework_physics.py:382` `def evolve_amplitude(self, amp, dt)` -- Evolve a single (2, G, G) wavefunction by dt.
+- `IPhysicsBackend.apply_phase` (method) `quantum_framework_physics.py:386` `def apply_phase(self, amp, phase_angle)` -- Apply global phase e^{i*phi} to a (2, G, G) amplitude.
+- `HamiltonianBackend.__init__` (method) `quantum_framework_physics.py:402` `def __init__(self, config, checkpoint_attr)`
+- `HamiltonianBackend.evolve_amplitude` (method) `quantum_framework_physics.py:438` `def evolve_amplitude(self, amp, dt)` -- Evolve by dt preserving the input norm (unitary evolution keeps ||psi||).
+- `HamiltonianBackend.apply_phase` (method) `quantum_framework_physics.py:467` `def apply_phase(self, amp, phase_angle)`
+- `SchrodingerBackend.__init__` (method) `quantum_framework_physics.py:484` `def __init__(self, config, hamiltonian)`
+- `SchrodingerBackend.evolve_amplitude` (method) `quantum_framework_physics.py:499` `def evolve_amplitude(self, amp, dt)`
+- `SchrodingerBackend.apply_phase` (method) `quantum_framework_physics.py:514` `def apply_phase(self, amp, phase_angle)`
+- `DiracBackend.__init__` (method) `quantum_framework_physics.py:528` `def __init__(self, config, hamiltonian)`
+- `DiracBackend.evolve_amplitude` (method) `quantum_framework_physics.py:586` `def evolve_amplitude(self, amp, dt)`
+- `DiracBackend.apply_phase` (method) `quantum_framework_physics.py:609` `def apply_phase(self, amp, phase_angle)`
+- `DiracBackend.evolve_spinor` (method) `quantum_framework_physics.py:612` `def evolve_spinor(self, spinor, dt)` -- Evolve a full 4-component spinor analytically, preserving its norm.
+- `PotentialGenerator.__init__` (method) `quantum_framework_physics.py:629` `def __init__(self, grid_size, potential_depth, potential_width)`
+- `PotentialGenerator.harmonic` (method) `quantum_framework_physics.py:640` `def harmonic(self)`
+- `PotentialGenerator.double_well` (method) `quantum_framework_physics.py:646` `def double_well(self)` -- Double-well along x.
+- `PotentialGenerator.coulomb` (method) `quantum_framework_physics.py:653` `def coulomb(self)` -- Coulomb-like V ~ -1/r.
+- `PotentialGenerator.periodic_lattice` (method) `quantum_framework_physics.py:660` `def periodic_lattice(self)` -- Periodic cosine lattice.
+- `PotentialGenerator.mixed` (method) `quantum_framework_physics.py:665` `def mixed(self, seed)` -- Dirichlet-weighted mixture of all four potentials (local RNG).
+- `DiracHamiltonianOperator.__init__` (method) `quantum_framework_physics.py:686` `def __init__(self, grid_size, electron_mass, c_light, device)`
+- `DiracHamiltonianOperator.apply_dirac_hamiltonian` (method) `quantum_framework_physics.py:702` `def apply_dirac_hamiltonian(self, spinor, potential)` -- Apply the Dirac Hamiltonian to a 4-component spinor.
+- `DiracHamiltonianOperator.time_evolution` (method) `quantum_framework_physics.py:740` `def time_evolution(self, spinor, dt, potential, normalization_eps)` -- First-order time evolution psi -> (1 - i H dt) psi, preserving the input norm (first-order unitary approximation).
+- `LambShiftCalculator.__init__` (method) `quantum_framework_physics.py:765` `def __init__(self, alpha_fs, c_light, electron_mass)`
+- `LambShiftCalculator.bethe_formula` (method) `quantum_framework_physics.py:771` `def bethe_formula(self, n, l, Z)`
+- `LambShiftCalculator.full_lamb_shift` (method) `quantum_framework_physics.py:782` `def full_lamb_shift(self, n, l, j, Z)`
+- `AnomalousMagneticMoment.__init__` (method) `quantum_framework_physics.py:805` `def __init__(self, alpha_fs)`
+- `AnomalousMagneticMoment.schwinger_term` (method) `quantum_framework_physics.py:808` `def schwinger_term(self)`
+- `AnomalousMagneticMoment.second_order` (method) `quantum_framework_physics.py:811` `def second_order(self)`
+- `AnomalousMagneticMoment.third_order` (method) `quantum_framework_physics.py:814` `def third_order(self)`
+- `AnomalousMagneticMoment.fourth_order` (method) `quantum_framework_physics.py:817` `def fourth_order(self)`
+- `AnomalousMagneticMoment.fifth_order` (method) `quantum_framework_physics.py:820` `def fifth_order(self)`
+- `AnomalousMagneticMoment.calculate_a_e` (method) `quantum_framework_physics.py:823` `def calculate_a_e(self, order)`
+- `DiracHydrogenAtom.__init__` (method) `quantum_framework_physics.py:845` `def __init__(self, c_light, alpha_fs)`
+- `DiracHydrogenAtom.energy_level_dirac` (method) `quantum_framework_physics.py:850` `def energy_level_dirac(self, n, kappa)`
+- `DiracHydrogenAtom.fine_structure_splitting` (method) `quantum_framework_physics.py:858` `def fine_structure_splitting(self, n, l)`
+- `DiracHydrogenAtom.energy_spectrum` (method) `quantum_framework_physics.py:873` `def energy_spectrum(self, n_max)`
+- `ZitterbewegungSimulator.__init__` (method) `quantum_framework_physics.py:907` `def __init__(self, grid_size, c_light, electron_mass, device)`
+- `ZitterbewegungSimulator.create_gaussian_wave_packet` (method) `quantum_framework_physics.py:915` `def create_gaussian_wave_packet(self, sigma, momentum)`
+- `ZitterbewegungSimulator.compute_position_expectation` (method) `quantum_framework_physics.py:934` `def compute_position_expectation(self, spinor)`
+- `ZitterbewegungSimulator.compute_velocity_expectation` (method) `quantum_framework_physics.py:944` `def compute_velocity_expectation(self, spinor)`
+
+
+Next: [API_p3.md](API_p3.md)

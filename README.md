@@ -165,6 +165,29 @@ python3 quantum_framework_main.py --info
 
 ---
 
+## Immersive Viewer (GPU)
+
+A native OpenGL window: GLSL raymarching on your GPU (70-170 fps on an RTX 2060), HDR bloom, filmic grading.
+English by default; the `EN` button (or `F2`) switches to Spanish.
+
+```bash
+python3 -m venv --system-site-packages .venv && .venv/bin/pip install pyscf   # once, for the Matter scene
+.venv/bin/python qc_launcher.py             # Textual front door
+.venv/bin/python qc_immersive.py --tour     # ~90 s cinematic tour
+.venv/bin/python qc_immersive.py --scene spin --do preset:3 --screenshot out.png   # offscreen render
+```
+
+| Scene | What it shows | Where the numbers come from |
+|-------|---------------|-----------------------------|
+| **Atom** | Hydrogenic clouds up to 4f, slicing with probability contours, phase as colour, beating superpositions. | Exact analytic wavefunctions (cross-checked against SciPy in the tests). Energy panel: your `DiracHydrogenAtom`. |
+| **Spin** | Pauli-spinor states |n l j m_j>: spin arrows inside the cloud, Larmor precession in a magnetic field, spin-orbit beating. | Exact Clebsch-Gordan spinors; level energies and fine-structure splitting from `relativistic_hydrogen.DiracHydrogenAtom`. |
+| **Matter** | H to Ne and 10 molecules: density, molecular orbitals, spin density, FCI density (H2), ball-and-stick geometry. | PySCF (UHF/RHF 6-31G). Integrals are checked against the electron count. Panel for H2 runs the project's own VQE. |
+| **Qubit / Entanglement** | Bloch spheres, animated gates, Bell pairs, entropy, measurement. | Every state is a `JointHilbertState` from `quantum_computer.QuantumComputer`; the NN checkpoints are loaded and the spatial fields they evolve are shown (`K` switches backend, `V` evolves). An ideal-unitary reference runs in lockstep and its gap is displayed. |
+
+Controls: drag = orbit, wheel = zoom, `Tab` = next scene, `T`/`F5` = tour, `F11` = fullscreen, `F12` = screenshot.
+Requires OpenGL 3.3+, `pygame`, `PyOpenGL`, `torch`; `textual` for the launcher, `pyscf` for Matter.
+Keep running the terminal lab (`quantum_lab.py`) with the system Python: with PySCF installed `MoleculeBuilder.h2_sto3g` switches to the 4-qubit branch that `H2VQEEngine` does not expect.
+
 ## Menu Sections
 
 | # | Section | Contents |
@@ -357,3 +380,60 @@ This will:
   orcid   = {0009-0002-7622-3916}
 }
 ```
+
+<!-- readmenator-kb-link -->
+## Knowledge Base
+
+This project has been analyzed by [ReadMenator](https://github.com/grisuno/ReadMenator),
+a zero-token polyglot static analysis tool. Regenerate with
+`pip install readmenator && readmenator . --rebuild`. Analysis outputs:
+
+- **[KNOWLEDGE_BASE.md](./KNOWLEDGE_BASE.md)** -- Full architecture reference with all
+  classes, functions, imports, dependency graphs, UML class diagrams, security
+  audit findings, community analysis, taint paths, hotspots, cycles, and more.
+- **[readmenator-agent/](./readmenator-agent/)** -- Agent-friendly, grep-optimized index.
+  - `INDEX.md` -- Quick reference: what each file does
+  - `SYMBOLS.md` -- Every symbol with file:line
+  - `ARCHITECTURE.md` -- Internal dependency pairs + external imports
+  - `API.md` -- Public function contracts
+  - `GOTCHAS.md` -- Change warnings (blast radius, cycles, hotspots)
+  - `SECURITY.md` -- Findings by severity with fix hints
+  - `MEMORY.md` -- Rules, workflow, style, deliverables, session log
+  - `MANIFEST.json` -- Freshness (git_commit + source_fingerprint) + read order
+  - `KB_<subsystem>.md` -- Per-subsystem context
+  - `recipes/*.md` -- Grounded task guides (add-function, fix-cycle, ...)
+- **[readmenator-wiki/](./readmenator-wiki/)** -- Navigable wiki (start here for the big picture).
+  - `index.md` -- Entry point: overview, reading order, god nodes, connections
+  - `community_*.md` -- One synthesis page per code community
+  - `connections.json` -- Typed bridges between communities
+  - `queries.md` -- Suggested questions + answer log
+  - `REPORT.md` -- Honest audit: coverage, confidence, limits
+- **[readmenator-graphrag/](./readmenator-graphrag/)** -- Zero-token GraphRAG index.
+  - `index.json` + `REPORTS.md` -- Query with `readmenator . ask "<question>"`
+- **[readmenator-apidocs/](./readmenator-apidocs/)** -- API reference (Sphinx/Doxygen style).
+  - `index.md` + `modules/*.md` -- Signatures, parameters, returns, raises, examples, call graphs
+  - `architecture.md` -- Tiered architecture + execution flows (control flow, call tree, sequence)
+  - `classes.md`, `genindex.md`, `COVERAGE.md` -- Hierarchy, A-Z index, doc coverage + warnings
+  - `index.html` + `api/` -- Offline searchable browser and machine-readable model (`api/index.json`, `api/modules/*.jsonl` one entity per line)
+- **[readmenator-maps/](./readmenator-maps/)** -- Interactive gallery (`index.html`).
+  - 5 system maps: architecture, workflow, sequence, dataflow, lifecycle
+  - `graph-force.html` -- Force-graph explorer (2D/3D, reach, paths, lenses)
+  - `graph-bundle.html` -- Edge bundle explorer (circle + sphere)
+  - `components.html` -- Component diagrams
+- **[docs/](./docs/)** -- Static site (GitHub Pages ready).
+  - Gallery copy + `llms.txt` (agent entry point) + `md/` docs + video
+- **[readmenator-diagrams/](./readmenator-diagrams/)** -- Component diagrams.
+  - `analysis.json` + `graph LR` markdown + per-component pages + `index.html`
+- **[readmenator-rules/](./readmenator-rules/)** -- Suggested Semgrep rules (`*.yml`),
+  `yara_rules.yar` (YARA-lite) + `exclusions.yaml` (false-positive blocklist)
+- **[readmenator.mp4](./readmenator.mp4)** -- Cinematic synthwave overview video
+- **[.cursorrules](./.cursorrules)** -- Generated AI assistant rules
+- **[readmenator_audit.sarif](./readmenator_audit.sarif)** -- SARIF v2.1.0 audit (when security scan is on)
+
+Cache (`.readmenator_cache/`), packaged agent skills (`.claude/skills/`), and the
+GitHub wiki mirror are also produced on `run`/`--rebuild`.
+
+AI agents: Read `readmenator-wiki/index.md` first for the big picture, then `readmenator-agent/INDEX.md` for grep-friendly lookup.
+Developers: Read `KNOWLEDGE_BASE.md` for full architecture reference, open `readmenator-maps/index.html` for the visual gallery.
+<!-- /readmenator-kb-link -->
+

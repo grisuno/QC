@@ -1,0 +1,65 @@
+# QC
+
+> Static analysis knowledge base for QC: 4 communities, 43 files, 611 imports, 2 languages, 1985 symbols.
+
+Generated offline by readmenator (zero LLM tokens). Start with the wiki index for the big picture, then the agent INDEX for file lookup.
+
+## Wiki
+
+- [readmenator-wiki/index.md](md/readmenator-wiki/index.md): The codebase centres on quantumcomputer.py, quantumframeworkcore.py, qcdashboard.py. Architecturally it is 3 layers, dominant utility (38 files) across 5...
+- [readmenator-wiki/REPORT.md](md/readmenator-wiki/REPORT.md): Project: QC | 2026-10-29 | offline, deterministic
+- [readmenator-wiki/community_0_root_quantum_simulator.md](md/readmenator-wiki/community_0_root_quantum_simulator.md): Community 0 | 16 files | cohesion 0.74
+- [readmenator-wiki/community_1_immersive.md](md/readmenator-wiki/community_1_immersive.md): Community 1 | 12 files | cohesion 0.81
+- [readmenator-wiki/community_2_root_quantum_framework_core.md](md/readmenator-wiki/community_2_root_quantum_framework_core.md): Community 2 | 10 files | cohesion 0.54
+- [readmenator-wiki/community_3_root_quantum_framework_molecular_v2.md](md/readmenator-wiki/community_3_root_quantum_framework_molecular_v2.md): Community 3 | 2 files | cohesion 1.00
+- [readmenator-wiki/community_4_orphans.md](md/readmenator-wiki/community_4_orphans.md): Community 4 | 3 files | cohesion 0.00
+- [readmenator-wiki/concepts.md](md/readmenator-wiki/concepts.md): Second-brain semantic layer: nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
+- [readmenator-wiki/queries.md](md/readmenator-wiki/queries.md): Log each answered question here so the wiki compounds. Format: question, answer, cited files.
+
+## GraphRAG
+
+- [readmenator-graphrag/REPORTS.md](md/readmenator-graphrag/REPORTS.md): Entities: 2153 | Relationships: 5807 | Communities: 5 | Themes: 3 | Text units: 2026
+
+## Agent Docs
+
+- [readmenator-agent/INDEX.md](md/readmenator-agent/INDEX.md)
+- [readmenator-agent/GOTCHAS.md](md/readmenator-agent/GOTCHAS.md): These files have the most connections. Changes here have high blast radius.
+- [readmenator-agent/API.md](md/readmenator-agent/API.md): Depends on: molecularsim.py, quantumcomputer.py, quantumsimulator.py, relativistichydrogen.py
+- [readmenator-agent/API_p2.md](md/readmenator-agent/API_p2.md): Depends on: orbitalvisualizer2.py, qcintegration.py, quantum3dview.py, quantumcomputer.py, quantumdash.py, quantumframeworkcore.py...
+- [readmenator-agent/API_p3.md](md/readmenator-agent/API_p3.md): Imported by: qcdashboard.py
+- [readmenator-agent/ARCHITECTURE.md](md/readmenator-agent/ARCHITECTURE.md): advancedexperiments.py -> molecularsim.py
+- [readmenator-agent/CONCEPTS.md](md/readmenator-agent/CONCEPTS.md): Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
+- [readmenator-agent/KB_immersive.md](md/readmenator-agent/KB_immersive.md): Imported by: testimmersive.py
+- [readmenator-agent/KB_root.md](md/readmenator-agent/KB_root.md): Doc: Advanced Quantum Experiments - Extension Pack
+- [readmenator-agent/KB_root_p2.md](md/readmenator-agent/KB_root_p2.md): Doc: QC Integration Bridge - OpenQASM, Qiskit, and PennyLane interoperability layer.
+- [readmenator-agent/KB_root_p3.md](md/readmenator-agent/KB_root_p3.md): Doc: Quantum Framework Core Module
+- [readmenator-agent/KB_root_p4.md](md/readmenator-agent/KB_root_p4.md): Doc: Q2C Quantum Lab - Interactive Educational TUI
+- [readmenator-agent/KB_root_p5.md](md/readmenator-agent/KB_root_p5.md): Doc: BDD-style integration tests for qcintegration.py and qcdashboard.py.
+- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 43 files at commit 587dd9bbb732. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
+- [readmenator-agent/SECURITY.md](md/readmenator-agent/SECURITY.md)
+- [readmenator-agent/SYMBOLS.md](md/readmenator-agent/SYMBOLS.md)
+- [readmenator-agent/SYMBOLS_p2.md](md/readmenator-agent/SYMBOLS_p2.md)
+- [readmenator-agent/SYMBOLS_p3.md](md/readmenator-agent/SYMBOLS_p3.md)
+- [readmenator-agent/SYMBOLS_p4.md](md/readmenator-agent/SYMBOLS_p4.md)
+- [readmenator-agent/SYMBOLS_p5.md](md/readmenator-agent/SYMBOLS_p5.md)
+- [readmenator-agent/recipes/add-function.md](md/readmenator-agent/recipes/add-function.md): Find the target file by purpose: grep -in '<topic>' readmenator-agent/INDEX.md
+- [readmenator-agent/recipes/change-impact.md](md/readmenator-agent/recipes/change-impact.md): Riskiest file: quantumframeworkphysics.py (27 dependents)
+- [readmenator-agent/recipes/fix-cycle.md](md/readmenator-agent/recipes/fix-cycle.md): Read cycles: grep -A5 'Dependency Cycles' readmenator-agent/GOTCHAS.md
+- [readmenator-agent/recipes/fix-security.md](md/readmenator-agent/recipes/fix-security.md): Read findings: grep -n '<file>' readmenator-agent/SECURITY.md
+- [readmenator-agent/recipes/reduce-complexity.md](md/readmenator-agent/recipes/reduce-complexity.md): Target hotspot: qcdashboard.py
+
+## Project Docs
+
+- [KNOWLEDGE_BASE.md](md/KNOWLEDGE_BASE.md): Start here: Statistics Dashboard for scope, God Nodes for blast radius, Architecture Reference for per-file API. Agents: prefer readmenator-agent/INDEX.md +...
+- [README.md](md/README.md): Author: grisun0 · ORCID: 0009-0002-7622-3916
+- [SECURITY.md](md/SECURITY.md): Use this section to tell people about which versions of your project are
+- [readmenator-diagrams/immersive.md](md/readmenator-diagrams/immersive.md): immersive groups 12 files (py) around unitvectorpolyargs, angularconstants, ylmfromtable, radialnorm, radialfunction. Immersive viewer entry: window, event...
+- [readmenator-diagrams/overview.md](md/readmenator-diagrams/overview.md): Static architecture map of 43 files (py, sh) in 4 components: root: quantumsimulator, immersive, root: quantumframeworkcore, root: quantumframeworkmolecularv2....
+
+## Optional
+
+- [Runtime Architecture](architecture.html): Components, services, storage, and boundaries across layers. (interactive HTML)
+- [Data Flow](dataflow.html): Movement of data from sources through transforms to stores. (interactive HTML)
+- [Change Lifecycle](lifecycle.html): States, transitions, waits, and retry paths of change. (interactive HTML)
+- [Request Sequence](sequence.html): Ordered interaction between top participants over time. (interactive HTML)
+- [Delivery Workflow](workflow.html): Delivery path across lanes from entry to terminal outcomes. (interactive HTML)

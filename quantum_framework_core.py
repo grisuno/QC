@@ -30,8 +30,21 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 
 import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
+
+# Canonical neural physics stack (single source of truth lives in
+# quantum_framework_physics.py; re-exported here for backward compatibility).
+from quantum_framework_physics import (
+    SpectralLayer,
+    HamiltonianBackboneNet,
+    SchrodingerSpectralNet,
+    DiracSpectralNet,
+    GammaMatrices,
+    IPhysicsBackend,
+    HamiltonianBackend,
+    SchrodingerBackend,
+    DiracBackend,
+    load_checkpoint,
+)
 
 warnings.filterwarnings("once", category=DeprecationWarning)
 warnings.filterwarnings("once", category=FutureWarning)
@@ -101,7 +114,7 @@ class FrameworkConfig:
     max_bond_dimension: int = 64
     svd_threshold: float = 1.0e-10
     truncation_error: float = 1.0e-8
-    regularization_lambda: float = 1.0e34
+    max_probabilities_qubits: int = 24
     vacuum_sparsity_target: float = 0.9999
     winding_number_threshold: float = 1.5
     berry_phase_threshold: float = 0.1
@@ -125,9 +138,10 @@ class FrameworkConfig:
     scatter_size_max: float = 8.0
     background_color: str = "#000008"
     
-    hamiltonian_checkpoint: str = "weights/latest.pth"
-    schrodinger_checkpoint: str = "weights/schrodinger_crystal_final.pth"
-    dirac_checkpoint: str = "weights/dirac_phase5_latest.pth"
+    hamiltonian_checkpoint: str = "hamiltonian.pth"
+    schrodinger_checkpoint: str = "checkpoint_phase3_training_epoch_18921_20260224_154739.pth"
+    dirac_checkpoint: str = "best_dirac.pth"
+    propagator_dt: float = 0.01
     
     output_dir: str = "download"
     default_num_samples: int = 100000
@@ -202,9 +216,10 @@ class FrameworkConfig:
             scatter_size_min=vis.get("scatter_size_min", 1.0),
             scatter_size_max=vis.get("scatter_size_max", 8.0),
             background_color=vis.get("background_color", "#000008"),
-            hamiltonian_checkpoint=ckpt.get("hamiltonian", "weights/latest.pth"),
-            schrodinger_checkpoint=ckpt.get("schrodinger", "weights/schrodinger_crystal_final.pth"),
-            dirac_checkpoint=ckpt.get("dirac", "weights/dirac_phase5_latest.pth"),
+            hamiltonian_checkpoint=ckpt.get("hamiltonian", "hamiltonian.pth"),
+            schrodinger_checkpoint=ckpt.get("schrodinger", "checkpoint_phase3_training_epoch_18921_20260224_154739.pth"),
+            dirac_checkpoint=ckpt.get("dirac", "best_dirac.pth"),
+            max_probabilities_qubits=mps.get("max_probabilities_qubits", 24),
             output_dir=out.get("directory", "download"),
             default_num_samples=sim.get("default_num_samples", 100000),
             enable_vacuum_core=sim.get("enable_vacuum_core", False),
@@ -531,24 +546,32 @@ class MPSCore:
             self.chi_left, self.d, self.chi_right = self._tensor.shape
     
     def left_canonicalize(self) -> torch.Tensor:
-        """Bring core to left-canonical form, return singular values."""
+        """
+        Bring core to left-canonical form; return the residual matrix
+        ``diag(s) @ vh`` that MUST be absorbed into the next core to the
+        right (otherwise the represented state changes).
+        """
         shape = self.chi_left * self.d, self.chi_right
         tensor_matrix = self.tensor.reshape(shape)
         u, s, vh = torch.linalg.svd(tensor_matrix, full_matrices=False)
         self._tensor = u.reshape(self.chi_left, self.d, -1)
-        if vh.is_complex():
-            return s.to(vh.dtype) @ vh
-        return s @ vh
+        # diag(s) @ vh == s[:, None] * vh  (note: ``s @ vh`` would be a
+        # vector -- matmul with a 1-D left operand contracts, it does not
+        # build a diagonal matrix).
+        return s.to(vh.dtype).unsqueeze(1) * vh
 
     def right_canonicalize(self) -> torch.Tensor:
-        """Bring core to right-canonical form, return singular values."""
+        """
+        Bring core to right-canonical form; return the residual matrix
+        ``u @ diag(s)`` that MUST be absorbed into the previous core to
+        the left (otherwise the represented state changes).
+        """
         shape = self.chi_left, self.d * self.chi_right
         tensor_matrix = self.tensor.reshape(shape)
         u, s, vh = torch.linalg.svd(tensor_matrix, full_matrices=False)
         self._tensor = vh.reshape(-1, self.d, self.chi_right)
-        if u.is_complex():
-            return u @ s.to(u.dtype)
-        return u @ s
+        # u @ diag(s) == u * s[None, :]
+        return u * s.to(u.dtype).unsqueeze(0)
 
 
 class MPSState(ITensorNetwork):
@@ -571,6 +594,9 @@ class MPSState(ITensorNetwork):
         self._cores: List[MPSCore] = []
         self._canonical_form: str = "none"
         self._center: int = 0
+        self._last_truncation_error: float = 0.0
+        self._cumulative_truncation_error: float = 0.0
+        self._truncation_warned: bool = False
         self._initialize()
     
     def _initialize(self) -> None:
@@ -599,13 +625,6 @@ class MPSState(ITensorNetwork):
     @property
     def n_qubits(self) -> int:
         return self._n_qubits
-    
-    def _bond_dimension(self, site: int) -> int:
-        """Compute bond dimension at given site."""
-        return min(
-            self.config.bond_dimension,
-            min(2 ** site, 2 ** (self._n_qubits - site))
-        )
     
     def amplitude(self, basis_index: int) -> torch.Tensor:
         """Compute amplitude for computational basis state."""
@@ -714,22 +733,43 @@ class MPSState(ITensorNetwork):
         theta = theta.reshape(chi_l * d, d * chi_r)
         
         u, s, vh = torch.linalg.svd(theta, full_matrices=False)
-        
+
+        total_weight = float(torch.sum(s ** 2)) + 1e-30
+
         truncation = min(len(s), self.config.max_bond_dimension)
         s_trunc = s[:truncation]
         u_trunc = u[:, :truncation]
         vh_trunc = vh[:truncation, :]
-        
+
         mask = s_trunc > self.config.svd_threshold
         s_trunc = s_trunc[mask]
         u_trunc = u_trunc[:, mask]
         vh_trunc = vh_trunc[mask, :]
-        
+
         if len(s_trunc) == 0:
-            s_trunc = torch.ones(1, dtype=self.config.dtype, device=self.config.device)
+            # Degenerate case: keep the DOMINANT singular component
+            # (previously a synthetic singular value of 1.0 was injected,
+            # which fabricated state out of nowhere).
+            s_trunc = s[:1]
             u_trunc = u[:, :1]
             vh_trunc = vh[:1, :]
-        
+
+        # Track the discarded weight (relative truncation error) so the
+        # user can detect when chi is too small for the circuit.
+        discarded = max(0.0, 1.0 - float(torch.sum(s_trunc ** 2)) / total_weight)
+        self._last_truncation_error = discarded
+        self._cumulative_truncation_error += discarded
+        if (
+            discarded > self.config.truncation_error
+            and not self._truncation_warned
+        ):
+            _LOG.warning(
+                "MPS truncation error %.2e exceeds threshold %.2e at bond %d; "
+                "consider increasing max_bond_dimension",
+                discarded, self.config.truncation_error, qubit,
+            )
+            self._truncation_warned = True
+
         core_a.tensor = u_trunc.reshape(chi_l, d, -1)
 
         norm_s = torch.sqrt(torch.sum(s_trunc ** 2))
@@ -740,7 +780,7 @@ class MPSState(ITensorNetwork):
         if vh_trunc.is_complex():
             s_trunc = s_trunc.to(vh_trunc.dtype)
         core_b.tensor = (torch.diag(s_trunc) @ vh_trunc).reshape(-1, d, chi_r)
-        
+
         self._canonical_form = "mixed"
         self._center = qubit + 1
     
@@ -760,23 +800,64 @@ class MPSState(ITensorNetwork):
             self._apply_adjacent_gate(k - 1, swap)
     
     def norm(self) -> float:
-        """Compute state norm."""
+        """
+        Compute the state norm.
+
+        Brings the MPS to mixed canonical form (a representation change
+        that preserves the state exactly), then reads the norm of the
+        orthogonality center.  Safe to call: it no longer corrupts the
+        state (regression: the residuals of the SVD sweeps used to be
+        discarded, scaling amplitudes by O(1) factors).
+        """
         self._canonicalize()
         if self._center < len(self._cores):
             center_tensor = self._cores[self._center].tensor
             return float(torch.norm(center_tensor).item())
         return 1.0
-    
+
     def _canonicalize(self) -> None:
-        """Bring MPS to canonical form."""
-        for k in range(self._n_qubits - 1):
-            if k < self._center:
-                self._cores[k].left_canonicalize()
-            else:
-                self._cores[self._n_qubits - 1 - k].right_canonicalize()
-    
+        """Bring MPS to mixed canonical form centered at self._center."""
+        self._canonicalize_to(self._center)
+
+    def _canonicalize_to(self, center: int) -> None:
+        """
+        Bring MPS to mixed canonical form with orthogonality center at
+        ``center``: cores left of the center become left-canonical, cores
+        right of the center become right-canonical, and the SVD residuals
+        are absorbed into the neighbouring core at every step.  This
+        preserves the represented state exactly.
+        """
+        center = max(0, min(center, self._n_qubits - 1))
+        for k in range(center):
+            residual = self._cores[k].left_canonicalize()
+            nxt = self._cores[k + 1].tensor
+            self._cores[k + 1].tensor = torch.einsum(
+                "ja,abl->jbl", residual.to(nxt.dtype), nxt
+            )
+        for k in range(self._n_qubits - 1, center, -1):
+            residual = self._cores[k].right_canonicalize()
+            prv = self._cores[k - 1].tensor
+            self._cores[k - 1].tensor = torch.einsum(
+                "iab,bj->iaj", prv, residual.to(prv.dtype)
+            )
+        self._center = center
+        self._canonical_form = "mixed"
+
     def probabilities(self) -> torch.Tensor:
-        """Compute measurement probabilities."""
+        """
+        Compute the full measurement probability distribution.
+
+        Cost is O(2^n): guarded by config.max_probabilities_qubits to
+        avoid accidental multi-GB allocations / days-long contractions
+        (the MPS advantage is storage and gate application, not
+        exponential readout).
+        """
+        if self._n_qubits > self.config.max_probabilities_qubits:
+            raise MemoryError(
+                f"probabilities() requires O(2^n) work: {self._n_qubits} qubits "
+                f"exceeds max_probabilities_qubits={self.config.max_probabilities_qubits}. "
+                "Sample from the MPS or compute marginals instead."
+            )
         probs = torch.zeros(
             2 ** self._n_qubits,
             dtype=self.config.dtype,
@@ -785,17 +866,19 @@ class MPSState(ITensorNetwork):
         for k in range(2 ** self._n_qubits):
             amp = self.amplitude(k)
             probs[k] = torch.abs(amp) ** 2
-        
+
         total = torch.sum(probs)
         if total > 1e-12:
             probs = probs / total
-        
+
         return probs
     
     def entropy(self) -> float:
         """Compute maximum entanglement entropy across all cuts.
 
-        For n=1 qubits, returns Shannon entropy of the probability distribution.
+        For n=1 qubits, returns Shannon entropy of the probability distribution
+        (a single qubit has no entanglement; this convention is kept for
+        backward compatibility with the framework's UI/tests).
         For n>1, returns the maximum entanglement entropy across all bipartite cuts.
         """
         if self._n_qubits == 1:
@@ -815,8 +898,8 @@ class MPSState(ITensorNetwork):
                 e = self.entanglement_entropy(cut)
                 if e > max_entropy:
                     max_entropy = e
-            except Exception:
-                pass
+            except Exception as exc:
+                _LOG.debug("entanglement_entropy(cut=%d) failed: %s", cut, exc)
         return max_entropy
     
     def memory_bytes(self) -> int:
@@ -828,47 +911,30 @@ class MPSState(ITensorNetwork):
     
     def entanglement_entropy(self, cut: int) -> float:
         """
-        Compute entanglement entropy at given cut between qubits cut-1 and cut.
-        Uses Schmidt decomposition from the MPS bond.
+        Compute the entanglement entropy at the cut between qubits cut-1
+        and cut, from the Schmidt coefficients of the MPS.
+
+        Brings the state to mixed canonical form with the orthogonality
+        center at site ``cut - 1`` and SVDs the center core: its singular
+        values are exactly the Schmidt coefficients across the cut.  Cost
+        is O(n * chi^3) for any n (previously this materialized the full
+        2^n statevector for n <= 12 and an exponential-in-cut contraction
+        for n > 12).
         """
         if cut <= 0 or cut >= self._n_qubits:
             return 0.0
-        
-        if self._n_qubits <= 12:
-            statevector = self.to_statevector()
-            left_dim = 2 ** cut
-            right_dim = 2 ** (self._n_qubits - cut)
-            matrix = statevector.reshape(left_dim, right_dim)
-            
-            _, s, _ = torch.linalg.svd(matrix, full_matrices=False)
-            s_squared = s ** 2
-            s_squared = s_squared / (s_squared.sum() + 1e-12)
-            entropy = -torch.sum(s_squared * torch.log2(s_squared + 1e-12))
-            return float(entropy.item())
-        
-        left_part = [self._cores[k].tensor for k in range(cut)]
-        right_part = [self._cores[k].tensor for k in range(cut, self._n_qubits)]
-        
-        left_tensor = left_part[0]
-        for t in left_part[1:]:
-            left_tensor = torch.einsum("iaj,jbk->iabk", left_tensor, t)
-            left_tensor = left_tensor.reshape(-1, left_tensor.shape[-1])
-        
-        right_tensor = right_part[-1]
-        for t in reversed(right_part[:-1]):
-            right_tensor = torch.einsum("iaj,jbk->iabk", t, right_tensor)
-            right_tensor = right_tensor.reshape(right_tensor.shape[0], -1)
-        
-        bond_dim = min(left_tensor.shape[-1], right_tensor.shape[0])
-        left_tensor = left_tensor[:, :bond_dim]
-        right_tensor = right_tensor[:bond_dim, :]
-        
-        theta = left_tensor @ right_tensor
-        _, s, _ = torch.linalg.svd(theta, full_matrices=False)
+
+        self._canonicalize_to(cut - 1)
+        center_tensor = self._cores[cut - 1].tensor
+        chi_l, d, chi_r = center_tensor.shape
+        matrix = center_tensor.reshape(chi_l * d, chi_r)
+        s = torch.linalg.svdvals(matrix)
         s_squared = s ** 2
-        s_squared = s_squared / (s_squared.sum() + 1e-12)
+        total = s_squared.sum()
+        if total <= 1e-12:
+            return 0.0
+        s_squared = s_squared / total
         entropy = -torch.sum(s_squared * torch.log2(s_squared + 1e-12))
-        
         return float(entropy.item())
     
     def to_statevector(self) -> torch.Tensor:
@@ -893,6 +959,16 @@ class MPSState(ITensorNetwork):
         k = int(probs.argmax().item())
         return format(k, f"0{self._n_qubits}b")
     
+    @property
+    def truncation_error(self) -> float:
+        """Relative weight discarded by the most recent SVD truncation."""
+        return self._last_truncation_error
+
+    @property
+    def cumulative_truncation_error(self) -> float:
+        """Sum of relative truncation errors over all two-qubit gates applied."""
+        return self._cumulative_truncation_error
+
     def clone(self) -> "MPSState":
         """Return a deep copy."""
         new_state = MPSState.__new__(MPSState)
@@ -910,6 +986,9 @@ class MPSState(ITensorNetwork):
             new_state._cores[i].tensor = c.tensor.clone()
         new_state._canonical_form = self._canonical_form
         new_state._center = self._center
+        new_state._last_truncation_error = self._last_truncation_error
+        new_state._cumulative_truncation_error = self._cumulative_truncation_error
+        new_state._truncation_warned = self._truncation_warned
         return new_state
 
 
@@ -1037,442 +1116,6 @@ class TopologicalProtector:
         return False
 
 
-class SpectralLayer(nn.Module):
-    """Spectral convolution layer in frequency domain."""
-    
-    def __init__(self, channels: int, grid_size: int) -> None:
-        super().__init__()
-        self.grid_size = grid_size
-        self.kernel_real = nn.Parameter(
-            torch.randn(channels, channels, grid_size // 2 + 1, grid_size) * 0.1
-        )
-        self.kernel_imag = nn.Parameter(
-            torch.randn(channels, channels, grid_size // 2 + 1, grid_size) * 0.1
-        )
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply spectral convolution via RFFT2."""
-        x_fft = torch.fft.rfft2(x)
-        _b, _c, freq_h, freq_w = x_fft.shape
-        
-        kr = F.interpolate(
-            self.kernel_real.mean(dim=0).unsqueeze(0),
-            size=(freq_h, freq_w), mode="bilinear", align_corners=False,
-        ).squeeze(0)
-        ki = F.interpolate(
-            self.kernel_imag.mean(dim=0).unsqueeze(0),
-            size=(freq_h, freq_w), mode="bilinear", align_corners=False,
-        ).squeeze(0)
-        
-        real_part = x_fft.real * kr - x_fft.imag * ki
-        imag_part = x_fft.real * ki + x_fft.imag * kr
-        
-        return torch.fft.irfft2(
-            torch.complex(real_part, imag_part),
-            s=(self.grid_size, self.grid_size),
-        )
-
-
-class HamiltonianBackboneNet(nn.Module):
-    """Hamiltonian backbone network for spectral operations."""
-    
-    def __init__(self, grid_size: int, hidden_dim: int, num_spectral_layers: int) -> None:
-        super().__init__()
-        self.input_proj = nn.Conv2d(1, hidden_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList([
-            SpectralLayer(hidden_dim, grid_size)
-            for _ in range(num_spectral_layers)
-        ])
-        self.output_proj = nn.Conv2d(hidden_dim, 1, kernel_size=1)
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply Hamiltonian backbone network."""
-        if x.dim() == 2:
-            x = x.unsqueeze(0).unsqueeze(0)
-        elif x.dim() == 3:
-            x = x.unsqueeze(1)
-        
-        x = F.gelu(self.input_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        
-        return self.output_proj(x).squeeze(1)
-
-
-class SchrodingerSpectralNet(nn.Module):
-    """Schrodinger network for wavefunction evolution."""
-    
-    def __init__(
-        self, grid_size: int, hidden_dim: int,
-        expansion_dim: int, num_spectral_layers: int
-    ) -> None:
-        super().__init__()
-        self.input_proj = nn.Conv2d(2, hidden_dim, kernel_size=1)
-        self.expansion_proj = nn.Conv2d(hidden_dim, expansion_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList([
-            SpectralLayer(expansion_dim, grid_size)
-            for _ in range(num_spectral_layers)
-        ])
-        self.contraction_proj = nn.Conv2d(expansion_dim, hidden_dim, kernel_size=1)
-        self.output_proj = nn.Conv2d(hidden_dim, 2, kernel_size=1)
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply Schrodinger evolution network."""
-        if x.dim() == 3:
-            x = x.unsqueeze(0)
-        
-        x = F.gelu(self.input_proj(x))
-        x = F.gelu(self.expansion_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        x = F.gelu(self.contraction_proj(x))
-        
-        return self.output_proj(x)
-
-
-class DiracSpectralNet(nn.Module):
-    """Dirac network for relativistic spinor evolution."""
-    
-    def __init__(
-        self, grid_size: int, hidden_dim: int,
-        expansion_dim: int, num_spectral_layers: int
-    ) -> None:
-        super().__init__()
-        self.input_proj = nn.Conv2d(8, hidden_dim, kernel_size=1)
-        self.expansion_proj = nn.Conv2d(hidden_dim, expansion_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList([
-            SpectralLayer(expansion_dim, grid_size)
-            for _ in range(num_spectral_layers)
-        ])
-        self.contraction_proj = nn.Conv2d(expansion_dim, hidden_dim, kernel_size=1)
-        self.output_proj = nn.Conv2d(hidden_dim, 8, kernel_size=1)
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply Dirac evolution network."""
-        if x.dim() == 3:
-            x = x.unsqueeze(0)
-        
-        x = F.gelu(self.input_proj(x))
-        x = F.gelu(self.expansion_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        x = F.gelu(self.contraction_proj(x))
-        
-        return self.output_proj(x)
-
-
-class GammaMatrices:
-    """Dirac gamma matrices in standard or Weyl representation."""
-    
-    def __init__(self, representation: str = "dirac", device: str = "cpu") -> None:
-        self.representation = representation
-        self.device = device
-        self._init_matrices()
-    
-    def _init_matrices(self) -> None:
-        """Initialize gamma matrices."""
-        if self.representation == "dirac":
-            self.gamma0 = torch.tensor([
-                [1, 0, 0, 0], [0, 1, 0, 0], [0, 0, -1, 0], [0, 0, 0, -1]
-            ], dtype=torch.complex64, device=self.device)
-            self.gamma1 = torch.tensor([
-                [0, 0, 0, 1], [0, 0, 1, 0], [0, -1, 0, 0], [-1, 0, 0, 0]
-            ], dtype=torch.complex64, device=self.device)
-            self.gamma2 = torch.tensor([
-                [0, 0, 0, -1j], [0, 0, 1j, 0], [0, 1j, 0, 0], [-1j, 0, 0, 0]
-            ], dtype=torch.complex64, device=self.device)
-            self.gamma3 = torch.tensor([
-                [0, 0, 1, 0], [0, 0, 0, -1], [-1, 0, 0, 0], [0, 1, 0, 0]
-            ], dtype=torch.complex64, device=self.device)
-        else:
-            self.gamma0 = torch.tensor([
-                [0, 0, 1, 0], [0, 0, 0, 1], [1, 0, 0, 0], [0, 1, 0, 0]
-            ], dtype=torch.complex64, device=self.device)
-            self.gamma1 = torch.tensor([
-                [0, 0, 0, 1], [0, 0, 1, 0], [0, -1, 0, 0], [-1, 0, 0, 0]
-            ], dtype=torch.complex64, device=self.device)
-            self.gamma2 = torch.tensor([
-                [0, 0, 0, -1j], [0, 0, 1j, 0], [0, 1j, 0, 0], [-1j, 0, 0, 0]
-            ], dtype=torch.complex64, device=self.device)
-            self.gamma3 = torch.tensor([
-                [0, 0, 1, 0], [0, 0, 0, -1], [-1, 0, 0, 0], [0, 1, 0, 0]
-            ], dtype=torch.complex64, device=self.device)
-        
-        self.alpha_x = self.gamma0 @ self.gamma1
-        self.alpha_y = self.gamma0 @ self.gamma2
-        self.alpha_z = self.gamma0 @ self.gamma3
-        self.beta = self.gamma0
-        
-        self.gammas = [self.gamma0, self.gamma1, self.gamma2, self.gamma3]
-    
-    def to(self, device: str) -> "GammaMatrices":
-        """Move all matrices to device."""
-        self.device = device
-        self._init_matrices()
-        return self
-
-
-class IPhysicsBackend(ABC):
-    """Abstract interface for physics backends."""
-    
-    @abstractmethod
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        """Evolve a single amplitude by time dt."""
-        pass
-    
-    @abstractmethod
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        """Apply global phase to amplitude."""
-        pass
-
-
-class HamiltonianBackend(IPhysicsBackend):
-    """
-    Hamiltonian backend using neural network for spectral operations.
-    
-    Performs first-order Schrodinger time evolution:
-        psi(t+dt) = psi(t) - i*dt*H*psi(t)
-    """
-    
-    def __init__(self, config: FrameworkConfig) -> None:
-        self.config = config
-        self.device = config.device
-        self.net: Optional[HamiltonianBackboneNet] = None
-        self._laplacian: Optional[torch.Tensor] = None
-        self._load()
-        self._precompute_laplacian()
-    
-    def _load(self) -> None:
-        """Load model from checkpoint."""
-        self.net = HamiltonianBackboneNet(
-            self.config.grid_size,
-            self.config.hidden_dim,
-            self.config.num_spectral_layers
-        ).to(self.device)
-        
-        path = self.config.hamiltonian_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                self.net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("HamiltonianBackend: loaded %s", path)
-            except Exception as exc:
-                _LOG.warning("HamiltonianBackend: load failed (%s)", exc)
-        
-        self.net.eval()
-        for p in self.net.parameters():
-            p.requires_grad_(False)
-    
-    def _precompute_laplacian(self) -> None:
-        """Precompute Laplacian kernel for kinetic energy."""
-        G = self.config.grid_size
-        kx = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        ky = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        KX, KY = torch.meshgrid(kx, ky, indexing="ij")
-        self._laplacian = (-(KX ** 2 + KY ** 2)).float().to(self.device)
-    
-    def _apply_h(self, field: torch.Tensor) -> torch.Tensor:
-        """Apply Hamiltonian operator to field."""
-        if self.net is not None:
-            with torch.no_grad():
-                result = self.net(field.to(self.device))
-                return result.squeeze() if result.dim() > 2 else result
-        
-        fft = torch.fft.fft2(field.to(self.device))
-        return torch.fft.ifft2(fft * self._laplacian).real
-    
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        """Evolve amplitude by time dt."""
-        psi_r = amp[0].to(self.device)
-        psi_i = amp[1].to(self.device)
-        h_r = self._apply_h(psi_r)
-        h_i = self._apply_h(psi_i)
-        
-        new_r = psi_r + dt * h_i
-        new_i = psi_i - dt * h_r
-        
-        out = torch.stack([new_r, new_i], dim=0)
-        norm = torch.sqrt((out ** 2).sum()) + self.config.normalization_eps
-        return out / norm
-    
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        """Apply global phase."""
-        c = math.cos(phase_angle)
-        s = math.sin(phase_angle)
-        return torch.stack([c * amp[0] - s * amp[1], s * amp[0] + c * amp[1]], dim=0)
-
-
-class SchrodingerBackend(IPhysicsBackend):
-    """
-    Schrodinger backend using learned 2-channel spectral network.
-    
-    Falls back to HamiltonianBackend if checkpoint unavailable.
-    """
-    
-    def __init__(self, config: FrameworkConfig, hamiltonian: HamiltonianBackend) -> None:
-        self.config = config
-        self.device = config.device
-        self.hamiltonian = hamiltonian
-        self.net: Optional[SchrodingerSpectralNet] = None
-        self._load()
-    
-    def _load(self) -> None:
-        """Load model from checkpoint."""
-        self.net = SchrodingerSpectralNet(
-            self.config.grid_size,
-            self.config.hidden_dim,
-            self.config.expansion_dim,
-            self.config.num_spectral_layers
-        ).to(self.device)
-        
-        path = self.config.schrodinger_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                self.net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("SchrodingerBackend: loaded %s", path)
-            except Exception:
-                self.net = None
-                return
-        
-        self.net.eval()
-        for p in self.net.parameters():
-            p.requires_grad_(False)
-    
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        """Evolve amplitude by time dt."""
-        if self.net is None:
-            return self.hamiltonian.evolve_amplitude(amp, dt)
-        
-        with torch.no_grad():
-            out = self.net(amp.unsqueeze(0).to(self.device)).squeeze(0)
-        
-        norm = torch.sqrt((out ** 2).sum()) + self.config.normalization_eps
-        return out / norm
-    
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        """Apply global phase."""
-        return self.hamiltonian.apply_phase(amp, phase_angle)
-
-
-class DiracBackend(IPhysicsBackend):
-    """
-    Dirac backend for relativistic spinor evolution.
-    
-    Expands (2,G,G) amplitude to 4-component spinor, propagates,
-    then projects back.
-    """
-    
-    def __init__(self, config: FrameworkConfig, hamiltonian: HamiltonianBackend) -> None:
-        self.config = config
-        self.device = config.device
-        self.hamiltonian = hamiltonian
-        self.gamma = GammaMatrices(config.gamma_representation, config.device)
-        self.net: Optional[DiracSpectralNet] = None
-        self._load()
-        self._precompute_dirac()
-    
-    def _load(self) -> None:
-        """Load model from checkpoint."""
-        self.net = DiracSpectralNet(
-            self.config.grid_size,
-            self.config.hidden_dim,
-            self.config.expansion_dim,
-            self.config.num_spectral_layers
-        ).to(self.device)
-        
-        path = self.config.dirac_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                self.net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("DiracBackend: loaded %s", path)
-            except Exception:
-                self.net = None
-                return
-        
-        self.net.eval()
-        for p in self.net.parameters():
-            p.requires_grad_(False)
-    
-    def _precompute_dirac(self) -> None:
-        """Precompute momentum grids for Dirac operator."""
-        G = self.config.grid_size
-        kx = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        ky = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        KX, KY = torch.meshgrid(kx, ky, indexing="ij")
-        self.kx_grid = KX.to(self.device)
-        self.ky_grid = KY.to(self.device)
-    
-    def _pack(self, amp: torch.Tensor) -> torch.Tensor:
-        """Pack 2-channel amplitude to 4-component spinor."""
-        G = self.config.grid_size
-        psi_c = torch.complex(amp[0].to(self.device), amp[1].to(self.device))
-        s = math.sqrt(0.5)
-        
-        spinor = torch.zeros(4, G, G, dtype=torch.complex64, device=self.device)
-        spinor[0] = psi_c * s
-        spinor[1] = psi_c * s
-        spinor[2] = psi_c.conj() * s
-        spinor[3] = psi_c.conj() * s
-        
-        return spinor
-    
-    def _unpack(self, spinor: torch.Tensor) -> torch.Tensor:
-        """Unpack 4-component spinor to 2-channel amplitude."""
-        particle = spinor[:2].mean(dim=0)
-        out = torch.stack([particle.real, particle.imag], dim=0)
-        norm = torch.sqrt((out ** 2).sum()) + self.config.normalization_eps
-        return out / norm
-    
-    def _analytical_dirac(self, spinor: torch.Tensor) -> torch.Tensor:
-        """Apply analytical Dirac Hamiltonian to spinor."""
-        m, c = self.config.electron_mass, self.config.c_light
-        result = torch.zeros_like(spinor)
-        
-        for comp in range(4):
-            fft = torch.fft.fft2(spinor[comp])
-            px = torch.fft.ifft2(fft * self.kx_grid)
-            py = torch.fft.ifft2(fft * self.ky_grid)
-            
-            for row in range(4):
-                result[row] += (
-                    c * self.gamma.alpha_x[row, comp] * px
-                    + c * self.gamma.alpha_y[row, comp] * py
-                    + m * c ** 2 * self.gamma.beta[row, comp] * spinor[comp]
-                )
-        
-        return result
-    
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        """Evolve amplitude by time dt using Dirac equation."""
-        spinor = self._pack(amp)
-        
-        if self.net is not None:
-            channels = torch.cat([spinor.real, spinor.imag], dim=0).unsqueeze(0)
-            with torch.no_grad():
-                out = self.net(channels).squeeze(0)
-            spinor_out = torch.complex(out[:4], out[4:])
-        else:
-            h_spinor = self._analytical_dirac(spinor)
-            spinor_out = spinor - 1j * dt * h_spinor
-        
-        norm = torch.sqrt((spinor_out.abs() ** 2).sum()) + self.config.normalization_eps
-        return self._unpack(spinor_out / norm)
-    
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        """Apply global phase."""
-        return self.hamiltonian.apply_phase(amp, phase_angle)
-    
-    def evolve_spinor(self, spinor: torch.Tensor, dt: float) -> torch.Tensor:
-        """Evolve full 4-component spinor by time dt."""
-        spinor = spinor.to(torch.complex64)
-        h_spinor = self._analytical_dirac(spinor)
-        result = spinor - 1j * dt * h_spinor
-        norm = torch.sqrt((result.abs() ** 2).sum()) + self.config.normalization_eps
-        return result / norm
-
-
 class IQuantumGate(ABC):
     """Abstract interface for quantum gates."""
     
@@ -1502,7 +1145,7 @@ class HadamardGate(IQuantumGate):
     
     def apply(self, state, targets, params=None):
         s = 1.0 / math.sqrt(2.0)
-        u = torch.tensor([[s, s], [s, -s]], dtype=torch.complex64)
+        u = torch.tensor([[s, s], [s, -s]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1516,7 +1159,7 @@ class PauliXGate(IQuantumGate):
         return "X"
     
     def apply(self, state, targets, params=None):
-        u = torch.tensor([[0, 1], [1, 0]], dtype=torch.complex64)
+        u = torch.tensor([[0, 1], [1, 0]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1530,7 +1173,7 @@ class PauliYGate(IQuantumGate):
         return "Y"
     
     def apply(self, state, targets, params=None):
-        u = torch.tensor([[0, -1j], [1j, 0]], dtype=torch.complex64)
+        u = torch.tensor([[0, -1j], [1j, 0]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1544,7 +1187,7 @@ class PauliZGate(IQuantumGate):
         return "Z"
     
     def apply(self, state, targets, params=None):
-        u = torch.tensor([[1, 0], [0, -1]], dtype=torch.complex64)
+        u = torch.tensor([[1, 0], [0, -1]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1558,7 +1201,7 @@ class SGate(IQuantumGate):
         return "S"
     
     def apply(self, state, targets, params=None):
-        u = torch.tensor([[1, 0], [0, 1j]], dtype=torch.complex64)
+        u = torch.tensor([[1, 0], [0, 1j]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1573,7 +1216,7 @@ class TGate(IQuantumGate):
     
     def apply(self, state, targets, params=None):
         phase = complex(math.cos(math.pi / 4), math.sin(math.pi / 4))
-        u = torch.tensor([[1, 0], [0, phase]], dtype=torch.complex64)
+        u = torch.tensor([[1, 0], [0, phase]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1589,7 +1232,7 @@ class RxGate(IQuantumGate):
     def apply(self, state, targets, params=None):
         theta = (params or {}).get("theta", 0.0)
         c, s = math.cos(theta / 2.0), math.sin(theta / 2.0)
-        u = torch.tensor([[c, -1j * s], [-1j * s, c]], dtype=torch.complex64)
+        u = torch.tensor([[c, -1j * s], [-1j * s, c]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1605,7 +1248,7 @@ class RyGate(IQuantumGate):
     def apply(self, state, targets, params=None):
         theta = (params or {}).get("theta", 0.0)
         c, s = math.cos(theta / 2.0), math.sin(theta / 2.0)
-        u = torch.tensor([[c, -s], [s, c]], dtype=torch.complex64)
+        u = torch.tensor([[c, -s], [s, c]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1622,7 +1265,7 @@ class RzGate(IQuantumGate):
         theta = (params or {}).get("theta", 0.0)
         e_neg = complex(math.cos(theta / 2.0), -math.sin(theta / 2.0))
         e_pos = complex(math.cos(theta / 2.0), math.sin(theta / 2.0))
-        u = torch.tensor([[e_neg, 0], [0, e_pos]], dtype=torch.complex64)
+        u = torch.tensor([[e_neg, 0], [0, e_pos]], dtype=torch.complex128)
         for t in targets:
             state.apply_single_qubit_gate(t, u)
         return state
@@ -1645,7 +1288,7 @@ class CRzGate(IQuantumGate):
              [0, 1, 0, 0],
              [0, 0, e_neg, 0],
              [0, 0, 0, e_pos]],
-            dtype=torch.complex64
+            dtype=torch.complex128
         )
         
         if len(targets) >= 2:
@@ -1668,7 +1311,7 @@ class CNOTGate(IQuantumGate):
             [0, 1, 0, 0],
             [0, 0, 0, 1],
             [0, 0, 1, 0],
-        ], dtype=torch.complex64)
+        ], dtype=torch.complex128)
         state.apply_two_qubit_gate(targets[0], targets[1], u4)
         return state
 
@@ -1688,7 +1331,7 @@ class CZGate(IQuantumGate):
             [0, 1, 0, 0],
             [0, 0, 1, 0],
             [0, 0, 0, -1],
-        ], dtype=torch.complex64)
+        ], dtype=torch.complex128)
         state.apply_two_qubit_gate(targets[0], targets[1], u4)
         return state
 
@@ -1708,7 +1351,7 @@ class SWAPGate(IQuantumGate):
             [0, 0, 1, 0],
             [0, 1, 0, 0],
             [0, 0, 0, 1],
-        ], dtype=torch.complex64)
+        ], dtype=torch.complex128)
         state.apply_two_qubit_gate(targets[0], targets[1], u4)
         return state
 
@@ -2010,9 +1653,12 @@ class MPSQuantumComputer:
         return result
     
     def compression_ratio(self, state: MPSState) -> float:
-        """Compute compression ratio vs full statevector."""
+        """
+        Compute compression ratio vs a full statevector of the same qubit
+        count (2^n complex128 amplitudes = 2^n * 16 bytes).
+        """
         n = state.n_qubits
-        full_state_memory = 2 ** n * 2 * self.config.grid_size ** 2 * 8
+        full_state_memory = (2 ** n) * 16
         memory = self.memory_usage(state)
         return full_state_memory / max(memory["state"], 1)
     
@@ -2063,19 +1709,22 @@ def run_scaling_benchmark(
     }
     
     _LOG.info("Starting MPS scaling benchmark (max %d qubits)", max_qubits)
-    
+
+    # Single computer instance: avoids reloading the neural backends per n.
+    qc = MPSQuantumComputer(config)
+
     for n in range(2, max_qubits + 1):
         try:
             start = time.time()
-            
-            qc = MPSQuantumComputer(config)
+
             state = qc.ghz_state(n)
-            
+
             elapsed = time.time() - start
             memory = qc.memory_usage(state)
             compression = qc.compression_ratio(state)
-            
-            theoretical_direct = 2 ** n * 2 * config.grid_size ** 2 * 8 / (1024 ** 2)
+
+            # Full statevector of n qubits: 2^n complex128 amplitudes.
+            theoretical_direct = (2 ** n) * 16 / (1024 ** 2)
             
             results["qubits"].append(n)
             results["memory_kb"].append(memory["state"] / 1024)

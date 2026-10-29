@@ -1,0 +1,120 @@
+# Concepts
+
+Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
+
+- `quantum` | files=28 | mentions=233 | `advanced_experiments.py`, `demo_molecular_vqe.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/backend.py`, `molecular_sim.py`, `polarizability_v3.py`, `qc_dashboard.py`, `qc_integration.py`
+- `run` | files=26 | mentions=128 | `advanced_experiments.py`, `app.py`, `demo_molecular_vqe.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/app.py`, `immersive/backend.py`, `molecular_sim.py`, `polarizability_v3.py`
+- `state` | files=23 | mentions=235 | `advanced_experiments.py`, `app.py`, `entangled_hydrogen.py`, `immersive/backend.py`, `immersive/physics.py`, `immersive/scenes.py`, `polarizability_v3.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_3dview.py`
+- `config` | files=22 | mentions=63 | `advanced_experiments.py`, `demo_molecular_vqe.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `orbital_visualizer2.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_3dview.py`, `quantum_computer.py`
+- `energy` | files=19 | mentions=76 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/physics.py`, `immersive/scenes.py`, `immersive/spin.py`, `molecular_sim.py`, `orbital_visualizer2.py`, `qc_dashboard.py`
+- `all` | files=18 | mentions=66 | `advanced_experiments.py`, `demo_molecular_vqe.py`, `entangled_hydrogen.py`, `polarizability_v3.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_main.py`
+- `single` | files=18 | mentions=42 | `app.py`, `entangled_hydrogen.py`, `immersive/backend.py`, `immersive/physics.py`, `polarizability_v3.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`
+- `author` | files=18 | mentions=18 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`
+- `gris` | files=18 | mentions=18 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`
+- `iscomeback` | files=18 | mentions=18 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`
+- `backend` | files=17 | mentions=97 | `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/backend.py`, `immersive/scenes.py`, `immersive/spin.py`, `molecular_sim.py`, `qc_dashboard.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_dash.py`
+- `entropy` | files=17 | mentions=58 | `advanced_experiments.py`, `entangled_hydrogen.py`, `immersive/backend.py`, `immersive/physics.py`, `qc_dashboard.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`
+- `molecular` | files=17 | mentions=52 | `advanced_experiments.py`, `app.py`, `demo_molecular_vqe.py`, `entangled_hydrogen.py`, `immersive/scenes.py`, `molecular_sim.py`, `polarizability_v3.py`, `qc_dashboard.py`, `quantum_framework_core.py`, `quantum_framework_main.py`
+- `create` | files=17 | mentions=49 | `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `molecular_sim.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular_v2.py`
+- `make` | files=17 | mentions=18 | `advanced_experiments.py`, `app.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/glkit.py`, `molecular_sim.py`, `polarizability_v3.py`, `quantum_computer.py`, `quantum_dash.py`
+- `agpl` | files=17 | mentions=17 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`
+- `license` | files=17 | mentions=17 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`
+- `dirac` | files=16 | mentions=101 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/scenes.py`, `immersive/spin.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`
+- `hamiltonian` | files=16 | mentions=68 | `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/backend.py`, `molecular_sim.py`, `orbital_visualizer2.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`
+- `states` | files=16 | mentions=43 | `advanced_experiments.py`, `app.py`, `entangled_hydrogen.py`, `immersive/physics.py`, `immersive/scenes.py`, `immersive/spin.py`, `polarizability_v3.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`
+- `uses` | files=16 | mentions=36 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/physics.py`, `orbital_visualizer2.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`
+- `orbital` | files=15 | mentions=75 | `entangled_hydrogen.py`, `immersive/matter.py`, `immersive/physics.py`, `immersive/scenes.py`, `immersive/shaders.py`, `orbital_visualizer2.py`, `qc_dashboard.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`
+- `compute` | files=15 | mentions=69 | `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `orbital_visualizer2.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`
+- `framework` | files=15 | mentions=65 | `demo_molecular_vqe.py`, `molecular_sim.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`, `quantum_framework_physics.py`
+- `build` | files=15 | mentions=52 | `advanced_experiments.py`, `immersive/app.py`, `molecular_sim.py`, `qc_dashboard.py`, `qc_integration.py`, `qc_launcher.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`
+- `full` | files=15 | mentions=39 | `advanced_experiments.py`, `entangled_hydrogen.py`, `qc_dashboard.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular_v2.py`, `quantum_framework_physics.py`
+- `immersive` | files=15 | mentions=21 | `immersive/__init__.py`, `immersive/app.py`, `immersive/backend.py`, `immersive/glkit.py`, `immersive/hud.py`, `immersive/matter.py`, `immersive/physics.py`, `immersive/postfx.py`, `immersive/scenes.py`, `immersive/shaders.py`
+- `logger` | files=15 | mentions=20 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `molecular_sim.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`
+- `apply` | files=14 | mentions=130 | `advanced_experiments.py`, `app.py`, `immersive/scenes.py`, `molecular_sim.py`, `polarizability_v3.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`
+- `gate` | files=14 | mentions=124 | `advanced_experiments.py`, `immersive/backend.py`, `immersive/physics.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular_v2.py`, `quantum_lab.py`
+- `circuit` | files=14 | mentions=103 | `app.py`, `polarizability_v3.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_lab.py`, `quantum_simulator.py`
+- `qubits` | files=14 | mentions=71 | `app.py`, `entangled_hydrogen.py`, `molecular_sim.py`, `polarizability_v3.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`
+- `psi` | files=14 | mentions=50 | `entangled_hydrogen.py`, `immersive/backend.py`, `immersive/physics.py`, `molecular_sim.py`, `orbital_visualizer2.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_physics.py`, `quantum_framework_visualization.py`
+- `computer` | files=14 | mentions=43 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/backend.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_physics.py`
+- `wavefunction` | files=14 | mentions=41 | `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/scenes.py`, `orbital_visualizer2.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_framework_menu.py`, `quantum_framework_physics.py`, `quantum_framework_visualization.py`
+- `using` | files=13 | mentions=49 | `advanced_experiments.py`, `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`
+- `amplitude` | files=13 | mentions=48 | `advanced_experiments.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `immersive/backend.py`, `immersive/matter.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_molecular_v2.py`, `quantum_framework_physics.py`
+- `bell` | files=13 | mentions=43 | `entangled_hydrogen.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_lab.py`, `quantum_simulator.py`, `quantum_visualizer.py`, `test_immersive.py`
+- `data` | files=13 | mentions=40 | `advanced_experiments.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `molecular_sim.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`
+- `configuration` | files=13 | mentions=37 | `advanced_experiments.py`, `demo_molecular_vqe.py`, `entangled_hydrogen.py`, `qc_dashboard.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`, `quantum_framework_molecular_v2.py`
+- `real` | files=13 | mentions=36 | `entangled_hydrogen.py`, `immersive/spin.py`, `orbital_visualizer2.py`, `qc_dashboard.py`, `quantum_3dview.py`, `quantum_computer.py`, `quantum_framework_menu.py`, `quantum_framework_physics.py`, `quantum_framework_visualization.py`, `quantum_lab.py`
+- `values` | files=13 | mentions=20 | `advanced_experiments.py`, `demo_molecular_vqe.py`, `immersive/matter.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`, `quantum_framework_physics.py`, `quantum_simulator.py`
+- `qubit` | files=12 | mentions=81 | `immersive/backend.py`, `immersive/physics.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`, `quantum_lab.py`, `quantum_simulator.py`, `test_qc_integration.py`
+- `molecule` | files=12 | mentions=49 | `advanced_experiments.py`, `demo_molecular_vqe.py`, `immersive/scenes.py`, `molecular_sim.py`, `qc_dashboard.py`, `quantum_framework_core.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`
+- `visualization` | files=12 | mentions=49 | `entangled_hydrogen.py`, `higgs_four_lepton_analysis.py`, `higgs_quantum_analysis.py`, `orbital_visualizer2.py`, `quantum_3dview.py`, `quantum_dash.py`, `quantum_framework_main.py`, `quantum_framework_menu.py`, `quantum_framework_visualization.py`, `quantum_simulator.py`
+- `vqe` | files=12 | mentions=45 | `advanced_experiments.py`, `demo_molecular_vqe.py`, `immersive/backend.py`, `immersive/scenes.py`, `qc_dashboard.py`, `quantum_framework_menu.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`, `quantum_lab.py`, `quantum_simulator.py`
+- `pauli` | files=12 | mentions=39 | `app.py`, `demo_molecular_vqe.py`, `immersive/scenes.py`, `immersive/spin.py`, `polarizability_v3.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`, `quantum_framework_molecular_v2.py`
+- `ghz` | files=12 | mentions=36 | `entangled_hydrogen.py`, `qc_integration.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_framework_menu.py`, `quantum_lab.py`, `quantum_simulator.py`, `quantum_visualizer.py`, `test_qc_integration.py`
+- `probabilities` | files=12 | mentions=31 | `immersive/backend.py`, `immersive/physics.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_dash.py`, `quantum_framework_core.py`, `quantum_simulator.py`, `quantum_visualizer.py`, `test_immersive.py`, `test_qc_integration.py`
+- `simulator` | files=12 | mentions=27 | `advanced_experiments.py`, `immersive/backend.py`, `immersive/physics.py`, `molecular_sim.py`, `qc_dashboard.py`, `quantum_computer.py`, `quantum_framework_physics.py`, `quantum_lab.py`, `quantum_simulator.py`, `relativistic_hydrogen.py`
+
+## Verb Edges
+
+- `run` --depends_on--> `quantum` (strength 1.00)
+- `state` --depends_on--> `quantum` (strength 0.92)
+- `quantum` --depends_on--> `hamiltonian` (strength 0.88)
+- `run` --depends_on--> `hamiltonian` (strength 0.88)
+- `quantum` --depends_on--> `run` (strength 0.86)
+- `quantum` --depends_on--> `logger` (strength 0.84)
+- `run` --depends_on--> `state` (strength 0.84)
+- `config` --depends_on--> `quantum` (strength 0.82)
+- `quantum` --depends_on--> `make` (strength 0.82)
+- `quantum` --depends_on--> `state` (strength 0.82)
+- `state` --depends_on--> `hamiltonian` (strength 0.82)
+- `quantum` --depends_on--> `build` (strength 0.80)
+- `quantum` --depends_on--> `config` (strength 0.80)
+- `quantum` --depends_on--> `create` (strength 0.80)
+- `run` --depends_on--> `logger` (strength 0.80)
+- `run` --depends_on--> `make` (strength 0.80)
+- `entropy` --depends_on--> `quantum` (strength 0.78)
+- `quantum` --depends_on--> `author` (strength 0.78)
+- `quantum` --depends_on--> `gris` (strength 0.78)
+- `quantum` --depends_on--> `iscomeback` (strength 0.78)
+- `run` --depends_on--> `build` (strength 0.78)
+- `run` --depends_on--> `psi` (strength 0.78)
+- `state` --depends_on--> `logger` (strength 0.78)
+- `state` --depends_on--> `make` (strength 0.78)
+- `state` --depends_on--> `run` (strength 0.78)
+- `all` --depends_on--> `quantum` (strength 0.76)
+- `quantum` --depends_on--> `apply` (strength 0.76)
+- `quantum` --depends_on--> `compute` (strength 0.76)
+- `run` --depends_on--> `apply` (strength 0.76)
+- `run` --depends_on--> `backend` (strength 0.76)
+- `run` --depends_on--> `create` (strength 0.76)
+- `quantum` --depends_on--> `agpl` (strength 0.75)
+- `quantum` --depends_on--> `all` (strength 0.75)
+- `quantum` --depends_on--> `backend` (strength 0.75)
+- `quantum` --depends_on--> `license` (strength 0.75)
+- `quantum` --depends_on--> `psi` (strength 0.75)
+- `run` --depends_on--> `config` (strength 0.75)
+- `molecular` --depends_on--> `quantum` (strength 0.73)
+- `quantum` --depends_on--> `data` (strength 0.73)
+- `run` --depends_on--> `author` (strength 0.73)
+- `run` --depends_on--> `gris` (strength 0.73)
+- `run` --depends_on--> `iscomeback` (strength 0.73)
+- `run` --depends_on--> `single` (strength 0.73)
+- `state` --depends_on--> `build` (strength 0.73)
+- `state` --depends_on--> `create` (strength 0.73)
+- `state` --depends_on--> `psi` (strength 0.73)
+- `config` --depends_on--> `hamiltonian` (strength 0.71)
+- `quantum` --depends_on--> `full` (strength 0.71)
+- `quantum` --depends_on--> `single` (strength 0.71)
+- `quantum` --depends_on--> `uses` (strength 0.71)
+
+## Dialectic
+
+- Thesis: `agpl` centralizes 17 files; Antithesis: `all` pulls 18 files with 12 shared (Jaccard 0.52); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `amplitude` pulls 13 files with 8 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `apply` pulls 14 files with 8 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `author` pulls 18 files with 17 shared (Jaccard 0.94); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `backend` pulls 17 files with 9 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `bell` pulls 13 files with 9 shared (Jaccard 0.43); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `build` pulls 15 files with 8 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `circuit` pulls 14 files with 8 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `compute` pulls 15 files with 11 shared (Jaccard 0.52); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `agpl` centralizes 17 files; Antithesis: `computer` pulls 14 files with 11 shared (Jaccard 0.55); Synthesis: should they merge, split by layer, or keep `bridges` explicit?

@@ -1,0 +1,207 @@
+{
+  "analysis_v2": {
+    "god_nodes": [
+      [
+        "quantum_computer.py",
+        42.3
+      ],
+      [
+        "quantum_framework_core.py",
+        33.7
+      ],
+      [
+        "qc_dashboard.py",
+        24.8
+      ],
+      [
+        "quantum_framework_menu.py",
+        23.8
+      ],
+      [
+        "quantum_simulator.py",
+        22.0
+      ],
+      [
+        "immersive/backend.py",
+        21.5
+      ],
+      [
+        "immersive/app.py",
+        18.0
+      ],
+      [
+        "molecular_sim.py",
+        17.5
+      ],
+      [
+        "immersive/scenes.py",
+        17.3
+      ],
+      [
+        "advanced_experiments.py",
+        15.600000000000001
+      ]
+    ],
+    "communities": [
+      {
+        "id": 0,
+        "label": "root: quantum_simulator",
+        "file_ids": [
+          "app.py",
+          "advanced_experiments.py",
+          "quantum_visualizer.py",
+          "topological_hilbert_compression2.py",
+          "relativistic_hydrogen.py",
+          "polarizability_v3.py",
+          "molecular_sim.py",
+          "quantum_computer.py",
+          "entangled_hydrogen.py",
+          "quantum_simulator.py",
+          "quantum_framework_menu.py",
+          "quantum_dash.py",
+          "quantum_3dview.py",
+          "quantum_framework_physics.py",
+          "higgs_quantum_analysis.py",
+          "higgs_four_lepton_analysis.py"
+        ],
+        "cohesion": 0.7435897435897436,
+        "size": 16
+      },
+      {
+        "id": 1,
+        "label": "immersive",
+        "file_ids": [
+          "immersive/scenes.py",
+          "immersive/shaders.py",
+          "qc_immersive.py",
+          "immersive/physics.py",
+          "immersive/postfx.py",
+          "immersive/app.py",
+          "test_immersive.py",
+          "immersive/backend.py",
+          "immersive/glkit.py",
+          "immersive/hud.py",
+          "immersive/__init__.py",
+          "immersive/spin.py"
+        ],
+        "cohesion": 0.8148148148148148,
+        "size": 12
+      },
+      {
+        "id": 2,
+        "label": "root: quantum_framework_core",
+        "file_ids": [
+          "quantum_framework_main.py",
+          "quantum_framework_core.py",
+          "qc_integration.py",
+          "test_quantum_framework.py",
+          "quantum_framework_molecular.py",
+          "orbital_visualizer2.py",
+          "qc_dashboard.py",
+          "test_qc_integration.py",
+          "quantum_framework_visualization.py",
+          "quantum_lab.py"
+        ],
+        "cohesion": 0.5416666666666666,
+        "size": 10
+      },
+      {
+        "id": 3,
+        "label": "root: quantum_framework_molecular_v2",
+        "file_ids": [
+          "demo_molecular_vqe.py",
+          "quantum_framework_molecular_v2.py"
+        ],
+        "cohesion": 1.0,
+        "size": 2
+      }
+    ],
+    "surprising_connections": [
+      [
+        "immersive/__init__.py",
+        "orbital_visualizer2.py",
+        5,
+        "{0, 1, 2}"
+      ],
+      [
+        "immersive/__init__.py",
+        "quantum_framework_visualization.py",
+        5,
+        "{0, 1, 2}"
+      ],
+      [
+        "immersive/__init__.py",
+        "quantum_simulator.py",
+        5,
+        "{0, 1}"
+      ],
+      [
+        "immersive/glkit.py",
+        "orbital_visualizer2.py",
+        5,
+        "{0, 1, 2}"
+      ],
+      [
+        "immersive/glkit.py",
+        "quantum_framework_visualization.py",
+        5,
+        "{0, 1, 2}"
+      ]
+    ],
+    "suggested_questions": [
+      "What does quantum_computer.py depend on, and what depends on it? (15 connections)",
+      "What does quantum_framework_core.py depend on, and what depends on it? (9 connections)",
+      "What does qc_dashboard.py depend on, and what depends on it? (8 connections)",
+      "How are the 16 files in 'root: quantum_simulator' related to each other?",
+      "Why are __init__.py and orbital_visualizer2.py connected through 5 hops across 3 communities?"
+    ]
+  },
+  "layers": {
+    "advanced_experiments.py": "utility",
+    "app.py": "utility",
+    "demo_molecular_vqe.py": "utility",
+    "entangled_hydrogen.py": "utility",
+    "higgs_four_lepton_analysis.py": "utility",
+    "higgs_quantum_analysis.py": "utility",
+    "immersive/__init__.py": "utility",
+    "immersive/app.py": "utility",
+    "immersive/backend.py": "utility",
+    "immersive/glkit.py": "utility",
+    "immersive/hud.py": "utility",
+    "immersive/matter.py": "utility",
+    "immersive/physics.py": "utility",
+    "immersive/postfx.py": "utility",
+    "immersive/scenes.py": "utility",
+    "immersive/shaders.py": "utility",
+    "immersive/spin.py": "utility",
+    "install.sh": "utility",
+    "molecular_sim.py": "utility",
+    "orbital_visualizer2.py": "utility",
+    "polarizability_v3.py": "utility",
+    "qc_dashboard.py": "utility",
+    "qc_immersive.py": "utility",
+    "qc_integration.py": "utility",
+    "qc_launcher.py": "utility",
+    "quantum_3dview.py": "presentation",
+    "quantum_computer.py": "utility",
+    "quantum_dash.py": "presentation",
+    "quantum_framework_core.py": "utility",
+    "quantum_framework_main.py": "utility",
+    "quantum_framework_menu.py": "utility",
+    "quantum_framework_molecular.py": "utility",
+    "quantum_framework_molecular_v2.py": "utility",
+    "quantum_framework_physics.py": "utility",
+    "quantum_framework_visualization.py": "utility",
+    "quantum_lab.py": "utility",
+    "quantum_simulator.py": "utility",
+    "quantum_visualizer.py": "utility",
+    "relativistic_hydrogen.py": "utility",
+    "test_immersive.py": "testing",
+    "test_qc_integration.py": "testing",
+    "test_quantum_framework.py": "testing",
+    "topological_hilbert_compression2.py": "utility"
+  },
+  "security": {
+    "findings": []
+  }
+}

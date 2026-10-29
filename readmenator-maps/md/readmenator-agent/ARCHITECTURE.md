@@ -1,0 +1,126 @@
+# Architecture
+
+## Internal Dependencies
+
+- `advanced_experiments.py` -> `molecular_sim.py`
+- `advanced_experiments.py` -> `quantum_computer.py`
+- `advanced_experiments.py` -> `quantum_simulator.py`
+- `advanced_experiments.py` -> `relativistic_hydrogen.py`
+- `app.py` -> `molecular_sim.py`
+- `app.py` -> `quantum_computer.py`
+- `demo_molecular_vqe.py` -> `quantum_framework_molecular_v2.py`
+- `entangled_hydrogen.py` -> `molecular_sim.py`
+- `entangled_hydrogen.py` -> `quantum_computer.py`
+- `entangled_hydrogen.py` -> `relativistic_hydrogen.py`
+- `higgs_four_lepton_analysis.py` -> `quantum_computer.py`
+- `higgs_quantum_analysis.py` -> `quantum_computer.py`
+- `immersive/app.py` -> `immersive/backend.py`
+- `immersive/app.py` -> `immersive/glkit.py`
+- `immersive/app.py` -> `immersive/hud.py`
+- `immersive/app.py` -> `immersive/postfx.py`
+- `immersive/app.py` -> `immersive/scenes.py`
+- `immersive/app.py` -> `immersive/shaders.py`
+- `immersive/backend.py` -> `immersive/physics.py`
+- `immersive/backend.py` -> `quantum_computer.py`
+- `immersive/backend.py` -> `quantum_framework_core.py`
+- `immersive/backend.py` -> `quantum_framework_molecular.py`
+- `immersive/backend.py` -> `quantum_lab.py`
+- `immersive/hud.py` -> `immersive/glkit.py`
+- `immersive/hud.py` -> `immersive/shaders.py`
+- `immersive/postfx.py` -> `immersive/glkit.py`
+- `immersive/scenes.py` -> `immersive/backend.py`
+- `immersive/scenes.py` -> `immersive/glkit.py`
+- `immersive/scenes.py` -> `immersive/hud.py`
+- `immersive/scenes.py` -> `immersive/physics.py`
+- `immersive/shaders.py` -> `immersive/physics.py`
+- `immersive/spin.py` -> `immersive/backend.py`
+- `immersive/spin.py` -> `immersive/physics.py`
+- `immersive/spin.py` -> `relativistic_hydrogen.py`
+- `molecular_sim.py` -> `quantum_computer.py`
+- `polarizability_v3.py` -> `molecular_sim.py`
+- `polarizability_v3.py` -> `quantum_computer.py`
+- `qc_dashboard.py` -> `orbital_visualizer2.py`
+- `qc_dashboard.py` -> `qc_integration.py`
+- `qc_dashboard.py` -> `quantum_3dview.py`
+- `qc_dashboard.py` -> `quantum_computer.py`
+- `qc_dashboard.py` -> `quantum_dash.py`
+- `qc_dashboard.py` -> `quantum_framework_core.py`
+- `qc_dashboard.py` -> `quantum_framework_visualization.py`
+- `qc_immersive.py` -> `immersive/app.py`
+- `qc_integration.py` -> `quantum_computer.py`
+- `qc_integration.py` -> `quantum_framework_core.py`
+- `quantum_3dview.py` -> `quantum_computer.py`
+- `quantum_3dview.py` -> `quantum_visualizer.py`
+- `quantum_computer.py` -> `quantum_framework_physics.py`
+- `quantum_dash.py` -> `molecular_sim.py`
+- `quantum_dash.py` -> `quantum_computer.py`
+- `quantum_framework_core.py` -> `quantum_framework_physics.py`
+- `quantum_framework_main.py` -> `quantum_framework_core.py`
+- `quantum_framework_main.py` -> `quantum_framework_menu.py`
+- `quantum_framework_main.py` -> `quantum_lab.py`
+- `quantum_framework_menu.py` -> `app.py`
+- `quantum_framework_menu.py` -> `higgs_four_lepton_analysis.py`
+- `quantum_framework_menu.py` -> `quantum_3dview.py`
+- `quantum_framework_menu.py` -> `quantum_dash.py`
+- `quantum_framework_menu.py` -> `quantum_framework_core.py`
+- `quantum_framework_menu.py` -> `quantum_framework_molecular.py`
+- `quantum_framework_menu.py` -> `quantum_visualizer.py`
+- `quantum_lab.py` -> `quantum_framework_core.py`
+- `quantum_lab.py` -> `quantum_framework_molecular.py`
+- `quantum_simulator.py` -> `quantum_framework_physics.py`
+- `quantum_visualizer.py` -> `advanced_experiments.py`
+- `quantum_visualizer.py` -> `molecular_sim.py`
+- `quantum_visualizer.py` -> `quantum_computer.py`
+- `test_immersive.py` -> `immersive/__init__.py`
+- `test_immersive.py` -> `immersive/app.py`
+- `test_immersive.py` -> `immersive/backend.py`
+- `test_immersive.py` -> `immersive/physics.py`
+- `test_qc_integration.py` -> `qc_dashboard.py`
+- `test_qc_integration.py` -> `qc_integration.py`
+- `test_qc_integration.py` -> `quantum_framework_core.py`
+- `test_quantum_framework.py` -> `quantum_framework_core.py`
+- `topological_hilbert_compression2.py` -> `quantum_computer.py`
+
+## External Imports
+
+- `advanced_experiments.py` -> __future__, abc, argparse, dataclasses, logging, math, numpy, os, pyscf, sys, torch, torch.nn, torch.nn.functional, typing, warnings
+- `app.py` -> __future__, dataclasses, math, numpy, openfermion.ops, openfermion.transforms, pyscf, scipy.optimize, sys, torch, typing, warnings
+- `demo_molecular_vqe.py` -> logging, numpy, os, sys, time, traceback, typing
+- `entangled_hydrogen.py` -> __future__, abc, argparse, dataclasses, logging, math, matplotlib, matplotlib.colors, matplotlib.pyplot, numpy, os, scipy.special, sys, torch, torch.nn, torch.nn.functional, typing, warnings
+- `higgs_four_lepton_analysis.py` -> __future__, csv, dataclasses, enum, logging, math, numpy, os, pathlib, plotly.graph_objects, plotly.subplots, sys, torch, torch.nn.functional, typing, urllib.error, urllib.request
+- `higgs_quantum_analysis.py` -> __future__, csv, dataclasses, enum, logging, math, numpy, os, pathlib, plotly.graph_objects, plotly.subplots, sys, torch, torch.nn.functional, typing, urllib.error, urllib.request
+- `immersive/app.py` -> OpenGL, __future__, argparse, dataclasses, math, numpy, os, pygame, sys, threading, time, typing
+- `immersive/backend.py` -> __future__, logging, math, numpy, pathlib, sys, threading, torch, typing, unittest
+- `immersive/glkit.py` -> OpenGL, __future__, math, numpy, typing
+- `immersive/hud.py` -> OpenGL, __future__, colorsys, numpy, pygame, typing
+- `immersive/matter.py` -> __future__, dataclasses, math, numpy, pyscf, pyscf.dft, threading, typing
+- `immersive/physics.py` -> __future__, dataclasses, math, numpy, scipy.special, typing
+- `immersive/postfx.py` -> OpenGL, __future__, numpy, typing
+- `immersive/scenes.py` -> OpenGL, __future__, collections, math, numpy, os, pygame, typing
+- `immersive/shaders.py` -> __future__
+- `immersive/spin.py` -> __future__, dataclasses, logging, math, numpy, scipy.special, sys, typing
+- `molecular_sim.py` -> __future__, argparse, dataclasses, logging, math, numpy, openfermion, openfermion.linalg, openfermion.transforms, openfermionpyscf, os, pyscf, scipy.optimize, sys, torch, typing
+- `orbital_visualizer2.py` -> matplotlib, matplotlib.pyplot, numpy, os, plotly.graph_objects, schrodinger_crystal_fixed2, scipy.special, sys, torch, traceback, typing, warnings
+- `polarizability_v3.py` -> __future__, dataclasses, math, numpy, openfermion.ops, openfermion.transforms, pyscf, scipy.optimize, sys, torch, typing, warnings
+- `qc_dashboard.py` -> __future__, dataclasses, io, logging, math, matplotlib, matplotlib.patches, matplotlib.pyplot, mpl_toolkits.mplot3d, numpy, os, pathlib, plotly.graph_objects, plotly.subplots, streamlit, sys, tempfile, typing
+- `qc_immersive.py` -> warnings
+- `qc_integration.py` -> __future__, abc, argparse, dataclasses, logging, math, pennylane, qiskit, re, typing
+- `qc_launcher.py` -> __future__, dataclasses, pathlib, subprocess, sys, textual.app, textual.binding, textual.containers, textual.widgets, textual.widgets.option_list, typing
+- `quantum_3dview.py` -> IPython.display, colorsys, dataclasses, enum, json, numpy, pathlib, plotly.express, plotly.graph_objects, plotly.subplots, scipy.io, torch, typing, warnings
+- `quantum_computer.py` -> __future__, abc, argparse, dataclasses, logging, math, numpy, os, torch, typing, warnings
+- `quantum_dash.py` -> __future__, abc, argparse, dataclasses, enum, logging, math, matplotlib, matplotlib.patches, matplotlib.pyplot, mpl_toolkits.mplot3d, numpy, os, pathlib, plotly.express, plotly.graph_objects, plotly.subplots, sys, torch, typing, warnings
+- `quantum_framework_core.py` -> __future__, abc, argparse, dataclasses, enum, logging, math, numpy, os, time, tomli, tomllib, torch, typing, warnings
+- `quantum_framework_main.py` -> __future__, argparse, logging, os, sys, torch, typing
+- `quantum_framework_menu.py` -> __future__, dataclasses, json, logging, math, matplotlib.pyplot, numpy, os, scipy.special, sys, time, torch, traceback, typing
+- `quantum_framework_molecular.py` -> __future__, dataclasses, logging, math, numpy, openfermion, openfermion.ops, openfermion.transforms, openfermionpyscf, os, pyscf, scipy.optimize, torch, typing, warnings
+- `quantum_framework_molecular_v2.py` -> __future__, argparse, dataclasses, itertools, logging, math, numpy, openfermion, openfermion.linalg, openfermion.ops, openfermion.transforms, openfermionpyscf, os, pyscf, scipy.optimize, time, tomli, tomllib, torch, typing, warnings
+- `quantum_framework_physics.py` -> __future__, logging, math, numpy, os, torch, torch.nn, torch.nn.functional, typing
+- `quantum_framework_visualization.py` -> __future__, dataclasses, logging, math, matplotlib, matplotlib.colors, matplotlib.pyplot, numpy, os, plotly.graph_objects, scipy.special, torch, typing, warnings
+- `quantum_lab.py` -> __future__, argparse, dataclasses, math, numpy, os, rich.align, rich.columns, rich.console, rich.live, rich.panel, rich.prompt, rich.rule, rich.table, rich.text, scipy.special, sys, time, torch, typing
+- `quantum_simulator.py` -> __future__, abc, dataclasses, enum, logging, math, matplotlib.pyplot, numpy, os, scipy.special, tomli, tomllib, torch, typing, warnings
+- `quantum_visualizer.py` -> __future__, abc, argparse, dataclasses, logging, math, matplotlib.patches, matplotlib.pyplot, mpl_toolkits.mplot3d, numpy, os, sys, torch, typing, warnings
+- `relativistic_hydrogen.py` -> abc, dataclasses, glob, json, logging, math, matplotlib, matplotlib.colors, matplotlib.pyplot, numpy, os, scipy, scipy.special, sys, torch, torch.nn, torch.nn.functional, traceback, typing, warnings
+- `test_immersive.py` -> math, numpy, os, pygame, pytest, scipy.special
+- `test_qc_integration.py` -> __future__, math, numpy, pytest, typing
+- `test_quantum_framework.py` -> math, numpy, os, pytest, sys, torch, typing
+- `topological_hilbert_compression2.py` -> __future__, abc, argparse, dataclasses, enum, logging, math, numpy, os, sys, time, torch, torch.nn, torch.nn.functional, typing, warnings

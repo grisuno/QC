@@ -1,0 +1,346 @@
+# Subsystem: immersive
+
+## immersive/__init__.py
+- Layer: utility
+- Language: py
+- Imported by: `test_immersive.py`
+
+## immersive/app.py
+- Doc: Immersive viewer entry: window, event loop, cinematic tour director.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `Step` (class, line 64) `class Step`
+  - `build_tour` (function, line 71) `def build_tour()`
+  - `App` (class, line 92) `class App`
+  - `parse_args` (function, line 369) `def parse_args(argv)`
+  - `main` (function, line 382) `def main(argv)`
+  - `cmd` (function, line 72) `def cmd()`
+  - `spin` (function, line 75) `def spin(speed)`
+  - `__init__` (method, line 93) `def __init__(self, args)`
+  - `go` (method, line 147) `def go(self, name, instant)`
+  - `run_command` (method, line 157) `def run_command(self, cmd)`
+  - `start_tour` (method, line 169) `def start_tour(self)`
+  - `stop_tour` (method, line 176) `def stop_tour(self)`
+  - `advance_tour` (method, line 182) `def advance_tour(self)`
+  - `update_tour` (method, line 197) `def update_tour(self, dt)`
+  - `screenshot` (method, line 214) `def screenshot(self, path)`
+  - `handle_event` (method, line 224) `def handle_event(self, ev)`
+  - `update` (method, line 264) `def update(self, dt)`
+  - `draw_chrome` (method, line 286) `def draw_chrome(self)`
+  - `frame` (method, line 329) `def frame(self, dt)`
+  - `run` (method, line 344) `def run(self)`
+- Depends on: `immersive/backend.py`, `immersive/glkit.py`, `immersive/hud.py`, `immersive/postfx.py`, `immersive/scenes.py`, `immersive/shaders.py`
+- Imported by: `qc_immersive.py`, `test_immersive.py`
+
+## immersive/backend.py
+- Doc: Bridge between the viewer and the project's own simulator (quantum_computer.QuantumComputer).
+- Layer: utility
+- Language: py
+- Symbols:
+  - `BackendHub` (class, line 31) `class BackendHub`
+  - `_torch` (function, line 74) `def _torch()`
+  - `to_complex` (function, line 80) `def to_complex(state)`
+  - `BackendRegister` (class, line 85) `class BackendRegister`
+  - `run_project_vqe` (function, line 265) `def run_project_vqe()`
+  - `shared` (method, line 39) `def shared(cls)`
+  - `preload` (method, line 46) `def preload(cls)`
+  - `__init__` (method, line 49) `def __init__(self)`
+  - `backend` (method, line 67) `def backend(self, name)`
+  - `new_state` (method, line 70) `def new_state(self, n_qubits)`
+  - `__init__` (method, line 88) `def __init__(self, n_qubits, backend, seconds_per_gate)`
+  - `be` (method, line 107) `def be(self)`
+  - `cycle_backend` (method, line 110) `def cycle_backend(self)`
+  - `reset` (method, line 115) `def reset(self)`
+  - `prepare` (method, line 124) `def prepare(self, kind)`
+  - `single` (method, line 134) `def single(self, name, qubit)`
+  - `cnot` (method, line 137) `def cnot(self, control, target)`
+  - `queue` (method, line 140) `def queue(self, spec)`
+  - `busy` (method, line 148) `def busy(self)`
+  - `progress` (method, line 152) `def progress(self)`
+  - `active_name` (method, line 156) `def active_name(self)`
+  - `_commit` (method, line 161) `def _commit(self, state, spec)`
+  - `_partial` (method, line 167) `def _partial(self, state, spec, s)`
+  - `update` (method, line 177) `def update(self, dt)`
+  - `evolve` (method, line 197) `def evolve(self, steps, dt)`
+  - `reduced_density` (method, line 209) `def reduced_density(self, qubit)`
+  - `bloch` (method, line 216) `def bloch(self, qubit)`
+  - `backend_bloch` (method, line 220) `def backend_bloch(self, qubit)`
+  - `entropy` (method, line 223) `def entropy(self, qubit)`
+  - `probabilities` (method, line 227) `def probabilities(self)`
+  - `psi` (method, line 231) `def psi(self)`
+  - `fields` (method, line 235) `def fields(self)`
+  - `deviation` (method, line 239) `def deviation(self)`
+  - `measure` (method, line 243) `def measure(self, shots, rng)`
+  - `describe` (method, line 251) `def describe(self)`
+- Depends on: `immersive/physics.py`, `quantum_computer.py`, `quantum_framework_core.py`, `quantum_framework_molecular.py`, `quantum_lab.py`
+- Imported by: `immersive/app.py`, `immersive/scenes.py`, `immersive/spin.py`, `test_immersive.py`
+
+## immersive/glkit.py
+- Doc: Thin OpenGL helpers: program compilation, uniforms, fullscreen pass, orbit camera.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `_compile` (function, line 21) `def _compile(kind, source, label)`
+  - `Program` (class, line 32) `class Program`
+  - `FullscreenPass` (class, line 86) `class FullscreenPass`
+  - `make_texture` (function, line 97) `def make_texture(width, height, internal, fmt, dtype, data, linear)`
+  - `upload_radial` (function, line 110) `def upload_radial(tex, table)`
+  - `upload_volume` (function, line 117) `def upload_volume(tex, volume)`
+  - `_normalize` (function, line 130) `def _normalize(v)`
+  - `OrbitCamera` (class, line 135) `class OrbitCamera`
+  - `__init__` (method, line 35) `def __init__(self, fragment_source, label, vertex_source)`
+  - `use` (method, line 49) `def use(self)`
+  - `loc` (method, line 52) `def loc(self, name)`
+  - `f1` (method, line 57) `def f1(self, name, v)`
+  - `i1` (method, line 60) `def i1(self, name, v)`
+  - `v2` (method, line 63) `def v2(self, name, v)`
+  - `v3` (method, line 66) `def v3(self, name, v)`
+  - `v2a` (method, line 69) `def v2a(self, name, arr)`
+  - `v3a` (method, line 73) `def v3a(self, name, arr)`
+  - `v4ia` (method, line 77) `def v4ia(self, name, arr)`
+  - `v3ia` (method, line 81) `def v3ia(self, name, arr)`
+  - `__init__` (method, line 89) `def __init__(self)`
+  - `draw` (method, line 92) `def draw(self)`
+  - `__init__` (method, line 138) `def __init__(self, dist, yaw, pitch)`
+  - `drag` (method, line 151) `def drag(self, dx, dy, dt)`
+  - `zoom` (method, line 158) `def zoom(self, steps)`
+  - `fly_to` (method, line 162) `def fly_to(self, dist)`
+  - `update` (method, line 165) `def update(self, dt)`
+  - `eye` (method, line 175) `def eye(self)`
+  - `basis` (method, line 179) `def basis(self)`
+  - `set_uniforms` (method, line 185) `def set_uniforms(self, prog, width, height)`
+  - `project` (method, line 194) `def project(self, world, width, height)`
+- Imported by: `immersive/app.py`, `immersive/hud.py`, `immersive/postfx.py`, `immersive/scenes.py`
+
+## immersive/hud.py
+- Doc: 2D heads-up display drawn with pygame into an RGBA surface and composited over the GL scene.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `Lang` (class, line 24) `class Lang`
+  - `Hud` (class, line 40) `class Hud`
+  - `__init__` (method, line 27) `def __init__(self, table, code)`
+  - `toggle` (method, line 31) `def toggle(self)`
+  - `__call__` (method, line 34) `def __call__(self, key)`
+  - `__init__` (method, line 41) `def __init__(self, width, height)`
+  - `resize` (method, line 51) `def resize(self, width, height)`
+  - `font` (method, line 57) `def font(self, size, bold)`
+  - `begin` (method, line 65) `def begin(self)`
+  - `s` (method, line 69) `def s(self, v)`
+  - `text` (method, line 72) `def text(self, msg, x, y, size, color, bold, anchor, alpha, shadow)`
+  - `panel` (method, line 99) `def panel(self, rect, radius)`
+  - `bar` (method, line 105) `def bar(self, rect, frac, color, back)`
+  - `button` (method, line 113) `def button(self, rect, label, action, hot)`
+  - `hit` (method, line 122) `def hit(self, pos)`
+  - `heatmap` (method, line 128) `def heatmap(self, values, rect, peak)`
+  - `hue_color` (method, line 138) `def hue_color(self, phase)`
+  - `wrap` (method, line 142) `def wrap(self, msg, width_px, size, bold)`
+  - `end` (method, line 156) `def end(self, fade)`
+- Depends on: `immersive/glkit.py`, `immersive/shaders.py`
+- Imported by: `immersive/app.py`, `immersive/scenes.py`
+
+## immersive/matter.py
+- Doc: Ab-initio fields for atoms and molecules (PySCF) sampled on a cubic grid for GPU volume rendering.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `System` (class, line 30) `class System`
+  - `_mol` (function, line 39) `def _mol(key, title, atoms, spin, en, es)`
+  - `OrbitalInfo` (class, line 77) `class OrbitalInfo`
+  - `Solved` (class, line 85) `class Solved`
+  - `pyscf_available` (function, line 102) `def pyscf_available()`
+  - `solve` (function, line 110) `def solve(system)`
+  - `_ao_values` (function, line 139) `def _ao_values(solved, n)`
+  - `_evaluate` (function, line 149) `def _evaluate(solved, quadratic)`
+  - `field_amplitude` (function, line 160) `def field_amplitude(solved, kind)`
+  - `exposure` (function, line 192) `def exposure(amp, half)`
+  - `bonds` (function, line 201) `def bonds(symbols, coords)`
+  - `AsyncSolver` (class, line 211) `class AsyncSolver`
+  - `__init__` (method, line 214) `def __init__(self)`
+  - `request` (method, line 220) `def request(self, system)`
+  - `prefetch` (method, line 236) `def prefetch(self, system, kinds)`
+  - `request_field` (method, line 261) `def request_field(self, system, kind)`
+  - `work` (function, line 224) `def work()`
+  - `work` (function, line 242) `def work()`
+  - `work` (function, line 269) `def work()`
+
+## immersive/physics.py
+- Doc: Physics kernels for the immersive viewer: hydrogenic tables, angular constants, qubit registers.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `unit_vector_poly_args` (function, line 32) `def unit_vector_poly_args(theta, phi)`
+  - `angular_constants` (function, line 37) `def angular_constants()`
+  - `ylm_from_table` (function, line 48) `def ylm_from_table(l, m, theta, phi, consts)`
+  - `radial_norm` (function, line 59) `def radial_norm(n, l)`
+  - `radial_function` (function, line 63) `def radial_function(n, l, r)`
+  - `radial_table` (function, line 69) `def radial_table(qn, rmax, samples)`
+  - `view_radius` (function, line 75) `def view_radius(n_max)`
+  - `energy_ev` (function, line 80) `def energy_ev(n)`
+  - `orbital_label` (function, line 84) `def orbital_label(n, l, m)`
+  - `psi_samples` (function, line 88) `def psi_samples(qn, coefs, r, theta, phi)`
+  - `density_peak` (function, line 95) `def density_peak(qn, coefs, rmax, phases, percentile)`
+  - `overlap_1s` (function, line 115) `def overlap_1s(bond)`
+  - `OrbitalPreset` (class, line 121) `class OrbitalPreset`
+  - `_combo` (function, line 130) `def _combo(n, l, m, sign_a, sign_b, phase)`
+  - `Gate` (class, line 154) `class Gate`
+  - `QubitRegister` (class, line 187) `class QubitRegister`
+  - `__init__` (method, line 157) `def __init__(self, name, hamiltonian, qubits)`
+  - `unitary` (method, line 163) `def unitary(self, s)`
+  - `__init__` (method, line 190) `def __init__(self, n_qubits, seconds_per_gate)`
+  - `reset` (method, line 201) `def reset(self)`
+  - `set_state` (method, line 208) `def set_state(self, vec)`
+  - `embed` (method, line 213) `def embed(self, op, qubit)`
+  - `single` (method, line 221) `def single(self, name, qubit)`
+  - `cnot` (method, line 226) `def cnot(self, control, target)`
+  - `queue` (method, line 231) `def queue(self, gate)`
+  - `busy` (method, line 235) `def busy(self)`
+  - `progress` (method, line 239) `def progress(self)`
+  - `active_name` (method, line 243) `def active_name(self)`
+  - `update` (method, line 246) `def update(self, dt)`
+  - `probabilities` (method, line 262) `def probabilities(self)`
+  - `reduced_density` (method, line 265) `def reduced_density(self, qubit)`
+  - `bloch` (method, line 270) `def bloch(self, qubit)`
+  - `entropy` (method, line 274) `def entropy(self, qubit)`
+  - `measure` (method, line 278) `def measure(self, shots, rng)`
+- Imported by: `immersive/backend.py`, `immersive/scenes.py`, `immersive/shaders.py`, `immersive/spin.py`, `test_immersive.py`
+
+## immersive/postfx.py
+- Doc: HDR post-processing: multi-level bloom, filmic tone mapping, grading, lens fringe, vignette and...
+- Layer: utility
+- Language: py
+- Symbols:
+  - `Target` (class, line 87) `class Target`
+  - `PostProcess` (class, line 116) `class PostProcess`
+  - `source_size` (function, line 193) `def source_size(post, index)`
+  - `__init__` (method, line 90) `def __init__(self, width, height)`
+  - `bind` (method, line 107) `def bind(self)`
+  - `destroy` (method, line 111) `def destroy(self)`
+  - `__init__` (method, line 119) `def __init__(self, width, height)`
+  - `resize` (method, line 133) `def resize(self, width, height)`
+  - `begin` (method, line 142) `def begin(self)`
+  - `_pass` (method, line 146) `def _pass(self, program, target, source)`
+  - `present` (method, line 154) `def present(self, time, width, height)`
+- Depends on: `immersive/glkit.py`
+- Imported by: `immersive/app.py`
+
+## immersive/scenes.py
+- Doc: Interactive scenes: hydrogen orbital clouds, H2 molecular orbitals, Bloch sphere, entanglement.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `Scene` (class, line 134) `class Scene`
+  - `VolumeScene` (class, line 175) `class VolumeScene(Scene)`
+  - `AtomScene` (class, line 282) `class AtomScene(VolumeScene)`
+  - `SpinScene` (class, line 450) `class SpinScene(VolumeScene)`
+  - `MatterScene` (class, line 609) `class MatterScene(VolumeScene)`
+  - `fmt_c` (function, line 856) `def fmt_c(z)`
+  - `backend_command` (function, line 860) `def backend_command(reg, cmd)`
+  - `draw_backend_panel` (function, line 867) `def draw_backend_panel(hud, tr, reg, x, y)`
+  - `BlochScene` (class, line 903) `class BlochScene(Scene)`
+  - `EntangleScene` (class, line 1037) `class EntangleScene(Scene)`
+  - `__init__` (method, line 139) `def __init__(self, app)`
+  - `enter` (method, line 144) `def enter(self)`
+  - `loading` (method, line 147) `def loading(self)`
+  - `update` (method, line 150) `def update(self, dt)`
+  - `render` (method, line 153) `def render(self)`
+  - `draw_hud` (method, line 156) `def draw_hud(self, hud, tr)`
+  - `command` (method, line 159) `def command(self, cmd)`
+  - `on_key` (method, line 162) `def on_key(self, ev)`
+  - `panel_rect` (method, line 169) `def panel_rect(self, hud, x, y, w, h)`
+  - `__init__` (method, line 178) `def __init__(self, app)`
+  - `cloud_radius` (method, line 201) `def cloud_radius(self)`
+  - `cut_normal` (method, line 204) `def cut_normal(self)`
+  - `command` (method, line 213) `def command(self, cmd)`
+  - `update` (method, line 236) `def update(self, dt)`
+  - `set_volume_uniforms` (method, line 243) `def set_volume_uniforms(self)`
+  - `phase_legend` (method, line 263) `def phase_legend(self, hud, tr, x, y)`
+  - `cut_hud` (method, line 273) `def cut_hud(self, hud, tr, x, y)`
+  - `__init__` (method, line 287) `def __init__(self, app)`
+  - `enter` (method, line 304) `def enter(self)`
+  - `load_preset` (method, line 307) `def load_preset(self, preset)`
+  - `set_states` (method, line 314) `def set_states(self, states, label)`
+  - `command` (method, line 328) `def command(self, cmd)`
+  - `coefficients` (method, line 350) `def coefficients(self)`
+  - `update` (method, line 364) `def update(self, dt)`
+  - `render` (method, line 368) `def render(self)`
+  - `draw_hud` (method, line 379) `def draw_hud(self, hud, tr)`
+  - `draw_energy_panel` (method, line 416) `def draw_energy_panel(self, hud, tr, top)`
+  - `__init__` (method, line 458) `def __init__(self, app)`
+  - `enter` (method, line 476) `def enter(self)`
+  - `load` (method, line 479) `def load(self, preset)`
+  - `refresh` (method, line 486) `def refresh(self)`
+  - `command` (method, line 495) `def command(self, cmd)`
+  - `coefficients` (method, line 508) `def coefficients(self)`
+  - `update` (method, line 511) `def update(self, dt)`
+  - `render` (method, line 519) `def render(self)`
+  - `draw_hud` (method, line 549) `def draw_hud(self, hud, tr)`
+  - `spin_inset` (method, line 597) `def spin_inset(self, hud, cx, cy, radius, sigma)`
+  - `__init__` (method, line 618) `def __init__(self, app)`
+  - `enter` (method, line 639) `def enter(self)`
+  - `warm_up` (method, line 643) `def warm_up(self, keys)`
+  - `system` (method, line 651) `def system(self)`
+  - `loading` (method, line 654) `def loading(self)`
+  - `command` (method, line 658) `def command(self, cmd)`
+  - `wanted_kind` (method, line 688) `def wanted_kind(self)`
+  - `update` (method, line 699) `def update(self, dt)`
+  - `apply` (method, line 719) `def apply(self, solved, kind, token)`
+  - `render` (method, line 744) `def render(self)`
+  - `draw_hud` (method, line 769) `def draw_hud(self, hud, tr)`
+  - `draw_vqe` (method, line 831) `def draw_vqe(self, hud, tr)`
+  - `__init__` (method, line 910) `def __init__(self, app)`
+  - `enter` (method, line 926) `def enter(self)`
+  - `command` (method, line 930) `def command(self, cmd)`
+  - `update` (method, line 945) `def update(self, dt)`
+  - `render` (method, line 959) `def render(self)`
+  - `sphere_labels` (method, line 981) `def sphere_labels(self, hud, centre, tag)`
+  - `draw_hud` (method, line 989) `def draw_hud(self, hud, tr)`
+  - `__init__` (method, line 1046) `def __init__(self, app)`
+  - `centres` (method, line 1062) `def centres(self)`
+  - `enter` (method, line 1065) `def enter(self)`
+  - `command` (method, line 1069) `def command(self, cmd)`
+  - `update` (method, line 1099) `def update(self, dt)`
+  - `render` (method, line 1122) `def render(self)`
+  - `draw_hud` (method, line 1147) `def draw_hud(self, hud, tr)`
+- Depends on: `immersive/backend.py`, `immersive/glkit.py`, `immersive/hud.py`, `immersive/physics.py`
+- Imported by: `immersive/app.py`
+
+## immersive/shaders.py
+- Doc: GLSL sources.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `orbital_fragment` (function, line 578) `def orbital_fragment()`
+  - `bloch_fragment` (function, line 585) `def bloch_fragment()`
+- Depends on: `immersive/physics.py`
+- Imported by: `immersive/app.py`, `immersive/hud.py`
+
+## immersive/spin.py
+- Doc: Pauli-spinor hydrogen states |n l j m_j>: exact angular coupling, fine structure from the...
+- Layer: utility
+- Language: py
+- Symbols:
+  - `clebsch` (function, line 24) `def clebsch(l, mj2, sign)`
+  - `lande_g` (function, line 33) `def lande_g(l, sign)`
+  - `SpinorComponent` (class, line 42) `class SpinorComponent`
+  - `DiracBackendLink` (class, line 66) `class DiracBackendLink`
+  - `SpinPreset` (class, line 99) `class SpinPreset`
+  - `_c` (function, line 110) `def _c(n, l, sign, mj2, coef)`
+  - `component_energy` (function, line 141) `def component_energy(comp, link, field_tesla)`
+  - `time_scale` (function, line 146) `def time_scale(components, link, field_tesla, beat_seconds)`
+  - `real_time_label` (function, line 155) `def real_time_label(au_per_screen_second)`
+  - `evolved_coefficients` (function, line 163) `def evolved_coefficients(components, energies, t_au)`
+  - `spinor_field` (function, line 168) `def spinor_field(components, coefs, points)`
+  - `SpinMeasurement` (class, line 188) `class SpinMeasurement`
+  - `measure` (function, line 196) `def measure(components, coefs, reach, arrows)`
+  - `exposure` (function, line 216) `def exposure(components, energies, rmax, percentile)`
+  - `shared_link` (function, line 238) `def shared_link()`
+  - `j` (method, line 50) `def j(self)`
+  - `kappa` (method, line 54) `def kappa(self)`
+  - `label` (method, line 58) `def label(self)`
+  - `valid` (method, line 62) `def valid(self)`
+  - `__init__` (method, line 69) `def __init__(self)`
+  - `ok` (method, line 89) `def ok(self)`
+  - `energy` (method, line 92) `def energy(self, comp)`
+- Depends on: `immersive/backend.py`, `immersive/physics.py`, `relativistic_hydrogen.py`

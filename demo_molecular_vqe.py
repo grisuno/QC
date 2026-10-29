@@ -102,15 +102,16 @@ def demo_h2_direct():
 
 
 def demo_h2_mps():
-    """Demo: H2 with MPS compression."""
-    print_header("DEMO 2: H2 VQE - MPS Compression (Scalable Mode)")
+    """Demo: H2 with precision_mode=False (NOTE: solver is statevector; see module docs)."""
+    print_header("DEMO 2: H2 VQE - precision_mode=False (runs on statevector)")
     
     if not OPENFERMION_AVAILABLE:
         print("  Skipping: OpenFermion not available")
         return None
     
-    print("\n  Running VQE with precision_mode=False (MPS)")
-    print("  Expected: Good precision with reduced memory")
+    print("\n  Running VQE with precision_mode=False")
+    print("  NOTE: the VQE solver runs on an exact statevector; the MPS")
+    print("  classes in quantum_framework_molecular_v2 are experimental/unused.")
     print()
     
     start = time.time()

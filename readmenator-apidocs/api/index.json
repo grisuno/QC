@@ -1,0 +1,496 @@
+{
+ "schema_version": 1,
+ "format": "jsonl",
+ "meta": {
+  "modules": 40,
+  "entities": 2456,
+  "languages": {
+   "py": 39,
+   "sh": 1
+  },
+  "kinds": {
+   "attribute": 894,
+   "class": 298,
+   "classmethod": 8,
+   "constant": 84,
+   "constructor": 159,
+   "enum": 8,
+   "function": 99,
+   "method": 730,
+   "module": 40,
+   "property": 98,
+   "staticmethod": 38
+  },
+  "truncated": false,
+  "skipped_files": 3,
+  "privacy_mode": false
+ },
+ "coverage": {
+  "overall": {
+   "documented": 611,
+   "total": 1478,
+   "percent": 41.3
+  },
+  "by_kind": {
+   "class": {
+    "documented": 185,
+    "total": 298,
+    "percent": 62.1
+   },
+   "classmethod": {
+    "documented": 3,
+    "total": 8,
+    "percent": 37.5
+   },
+   "constructor": {
+    "documented": 0,
+    "total": 159,
+    "percent": 0.0
+   },
+   "enum": {
+    "documented": 1,
+    "total": 8,
+    "percent": 12.5
+   },
+   "function": {
+    "documented": 65,
+    "total": 99,
+    "percent": 65.7
+   },
+   "method": {
+    "documented": 261,
+    "total": 730,
+    "percent": 35.8
+   },
+   "module": {
+    "documented": 38,
+    "total": 40,
+    "percent": 95.0
+   },
+   "property": {
+    "documented": 44,
+    "total": 98,
+    "percent": 44.9
+   },
+   "staticmethod": {
+    "documented": 14,
+    "total": 38,
+    "percent": 36.8
+   }
+  },
+  "by_module": {
+   "advanced_experiments.py": {
+    "documented": 40,
+    "total": 49,
+    "percent": 81.6
+   },
+   "app.py": {
+    "documented": 3,
+    "total": 13,
+    "percent": 23.1
+   },
+   "demo_molecular_vqe.py": {
+    "documented": 11,
+    "total": 11,
+    "percent": 100.0
+   },
+   "entangled_hydrogen.py": {
+    "documented": 36,
+    "total": 42,
+    "percent": 85.7
+   },
+   "higgs_four_lepton_analysis.py": {
+    "documented": 13,
+    "total": 37,
+    "percent": 35.1
+   },
+   "higgs_quantum_analysis.py": {
+    "documented": 13,
+    "total": 37,
+    "percent": 35.1
+   },
+   "immersive/__init__.py": {
+    "documented": 0,
+    "total": 1,
+    "percent": 0.0
+   },
+   "immersive/app.py": {
+    "documented": 1,
+    "total": 19,
+    "percent": 5.3
+   },
+   "immersive/backend.py": {
+    "documented": 7,
+    "total": 33,
+    "percent": 21.2
+   },
+   "immersive/glkit.py": {
+    "documented": 6,
+    "total": 29,
+    "percent": 20.7
+   },
+   "immersive/hud.py": {
+    "documented": 2,
+    "total": 20,
+    "percent": 10.0
+   },
+   "immersive/matter.py": {
+    "documented": 5,
+    "total": 14,
+    "percent": 35.7
+   },
+   "immersive/physics.py": {
+    "documented": 10,
+    "total": 34,
+    "percent": 29.4
+   },
+   "immersive/postfx.py": {
+    "documented": 3,
+    "total": 11,
+    "percent": 27.3
+   },
+   "immersive/scenes.py": {
+    "documented": 5,
+    "total": 74,
+    "percent": 6.8
+   },
+   "immersive/shaders.py": {
+    "documented": 1,
+    "total": 3,
+    "percent": 33.3
+   },
+   "immersive/spin.py": {
+    "documented": 6,
+    "total": 22,
+    "percent": 27.3
+   },
+   "install.sh": {
+    "documented": 0,
+    "total": 1,
+    "percent": 0.0
+   },
+   "molecular_sim.py": {
+    "documented": 5,
+    "total": 16,
+    "percent": 31.2
+   },
+   "orbital_visualizer2.py": {
+    "documented": 5,
+    "total": 17,
+    "percent": 29.4
+   },
+   "polarizability_v3.py": {
+    "documented": 3,
+    "total": 13,
+    "percent": 23.1
+   },
+   "qc_dashboard.py": {
+    "documented": 17,
+    "total": 50,
+    "percent": 34.0
+   },
+   "qc_immersive.py": {
+    "documented": 1,
+    "total": 1,
+    "percent": 100.0
+   },
+   "qc_integration.py": {
+    "documented": 22,
+    "total": 44,
+    "percent": 50.0
+   },
+   "qc_launcher.py": {
+    "documented": 1,
+    "total": 13,
+    "percent": 7.7
+   },
+   "quantum_3dview.py": {
+    "documented": 11,
+    "total": 18,
+    "percent": 61.1
+   },
+   "quantum_computer.py": {
+    "documented": 86,
+    "total": 109,
+    "percent": 78.9
+   },
+   "quantum_dash.py": {
+    "documented": 1,
+    "total": 51,
+    "percent": 2.0
+   },
+   "quantum_framework_core.py": {
+    "documented": 116,
+    "total": 136,
+    "percent": 85.3
+   },
+   "quantum_framework_main.py": {
+    "documented": 8,
+    "total": 8,
+    "percent": 100.0
+   },
+   "quantum_framework_menu.py": {
+    "documented": 10,
+    "total": 11,
+    "percent": 90.9
+   },
+   "quantum_framework_molecular.py": {
+    "documented": 15,
+    "total": 21,
+    "percent": 71.4
+   },
+   "quantum_framework_molecular_v2.py": {
+    "documented": 41,
+    "total": 48,
+    "percent": 85.4
+   },
+   "quantum_framework_physics.py": {
+    "documented": 38,
+    "total": 66,
+    "percent": 57.6
+   },
+   "quantum_framework_visualization.py": {
+    "documented": 6,
+    "total": 20,
+    "percent": 30.0
+   },
+   "quantum_lab.py": {
+    "documented": 15,
+    "total": 39,
+    "percent": 38.5
+   },
+   "quantum_simulator.py": {
+    "documented": 1,
+    "total": 165,
+    "percent": 0.6
+   },
+   "quantum_visualizer.py": {
+    "documented": 1,
+    "total": 48,
+    "percent": 2.1
+   },
+   "relativistic_hydrogen.py": {
+    "documented": 36,
+    "total": 55,
+    "percent": 65.5
+   },
+   "topological_hilbert_compression2.py": {
+    "documented": 10,
+    "total": 79,
+    "percent": 12.7
+   }
+  }
+ },
+ "modules": [
+  {
+   "uid": "advanced_experiments.py",
+   "path": "modules/advanced_experiments.py.jsonl",
+   "entities": 90
+  },
+  {
+   "uid": "app.py",
+   "path": "modules/app.py.jsonl",
+   "entities": 18
+  },
+  {
+   "uid": "demo_molecular_vqe.py",
+   "path": "modules/demo_molecular_vqe.py.jsonl",
+   "entities": 11
+  },
+  {
+   "uid": "entangled_hydrogen.py",
+   "path": "modules/entangled_hydrogen.py.jsonl",
+   "entities": 77
+  },
+  {
+   "uid": "higgs_four_lepton_analysis.py",
+   "path": "modules/higgs_four_lepton_analysis.py.jsonl",
+   "entities": 95
+  },
+  {
+   "uid": "higgs_quantum_analysis.py",
+   "path": "modules/higgs_quantum_analysis.py.jsonl",
+   "entities": 95
+  },
+  {
+   "uid": "immersive/__init__.py",
+   "path": "modules/immersive.__init__.py.jsonl",
+   "entities": 1
+  },
+  {
+   "uid": "immersive/app.py",
+   "path": "modules/immersive.app.py.jsonl",
+   "entities": 28
+  },
+  {
+   "uid": "immersive/backend.py",
+   "path": "modules/immersive.backend.py.jsonl",
+   "entities": 37
+  },
+  {
+   "uid": "immersive/glkit.py",
+   "path": "modules/immersive.glkit.py.jsonl",
+   "entities": 30
+  },
+  {
+   "uid": "immersive/hud.py",
+   "path": "modules/immersive.hud.py.jsonl",
+   "entities": 26
+  },
+  {
+   "uid": "immersive/matter.py",
+   "path": "modules/immersive.matter.py.jsonl",
+   "entities": 51
+  },
+  {
+   "uid": "immersive/physics.py",
+   "path": "modules/immersive.physics.py.jsonl",
+   "entities": 55
+  },
+  {
+   "uid": "immersive/postfx.py",
+   "path": "modules/immersive.postfx.py.jsonl",
+   "entities": 15
+  },
+  {
+   "uid": "immersive/scenes.py",
+   "path": "modules/immersive.scenes.py.jsonl",
+   "entities": 103
+  },
+  {
+   "uid": "immersive/shaders.py",
+   "path": "modules/immersive.shaders.py.jsonl",
+   "entities": 8
+  },
+  {
+   "uid": "immersive/spin.py",
+   "path": "modules/immersive.spin.py.jsonl",
+   "entities": 48
+  },
+  {
+   "uid": "install.sh",
+   "path": "modules/install.sh.jsonl",
+   "entities": 1
+  },
+  {
+   "uid": "molecular_sim.py",
+   "path": "modules/molecular_sim.py.jsonl",
+   "entities": 39
+  },
+  {
+   "uid": "orbital_visualizer2.py",
+   "path": "modules/orbital_visualizer2.py.jsonl",
+   "entities": 44
+  },
+  {
+   "uid": "polarizability_v3.py",
+   "path": "modules/polarizability_v3.py.jsonl",
+   "entities": 18
+  },
+  {
+   "uid": "qc_dashboard.py",
+   "path": "modules/qc_dashboard.py.jsonl",
+   "entities": 98
+  },
+  {
+   "uid": "qc_immersive.py",
+   "path": "modules/qc_immersive.py.jsonl",
+   "entities": 1
+  },
+  {
+   "uid": "qc_integration.py",
+   "path": "modules/qc_integration.py.jsonl",
+   "entities": 61
+  },
+  {
+   "uid": "qc_launcher.py",
+   "path": "modules/qc_launcher.py.jsonl",
+   "entities": 29
+  },
+  {
+   "uid": "quantum_3dview.py",
+   "path": "modules/quantum_3dview.py.jsonl",
+   "entities": 31
+  },
+  {
+   "uid": "quantum_computer.py",
+   "path": "modules/quantum_computer.py.jsonl",
+   "entities": 134
+  },
+  {
+   "uid": "quantum_dash.py",
+   "path": "modules/quantum_dash.py.jsonl",
+   "entities": 132
+  },
+  {
+   "uid": "quantum_framework_core.py",
+   "path": "modules/quantum_framework_core.py.jsonl",
+   "entities": 226
+  },
+  {
+   "uid": "quantum_framework_main.py",
+   "path": "modules/quantum_framework_main.py.jsonl",
+   "entities": 8
+  },
+  {
+   "uid": "quantum_framework_menu.py",
+   "path": "modules/quantum_framework_menu.py.jsonl",
+   "entities": 11
+  },
+  {
+   "uid": "quantum_framework_molecular.py",
+   "path": "modules/quantum_framework_molecular.py.jsonl",
+   "entities": 44
+  },
+  {
+   "uid": "quantum_framework_molecular_v2.py",
+   "path": "modules/quantum_framework_molecular_v2.py.jsonl",
+   "entities": 104
+  },
+  {
+   "uid": "quantum_framework_physics.py",
+   "path": "modules/quantum_framework_physics.py.jsonl",
+   "entities": 66
+  },
+  {
+   "uid": "quantum_framework_visualization.py",
+   "path": "modules/quantum_framework_visualization.py.jsonl",
+   "entities": 20
+  },
+  {
+   "uid": "quantum_lab.py",
+   "path": "modules/quantum_lab.py.jsonl",
+   "entities": 61
+  },
+  {
+   "uid": "quantum_simulator.py",
+   "path": "modules/quantum_simulator.py.jsonl",
+   "entities": 234
+  },
+  {
+   "uid": "quantum_visualizer.py",
+   "path": "modules/quantum_visualizer.py.jsonl",
+   "entities": 115
+  },
+  {
+   "uid": "relativistic_hydrogen.py",
+   "path": "modules/relativistic_hydrogen.py.jsonl",
+   "entities": 85
+  },
+  {
+   "uid": "topological_hilbert_compression2.py",
+   "path": "modules/topological_hilbert_compression2.py.jsonl",
+   "entities": 106
+  }
+ ],
+ "warnings": {
+  "path": "warnings.jsonl",
+  "total": 753
+ },
+ "usage": [
+  "grep -h '\"name\":\"<Name>\"' readmenator-apidocs/api/modules/*.jsonl",
+  "grep -h '\"qualname\":\"<Owner.method>\"' readmenator-apidocs/api/modules/*.jsonl",
+  "cat readmenator-apidocs/api/modules/<module-slug>.jsonl",
+  "grep -h '\"code\":\"DOC001\"' readmenator-apidocs/api/warnings.jsonl"
+ ]
+}

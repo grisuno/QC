@@ -1,0 +1,122 @@
+[
+  {
+    "community_a": 1,
+    "community_b": 2,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: immersive/backend.py imports quantum_lab.py.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 0,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: immersive/backend.py imports quantum_computer.py.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 0,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: qc_dashboard.py imports quantum_computer.py.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 2,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: immersive/__init__.py reaches orbital_visualizer2.py in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 2,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: immersive/__init__.py reaches quantum_framework_visualization.py in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 0,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: immersive/__init__.py reaches quantum_simulator.py in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 2,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: immersive/glkit.py reaches orbital_visualizer2.py in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 2,
+    "connection_type": "bridges",
+    "explanation": "Inferred cross-community bridge: immersive/glkit.py reaches quantum_framework_visualization.py in 5 hops.",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 3,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py and layer utility) with no import path between community 0 (root: quantum_simulator) and community 3 (root: quantum_framework_molecular_v2).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 4,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py and layer utility) with no import path between community 0 (root: quantum_simulator) and community 4 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 3,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py and layer utility) with no import path between community 1 (immersive) and community 3 (root: quantum_framework_molecular_v2).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 4,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py and layer utility) with no import path between community 1 (immersive) and community 4 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 3,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py and layer utility) with no import path between community 2 (root: quantum_framework_core) and community 3 (root: quantum_framework_molecular_v2).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 4,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py and layer utility) with no import path between community 2 (root: quantum_framework_core) and community 4 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 3,
+    "community_b": 4,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py and layer utility) with no import path between community 3 (root: quantum_framework_molecular_v2) and community 4 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  }
+]

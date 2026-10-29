@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Component Diagrams | Component diagrams</title>
+<style>
+:root{--cb-bg:#020617;--cb-stage:#030a1c;--cb-panel:#0b1224;--cb-panel2:#111c33;--cb-ink:#f8fafc;--cb-muted:#94a3b8;--cb-faint:#475569;--cb-border:#1e293b;--cb-accent:#22d3ee;--cb-accent2:#f472b6;--cb-chip:#111c33;--cb-glow:rgba(34,211,238,.16)}
+html[data-theme="light"]{--cb-bg:#f8fafc;--cb-stage:#eef2f7;--cb-panel:#ffffff;--cb-panel2:#f1f5f9;--cb-ink:#0f172a;--cb-muted:#475569;--cb-faint:#94a3b8;--cb-border:#e2e8f0;--cb-accent:#0891b2;--cb-accent2:#db2777;--cb-chip:#f1f5f9;--cb-glow:rgba(8,145,178,.10)}
+*{box-sizing:border-box}
+body{margin:0 auto;max-width:1240px;padding:20px;background:var(--cb-bg);color:var(--cb-ink);font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.6}
+a{color:var(--cb-accent)}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.brand{font-weight:700;background:linear-gradient(90deg,var(--cb-ink),var(--cb-accent) 70%,var(--cb-accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.spacer{flex:1}
+.home,.topbar button{font:inherit;font-size:12px;text-decoration:none;border:1px solid var(--cb-border);border-radius:9px;padding:6px 10px;color:var(--cb-ink);background:var(--cb-panel);cursor:pointer}
+.home:hover,.topbar button:hover{border-color:var(--cb-accent)}
+h1{margin:.4em 0 .2em;font-size:22px}
+h2{font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--cb-muted);margin:26px 0 8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
+.chips span{background:var(--cb-chip);border:1px solid var(--cb-border);border-radius:999px;padding:2px 10px;font-size:12px;color:var(--cb-muted)}
+.chips span b{color:var(--cb-accent)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:10px 0 2px;font-size:12px;color:var(--cb-muted)}
+.legend-title{letter-spacing:.12em;text-transform:uppercase;font-size:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;box-shadow:0 0 8px currentColor}
+.diagram-controls{margin:10px 0;text-align:center}
+.diagram-controls button{font:inherit;margin:0 5px;padding:8px 16px;background:var(--cb-panel);color:var(--cb-ink);border:1px solid var(--cb-border);border-radius:9px;cursor:pointer}
+.diagram-controls button:hover{border-color:var(--cb-accent)}
+.cb-wrap{border:1px solid var(--cb-border);border-radius:12px;background:radial-gradient(900px 400px at 20% 0%,var(--cb-glow),transparent 70%),var(--cb-stage);overflow:hidden}
+svg.cb-diagram{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+.cb-node rect{fill:var(--cb-panel2)}
+.cb-node:hover rect{stroke:var(--cb-accent)!important;stroke-width:3}
+.cb-node.hub rect{filter:drop-shadow(0 0 10px var(--cb-glow))}
+.cb-node a{text-decoration:none}
+.cb-node-label{fill:var(--cb-ink);font-size:13px;font-weight:700}
+.cb-node-sub{fill:var(--cb-muted);font-size:10px}
+.cb-node-layer{fill:var(--cb-muted);font-size:10px}
+.cb-node-sym{fill:var(--cb-accent);font-size:10.5px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.cb-node-hub{fill:var(--cb-accent2);font-size:9px;font-weight:700;text-anchor:end;letter-spacing:.1em}
+.cb-edge{fill:none;stroke:#38bdf8;stroke-opacity:.75}
+.cb-arrow{fill:#38bdf8;fill-opacity:.9}
+.cb-edge-label{fill:var(--cb-ink);font-size:10.5px;text-anchor:middle;paint-order:stroke;stroke:var(--cb-stage);stroke-width:4px}
+.cb-edge-sub{fill:var(--cb-muted);font-size:9px;text-anchor:middle;paint-order:stroke;stroke:var(--cb-stage);stroke-width:4px}
+.component{border:1px solid var(--cb-border);border-left:3px solid var(--cb-accent);background:var(--cb-panel);padding:15px;border-radius:10px;margin-bottom:20px}
+.component h3{color:var(--cb-ink);margin-top:0}
+.component h4{color:var(--cb-muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.rellist{list-style:none;padding-left:0}
+.rellist li{background:var(--cb-panel);border:1px solid var(--cb-border);border-radius:8px;padding:8px 12px;margin:6px 0;font-size:12px}
+.rellist b{color:var(--cb-accent)}
+.references{list-style:none;padding-left:0;margin:10px 0}
+.references li{margin:4px 0}
+code{background:var(--cb-chip);border:1px solid var(--cb-border);padding:1px 6px;border-radius:6px;font-size:12px}
+.muted{color:var(--cb-muted)}
+footer{color:var(--cb-muted);font-size:12px;margin:24px 0}
+#cb-tip{position:fixed;z-index:50;pointer-events:none;display:none;max-width:340px;background:var(--cb-panel);color:var(--cb-ink);border:1px solid var(--cb-border);border-radius:10px;padding:8px 10px;font-size:12px;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span class="brand">Component diagrams</span>
+
+<span class="spacer"></span>
+<button type="button" id="cb-theme" title="Toggle light and dark theme">Theme</button></div>
+<main>
+<h1>Component Diagrams</h1>
+<div class="chips"><span>4 components</span><span>9 relations</span><span>43 files</span></div>
+<div class="legend"><span class="legend-title">Layer</span><span><i style="background:#94a3b8"></i>utility</span></div>
+<div class="diagram-controls"><button type="button" id="cb-reset" title="Reset pan and zoom">Reset Layout</button><button type="button" id="cb-fit" title="Fit the diagram to the view">Fit to View</button><button type="button" id="cb-png" title="Export the diagram as PNG">Export PNG</button></div>
+<div class="cb-wrap"><svg id="cb-diagram" class="cb-diagram" viewBox="0 0 7550 412" role="img" aria-label="Component diagram"><defs><marker id="cb-diagram-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="cb-arrow"/></marker></defs><path d="M7510.0 107.0 C7560.0 107.0 7190.0 305.0 7240.0 305.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="7375.0" y="198.0" class="cb-edge-label">calls into</text><text x="7375.0" y="212.0" class="cb-edge-sub">50 calls · 0 imports</text><path d="M7510.0 107.0 C7560.0 107.0 6710.0 206.0 6760.0 206.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="7135.0" y="148.5" class="cb-edge-label">calls into</text><text x="7135.0" y="162.5" class="cb-edge-sub">368 calls · 2 imports</text><path d="M7510.0 305.0 C7560.0 305.0 7190.0 107.0 7240.0 107.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="7375.0" y="198.0" class="cb-edge-label">calls into</text><text x="7375.0" y="212.0" class="cb-edge-sub">25 calls · 2 imports</text><path d="M7510.0 305.0 C7560.0 305.0 6710.0 206.0 6760.0 206.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="7135.0" y="247.5" class="cb-edge-label">calls into</text><text x="7135.0" y="261.5" class="cb-edge-sub">23 calls · 3 imports</text><path d="M7030.0 206.0 C7135.0 206.0 7135.0 107.0 7240.0 107.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="7135.0" y="148.5" class="cb-edge-label">calls into</text><text x="7135.0" y="162.5" class="cb-edge-sub">212 calls · 9 imports</text><path d="M7030.0 206.0 C7135.0 206.0 7135.0 305.0 7240.0 305.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="7135.0" y="247.5" class="cb-edge-label">calls into</text><text x="7135.0" y="261.5" class="cb-edge-sub">32 calls · 0 imports</text><path d="M310.0 206.0 C3775.0 206.0 3775.0 107.0 7240.0 107.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="3775.0" y="148.5" class="cb-edge-label">calls into</text><text x="3775.0" y="162.5" class="cb-edge-sub">26 calls · 0 imports</text><path d="M310.0 206.0 C3775.0 206.0 3775.0 305.0 7240.0 305.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:4.1"/><text x="3775.0" y="247.5" class="cb-edge-label">calls into</text><text x="3775.0" y="261.5" class="cb-edge-sub">5 calls · 0 imports</text><path d="M310.0 206.0 C3535.0 206.0 3535.0 206.0 6760.0 206.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:4.3"/><text x="3535.0" y="198.0" class="cb-edge-label">calls into</text><text x="3535.0" y="212.0" class="cb-edge-sub">6 calls · 0 imports</text><g class="cb-node hub" data-desc="root: quantum_simulator groups 16 files (py) around _make_logger, SpectralLayer, __init__, forward, HamiltonianBackboneNet. Advanced Quantum Experiments - Extension Pack"><a href="#comp-1"><rect x="7240.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="7254.0" y="64.0" class="cb-node-label">root: quantum_simulator</text><text x="7254.0" y="80.0" class="cb-node-sub">16 files · 1029 symbols</text><circle cx="7260.0" cy="92.0" r="4" fill="#94a3b8"/><text x="7270.0" y="96.0" class="cb-node-layer">utility</text><text x="7254.0" y="112.0" class="cb-node-sym">_make_logger</text><text x="7254.0" y="126.0" class="cb-node-sym">SpectralLayer</text><text x="7254.0" y="140.0" class="cb-node-sym">__init__</text><text x="7254.0" y="154.0" class="cb-node-sub">+552 more</text><text x="7496.0" y="60.0" class="cb-node-hub">HUB</text></a></g><g class="cb-node linked" data-desc="immersive groups 12 files (py) around unit_vector_poly_args, angular_constants, ylm_from_table, radial_norm, radial_function. Immersive viewer entry: window, event loop, cinematic tour director."><a href="#comp-2"><rect x="7240.0" y="238.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="3"/><text x="7254.0" y="262.0" class="cb-node-label">immersive</text><text x="7254.0" y="278.0" class="cb-node-sub">12 files · 268 symbols</text><circle cx="7260.0" cy="290.0" r="4" fill="#94a3b8"/><text x="7270.0" y="294.0" class="cb-node-layer">utility</text><text x="7254.0" y="310.0" class="cb-node-sym">unit_vector_poly_args</text><text x="7254.0" y="324.0" class="cb-node-sym">angular_constants</text><text x="7254.0" y="338.0" class="cb-node-sym">ylm_from_table</text><text x="7254.0" y="352.0" class="cb-node-sub">+197 more</text></a></g><g class="cb-node" data-desc="root: quantum_framework_core groups 10 files (py) around _make_logger, HilbertPhase, FrameworkConfig, __post_init__, from_toml. Hydrogen Orbital Visualizer"><a href="#comp-3"><rect x="6760.0" y="139.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="6774.0" y="163.0" class="cb-node-label">root: quantum_framework_core</text><text x="6774.0" y="179.0" class="cb-node-sub">10 files · 583 symbols</text><circle cx="6780.0" cy="191.0" r="4" fill="#94a3b8"/><text x="6790.0" y="195.0" class="cb-node-layer">utility</text><text x="6774.0" y="211.0" class="cb-node-sym">_make_logger</text><text x="6774.0" y="225.0" class="cb-node-sym">HilbertPhase</text><text x="6774.0" y="239.0" class="cb-node-sym">FrameworkConfig</text><text x="6774.0" y="253.0" class="cb-node-sub">+467 more</text></a></g><g class="cb-node" data-desc="root: quantum_framework_molecular_v2 groups 2 files (py) around _make_logger, MolecularConfig, from_toml, MoleculeData, MoleculeBuilder. Quantum Framework Demo - Production Version"><a href="#comp-4"><rect x="40.0" y="139.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="54.0" y="163.0" class="cb-node-label">root: quantum_framework_mol…</text><text x="54.0" y="179.0" class="cb-node-sub">2 files · 73 symbols</text><circle cx="60.0" cy="191.0" r="4" fill="#94a3b8"/><text x="70.0" y="195.0" class="cb-node-layer">utility</text><text x="54.0" y="211.0" class="cb-node-sym">_make_logger</text><text x="54.0" y="225.0" class="cb-node-sym">MolecularConfig</text><text x="54.0" y="239.0" class="cb-node-sym">from_toml</text><text x="54.0" y="253.0" class="cb-node-sub">+64 more</text></a></g></svg></div>
+<h2>Details</h2>
+<p>Static architecture map of 43 files (py, sh) in 4 components: root: quantum_simulator, immersive, root: quantum_framework_core, root: quantum_framework_molecular_v2. Structure is extracted statically without LLM calls; component prose may be enriched locally.</p>
+<h2>Relations</h2>
+<ul class="rellist">
+<li><b>root: quantum_simulator</b> calls into <b>immersive</b> — 0 imports, 50 calls across the boundary
+<br><code>advanced_experiments.py::main@1321 → immersive/app.py::parse_args</code> · <code>entangled_hydrogen.py::visualize@546 → immersive/hud.py::text</code> · <code>entangled_hydrogen.py::main@914 → immersive/app.py::parse_args</code>
+</li>
+<li><b>root: quantum_simulator</b> calls into <b>root: quantum_framework_core</b> — 2 imports, 368 calls across the boundary
+<br><code>advanced_experiments.py::run@337 → qc_integration.py::append</code> · <code>advanced_experiments.py::run@338 → qc_integration.py::append</code> · <code>advanced_experiments.py::run@339 → qc_integration.py::append</code>
+</li>
+<li><b>immersive</b> calls into <b>root: quantum_simulator</b> — 2 imports, 25 calls across the boundary
+<br><code>immersive/app.py::run@352 → molecular_sim.py::get</code> · <code>immersive/app.py::run@362 → molecular_sim.py::get</code> · <code>immersive/backend.py::__init__@57 → quantum_computer.py::SimulatorConfig</code>
+</li>
+<li><b>immersive</b> calls into <b>root: quantum_framework_core</b> — 3 imports, 23 calls across the boundary
+<br><code>immersive/backend.py::__init__@97 → quantum_framework_core.py::norm</code> · <code>immersive/backend.py::queue@141 → qc_integration.py::append</code> · <code>immersive/backend.py::_partial@172 → quantum_framework_core.py::tensor</code>
+</li>
+<li><b>root: quantum_framework_core</b> calls into <b>root: quantum_simulator</b> — 9 imports, 212 calls across the boundary
+<br><code>orbital_visualizer2.py::compute_expected_energy@143 → relativistic_hydrogen.py::apply_hamiltonian</code> · <code>orbital_visualizer2.py::compute_expected_energy@143 → quantum_framework_physics.py::to</code> · <code>orbital_visualizer2.py::compute_expected_energy@145 → quantum_framework_physics.py::to</code>
+</li>
+<li><b>root: quantum_framework_core</b> calls into <b>immersive</b> — 0 imports, 32 calls across the boundary
+<br><code>orbital_visualizer2.py::visualize@378 → immersive/hud.py::text</code> · <code>qc_dashboard.py::_pauli_operators@175 → immersive/glkit.py::eye</code> · <code>qc_dashboard.py::_pauli_operators@183 → immersive/glkit.py::eye</code>
+</li>
+<li><b>root: quantum_framework_molecular_v2</b> calls into <b>root: quantum_simulator</b> — 0 imports, 26 calls across the boundary
+<br><code>quantum_framework_molecular_v2.py::from_toml@141 → molecular_sim.py::get</code> · <code>quantum_framework_molecular_v2.py::from_toml@142 → molecular_sim.py::get</code> · <code>quantum_framework_molecular_v2.py::from_toml@143 → molecular_sim.py::get</code>
+</li>
+<li><b>root: quantum_framework_molecular_v2</b> calls into <b>immersive</b> — 0 imports, 5 calls across the boundary
+<br><code>quantum_framework_molecular_v2.py::from_toml@139 → immersive/scenes.py::load</code> · <code>quantum_framework_molecular_v2.py::build_hamiltonian_matrix@437 → immersive/glkit.py::eye</code> · <code>quantum_framework_molecular_v2.py::__init__@913 → immersive/glkit.py::eye</code>
+</li>
+<li><b>root: quantum_framework_molecular_v2</b> calls into <b>root: quantum_framework_core</b> — 0 imports, 6 calls across the boundary
+<br><code>quantum_framework_molecular_v2.py::build_jw_hamiltonian@411 → qc_integration.py::append</code> · <code>quantum_framework_molecular_v2.py::_precompute_operations@519 → qc_integration.py::append</code> · <code>quantum_framework_molecular_v2.py::scan_parameter_space@691 → qc_integration.py::append</code>
+</li>
+</ul>
+<section class="component" id="comp-1">
+<h3>root: quantum_simulator (1)
+</h3>
+<p>root: quantum_simulator groups 16 files (py) around _make_logger, SpectralLayer, __init__, forward, HamiltonianBackboneNet. Advanced Quantum Experiments - Extension Pack</p>
+<h4>Related Classes/Methods:</h4>
+<ul class="references">
+<li><a href="../quantum_framework_physics.py#L46-L65"><code>quantum_framework_physics.py::_make_logger</code></a></li>
+<li><a href="../quantum_framework_physics.py#L66-L85"><code>quantum_framework_physics.py::SpectralLayer</code></a></li>
+<li><a href="../quantum_framework_physics.py#L86-L97"><code>quantum_framework_physics.py::__init__</code></a></li>
+<li><a href="../quantum_framework_physics.py#L98-L132"><code>quantum_framework_physics.py::forward</code></a></li>
+<li><a href="../quantum_framework_physics.py#L133-L135"><code>quantum_framework_physics.py::HamiltonianBackboneNet</code></a></li>
+<li><a href="../quantum_framework_physics.py#L136-L144"><code>quantum_framework_physics.py::__init__</code></a></li>
+<li><a href="../quantum_framework_physics.py#L145-L156"><code>quantum_framework_physics.py::forward</code></a></li>
+<li><a href="../quantum_framework_physics.py#L157-L159"><code>quantum_framework_physics.py::SchrodingerSpectralNet</code></a></li>
+</ul>
+<h4>Files</h4>
+<ul class="references">
+<li><code>advanced_experiments.py</code></li>
+<li><code>app.py</code></li>
+<li><code>entangled_hydrogen.py</code></li>
+<li><code>higgs_four_lepton_analysis.py</code></li>
+<li><code>higgs_quantum_analysis.py</code></li>
+<li><code>molecular_sim.py</code></li>
+<li><code>polarizability_v3.py</code></li>
+<li><code>quantum_3dview.py</code></li>
+<li><code>quantum_computer.py</code></li>
+<li><code>quantum_dash.py</code></li>
+<li><code>quantum_framework_menu.py</code></li>
+<li><code>quantum_framework_physics.py</code></li>
+<li><code>quantum_simulator.py</code></li>
+<li><code>quantum_visualizer.py</code></li>
+<li><code>relativistic_hydrogen.py</code></li>
+<li><code>topological_hilbert_compression2.py</code></li>
+</ul>
+</section>
+<section class="component" id="comp-2">
+<h3>immersive (2)
+ <a href="#comp-2-children">[Expand]</a>
+</h3>
+<p>immersive groups 12 files (py) around unit_vector_poly_args, angular_constants, ylm_from_table, radial_norm, radial_function. Immersive viewer entry: window, event loop, cinematic tour director.</p>
+<h4>Related Classes/Methods:</h4>
+<ul class="references">
+<li><a href="../immersive/physics.py#L32-L36"><code>immersive/physics.py::unit_vector_poly_args</code></a></li>
+<li><a href="../immersive/physics.py#L37-L47"><code>immersive/physics.py::angular_constants</code></a></li>
+<li><a href="../immersive/physics.py#L48-L58"><code>immersive/physics.py::ylm_from_table</code></a></li>
+<li><a href="../immersive/physics.py#L59-L62"><code>immersive/physics.py::radial_norm</code></a></li>
+<li><a href="../immersive/physics.py#L63-L68"><code>immersive/physics.py::radial_function</code></a></li>
+<li><a href="../immersive/physics.py#L69-L74"><code>immersive/physics.py::radial_table</code></a></li>
+<li><a href="../immersive/physics.py#L75-L79"><code>immersive/physics.py::view_radius</code></a></li>
+<li><a href="../immersive/physics.py#L80-L83"><code>immersive/physics.py::energy_ev</code></a></li>
+</ul>
+<h4 id="comp-2-children">Sub-components</h4>
+<div class="cb-wrap"><svg id="cb-sub-comp-2" class="cb-diagram" viewBox="0 0 830 214" role="img" aria-label="Component diagram"><defs><marker id="cb-sub-comp-2-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="cb-arrow"/></marker></defs><path d="M310.0 107.0 C415.0 107.0 415.0 107.0 520.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-2-arrow)" style="stroke-width:5.0"/><text x="415.0" y="99.0" class="cb-edge-label">calls into</text><text x="415.0" y="113.0" class="cb-edge-sub">63 calls · 7 imports</text><g class="cb-node" data-desc="immersive groups 10 files (py) around unit_vector_poly_args, angular_constants, ylm_from_table, radial_norm, radial_function. Immersive viewer entry: window, event loop, cinematic tour director."><a href="#comp-2-1"><rect x="520.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="534.0" y="64.0" class="cb-node-label">immersive</text><text x="534.0" y="80.0" class="cb-node-sub">10 files · 246 symbols</text><circle cx="540.0" cy="92.0" r="4" fill="#94a3b8"/><text x="550.0" y="96.0" class="cb-node-layer">utility</text><text x="534.0" y="112.0" class="cb-node-sym">unit_vector_poly_args</text><text x="534.0" y="126.0" class="cb-node-sym">angular_constants</text><text x="534.0" y="140.0" class="cb-node-sym">ylm_from_table</text><text x="534.0" y="154.0" class="cb-node-sub">+176 more</text></a></g><g class="cb-node" data-desc="root groups 2 files (py) around test_angular_table_matches_scipy, test_radial_functions_are_normalised, test_energy_levels, test_presets_are_normalised_and_fit_shader, test_overlap_limits. Q2C immersive viewer: GPU volumetric orbitals, H2 bonds, Bloch sphere and entanglement."><a href="#comp-2-2"><rect x="40.0" y="40.0" width="270" height="134" rx="10" stroke="#fb923c" stroke-width="2.5"/><text x="54.0" y="64.0" class="cb-node-label">root</text><text x="54.0" y="80.0" class="cb-node-sub">2 files · 22 symbols</text><circle cx="60.0" cy="92.0" r="4" fill="#fb923c"/><text x="70.0" y="96.0" class="cb-node-layer">testing</text><text x="54.0" y="112.0" class="cb-node-sym">test_angular_table_matc…</text><text x="54.0" y="126.0" class="cb-node-sym">test_radial_functions_a…</text><text x="54.0" y="140.0" class="cb-node-sym">test_energy_levels</text><text x="54.0" y="154.0" class="cb-node-sub">+19 more</text></a></g></svg></div>
+<h5 id="comp-2-1">immersive (2.1)</h5>
+<p>immersive groups 10 files (py) around unit_vector_poly_args, angular_constants, ylm_from_table, radial_norm, radial_function. Immersive viewer entry: window, event loop, cinematic tour director.</p>
+<h5 id="comp-2-2">root (2.2)</h5>
+<p>root groups 2 files (py) around test_angular_table_matches_scipy, test_radial_functions_are_normalised, test_energy_levels, test_presets_are_normalised_and_fit_shader, test_overlap_limits. Q2C immersive viewer: GPU volumetric orbitals, H2 bonds, Bloch sphere and entanglement.</p>
+<h4>Files</h4>
+<ul class="references">
+<li><code>immersive/__init__.py</code></li>
+<li><code>immersive/app.py</code></li>
+<li><code>immersive/backend.py</code></li>
+<li><code>immersive/glkit.py</code></li>
+<li><code>immersive/hud.py</code></li>
+<li><code>immersive/physics.py</code></li>
+<li><code>immersive/postfx.py</code></li>
+<li><code>immersive/scenes.py</code></li>
+<li><code>immersive/shaders.py</code></li>
+<li><code>immersive/spin.py</code></li>
+<li><code>qc_immersive.py</code></li>
+<li><code>test_immersive.py</code></li>
+</ul>
+</section>
+<section class="component" id="comp-3">
+<h3>root: quantum_framework_core (3)
+</h3>
+<p>root: quantum_framework_core groups 10 files (py) around _make_logger, HilbertPhase, FrameworkConfig, __post_init__, from_toml. Hydrogen Orbital Visualizer</p>
+<h4>Related Classes/Methods:</h4>
+<ul class="references">
+<li><a href="../quantum_framework_core.py#L59-L74"><code>quantum_framework_core.py::_make_logger</code></a></li>
+<li><a href="../quantum_framework_core.py#L75-L84"><code>quantum_framework_core.py::HilbertPhase</code></a></li>
+<li><a href="../quantum_framework_core.py#L85-L152"><code>quantum_framework_core.py::FrameworkConfig</code></a></li>
+<li><a href="../quantum_framework_core.py#L153-L160"><code>quantum_framework_core.py::__post_init__</code></a></li>
+<li><a href="../quantum_framework_core.py#L161-L232"><code>quantum_framework_core.py::from_toml</code></a></li>
+<li><a href="../quantum_framework_core.py#L233-L244"><code>quantum_framework_core.py::AtomData</code></a></li>
+<li><a href="../quantum_framework_core.py#L245-L264"><code>quantum_framework_core.py::MoleculeData</code></a></li>
+<li><a href="../quantum_framework_core.py#L265-L273"><code>quantum_framework_core.py::OrbitalData</code></a></li>
+</ul>
+<h4>Files</h4>
+<ul class="references">
+<li><code>orbital_visualizer2.py</code></li>
+<li><code>qc_dashboard.py</code></li>
+<li><code>qc_integration.py</code></li>
+<li><code>quantum_framework_core.py</code></li>
+<li><code>quantum_framework_main.py</code></li>
+<li><code>quantum_framework_molecular.py</code></li>
+<li><code>quantum_framework_visualization.py</code></li>
+<li><code>quantum_lab.py</code></li>
+<li><code>test_qc_integration.py</code></li>
+<li><code>test_quantum_framework.py</code></li>
+</ul>
+</section>
+<section class="component" id="comp-4">
+<h3>root: quantum_framework_molecular_v2 (4)
+</h3>
+<p>root: quantum_framework_molecular_v2 groups 2 files (py) around _make_logger, MolecularConfig, from_toml, MoleculeData, MoleculeBuilder. Quantum Framework Demo - Production Version</p>
+<h4>Related Classes/Methods:</h4>
+<ul class="references">
+<li><a href="../quantum_framework_molecular_v2.py#L76-L95"><code>quantum_framework_molecular_v2.py::_make_logger</code></a></li>
+<li><a href="../quantum_framework_molecular_v2.py#L96-L131"><code>quantum_framework_molecular_v2.py::MolecularConfig</code></a></li>
+<li><a href="../quantum_framework_molecular_v2.py#L132-L172"><code>quantum_framework_molecular_v2.py::from_toml</code></a></li>
+<li><a href="../quantum_framework_molecular_v2.py#L173-L200"><code>quantum_framework_molecular_v2.py::MoleculeData</code></a></li>
+<li><a href="../quantum_framework_molecular_v2.py#L201-L208"><code>quantum_framework_molecular_v2.py::MoleculeBuilder</code></a></li>
+<li><a href="../quantum_framework_molecular_v2.py#L209-L289"><code>quantum_framework_molecular_v2.py::build</code></a></li>
+<li><a href="../quantum_framework_molecular_v2.py#L290-L301"><code>quantum_framework_molecular_v2.py::_run_pyscf_direct</code></a></li>
+<li><a href="../quantum_framework_molecular_v2.py#L302-L324"><code>quantum_framework_molecular_v2.py::PseudoMolData</code></a></li>
+</ul>
+<h4>Files</h4>
+<ul class="references">
+<li><code>demo_molecular_vqe.py</code></li>
+<li><code>quantum_framework_molecular_v2.py</code></li>
+</ul>
+</section>
+<footer>Generated offline from static analysis &middot; 422c582a62e1</footer>
+</main>
+<div id="cb-tip" role="tooltip"></div>
+<script>
+(function(){
+"use strict";
+try{var s=localStorage.getItem("readmenator-theme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s);}catch(e){}
+document.getElementById("cb-theme").addEventListener("click",function(){
+  var r=document.documentElement,n=r.getAttribute("data-theme")==="light"?"dark":"light";
+  r.setAttribute("data-theme",n);try{localStorage.setItem("readmenator-theme",n);}catch(e){}
+});
+var tip=document.getElementById("cb-tip");
+document.querySelectorAll(".cb-node").forEach(function(g){
+  g.addEventListener("mousemove",function(ev){
+    var d=g.getAttribute("data-desc");
+    if(!d){tip.style.display="none";return;}
+    tip.textContent=d;tip.style.display="block";
+    tip.style.left=Math.min(window.innerWidth-330,ev.clientX+12)+"px";
+    tip.style.top=(ev.clientY+14)+"px";
+  });
+  g.addEventListener("mouseleave",function(){tip.style.display="none";});
+});
+document.querySelectorAll("svg.cb-diagram").forEach(function(svg){
+  var vb=svg.viewBox.baseVal,home={x:vb.x,y:vb.y,w:vb.width,h:vb.height},drag=null;
+  function set(x,y,w,h){svg.setAttribute("viewBox",x+" "+y+" "+w+" "+h);}
+  function cur(){var v=svg.viewBox.baseVal;return {x:v.x,y:v.y,w:v.width,h:v.height};}
+  svg.addEventListener("pointerdown",function(ev){drag={x:ev.clientX,y:ev.clientY,v:cur()};svg.setPointerCapture(ev.pointerId);});
+  svg.addEventListener("pointermove",function(ev){
+    if(!drag)return;
+    var r=svg.getBoundingClientRect(),k=drag.v.w/r.width;
+    set(drag.v.x-(ev.clientX-drag.x)*k,drag.v.y-(ev.clientY-drag.y)*k,drag.v.w,drag.v.h);
+  });
+  svg.addEventListener("pointerup",function(){drag=null;});
+  svg.addEventListener("wheel",function(ev){
+    ev.preventDefault();
+    var v=cur(),r=svg.getBoundingClientRect(),f=Math.exp(ev.deltaY*0.0012);
+    var mx=v.x+(ev.clientX-r.left)/r.width*v.w,my=v.y+(ev.clientY-r.top)/r.height*v.h;
+    var w=Math.min(home.w*4,Math.max(home.w/8,v.w*f)),h=w*v.h/v.w;
+    set(mx-(mx-v.x)*w/v.w,my-(my-v.y)*h/v.h,w,h);
+  },{passive:false});
+  svg._home=home;svg._set=set;
+});
+document.getElementById("cb-reset").addEventListener("click",function(){
+  var svg=document.getElementById("cb-diagram");if(!svg)return;var h=svg._home;svg._set(h.x,h.y,h.w,h.h);
+});
+document.getElementById("cb-fit").addEventListener("click",function(){
+  var svg=document.getElementById("cb-diagram");if(!svg)return;var h=svg._home;svg._set(h.x,h.y,h.w,h.h);
+});
+document.getElementById("cb-png").addEventListener("click",function(){
+  var svg=document.getElementById("cb-diagram");if(!svg)return;
+  try{
+    var data=new XMLSerializer().serializeToString(svg);
+    var img=new Image();
+    img.onload=function(){
+      var c=document.createElement("canvas"),k=2;
+      c.width=svg.viewBox.baseVal.width*k;c.height=svg.viewBox.baseVal.height*k;
+      var x=c.getContext("2d");x.fillStyle="#020617";x.fillRect(0,0,c.width,c.height);
+      x.drawImage(img,0,0,c.width,c.height);
+      var a=document.createElement("a");a.download="component-diagram.png";a.href=c.toDataURL("image/png");a.click();
+    };
+    img.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(data);
+  }catch(e){}
+});
+})();
+</script>
+
+</body>
+</html>

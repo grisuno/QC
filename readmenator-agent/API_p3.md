@@ -1,0 +1,342 @@
+# API (page 3 of 3)
+Previous: [API_p2.md](API_p2.md)
+
+## quantum_framework_visualization.py
+Imported by: `qc_dashboard.py`
+- `WavefunctionCalculator.__init__` (method) `quantum_framework_visualization.py:65` `def __init__(self, config)`
+- `WavefunctionCalculator.radial_wavefunction` (method) `quantum_framework_visualization.py:69` `def radial_wavefunction(n, l, r)`
+- `WavefunctionCalculator.spherical_harmonic_real` (method) `quantum_framework_visualization.py:81` `def spherical_harmonic_real(l, m, theta, phi)`
+- `WavefunctionCalculator.psi_3d` (method) `quantum_framework_visualization.py:92` `def psi_3d(self, n, l, m, r, theta, phi)`
+- `WavefunctionCalculator.psi_on_grid` (method) `quantum_framework_visualization.py:97` `def psi_on_grid(self, n, l, m)`
+- `MonteCarloSampler.__init__` (method) `quantum_framework_visualization.py:121` `def __init__(self, config, wavefunction_calc)`
+- `MonteCarloSampler.find_max_probability` (method) `quantum_framework_visualization.py:125` `def find_max_probability(self, n, l, m)`
+- `MonteCarloSampler.sample` (method) `quantum_framework_visualization.py:149` `def sample(self, n, l, m, num_samples)`
+- `OrbitalVisualizer.__init__` (method) `quantum_framework_visualization.py:208` `def __init__(self, config)`
+- `OrbitalVisualizer.visualize` (method) `quantum_framework_visualization.py:211` `def visualize(self, data, save_path)`
+- `EntangledHydrogenSampler.__init__` (method) `quantum_framework_visualization.py:296` `def __init__(self, config, wavefunction_calc)`
+- `EntangledHydrogenSampler.sample_entangled_state` (method) `quantum_framework_visualization.py:301` `def sample_entangled_state(self, n1, l1, m1, n2, l2, m2, num_samples, entanglement_weight)`
+- `EntangledHydrogenVisualizer.__init__` (method) `quantum_framework_visualization.py:331` `def __init__(self, config)`
+- `EntangledHydrogenVisualizer.visualize` (method) `quantum_framework_visualization.py:334` `def visualize(self, data, quantum_result, save_path)`
+
+## quantum_lab.py
+Depends on: `quantum_framework_core.py`, `quantum_framework_molecular.py`
+Imported by: `immersive/backend.py`, `quantum_framework_main.py`
+- `probability_bars` (function) `quantum_lab.py:325` `def probability_bars(probs, n_qubits, lang, max_rows)` -- Build a table of probability bars for a state's distribution.
+- `counts_bars` (function) `quantum_lab.py:353` `def counts_bars(counts, total, lang)` -- Build a table of measurement-count bars.
+- `draw_circuit` (function) `quantum_lab.py:369` `def draw_circuit(n_qubits, instructions)` -- Render an ASCII timeline of the circuit, one line per qubit.
+- `parse_angle` (function) `quantum_lab.py:394` `def parse_angle(token)` -- Parse an angle like '1.57', 'pi', '-pi/2' or '3*pi/4' into radians.
+- `sample_measurements` (function) `quantum_lab.py:414` `def sample_measurements(probs, n_qubits, n_samples, rng)` -- Draw measurement outcomes from a probability distribution.
+- `field_to_text` (function) `quantum_lab.py:490` `def field_to_text(psi)` -- Render a real scalar field as colored ASCII: brightness = |psi|^2, color = sign.
+- `render_orbital` (function) `quantum_lab.py:516` `def render_orbital(spec, rows, cols)` -- Render |psi|^2 of a hydrogen orbital on a plane slice as colored ASCII.
+- `render_h2_molecular_orbital` (function) `quantum_lab.py:536` `def render_h2_molecular_orbital(kind, rows, cols)` -- Render the bonding or antibonding LCAO molecular orbital of H2.
+- `landscape_plot` (function) `quantum_lab.py:556` `def landscape_plot(energies, e_hf, e_fci, marker, rows)` -- Draw an ASCII plot of E(theta) over one full period with HF and FCI reference lines and an optional optimizer marker.
+- `row_of` (function) `quantum_lab.py:567` `def row_of(e)`
+- `H2VQEEngine.__init__` (method) `quantum_lab.py:613` `def __init__(self, qc)`
+- `H2VQEEngine.ansatz_instructions` (method) `quantum_lab.py:621` `def ansatz_instructions(self, theta)`
+- `H2VQEEngine.energy` (method) `quantum_lab.py:624` `def energy(self, theta)`
+- `H2VQEEngine.correlation_pct` (method) `quantum_lab.py:633` `def correlation_pct(self, e)`
+- `H2VQEEngine.landscape` (method) `quantum_lab.py:636` `def landscape(self, cols)`
+- `H2VQEEngine.optimize` (method) `quantum_lab.py:640` `def optimize(self, theta0, lr, max_iters, tol)` -- Gradient descent; yields (iteration, theta, energy) live.
+- `QuantumLab.__init__` (method) `quantum_lab.py:675` `def __init__(self, config, loader, lang)`
+- `QuantumLab.t` (method) `quantum_lab.py:683` `def t(self, key)`
+- `QuantumLab.pause` (method) `quantum_lab.py:690` `def pause(self)`
+- `QuantumLab.panel` (method) `quantum_lab.py:697` `def panel(self, body, title, style)`
+- `QuantumLab.show_state` (method) `quantum_lab.py:701` `def show_state(self, probs, n_qubits, title)`
+- `QuantumLab.run_quiz` (method) `quantum_lab.py:707` `def run_quiz(self, quiz)`
+- `QuantumLab.lessons` (method) `quantum_lab.py:728` `def lessons(self)`
+- `QuantumLab.run_lesson` (method) `quantum_lab.py:1159` `def run_lesson(self, lesson)`
+- `QuantumLab.lessons_menu` (method) `quantum_lab.py:1175` `def lessons_menu(self)`
+- `QuantumLab.playground` (method) `quantum_lab.py:1249` `def playground(self)`
+- `QuantumLab.molecule_explorer` (method) `quantum_lab.py:1365` `def molecule_explorer(self)`
+- `QuantumLab.orbital_viewer` (method) `quantum_lab.py:1383` `def orbital_viewer(self)`
+- `QuantumLab.chemistry_menu` (method) `quantum_lab.py:1403` `def chemistry_menu(self)`
+- `QuantumLab.glossary` (method) `quantum_lab.py:1422` `def glossary(self)`
+- `QuantumLab.banner` (method) `quantum_lab.py:1437` `def banner(self)`
+- `QuantumLab.main_menu` (method) `quantum_lab.py:1443` `def main_menu(self)`
+- `launch_quantum_lab` (function) `quantum_lab.py:1474` `def launch_quantum_lab(config, loader, lang, lesson)` -- Entry point used both standalone and from quantum_framework_main.
+- `main` (function) `quantum_lab.py:1500` `def main()`
+
+## quantum_simulator.py
+Depends on: `quantum_framework_physics.py`
+Imported by: `advanced_experiments.py`
+- `FrameworkConfig.from_toml` (method) `quantum_simulator.py:125` `def from_toml(cls, toml_path)`
+- `ConfigLoader.__init__` (method) `quantum_simulator.py:214` `def __init__(self, config_path)`
+- `ConfigLoader.get_atom` (method) `quantum_simulator.py:264` `def get_atom(self, symbol)`
+- `ConfigLoader.get_molecule` (method) `quantum_simulator.py:272` `def get_molecule(self, name)`
+- `ConfigLoader.get_orbital` (method) `quantum_simulator.py:280` `def get_orbital(self, name)`
+- `ConfigLoader.atoms` (method) `quantum_simulator.py:289` `def atoms(self)`
+- `ConfigLoader.molecules` (method) `quantum_simulator.py:293` `def molecules(self)`
+- `ConfigLoader.orbitals` (method) `quantum_simulator.py:297` `def orbitals(self)`
+- `JointHilbertState.__init__` (method) `quantum_simulator.py:302` `def __init__(self, amplitudes, n_qubits)`
+- `JointHilbertState.normalize_` (method) `quantum_simulator.py:309` `def normalize_(self)`
+- `JointHilbertState.probabilities` (method) `quantum_simulator.py:314` `def probabilities(self)`
+- `JointHilbertState.entropy` (method) `quantum_simulator.py:318` `def entropy(self)`
+- `JointHilbertState.most_probable_bitstring` (method) `quantum_simulator.py:323` `def most_probable_bitstring(self)`
+- `JointHilbertState.clone` (method) `quantum_simulator.py:327` `def clone(self)`
+- `IQuantumGate.name` (method) `quantum_simulator.py:385` `def name(self)`
+- `IQuantumGate.apply` (method) `quantum_simulator.py:389` `def apply(self, state, backend, targets, params)`
+- `HadamardGate.name` (method) `quantum_simulator.py:395` `def name(self)`
+- `HadamardGate.apply` (method) `quantum_simulator.py:398` `def apply(self, state, backend, targets, params)`
+- `PauliXGate.name` (method) `quantum_simulator.py:408` `def name(self)`
+- `PauliXGate.apply` (method) `quantum_simulator.py:411` `def apply(self, state, backend, targets, params)`
+- `PauliYGate.name` (method) `quantum_simulator.py:420` `def name(self)`
+- `PauliYGate.apply` (method) `quantum_simulator.py:423` `def apply(self, state, backend, targets, params)`
+- `PauliZGate.name` (method) `quantum_simulator.py:432` `def name(self)`
+- `PauliZGate.apply` (method) `quantum_simulator.py:435` `def apply(self, state, backend, targets, params)`
+- `SGate.name` (method) `quantum_simulator.py:444` `def name(self)`
+- `SGate.apply` (method) `quantum_simulator.py:447` `def apply(self, state, backend, targets, params)`
+- `TGate.name` (method) `quantum_simulator.py:456` `def name(self)`
+- `TGate.apply` (method) `quantum_simulator.py:459` `def apply(self, state, backend, targets, params)`
+- `RxGate.name` (method) `quantum_simulator.py:469` `def name(self)`
+- `RxGate.apply` (method) `quantum_simulator.py:472` `def apply(self, state, backend, targets, params)`
+- `RyGate.name` (method) `quantum_simulator.py:483` `def name(self)`
+- `RyGate.apply` (method) `quantum_simulator.py:486` `def apply(self, state, backend, targets, params)`
+- `RzGate.name` (method) `quantum_simulator.py:497` `def name(self)`
+- `RzGate.apply` (method) `quantum_simulator.py:500` `def apply(self, state, backend, targets, params)`
+- `CNOTGate.name` (method) `quantum_simulator.py:512` `def name(self)`
+- `CNOTGate.apply` (method) `quantum_simulator.py:515` `def apply(self, state, backend, targets, params)`
+- `CZGate.name` (method) `quantum_simulator.py:524` `def name(self)`
+- `CZGate.apply` (method) `quantum_simulator.py:527` `def apply(self, state, backend, targets, params)`
+- `SWAPGate.name` (method) `quantum_simulator.py:536` `def name(self)`
+- `SWAPGate.apply` (method) `quantum_simulator.py:539` `def apply(self, state, backend, targets, params)`
+- `ToffoliGate.name` (method) `quantum_simulator.py:548` `def name(self)`
+- `ToffoliGate.apply` (method) `quantum_simulator.py:551` `def apply(self, state, backend, targets, params)`
+- `QuantumCircuit.__init__` (method) `quantum_simulator.py:583` `def __init__(self, n_qubits)`
+- `QuantumCircuit.h` (method) `quantum_simulator.py:590` `def h(self, qubit)`
+- `QuantumCircuit.x` (method) `quantum_simulator.py:593` `def x(self, qubit)`
+- `QuantumCircuit.y` (method) `quantum_simulator.py:596` `def y(self, qubit)`
+- `QuantumCircuit.z` (method) `quantum_simulator.py:599` `def z(self, qubit)`
+- `QuantumCircuit.s` (method) `quantum_simulator.py:602` `def s(self, qubit)`
+- `QuantumCircuit.t` (method) `quantum_simulator.py:605` `def t(self, qubit)`
+- `QuantumCircuit.rx` (method) `quantum_simulator.py:608` `def rx(self, qubit, theta)`
+- `QuantumCircuit.ry` (method) `quantum_simulator.py:611` `def ry(self, qubit, theta)`
+- `QuantumCircuit.rz` (method) `quantum_simulator.py:614` `def rz(self, qubit, theta)`
+- `QuantumCircuit.cnot` (method) `quantum_simulator.py:617` `def cnot(self, control, target)`
+- `QuantumCircuit.cz` (method) `quantum_simulator.py:620` `def cz(self, control, target)`
+- `QuantumCircuit.swap` (method) `quantum_simulator.py:623` `def swap(self, qubit1, qubit2)`
+- `QuantumCircuit.ccx` (method) `quantum_simulator.py:626` `def ccx(self, ctrl0, ctrl1, target)`
+- `QuantumCircuit.run` (method) `quantum_simulator.py:629` `def run(self, state, backend)`
+- `QuantumResult.__init__` (method) `quantum_simulator.py:639` `def __init__(self, state)`
+- `QuantumResult.entropy` (method) `quantum_simulator.py:642` `def entropy(self)`
+- `QuantumResult.most_probable_bitstring` (method) `quantum_simulator.py:645` `def most_probable_bitstring(self)`
+- `QuantumResult.probabilities` (method) `quantum_simulator.py:648` `def probabilities(self)`
+- `PotentialGenerator.__init__` (method) `quantum_simulator.py:653` `def __init__(self, config)`
+- `PotentialGenerator.harmonic` (method) `quantum_simulator.py:662` `def harmonic(self)`
+- `PotentialGenerator.double_well` (method) `quantum_simulator.py:667` `def double_well(self)`
+- `PotentialGenerator.coulomb` (method) `quantum_simulator.py:673` `def coulomb(self)`
+- `PotentialGenerator.periodic_lattice` (method) `quantum_simulator.py:679` `def periodic_lattice(self)`
+- `PotentialGenerator.mixed` (method) `quantum_simulator.py:683` `def mixed(self, seed)`
+- `JointStateFactory.__init__` (method) `quantum_simulator.py:717` `def __init__(self, config)`
+- `JointStateFactory.all_zeros` (method) `quantum_simulator.py:723` `def all_zeros(self, n_qubits)`
+- `JointStateFactory.basis_state` (method) `quantum_simulator.py:730` `def basis_state(self, n_qubits, k)`
+- `JointStateFactory.from_bitstring` (method) `quantum_simulator.py:739` `def from_bitstring(self, bitstring)`
+- `QuantumComputer.__init__` (method) `quantum_simulator.py:744` `def __init__(self, config)`
+- `QuantumComputer.create_circuit` (method) `quantum_simulator.py:755` `def create_circuit(self, n_qubits)`
+- `QuantumComputer.run_circuit` (method) `quantum_simulator.py:758` `def run_circuit(self, circuit, initial_state, backend)`
+- `QuantumComputer.bell_state` (method) `quantum_simulator.py:765` `def bell_state(self, backend)`
+- `QuantumComputer.ghz_state` (method) `quantum_simulator.py:771` `def ghz_state(self, n_qubits, backend)`
+- `QuantumComputer.factory` (method) `quantum_simulator.py:779` `def factory(self)`
+- `QuantumComputer.backends` (method) `quantum_simulator.py:783` `def backends(self)`
+- `WavefunctionCalculator.__init__` (method) `quantum_simulator.py:788` `def __init__(self, config)`
+- `WavefunctionCalculator.radial_wavefunction` (method) `quantum_simulator.py:792` `def radial_wavefunction(n, l, r)`
+- `WavefunctionCalculator.spherical_harmonic_real` (method) `quantum_simulator.py:804` `def spherical_harmonic_real(l, m, theta, phi)`
+- `WavefunctionCalculator.psi_3d` (method) `quantum_simulator.py:815` `def psi_3d(self, n, l, m, r, theta, phi)`
+- `WavefunctionCalculator.energy_analytical` (method) `quantum_simulator.py:820` `def energy_analytical(self, n)`
+- `MonteCarloSampler.__init__` (method) `quantum_simulator.py:825` `def __init__(self, config, wavefunction_calc)`
+- `MonteCarloSampler.find_max_probability` (method) `quantum_simulator.py:829` `def find_max_probability(self, n, l, m)`
+- `MonteCarloSampler.sample_orbital` (method) `quantum_simulator.py:853` `def sample_orbital(self, n, l, m, num_samples, Z)`
+- `MonteCarloSampler.sample_entangled_state` (method) `quantum_simulator.py:890` `def sample_entangled_state(self, n1, l1, m1, n2, l2, m2, num_samples)`
+- `DiracHydrogenAtom.__init__` (method) `quantum_simulator.py:904` `def __init__(self, config)`
+- `DiracHydrogenAtom.energy_level_dirac` (method) `quantum_simulator.py:909` `def energy_level_dirac(self, n, kappa, Z)`
+- `DiracHydrogenAtom.energy_schrodinger` (method) `quantum_simulator.py:917` `def energy_schrodinger(self, n, Z)`
+- `DiracHydrogenAtom.fine_structure_splitting` (method) `quantum_simulator.py:920` `def fine_structure_splitting(self, n, l, Z)`
+- `DiracHydrogenAtom.energy_spectrum` (method) `quantum_simulator.py:928` `def energy_spectrum(self, n_max, Z)`
+- `ZitterbewegungSimulator.__init__` (method) `quantum_simulator.py:945` `def __init__(self, config, dirac_backend)`
+- `ZitterbewegungSimulator.create_gaussian_wave_packet` (method) `quantum_simulator.py:950` `def create_gaussian_wave_packet(self, sigma, momentum)`
+- `ZitterbewegungSimulator.compute_position_expectation` (method) `quantum_simulator.py:968` `def compute_position_expectation(self, spinor)`
+- `ZitterbewegungSimulator.compute_velocity_expectation` (method) `quantum_simulator.py:979` `def compute_velocity_expectation(self, spinor)`
+- `ZitterbewegungSimulator.simulate` (method) `quantum_simulator.py:990` `def simulate(self, duration, dt, sigma)`
+- `OrbitalVisualizer.__init__` (method) `quantum_simulator.py:1027` `def __init__(self, config)`
+- `OrbitalVisualizer.visualize` (method) `quantum_simulator.py:1030` `def visualize(self, data, save_path, title_suffix)`
+- `EntangledVisualizer.__init__` (method) `quantum_simulator.py:1088` `def __init__(self, config)`
+- `EntangledVisualizer.visualize` (method) `quantum_simulator.py:1091` `def visualize(self, data, quantum_result, save_path)`
+- `QuantumSimulationFramework.__init__` (method) `quantum_simulator.py:1154` `def __init__(self, config_path)`
+- `QuantumSimulationFramework.list_available_atoms` (method) `quantum_simulator.py:1169` `def list_available_atoms(self)`
+- `QuantumSimulationFramework.list_available_molecules` (method) `quantum_simulator.py:1172` `def list_available_molecules(self)`
+- `QuantumSimulationFramework.list_available_orbitals` (method) `quantum_simulator.py:1175` `def list_available_orbitals(self)`
+- `QuantumSimulationFramework.get_atom` (method) `quantum_simulator.py:1178` `def get_atom(self, symbol)`
+- `QuantumSimulationFramework.get_molecule` (method) `quantum_simulator.py:1181` `def get_molecule(self, name)`
+- `QuantumSimulationFramework.get_orbital` (method) `quantum_simulator.py:1184` `def get_orbital(self, name)`
+- `QuantumSimulationFramework.run_quantum_circuit` (method) `quantum_simulator.py:1187` `def run_quantum_circuit(self, circuit, backend)`
+- `QuantumSimulationFramework.visualize_orbital` (method) `quantum_simulator.py:1190` `def visualize_orbital(self, orbital_name, num_samples, save, Z, title_suffix)`
+- `QuantumSimulationFramework.visualize_atom_orbitals` (method) `quantum_simulator.py:1202` `def visualize_atom_orbitals(self, atom_symbol, num_samples, save)`
+- `QuantumSimulationFramework.visualize_entangled_state` (method) `quantum_simulator.py:1226` `def visualize_entangled_state(self, orbital1, orbital2, num_samples, save)`
+- `QuantumSimulationFramework.compute_relativistic_energy` (method) `quantum_simulator.py:1240` `def compute_relativistic_energy(self, n, l, Z)`
+- `QuantumSimulationFramework.compute_energy_spectrum` (method) `quantum_simulator.py:1243` `def compute_energy_spectrum(self, n_max, Z)`
+- `QuantumSimulationFramework.run_zitterbewegung_simulation` (method) `quantum_simulator.py:1246` `def run_zitterbewegung_simulation(self, duration, dt, sigma)`
+- `QuantumSimulationFramework.run_all_demonstrations` (method) `quantum_simulator.py:1249` `def run_all_demonstrations(self, num_samples)`
+- `InteractiveMenu.__init__` (method) `quantum_simulator.py:1280` `def __init__(self, framework)`
+- `InteractiveMenu.display_header` (method) `quantum_simulator.py:1284` `def display_header(self)`
+- `InteractiveMenu.display_main_menu` (method) `quantum_simulator.py:1292` `def display_main_menu(self)`
+- `InteractiveMenu.get_user_choice` (method) `quantum_simulator.py:1308` `def get_user_choice(self, prompt)`
+- `InteractiveMenu.orbital_menu` (method) `quantum_simulator.py:1322` `def orbital_menu(self)`
+- `InteractiveMenu.atom_orbital_menu` (method) `quantum_simulator.py:1346` `def atom_orbital_menu(self)`
+- `InteractiveMenu.entangled_menu` (method) `quantum_simulator.py:1366` `def entangled_menu(self)`
+- `InteractiveMenu.quantum_circuit_menu` (method) `quantum_simulator.py:1395` `def quantum_circuit_menu(self)`
+- `InteractiveMenu.relativistic_menu` (method) `quantum_simulator.py:1481` `def relativistic_menu(self)`
+- `InteractiveMenu.zitterbewegung_menu` (method) `quantum_simulator.py:1521` `def zitterbewegung_menu(self)`
+- `InteractiveMenu.molecular_menu` (method) `quantum_simulator.py:1540` `def molecular_menu(self)`
+- `InteractiveMenu.atomic_menu` (method) `quantum_simulator.py:1564` `def atomic_menu(self)`
+- `InteractiveMenu.run` (method) `quantum_simulator.py:1584` `def run(self)`
+- `main` (function) `quantum_simulator.py:1612` `def main()`
+
+## quantum_visualizer.py
+Depends on: `advanced_experiments.py`, `molecular_sim.py`, `quantum_computer.py`
+Imported by: `quantum_3dview.py`, `quantum_framework_menu.py`
+- `IVisualizationComponent.render` (method) `quantum_visualizer.py:192` `def render(self, data, axes, config)`
+- `ProbabilityBarRenderer.render` (method) `quantum_visualizer.py:197` `def render(self, data, axes, config)`
+- `BlochSphereRenderer.render` (method) `quantum_visualizer.py:228` `def render(self, data, axes, config)`
+- `PhasePlotRenderer.render` (method) `quantum_visualizer.py:259` `def render(self, data, axes, config)`
+- `EntropyPlotRenderer.render` (method) `quantum_visualizer.py:292` `def render(self, snapshots, axes, config)`
+- `BackendComparisonRenderer.render` (method) `quantum_visualizer.py:314` `def render(self, results, axes, config)`
+- `QuantumStateAnalyzer.__init__` (method) `quantum_visualizer.py:342` `def __init__(self, config)`
+- `QuantumStateAnalyzer.compute_probabilities` (method) `quantum_visualizer.py:345` `def compute_probabilities(self, state)`
+- `QuantumStateAnalyzer.compute_phases` (method) `quantum_visualizer.py:349` `def compute_phases(self, state)`
+- `QuantumStateAnalyzer.compute_entropy` (method) `quantum_visualizer.py:360` `def compute_entropy(self, probs)`
+- `QuantumStateAnalyzer.compute_bloch_vectors` (method) `quantum_visualizer.py:367` `def compute_bloch_vectors(self, state)`
+- `QuantumStateAnalyzer.create_snapshot` (method) `quantum_visualizer.py:374` `def create_snapshot(self, state, step, gate_name)`
+- `CircuitExecutor.__init__` (method) `quantum_visualizer.py:398` `def __init__(self, qc, config)`
+- `CircuitExecutor.execute_sequence` (method) `quantum_visualizer.py:403` `def execute_sequence(self, gates, n_qubits, backend_name)`
+- `CircuitExecutor.compare_backends` (method) `quantum_visualizer.py:423` `def compare_backends(self, gates, n_qubits, reference_backend)`
+- `StandardCircuits.bell_state` (method) `quantum_visualizer.py:459` `def bell_state()`
+- `StandardCircuits.ghz_state` (method) `quantum_visualizer.py:466` `def ghz_state(n_qubits)`
+- `StandardCircuits.qft` (method) `quantum_visualizer.py:473` `def qft(n_qubits)`
+- `StandardCircuits.grover_oracle` (method) `quantum_visualizer.py:488` `def grover_oracle(n_qubits, marked)`
+- `StandardCircuits.grover_diffusion` (method) `quantum_visualizer.py:501` `def grover_diffusion(n_qubits)`
+- `StandardCircuits.custom_sequence` (method) `quantum_visualizer.py:514` `def custom_sequence(sequence)`
+- `FigureBuilder.__init__` (method) `quantum_visualizer.py:529` `def __init__(self, config)`
+- `FigureBuilder.build_evolution_figure` (method) `quantum_visualizer.py:537` `def build_evolution_figure(self, snapshots, backend_results)`
+- `FigureBuilder.build_summary_figure` (method) `quantum_visualizer.py:563` `def build_summary_figure(self, snapshots, backend_results)`
+- `QuantumVisualizer.__init__` (method) `quantum_visualizer.py:613` `def __init__(self, config)`
+- `QuantumVisualizer.visualize_bell_state` (method) `quantum_visualizer.py:654` `def visualize_bell_state(self)`
+- `QuantumVisualizer.visualize_ghz_state` (method) `quantum_visualizer.py:683` `def visualize_ghz_state(self, n_qubits)`
+- `QuantumVisualizer.visualize_qft` (method) `quantum_visualizer.py:711` `def visualize_qft(self, n_qubits)`
+- `QuantumVisualizer.visualize_grover` (method) `quantum_visualizer.py:739` `def visualize_grover(self, n_qubits, marked_state)`
+- `QuantumVisualizer.visualize_custom_circuit` (method) `quantum_visualizer.py:778` `def visualize_custom_circuit(self, gates, n_qubits, name)`
+- `QuantumVisualizer.run_all_visualizations` (method) `quantum_visualizer.py:810` `def run_all_visualizations(self)`
+- `main` (function) `quantum_visualizer.py:856` `def main()`
+
+## relativistic_hydrogen.py
+Imported by: `advanced_experiments.py`, `entangled_hydrogen.py`, `immersive/spin.py`
+- `LoggerFactory.create_logger` (method) `relativistic_hydrogen.py:97` `def create_logger(name, level)`
+- `GammaMatrices.__init__` (method) `relativistic_hydrogen.py:118` `def __init__(self, device)`
+- `DiracHamiltonianOperator.__init__` (method) `relativistic_hydrogen.py:207` `def __init__(self, config)`
+- `DiracHamiltonianOperator.apply_dirac_hamiltonian` (method) `relativistic_hydrogen.py:223` `def apply_dirac_hamiltonian(self, spinor, potential)` -- Apply Dirac Hamiltonian to 4-component spinor.
+- `DiracHamiltonianOperator.time_evolution` (method) `relativistic_hydrogen.py:282` `def time_evolution(self, spinor, dt, potential)` -- Time evolution of Dirac spinor using first-order split-step. psi(t+dt) = exp(-i * H * dt) * psi(t) ~ (1 - i*H*dt) * psi
+- `SpectralLayer.__init__` (method) `relativistic_hydrogen.py:311` `def __init__(self, channels, grid_size)`
+- `SpectralLayer.forward` (method) `relativistic_hydrogen.py:322` `def forward(self, x)`
+- `DiracSpectralNetwork.__init__` (method) `relativistic_hydrogen.py:356` `def __init__(self, grid_size, hidden_dim, expansion_dim, num_spectral_layers, spinor_components)`
+- `DiracSpectralNetwork.forward` (method) `relativistic_hydrogen.py:379` `def forward(self, x)`
+- `DiracModelWrapper.__init__` (method) `relativistic_hydrogen.py:397` `def __init__(self, config)`
+- `DiracModelWrapper.apply_hamiltonian` (method) `relativistic_hydrogen.py:498` `def apply_hamiltonian(self, spinor, potential)` -- Apply Hamiltonian using analytical operator.
+- `DiracModelWrapper.evolve_spinor` (method) `relativistic_hydrogen.py:506` `def evolve_spinor(self, spinor, dt, potential)` -- Evolve spinor in time using the analytical Dirac operator.
+- `DiracHydrogenAtom.__init__` (method) `relativistic_hydrogen.py:521` `def __init__(self, config)`
+- `DiracHydrogenAtom.energy_level_dirac` (method) `relativistic_hydrogen.py:526` `def energy_level_dirac(self, n, kappa)` -- Exact Dirac energy level for hydrogen-like atom.
+- `DiracHydrogenAtom.fine_structure_splitting` (method) `relativistic_hydrogen.py:556` `def fine_structure_splitting(self, n, l)` -- Calculate fine structure splitting for given n, l.
+- `DiracHydrogenAtom.energy_spectrum` (method) `relativistic_hydrogen.py:597` `def energy_spectrum(self, n_max)` -- Generate relativistic energy spectrum up to n_max.
+- `ZitterbewegungSimulator.__init__` (method) `relativistic_hydrogen.py:650` `def __init__(self, config, model_wrapper)`
+- `ZitterbewegungSimulator.create_gaussian_wave_packet` (method) `relativistic_hydrogen.py:657` `def create_gaussian_wave_packet(self, sigma, momentum)` -- Create a Gaussian wave packet for a free particle.
+- `ZitterbewegungSimulator.compute_position_expectation` (method) `relativistic_hydrogen.py:702` `def compute_position_expectation(self, spinor)` -- Compute expectation value of position operator. <x> = <psi| x |psi>
+- `ZitterbewegungSimulator.compute_velocity_expectation` (method) `relativistic_hydrogen.py:724` `def compute_velocity_expectation(self, spinor)` -- Compute expectation value of velocity operator.
+- `ZitterbewegungSimulator.simulate` (method) `relativistic_hydrogen.py:750` `def simulate(self, duration, dt, sigma)` -- Run Zitterbewegung simulation.
+- `DiracWavefunctionCalculator.__init__` (method) `relativistic_hydrogen.py:837` `def __init__(self, config)`
+- `DiracWavefunctionCalculator.radial_wavefunction_schrodinger` (method) `relativistic_hydrogen.py:843` `def radial_wavefunction_schrodinger(n, l, r)` -- Non-relativistic radial wavefunction for comparison.
+- `DiracWavefunctionCalculator.radial_wavefunction_dirac` (method) `relativistic_hydrogen.py:853` `def radial_wavefunction_dirac(self, n, kappa, r, Z)` -- Relativistic radial wavefunctions for hydrogen.
+- `DiracWavefunctionCalculator.spherical_harmonic_real` (method) `relativistic_hydrogen.py:900` `def spherical_harmonic_real(self, l, m, theta, phi)` -- Real spherical harmonics.
+- `DiracWavefunctionCalculator.spin_angular_function` (method) `relativistic_hydrogen.py:910` `def spin_angular_function(self, kappa, m_j, theta, phi)` -- Spin-angular functions Omega_{kappa,m_j}(theta, phi).
+- `DiracMonteCarloSampler.__init__` (method) `relativistic_hydrogen.py:960` `def __init__(self, config, model_wrapper)`
+- `DiracMonteCarloSampler.sample_orbital` (method) `relativistic_hydrogen.py:966` `def sample_orbital(self, n, l, j, num_samples)` -- Sample points from a relativistic hydrogen orbital.
+- `DiracVisualizer.__init__` (method) `relativistic_hydrogen.py:1079` `def __init__(self, config)`
+- `DiracVisualizer.visualize_orbital` (method) `relativistic_hydrogen.py:1082` `def visualize_orbital(self, data, save_path)` -- Visualize relativistic orbital.
+- `DiracVisualizer.visualize_energy_spectrum` (method) `relativistic_hydrogen.py:1213` `def visualize_energy_spectrum(self, spectrum, save_path)` -- Visualize relativistic energy spectrum with fine structure.
+- `DiracVisualizer.visualize_zitterbewegung` (method) `relativistic_hydrogen.py:1296` `def visualize_zitterbewegung(self, zbw_data, save_path)` -- Visualize Zitterbewegung oscillation.
+- `DiracValidationSuite.__init__` (method) `relativistic_hydrogen.py:1374` `def __init__(self, config)`
+- `DiracValidationSuite.print_header` (method) `relativistic_hydrogen.py:1398` `def print_header(self)`
+- `DiracValidationSuite.validate_fine_structure` (method) `relativistic_hydrogen.py:1419` `def validate_fine_structure(self)` -- Validate fine structure energy corrections.
+- `DiracValidationSuite.validate_zitterbewegung` (method) `relativistic_hydrogen.py:1477` `def validate_zitterbewegung(self)` -- Validate Zitterbewegung simulation.
+- `DiracValidationSuite.validate_energy_spectrum` (method) `relativistic_hydrogen.py:1509` `def validate_energy_spectrum(self)` -- Validate complete energy spectrum.
+- `DiracValidationSuite.validate_orbital` (method) `relativistic_hydrogen.py:1524` `def validate_orbital(self, orbital_name, num_samples)` -- Validate single orbital visualization.
+- `DiracValidationSuite.run_full_validation` (method) `relativistic_hydrogen.py:1541` `def run_full_validation(self)` -- Run complete validation suite.
+- `DiracValidationSuite.interactive_mode` (method) `relativistic_hydrogen.py:1575` `def interactive_mode(self)` -- Run in interactive mode.
+- `main` (function) `relativistic_hydrogen.py:1613` `def main()`
+
+## topological_hilbert_compression2.py
+Depends on: `quantum_computer.py`
+- `ITensorNetwork.amplitude` (method) `topological_hilbert_compression2.py:87` `def amplitude(self, basis_index)`
+- `ITensorNetwork.apply_single_qubit_gate` (method) `topological_hilbert_compression2.py:91` `def apply_single_qubit_gate(self, qubit, gate)`
+- `ITensorNetwork.apply_two_qubit_gate` (method) `topological_hilbert_compression2.py:95` `def apply_two_qubit_gate(self, qubit_a, qubit_b, gate)`
+- `ITensorNetwork.norm` (method) `topological_hilbert_compression2.py:99` `def norm(self)`
+- `ITensorNetwork.probabilities` (method) `topological_hilbert_compression2.py:103` `def probabilities(self)`
+- `ITensorNetwork.entropy` (method) `topological_hilbert_compression2.py:107` `def entropy(self)`
+- `ITensorNetwork.memory_bytes` (method) `topological_hilbert_compression2.py:111` `def memory_bytes(self)`
+- `MPSCore.__init__` (method) `topological_hilbert_compression2.py:121` `def __init__(self, chi_left, chi_right, d, device, dtype)`
+- `MPSCore.tensor` (method) `topological_hilbert_compression2.py:136` `def tensor(self)`
+- `MPSCore.tensor` (method) `topological_hilbert_compression2.py:142` `def tensor(self, value)`
+- `MPSCore.left_canonicalize` (method) `topological_hilbert_compression2.py:147` `def left_canonicalize(self)`
+- `MPSCore.right_canonicalize` (method) `topological_hilbert_compression2.py:154` `def right_canonicalize(self)`
+- `MPSState.__init__` (method) `topological_hilbert_compression2.py:172` `def __init__(self, n_qubits, config)`
+- `MPSState.amplitude` (method) `topological_hilbert_compression2.py:198` `def amplitude(self, basis_index)`
+- `MPSState.apply_single_qubit_gate` (method) `topological_hilbert_compression2.py:209` `def apply_single_qubit_gate(self, qubit, gate)`
+- `MPSState.apply_two_qubit_gate` (method) `topological_hilbert_compression2.py:219` `def apply_two_qubit_gate(self, qubit_a, qubit_b, gate)`
+- `MPSState.norm` (method) `topological_hilbert_compression2.py:294` `def norm(self)`
+- `MPSState.probabilities` (method) `topological_hilbert_compression2.py:308` `def probabilities(self)`
+- `MPSState.entropy` (method) `topological_hilbert_compression2.py:318` `def entropy(self)`
+- `MPSState.memory_bytes` (method) `topological_hilbert_compression2.py:329` `def memory_bytes(self)`
+- `MPSState.entanglement_entropy` (method) `topological_hilbert_compression2.py:335` `def entanglement_entropy(self, cut)`
+- `VacuumCore.__init__` (method) `topological_hilbert_compression2.py:361` `def __init__(self, n_qubits, config)`
+- `VacuumCore.add_active_state` (method) `topological_hilbert_compression2.py:381` `def add_active_state(self, basis_index, winding_number)`
+- `VacuumCore.is_topologically_protected` (method) `topological_hilbert_compression2.py:394` `def is_topologically_protected(self, basis_index)`
+- `VacuumCore.sparsity` (method) `topological_hilbert_compression2.py:398` `def sparsity(self)`
+- `VacuumCore.project_to_active` (method) `topological_hilbert_compression2.py:403` `def project_to_active(self, state)`
+- `TopologicalProtector.__init__` (method) `topological_hilbert_compression2.py:419` `def __init__(self, config)`
+- `TopologicalProtector.compute_winding_number` (method) `topological_hilbert_compression2.py:424` `def compute_winding_number(self, state, qubit)`
+- `TopologicalProtector.compute_berry_phase` (method) `topological_hilbert_compression2.py:433` `def compute_berry_phase(self, state, qubit_a, qubit_b)`
+- `TopologicalProtector.is_protected` (method) `topological_hilbert_compression2.py:444` `def is_protected(self, state, vacuum_core)`
+- `HybridBackend.can_handle` (method) `topological_hilbert_compression2.py:454` `def can_handle(self, n_qubits)`
+- `HybridBackend.create_state` (method) `topological_hilbert_compression2.py:458` `def create_state(self, n_qubits)`
+- `HybridBackend.apply_gate` (method) `topological_hilbert_compression2.py:462` `def apply_gate(self, state, gate_name, targets, params)`
+- `DirectBackend.__init__` (method) `topological_hilbert_compression2.py:472` `def __init__(self, config)`
+- `DirectBackend.can_handle` (method) `topological_hilbert_compression2.py:497` `def can_handle(self, n_qubits)`
+- `DirectBackend.create_state` (method) `topological_hilbert_compression2.py:500` `def create_state(self, n_qubits)`
+- `DirectBackend.apply_gate` (method) `topological_hilbert_compression2.py:507` `def apply_gate(self, state, gate_name, targets, params)`
+- `MPSBackend.__init__` (method) `topological_hilbert_compression2.py:521` `def __init__(self, config)`
+- `MPSBackend.can_handle` (method) `topological_hilbert_compression2.py:537` `def can_handle(self, n_qubits)`
+- `MPSBackend.create_state` (method) `topological_hilbert_compression2.py:540` `def create_state(self, n_qubits)`
+- `MPSBackend.apply_gate` (method) `topological_hilbert_compression2.py:543` `def apply_gate(self, state, gate_name, targets, params)`
+- `TopologicalHilbertSimulator.__init__` (method) `topological_hilbert_compression2.py:581` `def __init__(self, config)`
+- `TopologicalHilbertSimulator.create_circuit` (method) `topological_hilbert_compression2.py:602` `def create_circuit(self, n_qubits, force_mps)`
+- `TopologicalHilbertSimulator.h` (method) `topological_hilbert_compression2.py:610` `def h(self, qubit)`
+- `TopologicalHilbertSimulator.x` (method) `topological_hilbert_compression2.py:613` `def x(self, qubit)`
+- `TopologicalHilbertSimulator.y` (method) `topological_hilbert_compression2.py:616` `def y(self, qubit)`
+- `TopologicalHilbertSimulator.z` (method) `topological_hilbert_compression2.py:619` `def z(self, qubit)`
+- `TopologicalHilbertSimulator.rx` (method) `topological_hilbert_compression2.py:622` `def rx(self, qubit, theta)`
+- `TopologicalHilbertSimulator.ry` (method) `topological_hilbert_compression2.py:625` `def ry(self, qubit, theta)`
+- `TopologicalHilbertSimulator.rz` (method) `topological_hilbert_compression2.py:628` `def rz(self, qubit, theta)`
+- `TopologicalHilbertSimulator.cnot` (method) `topological_hilbert_compression2.py:631` `def cnot(self, control, target)`
+- `TopologicalHilbertSimulator.cz` (method) `topological_hilbert_compression2.py:634` `def cz(self, control, target)`
+- `TopologicalHilbertSimulator.swap` (method) `topological_hilbert_compression2.py:637` `def swap(self, qubit_a, qubit_b)`
+- `TopologicalHilbertSimulator.run` (method) `topological_hilbert_compression2.py:640` `def run(self)`
+- `TopologicalHilbertSimulator.probabilities` (method) `topological_hilbert_compression2.py:650` `def probabilities(self)`
+- `TopologicalHilbertSimulator.entropy` (method) `topological_hilbert_compression2.py:655` `def entropy(self)`
+- `TopologicalHilbertSimulator.memory_usage` (method) `topological_hilbert_compression2.py:666` `def memory_usage(self)`
+- `TopologicalHilbertSimulator.compression_ratio` (method) `topological_hilbert_compression2.py:682` `def compression_ratio(self)`
+- `TopologicalHilbertSimulator.detect_phase` (method) `topological_hilbert_compression2.py:691` `def detect_phase(self)`
+- `Schrodinger20Experiment.__init__` (method) `topological_hilbert_compression2.py:734` `def __init__(self, config)`
+- `Schrodinger20Experiment.run_bell_state` (method) `topological_hilbert_compression2.py:739` `def run_bell_state(self, n_qubits, use_mps)`
+- `Schrodinger20Experiment.run_ghz_state` (method) `topological_hilbert_compression2.py:758` `def run_ghz_state(self, n_qubits, use_mps)`
+- `Schrodinger20Experiment.run_w_state` (method) `topological_hilbert_compression2.py:777` `def run_w_state(self, n_qubits, use_mps)`
+- `Schrodinger20Experiment.prepare_ghz_state` (method) `topological_hilbert_compression2.py:798` `def prepare_ghz_state(self, n_qubits, force_mps)` -- Prepare GHZ state directly without SWAP overhead.
+- `Schrodinger20Experiment.run_scaling_benchmark` (method) `topological_hilbert_compression2.py:844` `def run_scaling_benchmark(self, max_qubits, use_mps)`
+- `Schrodinger20Experiment.run_all` (method) `topological_hilbert_compression2.py:897` `def run_all(self)`
+- `main` (function) `topological_hilbert_compression2.py:956` `def main()`
+

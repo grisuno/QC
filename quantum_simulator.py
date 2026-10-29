@@ -26,8 +26,21 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 
 import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
+
+# Canonical neural physics stack (single source of truth lives in
+# quantum_framework_physics.py; re-exported here for backward compatibility).
+from quantum_framework_physics import (
+    SpectralLayer,
+    HamiltonianBackboneNet,
+    SchrodingerSpectralNet,
+    DiracSpectralNet,
+    GammaMatrices,
+    IPhysicsBackend,
+    HamiltonianBackend,
+    SchrodingerBackend,
+    DiracBackend,
+    load_checkpoint,
+)
 
 warnings.filterwarnings("once", category=DeprecationWarning)
 warnings.filterwarnings("once", category=FutureWarning)
@@ -98,9 +111,9 @@ class FrameworkConfig:
     scatter_size_min: float = 1.0
     scatter_size_max: float = 8.0
     background_color: str = "#000008"
-    hamiltonian_checkpoint: str = "weights/latest.pth"
-    schrodinger_checkpoint: str = "weights/schrodinger_crystal_final.pth"
-    dirac_checkpoint: str = "weights/dirac_phase5_latest.pth"
+    hamiltonian_checkpoint: str = "hamiltonian.pth"
+    schrodinger_checkpoint: str = "checkpoint_phase3_training_epoch_18921_20260224_154739.pth"
+    dirac_checkpoint: str = "best_dirac.pth"
     output_dir: str = "download"
     default_num_samples: int = 100000
     zbw_time_steps: int = 1000
@@ -152,9 +165,9 @@ class FrameworkConfig:
             scatter_size_min=vis.get("scatter_size_min", 1.0),
             scatter_size_max=vis.get("scatter_size_max", 8.0),
             background_color=vis.get("background_color", "#000008"),
-            hamiltonian_checkpoint=ckpt.get("hamiltonian", "weights/latest.pth"),
-            schrodinger_checkpoint=ckpt.get("schrodinger", "weights/schrodinger_crystal_final.pth"),
-            dirac_checkpoint=ckpt.get("dirac", "weights/dirac_phase5_latest.pth"),
+            hamiltonian_checkpoint=ckpt.get("hamiltonian", "hamiltonian.pth"),
+            schrodinger_checkpoint=ckpt.get("schrodinger", "checkpoint_phase3_training_epoch_18921_20260224_154739.pth"),
+            dirac_checkpoint=ckpt.get("dirac", "best_dirac.pth"),
             output_dir=out.get("directory", "download"),
             default_num_samples=sim.get("default_num_samples", 100000),
         )
@@ -285,98 +298,6 @@ class ConfigLoader:
         return self._orbitals
 
 
-class SpectralLayer(nn.Module):
-    def __init__(self, channels: int, grid_size: int) -> None:
-        super().__init__()
-        self.grid_size = grid_size
-        self.kernel_real = nn.Parameter(torch.randn(channels, channels, grid_size // 2 + 1, grid_size) * 0.1)
-        self.kernel_imag = nn.Parameter(torch.randn(channels, channels, grid_size // 2 + 1, grid_size) * 0.1)
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        x_fft = torch.fft.rfft2(x)
-        freq_h, freq_w = x_fft.shape[-2], x_fft.shape[-1]
-        kr = F.interpolate(self.kernel_real.mean(dim=0).unsqueeze(0), size=(freq_h, freq_w), mode="bilinear", align_corners=False).squeeze(0)
-        ki = F.interpolate(self.kernel_imag.mean(dim=0).unsqueeze(0), size=(freq_h, freq_w), mode="bilinear", align_corners=False).squeeze(0)
-        return torch.fft.irfft2(torch.complex(x_fft.real * kr - x_fft.imag * ki, x_fft.real * ki + x_fft.imag * kr), s=(self.grid_size, self.grid_size))
-
-
-class HamiltonianBackboneNet(nn.Module):
-    def __init__(self, grid_size: int, hidden_dim: int, num_spectral_layers: int) -> None:
-        super().__init__()
-        self.input_proj = nn.Conv2d(1, hidden_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList([SpectralLayer(hidden_dim, grid_size) for _ in range(num_spectral_layers)])
-        self.output_proj = nn.Conv2d(hidden_dim, 1, kernel_size=1)
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        if x.dim() == 2:
-            x = x.unsqueeze(0).unsqueeze(0)
-        elif x.dim() == 3:
-            x = x.unsqueeze(1)
-        x = F.gelu(self.input_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        return self.output_proj(x).squeeze(1)
-
-
-class SchrodingerSpectralNet(nn.Module):
-    def __init__(self, grid_size: int, hidden_dim: int, expansion_dim: int, num_spectral_layers: int) -> None:
-        super().__init__()
-        self.input_proj = nn.Conv2d(2, hidden_dim, kernel_size=1)
-        self.expansion_proj = nn.Conv2d(hidden_dim, expansion_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList([SpectralLayer(expansion_dim, grid_size) for _ in range(num_spectral_layers)])
-        self.contraction_proj = nn.Conv2d(expansion_dim, hidden_dim, kernel_size=1)
-        self.output_proj = nn.Conv2d(hidden_dim, 2, kernel_size=1)
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        if x.dim() == 3:
-            x = x.unsqueeze(0)
-        x = F.gelu(self.input_proj(x))
-        x = F.gelu(self.expansion_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        x = F.gelu(self.contraction_proj(x))
-        return self.output_proj(x)
-
-
-class DiracSpectralNet(nn.Module):
-    def __init__(self, grid_size: int, hidden_dim: int, expansion_dim: int, num_spectral_layers: int) -> None:
-        super().__init__()
-        self.input_proj = nn.Conv2d(8, hidden_dim, kernel_size=1)
-        self.expansion_proj = nn.Conv2d(hidden_dim, expansion_dim, kernel_size=1)
-        self.spectral_layers = nn.ModuleList([SpectralLayer(expansion_dim, grid_size) for _ in range(num_spectral_layers)])
-        self.contraction_proj = nn.Conv2d(expansion_dim, hidden_dim, kernel_size=1)
-        self.output_proj = nn.Conv2d(hidden_dim, 8, kernel_size=1)
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        if x.dim() == 3:
-            x = x.unsqueeze(0)
-        x = F.gelu(self.input_proj(x))
-        x = F.gelu(self.expansion_proj(x))
-        for layer in self.spectral_layers:
-            x = F.gelu(layer(x))
-        x = F.gelu(self.contraction_proj(x))
-        return self.output_proj(x)
-
-
-class GammaMatrices:
-    def __init__(self, representation: str, device: str) -> None:
-        self.device = device
-        if representation == "dirac":
-            self.gamma0 = torch.tensor([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, -1, 0], [0, 0, 0, -1]], dtype=torch.complex64, device=device)
-            self.gamma1 = torch.tensor([[0, 0, 0, 1], [0, 0, 1, 0], [0, -1, 0, 0], [-1, 0, 0, 0]], dtype=torch.complex64, device=device)
-            self.gamma2 = torch.tensor([[0, 0, 0, -1j], [0, 0, 1j, 0], [0, 1j, 0, 0], [-1j, 0, 0, 0]], dtype=torch.complex64, device=device)
-            self.gamma3 = torch.tensor([[0, 0, 1, 0], [0, 0, 0, -1], [-1, 0, 0, 0], [0, 1, 0, 0]], dtype=torch.complex64, device=device)
-        else:
-            self.gamma0 = torch.tensor([[0, 0, 1, 0], [0, 0, 0, 1], [1, 0, 0, 0], [0, 1, 0, 0]], dtype=torch.complex64, device=device)
-            self.gamma1 = torch.tensor([[0, 0, 0, 1], [0, 0, 1, 0], [0, -1, 0, 0], [-1, 0, 0, 0]], dtype=torch.complex64, device=device)
-            self.gamma2 = torch.tensor([[0, 0, 0, -1j], [0, 0, 1j, 0], [0, 1j, 0, 0], [-1j, 0, 0, 0]], dtype=torch.complex64, device=device)
-            self.gamma3 = torch.tensor([[0, 0, 1, 0], [0, 0, 0, -1], [-1, 0, 0, 0], [0, 1, 0, 0]], dtype=torch.complex64, device=device)
-        self.alpha_x = self.gamma0 @ self.gamma1
-        self.alpha_y = self.gamma0 @ self.gamma2
-        self.alpha_z = self.gamma0 @ self.gamma3
-        self.beta = self.gamma0
-
-
 class JointHilbertState:
     def __init__(self, amplitudes: torch.Tensor, n_qubits: int) -> None:
         self.amplitudes = amplitudes
@@ -405,183 +326,6 @@ class JointHilbertState:
 
     def clone(self) -> "JointHilbertState":
         return JointHilbertState(self.amplitudes.clone(), self.n_qubits)
-
-
-class IPhysicsBackend(ABC):
-    @abstractmethod
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        pass
-
-    @abstractmethod
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        pass
-
-
-class HamiltonianBackend(IPhysicsBackend):
-    def __init__(self, config: FrameworkConfig) -> None:
-        self.config = config
-        self.device = config.device
-        self.net: Optional[HamiltonianBackboneNet] = None
-        self._laplacian: Optional[torch.Tensor] = None
-        self._load()
-        self._precompute_laplacian()
-
-    def _load(self) -> None:
-        self.net = HamiltonianBackboneNet(self.config.grid_size, self.config.hidden_dim, self.config.num_spectral_layers).to(self.device)
-        path = self.config.hamiltonian_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                self.net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("HamiltonianBackend: loaded %s", path)
-            except Exception as exc:
-                _LOG.warning("HamiltonianBackend: load failed (%s)", exc)
-        self.net.eval()
-        for p in self.net.parameters():
-            p.requires_grad_(False)
-
-    def _precompute_laplacian(self) -> None:
-        G = self.config.grid_size
-        kx = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        ky = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        KX, KY = torch.meshgrid(kx, ky, indexing="ij")
-        self._laplacian = (-(KX ** 2 + KY ** 2)).float().to(self.device)
-
-    def _apply_h(self, field: torch.Tensor) -> torch.Tensor:
-        if self.net is not None:
-            with torch.no_grad():
-                result = self.net(field.to(self.device))
-                return result.squeeze() if result.dim() > 2 else result
-        fft = torch.fft.fft2(field.to(self.device))
-        return torch.fft.ifft2(fft * self._laplacian).real
-
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        psi_r, psi_i = amp[0].to(self.device), amp[1].to(self.device)
-        h_r, h_i = self._apply_h(psi_r), self._apply_h(psi_i)
-        out = torch.stack([psi_r + dt * h_i, psi_i - dt * h_r], dim=0)
-        norm = torch.sqrt((out ** 2).sum()) + self.config.normalization_eps
-        return out / norm
-
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        c, s = math.cos(phase_angle), math.sin(phase_angle)
-        return torch.stack([c * amp[0] - s * amp[1], s * amp[0] + c * amp[1]], dim=0)
-
-
-class SchrodingerBackend(IPhysicsBackend):
-    def __init__(self, config: FrameworkConfig, hamiltonian: HamiltonianBackend) -> None:
-        self.config = config
-        self.device = config.device
-        self.hamiltonian = hamiltonian
-        self.net: Optional[SchrodingerSpectralNet] = None
-        self._load()
-
-    def _load(self) -> None:
-        self.net = SchrodingerSpectralNet(self.config.grid_size, self.config.hidden_dim, self.config.expansion_dim, self.config.num_spectral_layers).to(self.device)
-        path = self.config.schrodinger_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                self.net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("SchrodingerBackend: loaded %s", path)
-            except Exception:
-                self.net = None
-        if self.net is not None:
-            self.net.eval()
-            for p in self.net.parameters():
-                p.requires_grad_(False)
-
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        if self.net is None:
-            return self.hamiltonian.evolve_amplitude(amp, dt)
-        with torch.no_grad():
-            out = self.net(amp.unsqueeze(0).to(self.device)).squeeze(0)
-        norm = torch.sqrt((out ** 2).sum()) + self.config.normalization_eps
-        return out / norm
-
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        return self.hamiltonian.apply_phase(amp, phase_angle)
-
-
-class DiracBackend(IPhysicsBackend):
-    def __init__(self, config: FrameworkConfig, hamiltonian: HamiltonianBackend) -> None:
-        self.config = config
-        self.device = config.device
-        self.hamiltonian = hamiltonian
-        self.gamma = GammaMatrices("dirac", config.device)
-        self.net: Optional[DiracSpectralNet] = None
-        self._load()
-        self._precompute_dirac()
-
-    def _load(self) -> None:
-        self.net = DiracSpectralNet(self.config.grid_size, self.config.hidden_dim, self.config.expansion_dim, self.config.num_spectral_layers).to(self.device)
-        path = self.config.dirac_checkpoint
-        if os.path.exists(path):
-            try:
-                ckpt = torch.load(path, map_location=self.device, weights_only=False)
-                self.net.load_state_dict(ckpt.get("model_state_dict", ckpt), strict=False)
-                _LOG.info("DiracBackend: loaded %s", path)
-            except Exception:
-                self.net = None
-        if self.net is not None:
-            self.net.eval()
-            for p in self.net.parameters():
-                p.requires_grad_(False)
-
-    def _precompute_dirac(self) -> None:
-        G = self.config.grid_size
-        kx = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        ky = torch.fft.fftfreq(G, d=1.0) * 2.0 * math.pi
-        KX, KY = torch.meshgrid(kx, ky, indexing="ij")
-        self.kx_grid, self.ky_grid = KX.to(self.device), KY.to(self.device)
-
-    def _pack(self, amp: torch.Tensor) -> torch.Tensor:
-        psi_c = torch.complex(amp[0].to(self.device), amp[1].to(self.device))
-        s = math.sqrt(0.5)
-        spinor = torch.zeros(4, self.config.grid_size, self.config.grid_size, dtype=torch.complex64, device=self.device)
-        spinor[0] = psi_c * s
-        spinor[1] = psi_c * s
-        spinor[2] = psi_c.conj() * s
-        spinor[3] = psi_c.conj() * s
-        return spinor
-
-    def _unpack(self, spinor: torch.Tensor) -> torch.Tensor:
-        particle = spinor[:2].mean(dim=0)
-        out = torch.stack([particle.real, particle.imag], dim=0)
-        norm = torch.sqrt((out ** 2).sum()) + self.config.normalization_eps
-        return out / norm
-
-    def _analytical_dirac(self, spinor: torch.Tensor) -> torch.Tensor:
-        m, c = self.config.electron_mass, self.config.c_light
-        result = torch.zeros_like(spinor)
-        for comp in range(4):
-            fft = torch.fft.fft2(spinor[comp])
-            px = torch.fft.ifft2(fft * self.kx_grid)
-            py = torch.fft.ifft2(fft * self.ky_grid)
-            for row in range(4):
-                result[row] += c * self.gamma.alpha_x[row, comp] * px + c * self.gamma.alpha_y[row, comp] * py + m * c ** 2 * self.gamma.beta[row, comp] * spinor[comp]
-        return result
-
-    def evolve_amplitude(self, amp: torch.Tensor, dt: float) -> torch.Tensor:
-        spinor = self._pack(amp)
-        if self.net is not None:
-            channels = torch.cat([spinor.real, spinor.imag], dim=0).unsqueeze(0)
-            with torch.no_grad():
-                out = self.net(channels).squeeze(0)
-            spinor_out = torch.complex(out[:4], out[4:])
-        else:
-            h_spinor = self._analytical_dirac(spinor)
-            spinor_out = spinor - 1j * dt * h_spinor
-        norm = torch.sqrt((spinor_out.abs() ** 2).sum()) + self.config.normalization_eps
-        return self._unpack(spinor_out / norm)
-
-    def apply_phase(self, amp: torch.Tensor, phase_angle: float) -> torch.Tensor:
-        return self.hamiltonian.apply_phase(amp, phase_angle)
-
-    def evolve_spinor(self, spinor: torch.Tensor, dt: float) -> torch.Tensor:
-        h_spinor = self._analytical_dirac(spinor)
-        result = spinor - 1j * dt * h_spinor
-        norm = torch.sqrt((result.abs() ** 2).sum()) + self.config.normalization_eps
-        return result / norm
 
 
 def _single_qubit_unitary(state: JointHilbertState, qubit: int, u: torch.Tensor, backend: IPhysicsBackend) -> JointHilbertState:

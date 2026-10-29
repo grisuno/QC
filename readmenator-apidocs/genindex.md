@@ -1,0 +1,2551 @@
+# General Index
+
+[Back to index](index.md)
+
+[A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [J](#j) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [Q](#q) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [V](#v) | [W](#w) | [X](#x) | [Y](#y) | [Z](#z)
+
+<a id="a"></a>
+
+## A
+
+- [`ACCENT`](modules/immersive.hud.py.md#accent) constant in `immersive.hud`
+- [`action_launch`](modules/qc_launcher.py.md#launcher-action_launch) method of `Launcher` in `qc_launcher`
+- [`action_toggle_lang`](modules/qc_launcher.py.md#launcher-action_toggle_lang) method of `Launcher` in `qc_launcher`
+- [`active_name`](modules/immersive.backend.py.md#backendregister-active_name) property of `BackendRegister` in `immersive.backend`
+- [`active_name`](modules/immersive.physics.py.md#qubitregister-active_name) property of `QubitRegister` in `immersive.physics`
+- [`acts`](modules/immersive.app.py.md#step-acts) attribute of `Step` in `immersive.app`
+- [`adaptive_bond`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-adaptive_bond) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`add_active_state`](modules/quantum_framework_core.py.md#vacuumcore-add_active_state) method of `VacuumCore` in `quantum_framework_core`
+- [`add_active_state`](modules/topological_hilbert_compression2.py.md#vacuumcore-add_active_state) method of `VacuumCore` in `topological_hilbert_compression2`
+- [`advance_tour`](modules/immersive.app.py.md#app-advance_tour) method of `App` in `immersive.app`
+- [`AdvancedExperimentRunner`](modules/advanced_experiments.py.md#advancedexperimentrunner) class in `advanced_experiments`
+- [`all_zeros`](modules/quantum_computer.py.md#jointstatefactory-all_zeros) method of `JointStateFactory` in `quantum_computer`
+- [`all_zeros`](modules/quantum_simulator.py.md#jointstatefactory-all_zeros) method of `JointStateFactory` in `quantum_simulator`
+- [`ALPHA_FS`](modules/relativistic_hydrogen.py.md#config-alpha_fs) attribute of `Config` in `relativistic_hydrogen`
+- [`alpha_fs`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-alpha_fs) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`alpha_fs`](modules/quantum_framework_core.py.md#frameworkconfig-alpha_fs) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`alpha_fs`](modules/quantum_simulator.py.md#frameworkconfig-alpha_fs) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`alpha_fs`](modules/advanced_experiments.py.md#qedconfig-alpha_fs) attribute of `QEDConfig` in `advanced_experiments`
+- [`amplitude`](modules/quantum_framework_core.py.md#itensornetwork-amplitude) method of `ITensorNetwork` in `quantum_framework_core`
+- [`amplitude`](modules/topological_hilbert_compression2.py.md#itensornetwork-amplitude) method of `ITensorNetwork` in `topological_hilbert_compression2`
+- [`amplitude`](modules/quantum_framework_core.py.md#mpsstate-amplitude) method of `MPSState` in `quantum_framework_core`
+- [`amplitude`](modules/topological_hilbert_compression2.py.md#mpsstate-amplitude) method of `MPSState` in `topological_hilbert_compression2`
+- [`amplitudes`](modules/quantum_dash.py.md#quantumsnapshot-amplitudes) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`amplitudes`](modules/quantum_visualizer.py.md#quantumstatesnapshot-amplitudes) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`analyze_with_quantum_backends`](modules/higgs_four_lepton_analysis.py.md#higgsquantumanalysis-analyze_with_quantum_backends) method of `HiggsQuantumAnalysis` in `higgs_four_lepton_analysis`
+- [`analyze_with_quantum_backends`](modules/higgs_quantum_analysis.py.md#higgsquantumanalysis-analyze_with_quantum_backends) method of `HiggsQuantumAnalysis` in `higgs_quantum_analysis`
+- [`angular`](modules/quantum_lab.py.md#orbitalspec-angular) attribute of `OrbitalSpec` in `quantum_lab`
+- [`angular_constants`](modules/immersive.physics.py.md#angular_constants) function in `immersive.physics`
+- [`ANGULAR_POLY`](modules/immersive.physics.py.md#angular_poly) constant in `immersive.physics`
+- [`ANGULAR_PROBE`](modules/immersive.physics.py.md#angular_probe) constant in `immersive.physics`
+- [`animation_frames`](modules/quantum_dash.py.md#brutalistconfig-animation_frames) attribute of `BrutalistConfig` in `quantum_dash`
+- [`animation_frames`](modules/quantum_visualizer.py.md#visualizerconfig-animation_frames) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`animation_interval`](modules/quantum_visualizer.py.md#visualizerconfig-animation_interval) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`animation_speed`](modules/quantum_3dview.py.md#brutalconfig-animation_speed) attribute of `BrutalConfig` in `quantum_3dview`
+- [`annotation_size`](modules/quantum_visualizer.py.md#visualizerconfig-annotation_size) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`AnomalousMagneticMoment`](modules/advanced_experiments.py.md#anomalousmagneticmoment) class in `advanced_experiments`
+- [`AnomalousMagneticMoment`](modules/quantum_framework_physics.py.md#anomalousmagneticmoment) class in `quantum_framework_physics`
+- [`ansatz_instructions`](modules/quantum_lab.py.md#h2vqeengine-ansatz_instructions) method of `H2VQEEngine` in `quantum_lab`
+- [`App`](modules/immersive.app.py.md#app) class in `immersive.app`
+- [`app_icon`](modules/qc_dashboard.py.md#dashboardconfig-app_icon) attribute of `DashboardConfig` in `qc_dashboard`
+- [`app_title`](modules/qc_dashboard.py.md#dashboardconfig-app_title) attribute of `DashboardConfig` in `qc_dashboard`
+- [`append`](modules/qc_integration.py.md#circuitir-append) method of `CircuitIR` in `qc_integration`
+- [`apply`](modules/quantum_computer.py.md#cnotgate-apply) method of `CNOTGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#cnotgate-apply) method of `CNOTGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#cnotgate-apply) method of `CNOTGate` in `quantum_simulator`
+- [`apply`](modules/quantum_framework_core.py.md#crzgate-apply) method of `CRzGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_computer.py.md#czgate-apply) method of `CZGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#czgate-apply) method of `CZGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#czgate-apply) method of `CZGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#evolvegate-apply) method of `EvolveGate` in `quantum_computer`
+- [`apply`](modules/advanced_experiments.py.md#groverdiffusionoperator-apply) method of `GroverDiffusionOperator` in `advanced_experiments`
+- [`apply`](modules/advanced_experiments.py.md#groveroracle-apply) method of `GroverOracle` in `advanced_experiments`
+- [`apply`](modules/quantum_computer.py.md#hadamardgate-apply) method of `HadamardGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#hadamardgate-apply) method of `HadamardGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#hadamardgate-apply) method of `HadamardGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#iquantumgate-apply) method of `IQuantumGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#iquantumgate-apply) method of `IQuantumGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#iquantumgate-apply) method of `IQuantumGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#mczgate-apply) method of `MCZGate` in `quantum_computer`
+- [`apply`](modules/immersive.scenes.py.md#matterscene-apply) method of `MatterScene` in `immersive.scenes`
+- [`apply`](modules/quantum_computer.py.md#paulixgate-apply) method of `PauliXGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#paulixgate-apply) method of `PauliXGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#paulixgate-apply) method of `PauliXGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#pauliygate-apply) method of `PauliYGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#pauliygate-apply) method of `PauliYGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#pauliygate-apply) method of `PauliYGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#paulizgate-apply) method of `PauliZGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#paulizgate-apply) method of `PauliZGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#paulizgate-apply) method of `PauliZGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#rxgate-apply) method of `RxGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#rxgate-apply) method of `RxGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#rxgate-apply) method of `RxGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#rygate-apply) method of `RyGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#rygate-apply) method of `RyGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#rygate-apply) method of `RyGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#rzgate-apply) method of `RzGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#rzgate-apply) method of `RzGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#rzgate-apply) method of `RzGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#sgate-apply) method of `SGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#sgate-apply) method of `SGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#sgate-apply) method of `SGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#swapgate-apply) method of `SWAPGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#swapgate-apply) method of `SWAPGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#swapgate-apply) method of `SWAPGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#tgate-apply) method of `TGate` in `quantum_computer`
+- [`apply`](modules/quantum_framework_core.py.md#tgate-apply) method of `TGate` in `quantum_framework_core`
+- [`apply`](modules/quantum_simulator.py.md#tgate-apply) method of `TGate` in `quantum_simulator`
+- [`apply`](modules/quantum_computer.py.md#toffoligate-apply) method of `ToffoliGate` in `quantum_computer`
+- [`apply`](modules/quantum_simulator.py.md#toffoligate-apply) method of `ToffoliGate` in `quantum_simulator`
+- [`apply`](modules/quantum_framework_molecular.py.md#uccsdansatz-apply) method of `UCCSDAnsatz` in `quantum_framework_molecular`
+- [`apply`](modules/quantum_framework_molecular_v2.py.md#uccsdansatz-apply) method of `UCCSDAnsatz` in `quantum_framework_molecular_v2`
+- [`apply_ansatz`](modules/quantum_framework_molecular_v2.py.md#vqesolver-apply_ansatz) method of `VQESolver` in `quantum_framework_molecular_v2`
+- [`apply_dirac_hamiltonian`](modules/quantum_framework_physics.py.md#dirachamiltonianoperator-apply_dirac_hamiltonian) method of `DiracHamiltonianOperator` in `quantum_framework_physics`
+- [`apply_dirac_hamiltonian`](modules/relativistic_hydrogen.py.md#dirachamiltonianoperator-apply_dirac_hamiltonian) method of `DiracHamiltonianOperator` in `relativistic_hydrogen`
+- [`apply_double_excitation`](modules/quantum_framework_molecular.py.md#uccsdansatz-apply_double_excitation) method of `UCCSDAnsatz` in `quantum_framework_molecular`
+- [`apply_double_excitation_2q`](modules/quantum_framework_molecular.py.md#uccsdansatz-apply_double_excitation_2q) method of `UCCSDAnsatz` in `quantum_framework_molecular`
+- [`apply_excitation`](modules/quantum_framework_molecular_v2.py.md#particleconservingstate-apply_excitation) method of `ParticleConservingState` in `quantum_framework_molecular_v2`
+- [`apply_gate`](modules/topological_hilbert_compression2.py.md#directbackend-apply_gate) method of `DirectBackend` in `topological_hilbert_compression2`
+- [`apply_gate`](modules/topological_hilbert_compression2.py.md#hybridbackend-apply_gate) method of `HybridBackend` in `topological_hilbert_compression2`
+- [`apply_gate`](modules/topological_hilbert_compression2.py.md#mpsbackend-apply_gate) method of `MPSBackend` in `topological_hilbert_compression2`
+- [`apply_hamiltonian`](modules/relativistic_hydrogen.py.md#diracmodelwrapper-apply_hamiltonian) method of `DiracModelWrapper` in `relativistic_hydrogen`
+- [`apply_pauli_fast`](modules/quantum_framework_molecular_v2.py.md#cachedhamiltonianevaluator-apply_pauli_fast) method of `CachedHamiltonianEvaluator` in `quantum_framework_molecular_v2`
+- [`apply_phase`](modules/quantum_framework_physics.py.md#diracbackend-apply_phase) method of `DiracBackend` in `quantum_framework_physics`
+- [`apply_phase`](modules/quantum_framework_physics.py.md#hamiltonianbackend-apply_phase) method of `HamiltonianBackend` in `quantum_framework_physics`
+- [`apply_phase`](modules/quantum_framework_physics.py.md#iphysicsbackend-apply_phase) method of `IPhysicsBackend` in `quantum_framework_physics`
+- [`apply_phase`](modules/quantum_framework_physics.py.md#schrodingerbackend-apply_phase) method of `SchrodingerBackend` in `quantum_framework_physics`
+- [`apply_single_excitation`](modules/quantum_framework_molecular.py.md#uccsdansatz-apply_single_excitation) method of `UCCSDAnsatz` in `quantum_framework_molecular`
+- [`apply_single_qubit_gate`](modules/quantum_framework_core.py.md#itensornetwork-apply_single_qubit_gate) method of `ITensorNetwork` in `quantum_framework_core`
+- [`apply_single_qubit_gate`](modules/topological_hilbert_compression2.py.md#itensornetwork-apply_single_qubit_gate) method of `ITensorNetwork` in `topological_hilbert_compression2`
+- [`apply_single_qubit_gate`](modules/quantum_framework_core.py.md#mpsstate-apply_single_qubit_gate) method of `MPSState` in `quantum_framework_core`
+- [`apply_single_qubit_gate`](modules/topological_hilbert_compression2.py.md#mpsstate-apply_single_qubit_gate) method of `MPSState` in `topological_hilbert_compression2`
+- [`apply_two_qubit_gate`](modules/quantum_framework_core.py.md#itensornetwork-apply_two_qubit_gate) method of `ITensorNetwork` in `quantum_framework_core`
+- [`apply_two_qubit_gate`](modules/topological_hilbert_compression2.py.md#itensornetwork-apply_two_qubit_gate) method of `ITensorNetwork` in `topological_hilbert_compression2`
+- [`apply_two_qubit_gate`](modules/quantum_framework_core.py.md#mpsstate-apply_two_qubit_gate) method of `MPSState` in `quantum_framework_core`
+- [`apply_two_qubit_gate`](modules/topological_hilbert_compression2.py.md#mpsstate-apply_two_qubit_gate) method of `MPSState` in `topological_hilbert_compression2`
+- [`ARROWS`](modules/immersive.scenes.py.md#spinscene-arrows) attribute of `SpinScene` in `immersive.scenes`
+- [`arrows_dir`](modules/immersive.spin.py.md#spinmeasurement-arrows_dir) attribute of `SpinMeasurement` in `immersive.spin`
+- [`arrows_pos`](modules/immersive.spin.py.md#spinmeasurement-arrows_pos) attribute of `SpinMeasurement` in `immersive.spin`
+- [`arrows_weight`](modules/immersive.spin.py.md#spinmeasurement-arrows_weight) attribute of `SpinMeasurement` in `immersive.spin`
+- [`AsyncSolver`](modules/immersive.matter.py.md#asyncsolver) class in `immersive.matter`
+- [`atom_orbital_menu`](modules/quantum_simulator.py.md#interactivemenu-atom_orbital_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`ATOM_SYSTEMS`](modules/immersive.matter.py.md#atom_systems) constant in `immersive.matter`
+- [`AtomData`](modules/quantum_framework_core.py.md#atomdata) class in `quantum_framework_core`
+- [`AtomData`](modules/quantum_simulator.py.md#atomdata) class in `quantum_simulator`
+- [`atomic_menu`](modules/quantum_simulator.py.md#interactivemenu-atomic_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`atomic_number`](modules/quantum_framework_core.py.md#atomdata-atomic_number) attribute of `AtomData` in `quantum_framework_core`
+- [`atomic_number`](modules/quantum_simulator.py.md#atomdata-atomic_number) attribute of `AtomData` in `quantum_simulator`
+- [`atoms`](modules/quantum_framework_core.py.md#configloader-atoms) property of `ConfigLoader` in `quantum_framework_core`
+- [`atoms`](modules/quantum_simulator.py.md#configloader-atoms) property of `ConfigLoader` in `quantum_simulator`
+- [`atoms`](modules/quantum_framework_core.py.md#moleculedata-atoms) attribute of `MoleculeData` in `quantum_framework_core`
+- [`atoms`](modules/quantum_simulator.py.md#moleculedata-atoms) attribute of `MoleculeData` in `quantum_simulator`
+- [`atoms`](modules/advanced_experiments.py.md#polyatomicmoleculedata-atoms) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`atoms`](modules/immersive.matter.py.md#system-atoms) attribute of `System` in `immersive.matter`
+- [`atoms_bohr`](modules/immersive.matter.py.md#solved-atoms_bohr) attribute of `Solved` in `immersive.matter`
+- [`AtomScene`](modules/immersive.scenes.py.md#atomscene) class in `immersive.scenes`
+- [`AU_TIME_SECONDS`](modules/immersive.spin.py.md#au_time_seconds) constant in `immersive.spin`
+- [`auto_run`](modules/qc_dashboard.py.md#dashboardconfig-auto_run) attribute of `DashboardConfig` in `qc_dashboard`
+- [`available`](modules/qc_dashboard.py.md#plotly3dengine-available) property of `Plotly3DEngine` in `qc_dashboard`
+- [`available`](modules/qc_dashboard.py.md#realorbitalengine-available) property of `RealOrbitalEngine` in `qc_dashboard`
+- [`available`](modules/qc_dashboard.py.md#visualisationengine-available) property of `VisualisationEngine` in `qc_dashboard`
+- [`axis_label_size`](modules/quantum_visualizer.py.md#visualizerconfig-axis_label_size) attribute of `VisualizerConfig` in `quantum_visualizer`
+
+<a id="b"></a>
+
+## B
+
+- [`B_FIELD`](modules/higgs_four_lepton_analysis.py.md#config-b_field) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`B_FIELD`](modules/higgs_quantum_analysis.py.md#config-b_field) attribute of `Config` in `higgs_quantum_analysis`
+- [`BACKBONE_CHECKPOINT_PATH`](modules/orbital_visualizer2.py.md#config-backbone_checkpoint_path) attribute of `Config` in `orbital_visualizer2`
+- [`BACKBONE_ENABLED`](modules/orbital_visualizer2.py.md#config-backbone_enabled) attribute of `Config` in `orbital_visualizer2`
+- [`backend`](modules/immersive.backend.py.md#backendhub-backend) method of `BackendHub` in `immersive.backend`
+- [`backend`](modules/advanced_experiments.py.md#groverconfig-backend) attribute of `GroverConfig` in `advanced_experiments`
+- [`backend`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-backend) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`backend`](modules/molecular_sim.py.md#vqeresult-backend) attribute of `VQEResult` in `molecular_sim`
+- [`backend`](modules/quantum_framework_molecular.py.md#vqeresult-backend) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`backend`](modules/quantum_framework_molecular_v2.py.md#vqeresult-backend) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`backend_bloch`](modules/immersive.backend.py.md#backendregister-backend_bloch) method of `BackendRegister` in `immersive.backend`
+- [`backend_command`](modules/immersive.scenes.py.md#backend_command) function in `immersive.scenes`
+- [`BACKEND_LABELS`](modules/immersive.backend.py.md#backend_labels) constant in `immersive.backend`
+- [`backend_name`](modules/quantum_dash.py.md#backendcomparison-backend_name) attribute of `BackendComparison` in `quantum_dash`
+- [`backend_name`](modules/quantum_visualizer.py.md#backendcomparisonresult-backend_name) attribute of `BackendComparisonResult` in `quantum_visualizer`
+- [`backend_name`](modules/quantum_dash.py.md#quantumsnapshot-backend_name) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`backend_order`](modules/quantum_dash.py.md#brutalistconfig-backend_order) attribute of `BrutalistConfig` in `quantum_dash`
+- [`backend_order`](modules/quantum_visualizer.py.md#visualizerconfig-backend_order) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`backend_results`](modules/quantum_visualizer.py.md#visualizationresult-backend_results) attribute of `VisualizationResult` in `quantum_visualizer`
+- [`BackendComparator`](modules/qc_dashboard.py.md#backendcomparator) class in `qc_dashboard`
+- [`BackendComparison`](modules/quantum_dash.py.md#backendcomparison) class in `quantum_dash`
+- [`BackendComparisonRenderer`](modules/quantum_visualizer.py.md#backendcomparisonrenderer) class in `quantum_visualizer`
+- [`BackendComparisonResult`](modules/quantum_visualizer.py.md#backendcomparisonresult) class in `quantum_visualizer`
+- [`BackendComparisonVisualizer`](modules/quantum_dash.py.md#backendcomparisonvisualizer) class in `quantum_dash`
+- [`BackendHub`](modules/immersive.backend.py.md#backendhub) class in `immersive.backend`
+- [`BackendIntegrator`](modules/quantum_framework_molecular_v2.py.md#backendintegrator) class in `quantum_framework_molecular_v2`
+- [`BackendRegister`](modules/immersive.backend.py.md#backendregister) class in `immersive.backend`
+- [`backends`](modules/quantum_simulator.py.md#quantumcomputer-backends) property of `QuantumComputer` in `quantum_simulator`
+- [`background_alpha`](modules/quantum_dash.py.md#brutalistconfig-background_alpha) attribute of `BrutalistConfig` in `quantum_dash`
+- [`BACKGROUND_COLOR`](modules/higgs_four_lepton_analysis.py.md#config-background_color) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`BACKGROUND_COLOR`](modules/higgs_quantum_analysis.py.md#config-background_color) attribute of `Config` in `higgs_quantum_analysis`
+- [`background_color`](modules/quantum_framework_core.py.md#frameworkconfig-background_color) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`background_color`](modules/quantum_simulator.py.md#frameworkconfig-background_color) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`background_color`](modules/quantum_visualizer.py.md#visualizerconfig-background_color) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`banner`](modules/quantum_lab.py.md#quantumlab-banner) method of `QuantumLab` in `quantum_lab`
+- [`bar`](modules/immersive.hud.py.md#hud-bar) method of `Hud` in `immersive.hud`
+- [`BAR_WIDTH`](modules/quantum_lab.py.md#bar_width) constant in `quantum_lab`
+- [`barrier`](modules/quantum_computer.py.md#quantumcircuit-barrier) method of `QuantumCircuit` in `quantum_computer`
+- [`BASE_URL`](modules/higgs_four_lepton_analysis.py.md#config-base_url) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`BASE_URL`](modules/higgs_quantum_analysis.py.md#config-base_url) attribute of `Config` in `higgs_quantum_analysis`
+- [`BASIS`](modules/immersive.matter.py.md#basis) constant in `immersive.matter`
+- [`basis`](modules/quantum_framework_core.py.md#moleculedata-basis) attribute of `MoleculeData` in `quantum_framework_core`
+- [`basis`](modules/quantum_framework_molecular_v2.py.md#moleculedata-basis) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`basis`](modules/immersive.glkit.py.md#orbitcamera-basis) method of `OrbitCamera` in `immersive.glkit`
+- [`basis`](modules/advanced_experiments.py.md#polyatomicmoleculedata-basis) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`basis_state`](modules/quantum_computer.py.md#jointstatefactory-basis_state) method of `JointStateFactory` in `quantum_computer`
+- [`basis_state`](modules/quantum_simulator.py.md#jointstatefactory-basis_state) method of `JointStateFactory` in `quantum_simulator`
+- [`batch_expectation`](modules/quantum_framework_molecular_v2.py.md#cachedhamiltonianevaluator-batch_expectation) method of `CachedHamiltonianEvaluator` in `quantum_framework_molecular_v2`
+- [`be`](modules/immersive.backend.py.md#backendregister-be) property of `BackendRegister` in `immersive.backend`
+- [`begin`](modules/immersive.hud.py.md#hud-begin) method of `Hud` in `immersive.hud`
+- [`begin`](modules/immersive.postfx.py.md#postprocess-begin) method of `PostProcess` in `immersive.postfx`
+- [`bell_state`](modules/quantum_framework_core.py.md#mpsquantumcomputer-bell_state) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`bell_state`](modules/quantum_computer.py.md#quantumcomputer-bell_state) method of `QuantumComputer` in `quantum_computer`
+- [`bell_state`](modules/quantum_simulator.py.md#quantumcomputer-bell_state) method of `QuantumComputer` in `quantum_simulator`
+- [`bell_state`](modules/qc_integration.py.md#standardcircuitfactory-bell_state) staticmethod of `StandardCircuitFactory` in `qc_integration`
+- [`bell_state`](modules/quantum_dash.py.md#standardcircuits-bell_state) staticmethod of `StandardCircuits` in `quantum_dash`
+- [`bell_state`](modules/quantum_visualizer.py.md#standardcircuits-bell_state) staticmethod of `StandardCircuits` in `quantum_visualizer`
+- [`BellState`](modules/entangled_hydrogen.py.md#bellstate) class in `entangled_hydrogen`
+- [`berry_phase_threshold`](modules/quantum_framework_core.py.md#frameworkconfig-berry_phase_threshold) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`berry_phase_threshold`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-berry_phase_threshold) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`bethe_formula`](modules/advanced_experiments.py.md#lambshiftcalculator-bethe_formula) method of `LambShiftCalculator` in `advanced_experiments`
+- [`bethe_formula`](modules/quantum_framework_physics.py.md#lambshiftcalculator-bethe_formula) method of `LambShiftCalculator` in `quantum_framework_physics`
+- [`bind`](modules/immersive.postfx.py.md#target-bind) method of `Target` in `immersive.postfx`
+- [`BINDINGS`](modules/qc_launcher.py.md#launcher-bindings) attribute of `Launcher` in `qc_launcher`
+- [`bloch`](modules/immersive.backend.py.md#backendregister-bloch) method of `BackendRegister` in `immersive.backend`
+- [`bloch`](modules/immersive.physics.py.md#qubitregister-bloch) method of `QubitRegister` in `immersive.physics`
+- [`BLOCH_BODY`](modules/immersive.shaders.py.md#bloch_body) constant in `immersive.shaders`
+- [`bloch_fragment`](modules/immersive.shaders.py.md#bloch_fragment) function in `immersive.shaders`
+- [`bloch_sphere_resolution`](modules/qc_dashboard.py.md#dashboardconfig-bloch_sphere_resolution) attribute of `DashboardConfig` in `qc_dashboard`
+- [`bloch_sphere_resolution`](modules/quantum_visualizer.py.md#visualizerconfig-bloch_sphere_resolution) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`bloch_vector`](modules/quantum_computer.py.md#jointhilbertstate-bloch_vector) method of `JointHilbertState` in `quantum_computer`
+- [`bloch_vectors`](modules/quantum_dash.py.md#backendcomparison-bloch_vectors) attribute of `BackendComparison` in `quantum_dash`
+- [`bloch_vectors`](modules/quantum_visualizer.py.md#backendcomparisonresult-bloch_vectors) attribute of `BackendComparisonResult` in `quantum_visualizer`
+- [`bloch_vectors`](modules/quantum_computer.py.md#measurementresult-bloch_vectors) attribute of `MeasurementResult` in `quantum_computer`
+- [`bloch_vectors`](modules/quantum_dash.py.md#quantumsnapshot-bloch_vectors) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`bloch_vectors`](modules/quantum_visualizer.py.md#quantumstatesnapshot-bloch_vectors) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`bloch_vectors`](modules/qc_dashboard.py.md#snapshotdata-bloch_vectors) attribute of `SnapshotData` in `qc_dashboard`
+- [`BlochScene`](modules/immersive.scenes.py.md#blochscene) class in `immersive.scenes`
+- [`BlochSphereRenderer`](modules/quantum_visualizer.py.md#blochsphererenderer) class in `quantum_visualizer`
+- [`BlochSphereVisualizer`](modules/quantum_dash.py.md#blochspherevisualizer) class in `quantum_dash`
+- [`bloom_strength`](modules/quantum_3dview.py.md#brutalconfig-bloom_strength) attribute of `BrutalConfig` in `quantum_3dview`
+- [`bloom_strength`](modules/quantum_dash.py.md#brutalistconfig-bloom_strength) attribute of `BrutalistConfig` in `quantum_dash`
+- [`BLUR`](modules/immersive.postfx.py.md#blur) constant in `immersive.postfx`
+- [`blurb`](modules/qc_launcher.py.md#experience-blurb) attribute of `Experience` in `qc_launcher`
+- [`BOHR_MAGNETON_AU`](modules/immersive.spin.py.md#bohr_magneton_au) constant in `immersive.spin`
+- [`BOHR_PER_ANGSTROM`](modules/immersive.matter.py.md#bohr_per_angstrom) constant in `immersive.matter`
+- [`bond_dimension`](modules/quantum_framework_core.py.md#frameworkconfig-bond_dimension) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`bond_dimension`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-bond_dimension) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`bond_dimension`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-bond_dimension) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`bond_length_angstrom`](modules/quantum_framework_core.py.md#moleculedata-bond_length_angstrom) attribute of `MoleculeData` in `quantum_framework_core`
+- [`bond_length_angstrom`](modules/quantum_simulator.py.md#moleculedata-bond_length_angstrom) attribute of `MoleculeData` in `quantum_simulator`
+- [`BOND_LENGTHS`](modules/advanced_experiments.py.md#moleculebuilder-bond_lengths) attribute of `MoleculeBuilder` in `advanced_experiments`
+- [`BOND_TOLERANCE`](modules/immersive.matter.py.md#bond_tolerance) constant in `immersive.matter`
+- [`bonds`](modules/immersive.matter.py.md#bonds) function in `immersive.matter`
+- [`__bool__`](modules/quantum_framework_core.py.md#quantumcircuit-__bool__) method of `QuantumCircuit` in `quantum_framework_core`
+- [`BrutalConfig`](modules/quantum_3dview.py.md#brutalconfig) class in `quantum_3dview`
+- [`BrutalDashboard`](modules/quantum_3dview.py.md#brutaldashboard) class in `quantum_3dview`
+- [`BrutalistConfig`](modules/quantum_dash.py.md#brutalistconfig) class in `quantum_dash`
+- [`BrutalTheme`](modules/quantum_3dview.py.md#brutaltheme) enum in `quantum_3dview`
+- [`BrutalVizEngine`](modules/qc_dashboard.py.md#brutalvizengine) class in `qc_dashboard`
+- [`build`](modules/quantum_framework_molecular_v2.py.md#moleculebuilder-build) staticmethod of `MoleculeBuilder` in `quantum_framework_molecular_v2`
+- [`build_command`](modules/qc_launcher.py.md#launcher-build_command) method of `Launcher` in `qc_launcher`
+- [`build_evolution_figure`](modules/quantum_visualizer.py.md#figurebuilder-build_evolution_figure) method of `FigureBuilder` in `quantum_visualizer`
+- [`build_full_figure`](modules/quantum_dash.py.md#figurebuilder-build_full_figure) method of `FigureBuilder` in `quantum_dash`
+- [`build_hamiltonian_matrix`](modules/quantum_framework_molecular_v2.py.md#hamiltonianbuilder-build_hamiltonian_matrix) staticmethod of `HamiltonianBuilder` in `quantum_framework_molecular_v2`
+- [`build_jw_hamiltonian`](modules/quantum_framework_molecular_v2.py.md#hamiltonianbuilder-build_jw_hamiltonian) staticmethod of `HamiltonianBuilder` in `quantum_framework_molecular_v2`
+- [`build_jw_hamiltonian_of`](modules/molecular_sim.py.md#build_jw_hamiltonian_of) function in `molecular_sim`
+- [`build_summary_figure`](modules/quantum_dash.py.md#figurebuilder-build_summary_figure) method of `FigureBuilder` in `quantum_dash`
+- [`build_summary_figure`](modules/quantum_visualizer.py.md#figurebuilder-build_summary_figure) method of `FigureBuilder` in `quantum_visualizer`
+- [`build_tour`](modules/immersive.app.py.md#build_tour) function in `immersive.app`
+- [`busy`](modules/immersive.backend.py.md#backendregister-busy) property of `BackendRegister` in `immersive.backend`
+- [`busy`](modules/immersive.physics.py.md#qubitregister-busy) property of `QubitRegister` in `immersive.physics`
+- [`button`](modules/immersive.hud.py.md#hud-button) method of `Hud` in `immersive.hud`
+
+<a id="c"></a>
+
+## C
+
+- [`C_LIGHT`](modules/relativistic_hydrogen.py.md#config-c_light) attribute of `Config` in `relativistic_hydrogen`
+- [`c_light`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-c_light) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`c_light`](modules/quantum_framework_core.py.md#frameworkconfig-c_light) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`c_light`](modules/quantum_simulator.py.md#frameworkconfig-c_light) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`c_light`](modules/advanced_experiments.py.md#qedconfig-c_light) attribute of `QEDConfig` in `advanced_experiments`
+- [`cache_size`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-cache_size) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`CachedHamiltonianEvaluator`](modules/quantum_framework_molecular_v2.py.md#cachedhamiltonianevaluator) class in `quantum_framework_molecular_v2`
+- [`CachedPauliOperation`](modules/quantum_framework_molecular_v2.py.md#cachedpaulioperation) class in `quantum_framework_molecular_v2`
+- [`calculate_a_e`](modules/advanced_experiments.py.md#anomalousmagneticmoment-calculate_a_e) method of `AnomalousMagneticMoment` in `advanced_experiments`
+- [`calculate_a_e`](modules/quantum_framework_physics.py.md#anomalousmagneticmoment-calculate_a_e) method of `AnomalousMagneticMoment` in `quantum_framework_physics`
+- [`calibrate`](modules/molecular_sim.py.md#surrogateenergy-calibrate) method of `SurrogateEnergy` in `molecular_sim`
+- [`__call__`](modules/molecular_sim.py.md#exactjwenergy-__call__) method of `ExactJWEnergy` in `molecular_sim`
+- [`__call__`](modules/quantum_framework_molecular.py.md#exactjwenergy-__call__) method of `ExactJWEnergy` in `quantum_framework_molecular`
+- [`__call__`](modules/immersive.hud.py.md#lang-__call__) method of `Lang` in `immersive.hud`
+- [`__call__`](modules/app.py.md#starkevaluator-__call__) method of `StarkEvaluator` in `app`
+- [`__call__`](modules/polarizability_v3.py.md#starkevaluator-__call__) method of `StarkEvaluator` in `polarizability_v3`
+- [`camera_distance`](modules/quantum_3dview.py.md#brutalconfig-camera_distance) attribute of `BrutalConfig` in `quantum_3dview`
+- [`camera_distance`](modules/quantum_dash.py.md#brutalistconfig-camera_distance) attribute of `BrutalistConfig` in `quantum_dash`
+- [`can_handle`](modules/topological_hilbert_compression2.py.md#directbackend-can_handle) method of `DirectBackend` in `topological_hilbert_compression2`
+- [`can_handle`](modules/topological_hilbert_compression2.py.md#hybridbackend-can_handle) method of `HybridBackend` in `topological_hilbert_compression2`
+- [`can_handle`](modules/topological_hilbert_compression2.py.md#mpsbackend-can_handle) method of `MPSBackend` in `topological_hilbert_compression2`
+- [`caption`](modules/immersive.app.py.md#step-caption) attribute of `Step` in `immersive.app`
+- [`ccx`](modules/quantum_computer.py.md#quantumcircuit-ccx) method of `QuantumCircuit` in `quantum_computer`
+- [`ccx`](modules/quantum_simulator.py.md#quantumcircuit-ccx) method of `QuantumCircuit` in `quantum_simulator`
+- [`centres`](modules/immersive.scenes.py.md#entanglescene-centres) method of `EntangleScene` in `immersive.scenes`
+- [`ch4`](modules/advanced_experiments.py.md#moleculebuilder-ch4) staticmethod of `MoleculeBuilder` in `advanced_experiments`
+- [`charge`](modules/higgs_four_lepton_analysis.py.md#lepton-charge) attribute of `Lepton` in `higgs_four_lepton_analysis`
+- [`charge`](modules/higgs_quantum_analysis.py.md#lepton-charge) attribute of `Lepton` in `higgs_quantum_analysis`
+- [`charge`](modules/quantum_framework_molecular_v2.py.md#moleculedata-charge) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`check_dependencies`](modules/demo_molecular_vqe.py.md#check_dependencies) function in `demo_molecular_vqe`
+- [`check_higgs`](modules/higgs_four_lepton_analysis.py.md#event-check_higgs) method of `Event` in `higgs_four_lepton_analysis`
+- [`check_higgs`](modules/higgs_quantum_analysis.py.md#event-check_higgs) method of `Event` in `higgs_quantum_analysis`
+- [`CHECKPOINT_BEST_ALPHA`](modules/relativistic_hydrogen.py.md#config-checkpoint_best_alpha) attribute of `Config` in `relativistic_hydrogen`
+- [`CHECKPOINT_DIR`](modules/relativistic_hydrogen.py.md#config-checkpoint_dir) attribute of `Config` in `relativistic_hydrogen`
+- [`checkpoint_dir`](modules/advanced_experiments.py.md#qedconfig-checkpoint_dir) attribute of `QEDConfig` in `advanced_experiments`
+- [`checkpoint_interval_minutes`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-checkpoint_interval_minutes) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`CHECKPOINT_PATH`](modules/orbital_visualizer2.py.md#config-checkpoint_path) attribute of `Config` in `orbital_visualizer2`
+- [`chemistry_menu`](modules/quantum_lab.py.md#quantumlab-chemistry_menu) method of `QuantumLab` in `quantum_lab`
+- [`chromatic_aberration`](modules/quantum_3dview.py.md#brutalconfig-chromatic_aberration) attribute of `BrutalConfig` in `quantum_3dview`
+- [`chromatic_aberration`](modules/quantum_dash.py.md#brutalistconfig-chromatic_aberration) attribute of `BrutalistConfig` in `quantum_dash`
+- [`CHROME`](modules/qc_launcher.py.md#chrome) constant in `qc_launcher`
+- [`circuit_diagram`](modules/quantum_visualizer.py.md#visualizationresult-circuit_diagram) attribute of `VisualizationResult` in `quantum_visualizer`
+- [`CircuitExecutor`](modules/quantum_dash.py.md#circuitexecutor) class in `quantum_dash`
+- [`CircuitExecutor`](modules/quantum_visualizer.py.md#circuitexecutor) class in `quantum_visualizer`
+- [`CircuitInstruction`](modules/quantum_computer.py.md#circuitinstruction) class in `quantum_computer`
+- [`CircuitInstruction`](modules/quantum_framework_core.py.md#circuitinstruction) class in `quantum_framework_core`
+- [`CircuitInstruction`](modules/quantum_simulator.py.md#circuitinstruction) class in `quantum_simulator`
+- [`CircuitIR`](modules/qc_integration.py.md#circuitir) class in `qc_integration`
+- [`clear_screen`](modules/quantum_framework_menu.py.md#menusystem-clear_screen) method of `MenuSystem` in `quantum_framework_menu`
+- [`clebsch`](modules/immersive.spin.py.md#clebsch) function in `immersive.spin`
+- [`clone`](modules/quantum_computer.py.md#jointhilbertstate-clone) method of `JointHilbertState` in `quantum_computer`
+- [`clone`](modules/quantum_simulator.py.md#jointhilbertstate-clone) method of `JointHilbertState` in `quantum_simulator`
+- [`clone`](modules/quantum_framework_core.py.md#mpsstate-clone) method of `MPSState` in `quantum_framework_core`
+- [`cloud_radius`](modules/immersive.scenes.py.md#volumescene-cloud_radius) property of `VolumeScene` in `immersive.scenes`
+- [`cnot`](modules/immersive.backend.py.md#backendregister-cnot) method of `BackendRegister` in `immersive.backend`
+- [`cnot`](modules/quantum_computer.py.md#quantumcircuit-cnot) method of `QuantumCircuit` in `quantum_computer`
+- [`cnot`](modules/quantum_framework_core.py.md#quantumcircuit-cnot) method of `QuantumCircuit` in `quantum_framework_core`
+- [`cnot`](modules/quantum_simulator.py.md#quantumcircuit-cnot) method of `QuantumCircuit` in `quantum_simulator`
+- [`cnot`](modules/immersive.physics.py.md#qubitregister-cnot) method of `QubitRegister` in `immersive.physics`
+- [`cnot`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-cnot) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`CNOTGate`](modules/quantum_computer.py.md#cnotgate) class in `quantum_computer`
+- [`CNOTGate`](modules/quantum_framework_core.py.md#cnotgate) class in `quantum_framework_core`
+- [`CNOTGate`](modules/quantum_simulator.py.md#cnotgate) class in `quantum_simulator`
+- [`coef`](modules/immersive.spin.py.md#spinorcomponent-coef) attribute of `SpinorComponent` in `immersive.spin`
+- [`coeff_imag`](modules/quantum_framework_molecular_v2.py.md#cachedpaulioperation-coeff_imag) attribute of `CachedPauliOperation` in `quantum_framework_molecular_v2`
+- [`coeff_real`](modules/quantum_framework_molecular_v2.py.md#cachedpaulioperation-coeff_real) attribute of `CachedPauliOperation` in `quantum_framework_molecular_v2`
+- [`coefficients`](modules/immersive.scenes.py.md#atomscene-coefficients) method of `AtomScene` in `immersive.scenes`
+- [`coefficients`](modules/immersive.scenes.py.md#spinscene-coefficients) method of `SpinScene` in `immersive.scenes`
+- [`COLD_GLASS`](modules/quantum_framework_core.py.md#hilbertphase-cold_glass) attribute of `HilbertPhase` in `quantum_framework_core`
+- [`COLD_GLASS`](modules/topological_hilbert_compression2.py.md#hilbertphase-cold_glass) attribute of `HilbertPhase` in `topological_hilbert_compression2`
+- [`COLOR`](modules/immersive.scenes.py.md#blochscene-color) attribute of `BlochScene` in `immersive.scenes`
+- [`color_accent`](modules/qc_dashboard.py.md#dashboardconfig-color_accent) attribute of `DashboardConfig` in `qc_dashboard`
+- [`color_background`](modules/qc_dashboard.py.md#dashboardconfig-color_background) attribute of `DashboardConfig` in `qc_dashboard`
+- [`COLOR_ELECTRON`](modules/higgs_four_lepton_analysis.py.md#config-color_electron) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`COLOR_ELECTRON`](modules/higgs_quantum_analysis.py.md#config-color_electron) attribute of `Config` in `higgs_quantum_analysis`
+- [`color_grid`](modules/qc_dashboard.py.md#dashboardconfig-color_grid) attribute of `DashboardConfig` in `qc_dashboard`
+- [`COLOR_HIGGS`](modules/higgs_four_lepton_analysis.py.md#config-color_higgs) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`COLOR_HIGGS`](modules/higgs_quantum_analysis.py.md#config-color_higgs) attribute of `Config` in `higgs_quantum_analysis`
+- [`COLOR_MUON`](modules/higgs_four_lepton_analysis.py.md#config-color_muon) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`COLOR_MUON`](modules/higgs_quantum_analysis.py.md#config-color_muon) attribute of `Config` in `higgs_quantum_analysis`
+- [`COLOR_NEGATIVE`](modules/higgs_four_lepton_analysis.py.md#config-color_negative) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`COLOR_NEGATIVE`](modules/higgs_quantum_analysis.py.md#config-color_negative) attribute of `Config` in `higgs_quantum_analysis`
+- [`COLOR_POSITIVE`](modules/higgs_four_lepton_analysis.py.md#config-color_positive) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`COLOR_POSITIVE`](modules/higgs_quantum_analysis.py.md#config-color_positive) attribute of `Config` in `higgs_quantum_analysis`
+- [`color_primary`](modules/qc_dashboard.py.md#dashboardconfig-color_primary) attribute of `DashboardConfig` in `qc_dashboard`
+- [`color_scheme`](modules/quantum_dash.py.md#brutalistconfig-color_scheme) attribute of `BrutalistConfig` in `quantum_dash`
+- [`color_secondary`](modules/qc_dashboard.py.md#dashboardconfig-color_secondary) attribute of `DashboardConfig` in `qc_dashboard`
+- [`color_surface`](modules/qc_dashboard.py.md#dashboardconfig-color_surface) attribute of `DashboardConfig` in `qc_dashboard`
+- [`color_tertiary`](modules/qc_dashboard.py.md#dashboardconfig-color_tertiary) attribute of `DashboardConfig` in `qc_dashboard`
+- [`color_text`](modules/qc_dashboard.py.md#dashboardconfig-color_text) attribute of `DashboardConfig` in `qc_dashboard`
+- [`colormap_phase`](modules/quantum_visualizer.py.md#visualizerconfig-colormap_phase) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`colormap_primary`](modules/quantum_visualizer.py.md#visualizerconfig-colormap_primary) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`colormap_secondary`](modules/quantum_visualizer.py.md#visualizerconfig-colormap_secondary) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`colors`](modules/quantum_3dview.py.md#brutalconfig-colors) property of `BrutalConfig` in `quantum_3dview`
+- [`colors`](modules/quantum_dash.py.md#brutalistconfig-colors) property of `BrutalistConfig` in `quantum_dash`
+- [`COLORS`](modules/immersive.scenes.py.md#entanglescene-colors) attribute of `EntangleScene` in `immersive.scenes`
+- [`ColorScheme`](modules/quantum_dash.py.md#colorscheme) enum in `quantum_dash`
+- [`command`](modules/immersive.scenes.py.md#atomscene-command) method of `AtomScene` in `immersive.scenes`
+- [`command`](modules/immersive.scenes.py.md#blochscene-command) method of `BlochScene` in `immersive.scenes`
+- [`command`](modules/immersive.scenes.py.md#entanglescene-command) method of `EntangleScene` in `immersive.scenes`
+- [`command`](modules/qc_launcher.py.md#experience-command) attribute of `Experience` in `qc_launcher`
+- [`command`](modules/immersive.scenes.py.md#matterscene-command) method of `MatterScene` in `immersive.scenes`
+- [`command`](modules/immersive.scenes.py.md#scene-command) method of `Scene` in `immersive.scenes`
+- [`command`](modules/immersive.scenes.py.md#spinscene-command) method of `SpinScene` in `immersive.scenes`
+- [`command`](modules/immersive.scenes.py.md#volumescene-command) method of `VolumeScene` in `immersive.scenes`
+- [`COMMIT_PARAMS`](modules/immersive.backend.py.md#commit_params) constant in `immersive.backend`
+- [`COMMON`](modules/immersive.shaders.py.md#common) constant in `immersive.shaders`
+- [`compare_2s_2p`](modules/advanced_experiments.py.md#lambshiftcalculator-compare_2s_2p) method of `LambShiftCalculator` in `advanced_experiments`
+- [`compare_backends`](modules/quantum_dash.py.md#circuitexecutor-compare_backends) method of `CircuitExecutor` in `quantum_dash`
+- [`compare_backends`](modules/quantum_visualizer.py.md#circuitexecutor-compare_backends) method of `CircuitExecutor` in `quantum_visualizer`
+- [`component_energy`](modules/immersive.spin.py.md#component_energy) function in `immersive.spin`
+- [`components`](modules/immersive.spin.py.md#spinpreset-components) attribute of `SpinPreset` in `immersive.spin`
+- [`compose`](modules/qc_launcher.py.md#launcher-compose) method of `Launcher` in `qc_launcher`
+- [`COMPOSITE`](modules/immersive.postfx.py.md#composite) constant in `immersive.postfx`
+- [`compression_ratio`](modules/quantum_framework_core.py.md#mpsquantumcomputer-compression_ratio) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`compression_ratio`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-compression_ratio) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`compute_berry_phase`](modules/quantum_framework_core.py.md#topologicalprotector-compute_berry_phase) method of `TopologicalProtector` in `quantum_framework_core`
+- [`compute_berry_phase`](modules/topological_hilbert_compression2.py.md#topologicalprotector-compute_berry_phase) method of `TopologicalProtector` in `topological_hilbert_compression2`
+- [`compute_bloch_vectors`](modules/quantum_dash.py.md#quantumstateanalyzer-compute_bloch_vectors) method of `QuantumStateAnalyzer` in `quantum_dash`
+- [`compute_bloch_vectors`](modules/quantum_visualizer.py.md#quantumstateanalyzer-compute_bloch_vectors) method of `QuantumStateAnalyzer` in `quantum_visualizer`
+- [`compute_dirac_current`](modules/higgs_four_lepton_analysis.py.md#quantumspinorprocessor-compute_dirac_current) method of `QuantumSpinorProcessor` in `higgs_four_lepton_analysis`
+- [`compute_dirac_current`](modules/higgs_quantum_analysis.py.md#quantumspinorprocessor-compute_dirac_current) method of `QuantumSpinorProcessor` in `higgs_quantum_analysis`
+- [`compute_energy_spectrum`](modules/quantum_simulator.py.md#quantumsimulationframework-compute_energy_spectrum) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`compute_entanglement`](modules/quantum_framework_molecular_v2.py.md#mpsstate-compute_entanglement) method of `MPSState` in `quantum_framework_molecular_v2`
+- [`compute_entropy`](modules/quantum_dash.py.md#quantumstateanalyzer-compute_entropy) method of `QuantumStateAnalyzer` in `quantum_dash`
+- [`compute_entropy`](modules/quantum_visualizer.py.md#quantumstateanalyzer-compute_entropy) method of `QuantumStateAnalyzer` in `quantum_visualizer`
+- [`compute_expected_energy`](modules/orbital_visualizer2.py.md#hamiltoniannnprocessor-compute_expected_energy) method of `HamiltonianNNProcessor` in `orbital_visualizer2`
+- [`compute_phases`](modules/quantum_dash.py.md#quantumstateanalyzer-compute_phases) method of `QuantumStateAnalyzer` in `quantum_dash`
+- [`compute_phases`](modules/quantum_visualizer.py.md#quantumstateanalyzer-compute_phases) method of `QuantumStateAnalyzer` in `quantum_visualizer`
+- [`compute_position_expectation`](modules/quantum_framework_physics.py.md#zitterbewegungsimulator-compute_position_expectation) method of `ZitterbewegungSimulator` in `quantum_framework_physics`
+- [`compute_position_expectation`](modules/quantum_simulator.py.md#zitterbewegungsimulator-compute_position_expectation) method of `ZitterbewegungSimulator` in `quantum_simulator`
+- [`compute_position_expectation`](modules/relativistic_hydrogen.py.md#zitterbewegungsimulator-compute_position_expectation) method of `ZitterbewegungSimulator` in `relativistic_hydrogen`
+- [`compute_probabilities`](modules/quantum_dash.py.md#quantumstateanalyzer-compute_probabilities) method of `QuantumStateAnalyzer` in `quantum_dash`
+- [`compute_probabilities`](modules/quantum_visualizer.py.md#quantumstateanalyzer-compute_probabilities) method of `QuantumStateAnalyzer` in `quantum_visualizer`
+- [`compute_quantum_helix`](modules/higgs_four_lepton_analysis.py.md#visualizer-compute_quantum_helix) method of `Visualizer` in `higgs_four_lepton_analysis`
+- [`compute_quantum_helix`](modules/higgs_quantum_analysis.py.md#visualizer-compute_quantum_helix) method of `Visualizer` in `higgs_quantum_analysis`
+- [`compute_relativistic_energy`](modules/quantum_simulator.py.md#quantumsimulationframework-compute_relativistic_energy) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`compute_spinor_amplitude`](modules/higgs_four_lepton_analysis.py.md#quantumspinorprocessor-compute_spinor_amplitude) method of `QuantumSpinorProcessor` in `higgs_four_lepton_analysis`
+- [`compute_spinor_amplitude`](modules/higgs_quantum_analysis.py.md#quantumspinorprocessor-compute_spinor_amplitude) method of `QuantumSpinorProcessor` in `higgs_quantum_analysis`
+- [`compute_velocity_expectation`](modules/quantum_framework_physics.py.md#zitterbewegungsimulator-compute_velocity_expectation) method of `ZitterbewegungSimulator` in `quantum_framework_physics`
+- [`compute_velocity_expectation`](modules/quantum_simulator.py.md#zitterbewegungsimulator-compute_velocity_expectation) method of `ZitterbewegungSimulator` in `quantum_simulator`
+- [`compute_velocity_expectation`](modules/relativistic_hydrogen.py.md#zitterbewegungsimulator-compute_velocity_expectation) method of `ZitterbewegungSimulator` in `relativistic_hydrogen`
+- [`compute_winding_number`](modules/quantum_framework_core.py.md#topologicalprotector-compute_winding_number) method of `TopologicalProtector` in `quantum_framework_core`
+- [`compute_winding_number`](modules/topological_hilbert_compression2.py.md#topologicalprotector-compute_winding_number) method of `TopologicalProtector` in `topological_hilbert_compression2`
+- [`Config`](modules/higgs_four_lepton_analysis.py.md#config) class in `higgs_four_lepton_analysis`
+- [`Config`](modules/higgs_quantum_analysis.py.md#config) class in `higgs_quantum_analysis`
+- [`Config`](modules/orbital_visualizer2.py.md#config) class in `orbital_visualizer2`
+- [`Config`](modules/relativistic_hydrogen.py.md#config) class in `relativistic_hydrogen`
+- [`ConfigLoader`](modules/quantum_framework_core.py.md#configloader) class in `quantum_framework_core`
+- [`ConfigLoader`](modules/quantum_simulator.py.md#configloader) class in `quantum_simulator`
+- [`contour_levels`](modules/quantum_dash.py.md#brutalistconfig-contour_levels) attribute of `BrutalistConfig` in `quantum_dash`
+- [`converged`](modules/immersive.matter.py.md#solved-converged) attribute of `Solved` in `immersive.matter`
+- [`converged`](modules/app.py.md#vqeresult-converged) attribute of `VQEResult` in `app`
+- [`converged`](modules/molecular_sim.py.md#vqeresult-converged) attribute of `VQEResult` in `molecular_sim`
+- [`converged`](modules/polarizability_v3.py.md#vqeresult-converged) attribute of `VQEResult` in `polarizability_v3`
+- [`converged`](modules/quantum_framework_molecular.py.md#vqeresult-converged) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`converged`](modules/quantum_framework_molecular_v2.py.md#vqeresult-converged) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`convergence_tol`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-convergence_tol) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`convergence_tolerance`](modules/quantum_framework_core.py.md#frameworkconfig-convergence_tolerance) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`correct`](modules/quantum_lab.py.md#quiz-correct) attribute of `Quiz` in `quantum_lab`
+- [`correlation_captured`](modules/quantum_framework_molecular_v2.py.md#vqeresult-correlation_captured) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`correlation_energy_captured`](modules/molecular_sim.py.md#vqeresult-correlation_energy_captured) attribute of `VQEResult` in `molecular_sim`
+- [`correlation_energy_captured`](modules/quantum_framework_molecular.py.md#vqeresult-correlation_energy_captured) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`correlation_pct`](modules/quantum_lab.py.md#h2vqeengine-correlation_pct) method of `H2VQEEngine` in `quantum_lab`
+- [`cost_with_barrier`](modules/molecular_sim.py.md#surrogateenergy-cost_with_barrier) method of `SurrogateEnergy` in `molecular_sim`
+- [`coulomb`](modules/quantum_computer.py.md#potentialgenerator-coulomb) method of `PotentialGenerator` in `quantum_computer`
+- [`coulomb`](modules/quantum_framework_physics.py.md#potentialgenerator-coulomb) method of `PotentialGenerator` in `quantum_framework_physics`
+- [`coulomb`](modules/quantum_simulator.py.md#potentialgenerator-coulomb) method of `PotentialGenerator` in `quantum_simulator`
+- [`counts_bars`](modules/quantum_lab.py.md#counts_bars) function in `quantum_lab`
+- [`COVALENT_RADII`](modules/immersive.matter.py.md#covalent_radii) constant in `immersive.matter`
+- [`CPK`](modules/immersive.matter.py.md#cpk) constant in `immersive.matter`
+- [`create_amplitude_hologram`](modules/quantum_3dview.py.md#quantumhologram-create_amplitude_hologram) method of `QuantumHologram` in `quantum_3dview`
+- [`create_circuit`](modules/quantum_framework_core.py.md#mpsquantumcomputer-create_circuit) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`create_circuit`](modules/quantum_simulator.py.md#quantumcomputer-create_circuit) method of `QuantumComputer` in `quantum_simulator`
+- [`create_circuit`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-create_circuit) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`create_gaussian_wave_packet`](modules/quantum_framework_physics.py.md#zitterbewegungsimulator-create_gaussian_wave_packet) method of `ZitterbewegungSimulator` in `quantum_framework_physics`
+- [`create_gaussian_wave_packet`](modules/quantum_simulator.py.md#zitterbewegungsimulator-create_gaussian_wave_packet) method of `ZitterbewegungSimulator` in `quantum_simulator`
+- [`create_gaussian_wave_packet`](modules/relativistic_hydrogen.py.md#zitterbewegungsimulator-create_gaussian_wave_packet) method of `ZitterbewegungSimulator` in `relativistic_hydrogen`
+- [`create_logger`](modules/relativistic_hydrogen.py.md#loggerfactory-create_logger) staticmethod of `LoggerFactory` in `relativistic_hydrogen`
+- [`create_snapshot`](modules/quantum_dash.py.md#quantumstateanalyzer-create_snapshot) method of `QuantumStateAnalyzer` in `quantum_dash`
+- [`create_snapshot`](modules/quantum_visualizer.py.md#quantumstateanalyzer-create_snapshot) method of `QuantumStateAnalyzer` in `quantum_visualizer`
+- [`create_state`](modules/topological_hilbert_compression2.py.md#directbackend-create_state) method of `DirectBackend` in `topological_hilbert_compression2`
+- [`create_state`](modules/topological_hilbert_compression2.py.md#hybridbackend-create_state) method of `HybridBackend` in `topological_hilbert_compression2`
+- [`create_state`](modules/topological_hilbert_compression2.py.md#mpsbackend-create_state) method of `MPSBackend` in `topological_hilbert_compression2`
+- [`create_state`](modules/quantum_framework_core.py.md#mpsquantumcomputer-create_state) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`create_synthetic_snapshots`](modules/quantum_3dview.py.md#create_synthetic_snapshots) function in `quantum_3dview`
+- [`create_topology_map`](modules/quantum_3dview.py.md#quantumneuraltopology-create_topology_map) method of `QuantumNeuralTopology` in `quantum_3dview`
+- [`create_visualization`](modules/higgs_four_lepton_analysis.py.md#visualizer-create_visualization) method of `Visualizer` in `higgs_four_lepton_analysis`
+- [`create_visualization`](modules/higgs_quantum_analysis.py.md#visualizer-create_visualization) method of `Visualizer` in `higgs_quantum_analysis`
+- [`crz`](modules/quantum_framework_core.py.md#quantumcircuit-crz) method of `QuantumCircuit` in `quantum_framework_core`
+- [`CRzGate`](modules/quantum_framework_core.py.md#crzgate) class in `quantum_framework_core`
+- [`CSS`](modules/qc_launcher.py.md#launcher-css) attribute of `Launcher` in `qc_launcher`
+- [`cumulative_truncation_error`](modules/quantum_framework_core.py.md#mpsstate-cumulative_truncation_error) property of `MPSState` in `quantum_framework_core`
+- [`custom_sequence`](modules/quantum_visualizer.py.md#standardcircuits-custom_sequence) staticmethod of `StandardCircuits` in `quantum_visualizer`
+- [`cut_hud`](modules/immersive.scenes.py.md#volumescene-cut_hud) method of `VolumeScene` in `immersive.scenes`
+- [`cut_normal`](modules/immersive.scenes.py.md#volumescene-cut_normal) method of `VolumeScene` in `immersive.scenes`
+- [`cx`](modules/quantum_computer.py.md#quantumcircuit-cx) method of `QuantumCircuit` in `quantum_computer`
+- [`CYBERPUNK`](modules/quantum_3dview.py.md#brutaltheme-cyberpunk) attribute of `BrutalTheme` in `quantum_3dview`
+- [`CYBERPUNK`](modules/quantum_dash.py.md#colorscheme-cyberpunk) attribute of `ColorScheme` in `quantum_dash`
+- [`cycle_backend`](modules/immersive.backend.py.md#backendregister-cycle_backend) method of `BackendRegister` in `immersive.backend`
+- [`cz`](modules/quantum_computer.py.md#quantumcircuit-cz) method of `QuantumCircuit` in `quantum_computer`
+- [`cz`](modules/quantum_framework_core.py.md#quantumcircuit-cz) method of `QuantumCircuit` in `quantum_framework_core`
+- [`cz`](modules/quantum_simulator.py.md#quantumcircuit-cz) method of `QuantumCircuit` in `quantum_simulator`
+- [`cz`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-cz) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`CZGate`](modules/quantum_computer.py.md#czgate) class in `quantum_computer`
+- [`CZGate`](modules/quantum_framework_core.py.md#czgate) class in `quantum_framework_core`
+- [`CZGate`](modules/quantum_simulator.py.md#czgate) class in `quantum_simulator`
+
+<a id="d"></a>
+
+## D
+
+- [`dash_available`](modules/qc_dashboard.py.md#brutalvizengine-dash_available) property of `BrutalVizEngine` in `qc_dashboard`
+- [`DashboardApp`](modules/qc_dashboard.py.md#dashboardapp) class in `qc_dashboard`
+- [`DashboardConfig`](modules/qc_dashboard.py.md#dashboardconfig) class in `qc_dashboard`
+- [`DATA_DIR`](modules/higgs_four_lepton_analysis.py.md#config-data_dir) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`DATA_DIR`](modules/higgs_quantum_analysis.py.md#config-data_dir) attribute of `Config` in `higgs_quantum_analysis`
+- [`default_n_qubits`](modules/quantum_dash.py.md#brutalistconfig-default_n_qubits) attribute of `BrutalistConfig` in `quantum_dash`
+- [`default_num_samples`](modules/quantum_framework_core.py.md#frameworkconfig-default_num_samples) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`default_num_samples`](modules/quantum_simulator.py.md#frameworkconfig-default_num_samples) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`default_qubits`](modules/qc_dashboard.py.md#dashboardconfig-default_qubits) attribute of `DashboardConfig` in `qc_dashboard`
+- [`demo_brutal`](modules/quantum_3dview.py.md#demo_brutal) function in `quantum_3dview`
+- [`demo_cached_operations`](modules/demo_molecular_vqe.py.md#demo_cached_operations) function in `demo_molecular_vqe`
+- [`demo_comparison`](modules/demo_molecular_vqe.py.md#demo_comparison) function in `demo_molecular_vqe`
+- [`demo_config_from_toml`](modules/demo_molecular_vqe.py.md#demo_config_from_toml) function in `demo_molecular_vqe`
+- [`demo_h2_direct`](modules/demo_molecular_vqe.py.md#demo_h2_direct) function in `demo_molecular_vqe`
+- [`demo_h2_mps`](modules/demo_molecular_vqe.py.md#demo_h2_mps) function in `demo_molecular_vqe`
+- [`demo_molecule_builder`](modules/demo_molecular_vqe.py.md#demo_molecule_builder) function in `demo_molecular_vqe`
+- [`demo_smart_initialization`](modules/demo_molecular_vqe.py.md#demo_smart_initialization) function in `demo_molecular_vqe`
+- [`density_peak`](modules/immersive.physics.py.md#density_peak) function in `immersive.physics`
+- [`DENSITY_RAMP`](modules/quantum_lab.py.md#density_ramp) constant in `quantum_lab`
+- [`depth`](modules/quantum_computer.py.md#quantumcircuit-depth) method of `QuantumCircuit` in `quantum_computer`
+- [`describe`](modules/immersive.backend.py.md#backendregister-describe) method of `BackendRegister` in `immersive.backend`
+- [`description`](modules/molecular_sim.py.md#moleculedata-description) attribute of `MoleculeData` in `molecular_sim`
+- [`description`](modules/quantum_framework_core.py.md#moleculedata-description) attribute of `MoleculeData` in `quantum_framework_core`
+- [`description`](modules/quantum_framework_molecular.py.md#moleculedata-description) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`description`](modules/quantum_framework_molecular_v2.py.md#moleculedata-description) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`description`](modules/quantum_simulator.py.md#moleculedata-description) attribute of `MoleculeData` in `quantum_simulator`
+- [`description`](modules/quantum_framework_core.py.md#orbitaldata-description) attribute of `OrbitalData` in `quantum_framework_core`
+- [`description`](modules/quantum_simulator.py.md#orbitaldata-description) attribute of `OrbitalData` in `quantum_simulator`
+- [`description`](modules/advanced_experiments.py.md#polyatomicmoleculedata-description) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`destroy`](modules/immersive.postfx.py.md#target-destroy) method of `Target` in `immersive.postfx`
+- [`detect_phase`](modules/quantum_framework_core.py.md#mpsquantumcomputer-detect_phase) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`detect_phase`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-detect_phase) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`DETECTOR_LENGTH`](modules/higgs_four_lepton_analysis.py.md#config-detector_length) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`DETECTOR_LENGTH`](modules/higgs_quantum_analysis.py.md#config-detector_length) attribute of `Config` in `higgs_quantum_analysis`
+- [`DETECTOR_RADIUS`](modules/higgs_four_lepton_analysis.py.md#config-detector_radius) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`DETECTOR_RADIUS`](modules/higgs_quantum_analysis.py.md#config-detector_radius) attribute of `Config` in `higgs_quantum_analysis`
+- [`deutsch_jozsa`](modules/quantum_computer.py.md#quantumcomputer-deutsch_jozsa) method of `QuantumComputer` in `quantum_computer`
+- [`deviation`](modules/immersive.backend.py.md#backendregister-deviation) method of `BackendRegister` in `immersive.backend`
+- [`device`](modules/quantum_dash.py.md#brutalistconfig-device) attribute of `BrutalistConfig` in `quantum_dash`
+- [`DEVICE`](modules/orbital_visualizer2.py.md#config-device) attribute of `Config` in `orbital_visualizer2`
+- [`DEVICE`](modules/relativistic_hydrogen.py.md#config-device) attribute of `Config` in `relativistic_hydrogen`
+- [`device`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-device) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`device`](modules/quantum_framework_core.py.md#frameworkconfig-device) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`device`](modules/quantum_simulator.py.md#frameworkconfig-device) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`device`](modules/advanced_experiments.py.md#groverconfig-device) attribute of `GroverConfig` in `advanced_experiments`
+- [`device`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-device) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`device`](modules/advanced_experiments.py.md#qedconfig-device) attribute of `QEDConfig` in `advanced_experiments`
+- [`device`](modules/quantum_computer.py.md#simulatorconfig-device) attribute of `SimulatorConfig` in `quantum_computer`
+- [`device`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-device) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`device`](modules/quantum_visualizer.py.md#visualizerconfig-device) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`DIM`](modules/immersive.hud.py.md#dim) constant in `immersive.hud`
+- [`DipoleOperatorBuilder`](modules/app.py.md#dipoleoperatorbuilder) class in `app`
+- [`DipoleOperatorBuilder`](modules/polarizability_v3.py.md#dipoleoperatorbuilder) class in `polarizability_v3`
+- [`dirac_c`](modules/quantum_dash.py.md#brutalistconfig-dirac_c) attribute of `BrutalistConfig` in `quantum_dash`
+- [`dirac_c`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-dirac_c) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`dirac_c`](modules/quantum_computer.py.md#simulatorconfig-dirac_c) attribute of `SimulatorConfig` in `quantum_computer`
+- [`dirac_c`](modules/quantum_visualizer.py.md#visualizerconfig-dirac_c) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`dirac_checkpoint`](modules/quantum_dash.py.md#brutalistconfig-dirac_checkpoint) attribute of `BrutalistConfig` in `quantum_dash`
+- [`dirac_checkpoint`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-dirac_checkpoint) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`dirac_checkpoint`](modules/quantum_framework_core.py.md#frameworkconfig-dirac_checkpoint) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`dirac_checkpoint`](modules/quantum_simulator.py.md#frameworkconfig-dirac_checkpoint) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`dirac_checkpoint`](modules/advanced_experiments.py.md#groverconfig-dirac_checkpoint) attribute of `GroverConfig` in `advanced_experiments`
+- [`dirac_checkpoint`](modules/quantum_computer.py.md#simulatorconfig-dirac_checkpoint) attribute of `SimulatorConfig` in `quantum_computer`
+- [`dirac_checkpoint`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-dirac_checkpoint) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`dirac_checkpoint`](modules/quantum_visualizer.py.md#visualizerconfig-dirac_checkpoint) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`dirac_mass`](modules/quantum_dash.py.md#brutalistconfig-dirac_mass) attribute of `BrutalistConfig` in `quantum_dash`
+- [`dirac_mass`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-dirac_mass) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`dirac_mass`](modules/quantum_framework_core.py.md#frameworkconfig-dirac_mass) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`dirac_mass`](modules/quantum_computer.py.md#simulatorconfig-dirac_mass) attribute of `SimulatorConfig` in `quantum_computer`
+- [`dirac_mass`](modules/quantum_visualizer.py.md#visualizerconfig-dirac_mass) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`DiracBackend`](modules/quantum_framework_physics.py.md#diracbackend) class in `quantum_framework_physics`
+- [`DiracBackendLink`](modules/immersive.spin.py.md#diracbackendlink) class in `immersive.spin`
+- [`DiracHamiltonianOperator`](modules/quantum_framework_physics.py.md#dirachamiltonianoperator) class in `quantum_framework_physics`
+- [`DiracHamiltonianOperator`](modules/relativistic_hydrogen.py.md#dirachamiltonianoperator) class in `relativistic_hydrogen`
+- [`DiracHydrogenAtom`](modules/quantum_framework_physics.py.md#dirachydrogenatom) class in `quantum_framework_physics`
+- [`DiracHydrogenAtom`](modules/quantum_simulator.py.md#dirachydrogenatom) class in `quantum_simulator`
+- [`DiracHydrogenAtom`](modules/relativistic_hydrogen.py.md#dirachydrogenatom) class in `relativistic_hydrogen`
+- [`DiracModelWrapper`](modules/relativistic_hydrogen.py.md#diracmodelwrapper) class in `relativistic_hydrogen`
+- [`DiracMonteCarloSampler`](modules/relativistic_hydrogen.py.md#diracmontecarlosampler) class in `relativistic_hydrogen`
+- [`DiracSpectralNet`](modules/quantum_framework_physics.py.md#diracspectralnet) class in `quantum_framework_physics`
+- [`DiracSpectralNetwork`](modules/relativistic_hydrogen.py.md#diracspectralnetwork) class in `relativistic_hydrogen`
+- [`DiracValidationSuite`](modules/relativistic_hydrogen.py.md#diracvalidationsuite) class in `relativistic_hydrogen`
+- [`DiracVisualizer`](modules/relativistic_hydrogen.py.md#diracvisualizer) class in `relativistic_hydrogen`
+- [`DiracWavefunctionCalculator`](modules/relativistic_hydrogen.py.md#diracwavefunctioncalculator) class in `relativistic_hydrogen`
+- [`DirectBackend`](modules/topological_hilbert_compression2.py.md#directbackend) class in `topological_hilbert_compression2`
+- [`display_header`](modules/quantum_simulator.py.md#interactivemenu-display_header) method of `InteractiveMenu` in `quantum_simulator`
+- [`display_main_menu`](modules/quantum_simulator.py.md#interactivemenu-display_main_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`DISPLAY_POWER`](modules/immersive.scenes.py.md#matterscene-display_power) attribute of `MatterScene` in `immersive.scenes`
+- [`DISPLAY_RADIUS`](modules/immersive.matter.py.md#display_radius) constant in `immersive.matter`
+- [`DOUBLE_GATES`](modules/quantum_lab.py.md#quantumlab-double_gates) attribute of `QuantumLab` in `quantum_lab`
+- [`double_well`](modules/quantum_computer.py.md#potentialgenerator-double_well) method of `PotentialGenerator` in `quantum_computer`
+- [`double_well`](modules/quantum_framework_physics.py.md#potentialgenerator-double_well) method of `PotentialGenerator` in `quantum_framework_physics`
+- [`double_well`](modules/quantum_simulator.py.md#potentialgenerator-double_well) method of `PotentialGenerator` in `quantum_simulator`
+- [`DOWNSAMPLE`](modules/immersive.postfx.py.md#downsample) constant in `immersive.postfx`
+- [`drag`](modules/immersive.glkit.py.md#orbitcamera-drag) method of `OrbitCamera` in `immersive.glkit`
+- [`draw`](modules/immersive.glkit.py.md#fullscreenpass-draw) method of `FullscreenPass` in `immersive.glkit`
+- [`draw_backend_panel`](modules/immersive.scenes.py.md#draw_backend_panel) function in `immersive.scenes`
+- [`draw_chrome`](modules/immersive.app.py.md#app-draw_chrome) method of `App` in `immersive.app`
+- [`draw_circuit`](modules/quantum_lab.py.md#draw_circuit) function in `quantum_lab`
+- [`draw_energy_panel`](modules/immersive.scenes.py.md#atomscene-draw_energy_panel) method of `AtomScene` in `immersive.scenes`
+- [`draw_hud`](modules/immersive.scenes.py.md#atomscene-draw_hud) method of `AtomScene` in `immersive.scenes`
+- [`draw_hud`](modules/immersive.scenes.py.md#blochscene-draw_hud) method of `BlochScene` in `immersive.scenes`
+- [`draw_hud`](modules/immersive.scenes.py.md#entanglescene-draw_hud) method of `EntangleScene` in `immersive.scenes`
+- [`draw_hud`](modules/immersive.scenes.py.md#matterscene-draw_hud) method of `MatterScene` in `immersive.scenes`
+- [`draw_hud`](modules/immersive.scenes.py.md#scene-draw_hud) method of `Scene` in `immersive.scenes`
+- [`draw_hud`](modules/immersive.scenes.py.md#spinscene-draw_hud) method of `SpinScene` in `immersive.scenes`
+- [`draw_vqe`](modules/immersive.scenes.py.md#matterscene-draw_vqe) method of `MatterScene` in `immersive.scenes`
+- [`dt`](modules/quantum_dash.py.md#brutalistconfig-dt) attribute of `BrutalistConfig` in `quantum_dash`
+- [`dt`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-dt) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`dt`](modules/quantum_framework_core.py.md#frameworkconfig-dt) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`dt`](modules/quantum_simulator.py.md#frameworkconfig-dt) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`dt`](modules/quantum_computer.py.md#simulatorconfig-dt) attribute of `SimulatorConfig` in `quantum_computer`
+- [`dt`](modules/quantum_visualizer.py.md#visualizerconfig-dt) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`dtype`](modules/quantum_framework_core.py.md#frameworkconfig-dtype) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`dtype`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-dtype) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`duration`](modules/immersive.app.py.md#step-duration) attribute of `Step` in `immersive.app`
+
+<a id="e"></a>
+
+## E
+
+- [`e_total`](modules/immersive.matter.py.md#solved-e_total) attribute of `Solved` in `immersive.matter`
+- [`elapsed_time`](modules/quantum_framework_molecular_v2.py.md#vqeresult-elapsed_time) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`ELECTRON`](modules/higgs_four_lepton_analysis.py.md#leptontype-electron) attribute of `LeptonType` in `higgs_four_lepton_analysis`
+- [`ELECTRON`](modules/higgs_quantum_analysis.py.md#leptontype-electron) attribute of `LeptonType` in `higgs_quantum_analysis`
+- [`electron_configuration`](modules/quantum_framework_core.py.md#atomdata-electron_configuration) attribute of `AtomData` in `quantum_framework_core`
+- [`electron_configuration`](modules/quantum_simulator.py.md#atomdata-electron_configuration) attribute of `AtomData` in `quantum_simulator`
+- [`ELECTRON_MASS`](modules/relativistic_hydrogen.py.md#config-electron_mass) attribute of `Config` in `relativistic_hydrogen`
+- [`electron_mass`](modules/quantum_framework_core.py.md#frameworkconfig-electron_mass) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`electron_mass`](modules/quantum_simulator.py.md#frameworkconfig-electron_mass) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`electron_mass`](modules/advanced_experiments.py.md#qedconfig-electron_mass) attribute of `QEDConfig` in `advanced_experiments`
+- [`ELECTRON_MASS_GEV`](modules/higgs_four_lepton_analysis.py.md#config-electron_mass_gev) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`ELECTRON_MASS_GEV`](modules/higgs_quantum_analysis.py.md#config-electron_mass_gev) attribute of `Config` in `higgs_quantum_analysis`
+- [`embed`](modules/immersive.physics.py.md#qubitregister-embed) method of `QubitRegister` in `immersive.physics`
+- [`enable_topological_protection`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-enable_topological_protection) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`enable_vacuum_core`](modules/quantum_framework_core.py.md#frameworkconfig-enable_vacuum_core) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`enable_vacuum_core`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-enable_vacuum_core) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`end`](modules/immersive.hud.py.md#hud-end) method of `Hud` in `immersive.hud`
+- [`energy`](modules/immersive.spin.py.md#diracbackendlink-energy) method of `DiracBackendLink` in `immersive.spin`
+- [`energy`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-energy) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`energy`](modules/higgs_quantum_analysis.py.md#fourmomentum-energy) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`energy`](modules/quantum_lab.py.md#h2vqeengine-energy) method of `H2VQEEngine` in `quantum_lab`
+- [`energy`](modules/higgs_four_lepton_analysis.py.md#lepton-energy) property of `Lepton` in `higgs_four_lepton_analysis`
+- [`energy`](modules/higgs_quantum_analysis.py.md#lepton-energy) property of `Lepton` in `higgs_quantum_analysis`
+- [`energy`](modules/app.py.md#vqeresult-energy) attribute of `VQEResult` in `app`
+- [`energy`](modules/polarizability_v3.py.md#vqeresult-energy) attribute of `VQEResult` in `polarizability_v3`
+- [`energy_analytical`](modules/quantum_simulator.py.md#wavefunctioncalculator-energy_analytical) method of `WavefunctionCalculator` in `quantum_simulator`
+- [`energy_error`](modules/molecular_sim.py.md#vqeresult-energy_error) attribute of `VQEResult` in `molecular_sim`
+- [`energy_error`](modules/quantum_framework_molecular.py.md#vqeresult-energy_error) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`energy_error`](modules/quantum_framework_molecular_v2.py.md#vqeresult-energy_error) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`energy_ev`](modules/immersive.matter.py.md#orbitalinfo-energy_ev) attribute of `OrbitalInfo` in `immersive.matter`
+- [`energy_ev`](modules/immersive.physics.py.md#energy_ev) function in `immersive.physics`
+- [`energy_landscape`](modules/qc_dashboard.py.md#h2vqesolver-energy_landscape) method of `H2VQESolver` in `qc_dashboard`
+- [`energy_level_dirac`](modules/quantum_framework_physics.py.md#dirachydrogenatom-energy_level_dirac) method of `DiracHydrogenAtom` in `quantum_framework_physics`
+- [`energy_level_dirac`](modules/quantum_simulator.py.md#dirachydrogenatom-energy_level_dirac) method of `DiracHydrogenAtom` in `quantum_simulator`
+- [`energy_level_dirac`](modules/relativistic_hydrogen.py.md#dirachydrogenatom-energy_level_dirac) method of `DiracHydrogenAtom` in `relativistic_hydrogen`
+- [`energy_schrodinger`](modules/quantum_simulator.py.md#dirachydrogenatom-energy_schrodinger) method of `DiracHydrogenAtom` in `quantum_simulator`
+- [`energy_spectrum`](modules/quantum_framework_physics.py.md#dirachydrogenatom-energy_spectrum) method of `DiracHydrogenAtom` in `quantum_framework_physics`
+- [`energy_spectrum`](modules/quantum_simulator.py.md#dirachydrogenatom-energy_spectrum) method of `DiracHydrogenAtom` in `quantum_simulator`
+- [`energy_spectrum`](modules/relativistic_hydrogen.py.md#dirachydrogenatom-energy_spectrum) method of `DiracHydrogenAtom` in `relativistic_hydrogen`
+- [`entangled_available`](modules/qc_dashboard.py.md#realorbitalengine-entangled_available) property of `RealOrbitalEngine` in `qc_dashboard`
+- [`entangled_menu`](modules/quantum_simulator.py.md#interactivemenu-entangled_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`EntangledHydrogenConfig`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig) class in `entangled_hydrogen`
+- [`EntangledHydrogenExperiment`](modules/entangled_hydrogen.py.md#entangledhydrogenexperiment) class in `entangled_hydrogen`
+- [`EntangledHydrogenSampler`](modules/entangled_hydrogen.py.md#entangledhydrogensampler) class in `entangled_hydrogen`
+- [`EntangledHydrogenSampler`](modules/quantum_framework_visualization.py.md#entangledhydrogensampler) class in `quantum_framework_visualization`
+- [`EntangledHydrogenVisualizer`](modules/entangled_hydrogen.py.md#entangledhydrogenvisualizer) class in `entangled_hydrogen`
+- [`EntangledHydrogenVisualizer`](modules/quantum_framework_visualization.py.md#entangledhydrogenvisualizer) class in `quantum_framework_visualization`
+- [`EntangledVisualizer`](modules/quantum_simulator.py.md#entangledvisualizer) class in `quantum_simulator`
+- [`entanglement_entropy`](modules/quantum_framework_core.py.md#mpsstate-entanglement_entropy) method of `MPSState` in `quantum_framework_core`
+- [`entanglement_entropy`](modules/topological_hilbert_compression2.py.md#mpsstate-entanglement_entropy) method of `MPSState` in `topological_hilbert_compression2`
+- [`entanglement_entropy_threshold`](modules/quantum_framework_core.py.md#frameworkconfig-entanglement_entropy_threshold) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`entanglement_entropy_threshold`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-entanglement_entropy_threshold) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`entanglement_max_cut`](modules/qc_dashboard.py.md#dashboardconfig-entanglement_max_cut) attribute of `DashboardConfig` in `qc_dashboard`
+- [`EntangleScene`](modules/immersive.scenes.py.md#entanglescene) class in `immersive.scenes`
+- [`enter`](modules/immersive.scenes.py.md#atomscene-enter) method of `AtomScene` in `immersive.scenes`
+- [`enter`](modules/immersive.scenes.py.md#blochscene-enter) method of `BlochScene` in `immersive.scenes`
+- [`enter`](modules/immersive.scenes.py.md#entanglescene-enter) method of `EntangleScene` in `immersive.scenes`
+- [`enter`](modules/immersive.scenes.py.md#matterscene-enter) method of `MatterScene` in `immersive.scenes`
+- [`enter`](modules/immersive.scenes.py.md#scene-enter) method of `Scene` in `immersive.scenes`
+- [`enter`](modules/immersive.scenes.py.md#spinscene-enter) method of `SpinScene` in `immersive.scenes`
+- [`entropy`](modules/quantum_visualizer.py.md#backendcomparisonresult-entropy) attribute of `BackendComparisonResult` in `quantum_visualizer`
+- [`entropy`](modules/immersive.backend.py.md#backendregister-entropy) method of `BackendRegister` in `immersive.backend`
+- [`entropy`](modules/quantum_framework_core.py.md#itensornetwork-entropy) method of `ITensorNetwork` in `quantum_framework_core`
+- [`entropy`](modules/topological_hilbert_compression2.py.md#itensornetwork-entropy) method of `ITensorNetwork` in `topological_hilbert_compression2`
+- [`entropy`](modules/quantum_simulator.py.md#jointhilbertstate-entropy) method of `JointHilbertState` in `quantum_simulator`
+- [`entropy`](modules/quantum_framework_core.py.md#mpsstate-entropy) method of `MPSState` in `quantum_framework_core`
+- [`entropy`](modules/topological_hilbert_compression2.py.md#mpsstate-entropy) method of `MPSState` in `topological_hilbert_compression2`
+- [`entropy`](modules/quantum_computer.py.md#measurementresult-entropy) method of `MeasurementResult` in `quantum_computer`
+- [`entropy`](modules/quantum_simulator.py.md#quantumresult-entropy) method of `QuantumResult` in `quantum_simulator`
+- [`entropy`](modules/quantum_dash.py.md#quantumsnapshot-entropy) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`entropy`](modules/quantum_visualizer.py.md#quantumstatesnapshot-entropy) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`entropy`](modules/immersive.physics.py.md#qubitregister-entropy) method of `QubitRegister` in `immersive.physics`
+- [`entropy`](modules/qc_dashboard.py.md#snapshotdata-entropy) attribute of `SnapshotData` in `qc_dashboard`
+- [`entropy`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-entropy) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`entropy_base`](modules/quantum_dash.py.md#brutalistconfig-entropy_base) attribute of `BrutalistConfig` in `quantum_dash`
+- [`entropy_base`](modules/qc_dashboard.py.md#dashboardconfig-entropy_base) attribute of `DashboardConfig` in `qc_dashboard`
+- [`entropy_base`](modules/quantum_visualizer.py.md#visualizerconfig-entropy_base) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`EntropyPlotRenderer`](modules/quantum_visualizer.py.md#entropyplotrenderer) class in `quantum_visualizer`
+- [`EntropyVisualizer`](modules/quantum_dash.py.md#entropyvisualizer) class in `quantum_dash`
+- [`eri`](modules/molecular_sim.py.md#moleculedata-eri) attribute of `MoleculeData` in `molecular_sim`
+- [`eri`](modules/quantum_framework_core.py.md#moleculedata-eri) attribute of `MoleculeData` in `quantum_framework_core`
+- [`eri`](modules/quantum_framework_molecular.py.md#moleculedata-eri) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`eri`](modules/quantum_simulator.py.md#moleculedata-eri) attribute of `MoleculeData` in `quantum_simulator`
+- [`estimate_mp2_amplitude`](modules/quantum_framework_molecular_v2.py.md#smartinitializer-estimate_mp2_amplitude) method of `SmartInitializer` in `quantum_framework_molecular_v2`
+- [`eta`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-eta) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`eta`](modules/higgs_quantum_analysis.py.md#fourmomentum-eta) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`eta`](modules/higgs_four_lepton_analysis.py.md#lepton-eta) property of `Lepton` in `higgs_four_lepton_analysis`
+- [`eta`](modules/higgs_quantum_analysis.py.md#lepton-eta) property of `Lepton` in `higgs_quantum_analysis`
+- [`eval_dipole`](modules/app.py.md#starkevaluator-eval_dipole) method of `StarkEvaluator` in `app`
+- [`eval_dipole`](modules/polarizability_v3.py.md#starkevaluator-eval_dipole) method of `StarkEvaluator` in `polarizability_v3`
+- [`evaluate`](modules/quantum_framework_molecular.py.md#exactjwenergy-evaluate) method of `ExactJWEnergy` in `quantum_framework_molecular`
+- [`evaluate`](modules/quantum_framework_molecular_v2.py.md#vqesolver-evaluate) method of `VQESolver` in `quantum_framework_molecular_v2`
+- [`Event`](modules/higgs_four_lepton_analysis.py.md#event) class in `higgs_four_lepton_analysis`
+- [`Event`](modules/higgs_quantum_analysis.py.md#event) class in `higgs_quantum_analysis`
+- [`event_num`](modules/higgs_four_lepton_analysis.py.md#event-event_num) attribute of `Event` in `higgs_four_lepton_analysis`
+- [`event_num`](modules/higgs_quantum_analysis.py.md#event-event_num) attribute of `Event` in `higgs_quantum_analysis`
+- [`event_type`](modules/higgs_four_lepton_analysis.py.md#event-event_type) attribute of `Event` in `higgs_four_lepton_analysis`
+- [`event_type`](modules/higgs_quantum_analysis.py.md#event-event_type) attribute of `Event` in `higgs_quantum_analysis`
+- [`EventParser`](modules/higgs_four_lepton_analysis.py.md#eventparser) class in `higgs_four_lepton_analysis`
+- [`EventParser`](modules/higgs_quantum_analysis.py.md#eventparser) class in `higgs_quantum_analysis`
+- [`EventType`](modules/higgs_four_lepton_analysis.py.md#eventtype) enum in `higgs_four_lepton_analysis`
+- [`EventType`](modules/higgs_quantum_analysis.py.md#eventtype) enum in `higgs_quantum_analysis`
+- [`evolution_dt`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-evolution_dt) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`evolution_steps`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-evolution_steps) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`evolve`](modules/immersive.backend.py.md#backendregister-evolve) method of `BackendRegister` in `immersive.backend`
+- [`evolve`](modules/quantum_computer.py.md#quantumcircuit-evolve) method of `QuantumCircuit` in `quantum_computer`
+- [`evolve_amplitude`](modules/quantum_framework_physics.py.md#diracbackend-evolve_amplitude) method of `DiracBackend` in `quantum_framework_physics`
+- [`evolve_amplitude`](modules/quantum_framework_physics.py.md#hamiltonianbackend-evolve_amplitude) method of `HamiltonianBackend` in `quantum_framework_physics`
+- [`evolve_amplitude`](modules/quantum_framework_physics.py.md#iphysicsbackend-evolve_amplitude) method of `IPhysicsBackend` in `quantum_framework_physics`
+- [`evolve_amplitude`](modules/quantum_framework_physics.py.md#schrodingerbackend-evolve_amplitude) method of `SchrodingerBackend` in `quantum_framework_physics`
+- [`evolve_spinor`](modules/quantum_framework_physics.py.md#diracbackend-evolve_spinor) method of `DiracBackend` in `quantum_framework_physics`
+- [`evolve_spinor`](modules/relativistic_hydrogen.py.md#diracmodelwrapper-evolve_spinor) method of `DiracModelWrapper` in `relativistic_hydrogen`
+- [`evolve_with_dirac_backend`](modules/higgs_four_lepton_analysis.py.md#quantumspinorprocessor-evolve_with_dirac_backend) method of `QuantumSpinorProcessor` in `higgs_four_lepton_analysis`
+- [`evolve_with_dirac_backend`](modules/higgs_quantum_analysis.py.md#quantumspinorprocessor-evolve_with_dirac_backend) method of `QuantumSpinorProcessor` in `higgs_quantum_analysis`
+- [`evolve_with_hamiltonian_backend`](modules/higgs_four_lepton_analysis.py.md#quantumspinorprocessor-evolve_with_hamiltonian_backend) method of `QuantumSpinorProcessor` in `higgs_four_lepton_analysis`
+- [`evolve_with_hamiltonian_backend`](modules/higgs_quantum_analysis.py.md#quantumspinorprocessor-evolve_with_hamiltonian_backend) method of `QuantumSpinorProcessor` in `higgs_quantum_analysis`
+- [`evolve_with_schrodinger_backend`](modules/higgs_four_lepton_analysis.py.md#quantumspinorprocessor-evolve_with_schrodinger_backend) method of `QuantumSpinorProcessor` in `higgs_four_lepton_analysis`
+- [`evolve_with_schrodinger_backend`](modules/higgs_quantum_analysis.py.md#quantumspinorprocessor-evolve_with_schrodinger_backend) method of `QuantumSpinorProcessor` in `higgs_quantum_analysis`
+- [`evolved_coefficients`](modules/immersive.spin.py.md#evolved_coefficients) function in `immersive.spin`
+- [`EvolveGate`](modules/quantum_computer.py.md#evolvegate) class in `quantum_computer`
+- [`ExactJWEnergy`](modules/molecular_sim.py.md#exactjwenergy) class in `molecular_sim`
+- [`ExactJWEnergy`](modules/quantum_framework_molecular.py.md#exactjwenergy) class in `quantum_framework_molecular`
+- [`execute_circuit`](modules/qc_dashboard.py.md#simulatorbackend-execute_circuit) method of `SimulatorBackend` in `qc_dashboard`
+- [`execute_sequence`](modules/quantum_dash.py.md#circuitexecutor-execute_sequence) method of `CircuitExecutor` in `quantum_dash`
+- [`execute_sequence`](modules/quantum_visualizer.py.md#circuitexecutor-execute_sequence) method of `CircuitExecutor` in `quantum_visualizer`
+- [`execution_time`](modules/quantum_dash.py.md#backendcomparison-execution_time) attribute of `BackendComparison` in `quantum_dash`
+- [`execution_time`](modules/quantum_visualizer.py.md#visualizationresult-execution_time) attribute of `VisualizationResult` in `quantum_visualizer`
+- [`expansion_dim`](modules/quantum_dash.py.md#brutalistconfig-expansion_dim) attribute of `BrutalistConfig` in `quantum_dash`
+- [`EXPANSION_DIM`](modules/higgs_four_lepton_analysis.py.md#config-expansion_dim) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`EXPANSION_DIM`](modules/higgs_quantum_analysis.py.md#config-expansion_dim) attribute of `Config` in `higgs_quantum_analysis`
+- [`EXPANSION_DIM`](modules/relativistic_hydrogen.py.md#config-expansion_dim) attribute of `Config` in `relativistic_hydrogen`
+- [`expansion_dim`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-expansion_dim) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`expansion_dim`](modules/quantum_framework_core.py.md#frameworkconfig-expansion_dim) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`expansion_dim`](modules/quantum_simulator.py.md#frameworkconfig-expansion_dim) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`expansion_dim`](modules/advanced_experiments.py.md#groverconfig-expansion_dim) attribute of `GroverConfig` in `advanced_experiments`
+- [`expansion_dim`](modules/advanced_experiments.py.md#qedconfig-expansion_dim) attribute of `QEDConfig` in `advanced_experiments`
+- [`expansion_dim`](modules/quantum_computer.py.md#simulatorconfig-expansion_dim) attribute of `SimulatorConfig` in `quantum_computer`
+- [`expansion_dim`](modules/quantum_visualizer.py.md#visualizerconfig-expansion_dim) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`expectation_value`](modules/quantum_framework_molecular_v2.py.md#cachedhamiltonianevaluator-expectation_value) method of `CachedHamiltonianEvaluator` in `quantum_framework_molecular_v2`
+- [`expectation_value`](modules/quantum_framework_molecular.py.md#exactjwenergy-expectation_value) method of `ExactJWEnergy` in `quantum_framework_molecular`
+- [`expectation_z`](modules/quantum_computer.py.md#measurementresult-expectation_z) method of `MeasurementResult` in `quantum_computer`
+- [`Experience`](modules/qc_launcher.py.md#experience) class in `qc_launcher`
+- [`EXPERIENCES`](modules/qc_launcher.py.md#experiences) constant in `qc_launcher`
+- [`experiments`](modules/quantum_framework_core.py.md#configloader-experiments) property of `ConfigLoader` in `quantum_framework_core`
+- [`explanation`](modules/quantum_lab.py.md#quiz-explanation) attribute of `Quiz` in `quantum_lab`
+- [`EXPLOSION_PARTICLES`](modules/higgs_four_lepton_analysis.py.md#config-explosion_particles) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`EXPLOSION_PARTICLES`](modules/higgs_quantum_analysis.py.md#config-explosion_particles) attribute of `Config` in `higgs_quantum_analysis`
+- [`EXPLOSION_RADIUS`](modules/higgs_four_lepton_analysis.py.md#config-explosion_radius) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`EXPLOSION_RADIUS`](modules/higgs_quantum_analysis.py.md#config-explosion_radius) attribute of `Config` in `higgs_quantum_analysis`
+- [`export`](modules/qc_integration.py.md#iqcadapter-export) method of `IQCAdapter` in `qc_integration`
+- [`export`](modules/qc_integration.py.md#openqasmadapter-export) method of `OpenQasmAdapter` in `qc_integration`
+- [`export`](modules/qc_integration.py.md#pennylaneadapter-export) method of `PennyLaneAdapter` in `qc_integration`
+- [`export`](modules/qc_integration.py.md#qiskitadapter-export) method of `QiskitAdapter` in `qc_integration`
+- [`export_qasm`](modules/qc_integration.py.md#integrationbridge-export_qasm) method of `IntegrationBridge` in `qc_integration`
+- [`export_qasm_from_framework`](modules/qc_integration.py.md#integrationbridge-export_qasm_from_framework) method of `IntegrationBridge` in `qc_integration`
+- [`exposure`](modules/immersive.matter.py.md#exposure) function in `immersive.matter`
+- [`exposure`](modules/immersive.spin.py.md#exposure) function in `immersive.spin`
+- [`eye`](modules/immersive.glkit.py.md#orbitcamera-eye) method of `OrbitCamera` in `immersive.glkit`
+
+<a id="f"></a>
+
+## F
+
+- [`f1`](modules/immersive.glkit.py.md#program-f1) method of `Program` in `immersive.glkit`
+- [`factory`](modules/quantum_simulator.py.md#quantumcomputer-factory) property of `QuantumComputer` in `quantum_simulator`
+- [`FADE_SECONDS`](modules/immersive.app.py.md#fade_seconds) constant in `immersive.app`
+- [`fci_energy`](modules/molecular_sim.py.md#moleculedata-fci_energy) attribute of `MoleculeData` in `molecular_sim`
+- [`fci_energy`](modules/quantum_framework_molecular.py.md#moleculedata-fci_energy) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`fci_energy`](modules/quantum_framework_molecular_v2.py.md#moleculedata-fci_energy) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`fci_energy`](modules/advanced_experiments.py.md#polyatomicmoleculedata-fci_energy) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`fci_energy`](modules/immersive.matter.py.md#solved-fci_energy) attribute of `Solved` in `immersive.matter`
+- [`fci_energy`](modules/molecular_sim.py.md#vqeresult-fci_energy) attribute of `VQEResult` in `molecular_sim`
+- [`fci_energy`](modules/quantum_framework_molecular.py.md#vqeresult-fci_energy) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`fci_energy`](modules/quantum_framework_molecular_v2.py.md#vqeresult-fci_energy) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`fci_energy_hartree`](modules/quantum_framework_core.py.md#moleculedata-fci_energy_hartree) attribute of `MoleculeData` in `quantum_framework_core`
+- [`fci_energy_hartree`](modules/quantum_simulator.py.md#moleculedata-fci_energy_hartree) attribute of `MoleculeData` in `quantum_simulator`
+- [`fci_rdm`](modules/immersive.matter.py.md#solved-fci_rdm) attribute of `Solved` in `immersive.matter`
+- [`fetch_data`](modules/higgs_four_lepton_analysis.py.md#higgsquantumanalysis-fetch_data) method of `HiggsQuantumAnalysis` in `higgs_four_lepton_analysis`
+- [`fetch_data`](modules/higgs_quantum_analysis.py.md#higgsquantumanalysis-fetch_data) method of `HiggsQuantumAnalysis` in `higgs_quantum_analysis`
+- [`fidelity_with_reference`](modules/quantum_dash.py.md#backendcomparison-fidelity_with_reference) attribute of `BackendComparison` in `quantum_dash`
+- [`fidelity_with_reference`](modules/quantum_visualizer.py.md#backendcomparisonresult-fidelity_with_reference) attribute of `BackendComparisonResult` in `quantum_visualizer`
+- [`FidelityVisualizer`](modules/quantum_dash.py.md#fidelityvisualizer) class in `quantum_dash`
+- [`field`](modules/app.py.md#vqeresult-field) attribute of `VQEResult` in `app`
+- [`field`](modules/polarizability_v3.py.md#vqeresult-field) attribute of `VQEResult` in `polarizability_v3`
+- [`field_amplitude`](modules/immersive.matter.py.md#field_amplitude) function in `immersive.matter`
+- [`field_resolution`](modules/quantum_dash.py.md#brutalistconfig-field_resolution) attribute of `BrutalistConfig` in `quantum_dash`
+- [`field_tesla`](modules/immersive.spin.py.md#spinpreset-field_tesla) attribute of `SpinPreset` in `immersive.spin`
+- [`field_to_text`](modules/quantum_lab.py.md#field_to_text) function in `quantum_lab`
+- [`fields`](modules/immersive.backend.py.md#backendregister-fields) method of `BackendRegister` in `immersive.backend`
+- [`fields`](modules/immersive.matter.py.md#solved-fields) attribute of `Solved` in `immersive.matter`
+- [`fifth_order`](modules/advanced_experiments.py.md#anomalousmagneticmoment-fifth_order) method of `AnomalousMagneticMoment` in `advanced_experiments`
+- [`fifth_order`](modules/quantum_framework_physics.py.md#anomalousmagneticmoment-fifth_order) method of `AnomalousMagneticMoment` in `quantum_framework_physics`
+- [`figure_dpi`](modules/quantum_dash.py.md#brutalistconfig-figure_dpi) attribute of `BrutalistConfig` in `quantum_dash`
+- [`FIGURE_DPI`](modules/orbital_visualizer2.py.md#config-figure_dpi) attribute of `Config` in `orbital_visualizer2`
+- [`FIGURE_DPI`](modules/relativistic_hydrogen.py.md#config-figure_dpi) attribute of `Config` in `relativistic_hydrogen`
+- [`figure_dpi`](modules/qc_dashboard.py.md#dashboardconfig-figure_dpi) attribute of `DashboardConfig` in `qc_dashboard`
+- [`figure_dpi`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-figure_dpi) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`figure_dpi`](modules/quantum_framework_core.py.md#frameworkconfig-figure_dpi) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`figure_dpi`](modules/quantum_simulator.py.md#frameworkconfig-figure_dpi) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`figure_dpi`](modules/quantum_visualizer.py.md#visualizerconfig-figure_dpi) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`figure_height_inches`](modules/quantum_dash.py.md#brutalistconfig-figure_height_inches) attribute of `BrutalistConfig` in `quantum_dash`
+- [`figure_height_inches`](modules/qc_dashboard.py.md#dashboardconfig-figure_height_inches) attribute of `DashboardConfig` in `qc_dashboard`
+- [`FIGURE_SIZE_X`](modules/orbital_visualizer2.py.md#config-figure_size_x) attribute of `Config` in `orbital_visualizer2`
+- [`FIGURE_SIZE_X`](modules/relativistic_hydrogen.py.md#config-figure_size_x) attribute of `Config` in `relativistic_hydrogen`
+- [`figure_size_x`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-figure_size_x) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`figure_size_x`](modules/quantum_framework_core.py.md#frameworkconfig-figure_size_x) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`figure_size_x`](modules/quantum_simulator.py.md#frameworkconfig-figure_size_x) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`figure_size_x`](modules/quantum_visualizer.py.md#visualizerconfig-figure_size_x) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`FIGURE_SIZE_Y`](modules/orbital_visualizer2.py.md#config-figure_size_y) attribute of `Config` in `orbital_visualizer2`
+- [`FIGURE_SIZE_Y`](modules/relativistic_hydrogen.py.md#config-figure_size_y) attribute of `Config` in `relativistic_hydrogen`
+- [`figure_size_y`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-figure_size_y) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`figure_size_y`](modules/quantum_framework_core.py.md#frameworkconfig-figure_size_y) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`figure_size_y`](modules/quantum_simulator.py.md#frameworkconfig-figure_size_y) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`figure_size_y`](modules/quantum_visualizer.py.md#visualizerconfig-figure_size_y) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`figure_width_inches`](modules/quantum_dash.py.md#brutalistconfig-figure_width_inches) attribute of `BrutalistConfig` in `quantum_dash`
+- [`figure_width_inches`](modules/qc_dashboard.py.md#dashboardconfig-figure_width_inches) attribute of `DashboardConfig` in `qc_dashboard`
+- [`FigureBuilder`](modules/quantum_dash.py.md#figurebuilder) class in `quantum_dash`
+- [`FigureBuilder`](modules/quantum_visualizer.py.md#figurebuilder) class in `quantum_visualizer`
+- [`FILES`](modules/higgs_four_lepton_analysis.py.md#config-files) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`FILES`](modules/higgs_quantum_analysis.py.md#config-files) attribute of `Config` in `higgs_quantum_analysis`
+- [`final_entropy`](modules/quantum_dash.py.md#backendcomparison-final_entropy) attribute of `BackendComparison` in `quantum_dash`
+- [`final_probabilities`](modules/quantum_dash.py.md#backendcomparison-final_probabilities) attribute of `BackendComparison` in `quantum_dash`
+- [`find_max_probability`](modules/entangled_hydrogen.py.md#entangledhydrogensampler-find_max_probability) method of `EntangledHydrogenSampler` in `entangled_hydrogen`
+- [`find_max_probability`](modules/orbital_visualizer2.py.md#montecarlosampler-find_max_probability) method of `MonteCarloSampler` in `orbital_visualizer2`
+- [`find_max_probability`](modules/quantum_framework_visualization.py.md#montecarlosampler-find_max_probability) method of `MonteCarloSampler` in `quantum_framework_visualization`
+- [`find_max_probability`](modules/quantum_simulator.py.md#montecarlosampler-find_max_probability) method of `MonteCarloSampler` in `quantum_simulator`
+- [`FINE_STRUCTURE_ORDERS`](modules/relativistic_hydrogen.py.md#config-fine_structure_orders) attribute of `Config` in `relativistic_hydrogen`
+- [`fine_structure_orders`](modules/quantum_simulator.py.md#frameworkconfig-fine_structure_orders) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`fine_structure_splitting`](modules/quantum_framework_physics.py.md#dirachydrogenatom-fine_structure_splitting) method of `DiracHydrogenAtom` in `quantum_framework_physics`
+- [`fine_structure_splitting`](modules/quantum_simulator.py.md#dirachydrogenatom-fine_structure_splitting) method of `DiracHydrogenAtom` in `quantum_simulator`
+- [`fine_structure_splitting`](modules/relativistic_hydrogen.py.md#dirachydrogenatom-fine_structure_splitting) method of `DiracHydrogenAtom` in `relativistic_hydrogen`
+- [`fly_to`](modules/immersive.glkit.py.md#orbitcamera-fly_to) method of `OrbitCamera` in `immersive.glkit`
+- [`fmt_c`](modules/immersive.scenes.py.md#fmt_c) function in `immersive.scenes`
+- [`font`](modules/immersive.hud.py.md#hud-font) method of `Hud` in `immersive.hud`
+- [`force_mps`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-force_mps) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`formula`](modules/quantum_framework_core.py.md#moleculedata-formula) attribute of `MoleculeData` in `quantum_framework_core`
+- [`formula`](modules/quantum_framework_molecular_v2.py.md#moleculedata-formula) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`formula`](modules/quantum_simulator.py.md#moleculedata-formula) attribute of `MoleculeData` in `quantum_simulator`
+- [`formula`](modules/advanced_experiments.py.md#polyatomicmoleculedata-formula) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`forward`](modules/quantum_framework_physics.py.md#diracspectralnet-forward) method of `DiracSpectralNet` in `quantum_framework_physics`
+- [`forward`](modules/relativistic_hydrogen.py.md#diracspectralnetwork-forward) method of `DiracSpectralNetwork` in `relativistic_hydrogen`
+- [`forward`](modules/quantum_framework_physics.py.md#hamiltonianbackbonenet-forward) method of `HamiltonianBackboneNet` in `quantum_framework_physics`
+- [`forward`](modules/quantum_framework_physics.py.md#schrodingerspectralnet-forward) method of `SchrodingerSpectralNet` in `quantum_framework_physics`
+- [`forward`](modules/quantum_framework_physics.py.md#spectrallayer-forward) method of `SpectralLayer` in `quantum_framework_physics`
+- [`forward`](modules/relativistic_hydrogen.py.md#spectrallayer-forward) method of `SpectralLayer` in `relativistic_hydrogen`
+- [`forward_indices`](modules/quantum_framework_molecular_v2.py.md#cachedpaulioperation-forward_indices) attribute of `CachedPauliOperation` in `quantum_framework_molecular_v2`
+- [`FOUR_ELECTRONS`](modules/higgs_four_lepton_analysis.py.md#eventtype-four_electrons) attribute of `EventType` in `higgs_four_lepton_analysis`
+- [`FOUR_ELECTRONS`](modules/higgs_quantum_analysis.py.md#eventtype-four_electrons) attribute of `EventType` in `higgs_quantum_analysis`
+- [`four_momentum`](modules/higgs_four_lepton_analysis.py.md#lepton-four_momentum) attribute of `Lepton` in `higgs_four_lepton_analysis`
+- [`four_momentum`](modules/higgs_quantum_analysis.py.md#lepton-four_momentum) attribute of `Lepton` in `higgs_quantum_analysis`
+- [`FOUR_MUONS`](modules/higgs_four_lepton_analysis.py.md#eventtype-four_muons) attribute of `EventType` in `higgs_four_lepton_analysis`
+- [`FOUR_MUONS`](modules/higgs_quantum_analysis.py.md#eventtype-four_muons) attribute of `EventType` in `higgs_quantum_analysis`
+- [`FourMomentum`](modules/higgs_four_lepton_analysis.py.md#fourmomentum) class in `higgs_four_lepton_analysis`
+- [`FourMomentum`](modules/higgs_quantum_analysis.py.md#fourmomentum) class in `higgs_quantum_analysis`
+- [`fourth_order`](modules/advanced_experiments.py.md#anomalousmagneticmoment-fourth_order) method of `AnomalousMagneticMoment` in `advanced_experiments`
+- [`fourth_order`](modules/quantum_framework_physics.py.md#anomalousmagneticmoment-fourth_order) method of `AnomalousMagneticMoment` in `quantum_framework_physics`
+- [`fov`](modules/quantum_3dview.py.md#brutalconfig-fov) attribute of `BrutalConfig` in `quantum_3dview`
+- [`frame`](modules/immersive.app.py.md#app-frame) method of `App` in `immersive.app`
+- [`FrameworkAdapter`](modules/qc_integration.py.md#frameworkadapter) class in `qc_integration`
+- [`FrameworkConfig`](modules/quantum_framework_core.py.md#frameworkconfig) class in `quantum_framework_core`
+- [`FrameworkConfig`](modules/quantum_simulator.py.md#frameworkconfig) class in `quantum_simulator`
+- [`from_bitstring`](modules/quantum_computer.py.md#jointstatefactory-from_bitstring) method of `JointStateFactory` in `quantum_computer`
+- [`from_bitstring`](modules/quantum_simulator.py.md#jointstatefactory-from_bitstring) method of `JointStateFactory` in `quantum_simulator`
+- [`from_circuit_ir`](modules/qc_integration.py.md#frameworkadapter-from_circuit_ir) method of `FrameworkAdapter` in `qc_integration`
+- [`from_circuit_ir`](modules/qc_integration.py.md#integrationbridge-from_circuit_ir) method of `IntegrationBridge` in `qc_integration`
+- [`from_energy_momentum`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-from_energy_momentum) classmethod of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`from_energy_momentum`](modules/higgs_quantum_analysis.py.md#fourmomentum-from_energy_momentum) classmethod of `FourMomentum` in `higgs_quantum_analysis`
+- [`from_pennylane`](modules/qc_integration.py.md#integrationbridge-from_pennylane) method of `IntegrationBridge` in `qc_integration`
+- [`from_qiskit`](modules/qc_integration.py.md#integrationbridge-from_qiskit) method of `IntegrationBridge` in `qc_integration`
+- [`from_statevector`](modules/quantum_framework_molecular_v2.py.md#mpsstate-from_statevector) classmethod of `MPSState` in `quantum_framework_molecular_v2`
+- [`from_toml`](modules/quantum_framework_core.py.md#frameworkconfig-from_toml) classmethod of `FrameworkConfig` in `quantum_framework_core`
+- [`from_toml`](modules/quantum_simulator.py.md#frameworkconfig-from_toml) classmethod of `FrameworkConfig` in `quantum_simulator`
+- [`from_toml`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-from_toml) classmethod of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`full_distribution`](modules/quantum_computer.py.md#measurementresult-full_distribution) attribute of `MeasurementResult` in `quantum_computer`
+- [`full_lamb_shift`](modules/advanced_experiments.py.md#lambshiftcalculator-full_lamb_shift) method of `LambShiftCalculator` in `advanced_experiments`
+- [`full_lamb_shift`](modules/quantum_framework_physics.py.md#lambshiftcalculator-full_lamb_shift) method of `LambShiftCalculator` in `quantum_framework_physics`
+- [`full_report`](modules/advanced_experiments.py.md#anomalousmagneticmoment-full_report) method of `AnomalousMagneticMoment` in `advanced_experiments`
+- [`FULLSCREEN_VERTEX`](modules/immersive.glkit.py.md#fullscreen_vertex) constant in `immersive.glkit`
+- [`FullscreenPass`](modules/immersive.glkit.py.md#fullscreenpass) class in `immersive.glkit`
+
+<a id="g"></a>
+
+## G
+
+- [`G_ELECTRON`](modules/immersive.spin.py.md#g_electron) constant in `immersive.spin`
+- [`gamma_representation`](modules/quantum_dash.py.md#brutalistconfig-gamma_representation) attribute of `BrutalistConfig` in `quantum_dash`
+- [`gamma_representation`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-gamma_representation) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`gamma_representation`](modules/quantum_framework_core.py.md#frameworkconfig-gamma_representation) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`gamma_representation`](modules/quantum_computer.py.md#simulatorconfig-gamma_representation) attribute of `SimulatorConfig` in `quantum_computer`
+- [`gamma_representation`](modules/quantum_visualizer.py.md#visualizerconfig-gamma_representation) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`GammaMatrices`](modules/quantum_framework_physics.py.md#gammamatrices) class in `quantum_framework_physics`
+- [`GammaMatrices`](modules/relativistic_hydrogen.py.md#gammamatrices) class in `relativistic_hydrogen`
+- [`Gate`](modules/immersive.physics.py.md#gate) class in `immersive.physics`
+- [`gate_name`](modules/quantum_computer.py.md#circuitinstruction-gate_name) attribute of `CircuitInstruction` in `quantum_computer`
+- [`gate_name`](modules/quantum_framework_core.py.md#circuitinstruction-gate_name) attribute of `CircuitInstruction` in `quantum_framework_core`
+- [`gate_name`](modules/quantum_simulator.py.md#circuitinstruction-gate_name) attribute of `CircuitInstruction` in `quantum_simulator`
+- [`gate_name`](modules/quantum_dash.py.md#quantumsnapshot-gate_name) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`gate_name`](modules/quantum_visualizer.py.md#quantumstatesnapshot-gate_name) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`gate_name`](modules/qc_dashboard.py.md#snapshotdata-gate_name) attribute of `SnapshotData` in `qc_dashboard`
+- [`gate_name_map`](modules/qc_integration.py.md#integrationconfig-gate_name_map) attribute of `IntegrationConfig` in `qc_integration`
+- [`gate_sequence`](modules/quantum_visualizer.py.md#visualizerconfig-gate_sequence) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`GateInstruction`](modules/qc_integration.py.md#gateinstruction) class in `qc_integration`
+- [`GateItem`](modules/qc_dashboard.py.md#gateitem) class in `qc_dashboard`
+- [`generate_full_report`](modules/quantum_3dview.py.md#brutaldashboard-generate_full_report) method of `BrutalDashboard` in `quantum_3dview`
+- [`generate_visualization`](modules/higgs_four_lepton_analysis.py.md#higgsquantumanalysis-generate_visualization) method of `HiggsQuantumAnalysis` in `higgs_four_lepton_analysis`
+- [`generate_visualization`](modules/higgs_quantum_analysis.py.md#higgsquantumanalysis-generate_visualization) method of `HiggsQuantumAnalysis` in `higgs_quantum_analysis`
+- [`GEOM`](modules/immersive.shaders.py.md#geom) constant in `immersive.shaders`
+- [`geometry`](modules/quantum_framework_core.py.md#moleculedata-geometry) attribute of `MoleculeData` in `quantum_framework_core`
+- [`geometry`](modules/quantum_framework_molecular_v2.py.md#moleculedata-geometry) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`geometry`](modules/quantum_simulator.py.md#moleculedata-geometry) attribute of `MoleculeData` in `quantum_simulator`
+- [`geometry`](modules/advanced_experiments.py.md#polyatomicmoleculedata-geometry) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`get_atom`](modules/quantum_framework_core.py.md#configloader-get_atom) method of `ConfigLoader` in `quantum_framework_core`
+- [`get_atom`](modules/quantum_simulator.py.md#configloader-get_atom) method of `ConfigLoader` in `quantum_simulator`
+- [`get_atom`](modules/quantum_simulator.py.md#quantumsimulationframework-get_atom) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`get_atoms_by_qubits`](modules/quantum_framework_core.py.md#configloader-get_atoms_by_qubits) method of `ConfigLoader` in `quantum_framework_core`
+- [`get_backend`](modules/quantum_framework_core.py.md#mpsquantumcomputer-get_backend) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`get_backend_energy`](modules/quantum_framework_molecular_v2.py.md#backendintegrator-get_backend_energy) method of `BackendIntegrator` in `quantum_framework_molecular_v2`
+- [`get_experiment`](modules/quantum_framework_core.py.md#configloader-get_experiment) method of `ConfigLoader` in `quantum_framework_core`
+- [`get_input`](modules/quantum_framework_menu.py.md#menusystem-get_input) method of `MenuSystem` in `quantum_framework_menu`
+- [`get_molecule`](modules/quantum_framework_core.py.md#configloader-get_molecule) method of `ConfigLoader` in `quantum_framework_core`
+- [`get_molecule`](modules/quantum_simulator.py.md#configloader-get_molecule) method of `ConfigLoader` in `quantum_simulator`
+- [`get_molecule`](modules/quantum_simulator.py.md#quantumsimulationframework-get_molecule) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`get_molecules_by_qubits`](modules/quantum_framework_core.py.md#configloader-get_molecules_by_qubits) method of `ConfigLoader` in `quantum_framework_core`
+- [`get_orbital`](modules/quantum_framework_core.py.md#configloader-get_orbital) method of `ConfigLoader` in `quantum_framework_core`
+- [`get_orbital`](modules/quantum_simulator.py.md#configloader-get_orbital) method of `ConfigLoader` in `quantum_simulator`
+- [`get_orbital`](modules/quantum_simulator.py.md#quantumsimulationframework-get_orbital) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`get_theoretical_entropy`](modules/entangled_hydrogen.py.md#bellstate-get_theoretical_entropy) method of `BellState` in `entangled_hydrogen`
+- [`get_theoretical_entropy`](modules/entangled_hydrogen.py.md#ghzstate-get_theoretical_entropy) method of `GHZState` in `entangled_hydrogen`
+- [`get_theoretical_entropy`](modules/entangled_hydrogen.py.md#ientangledstate-get_theoretical_entropy) method of `IEntangledState` in `entangled_hydrogen`
+- [`get_theoretical_entropy`](modules/entangled_hydrogen.py.md#wstate-get_theoretical_entropy) method of `WState` in `entangled_hydrogen`
+- [`get_user_choice`](modules/quantum_simulator.py.md#interactivemenu-get_user_choice) method of `InteractiveMenu` in `quantum_simulator`
+- [`ghz_state`](modules/quantum_framework_core.py.md#mpsquantumcomputer-ghz_state) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`ghz_state`](modules/quantum_computer.py.md#quantumcomputer-ghz_state) method of `QuantumComputer` in `quantum_computer`
+- [`ghz_state`](modules/quantum_simulator.py.md#quantumcomputer-ghz_state) method of `QuantumComputer` in `quantum_simulator`
+- [`ghz_state`](modules/qc_integration.py.md#standardcircuitfactory-ghz_state) staticmethod of `StandardCircuitFactory` in `qc_integration`
+- [`ghz_state`](modules/quantum_dash.py.md#standardcircuits-ghz_state) staticmethod of `StandardCircuits` in `quantum_dash`
+- [`ghz_state`](modules/quantum_visualizer.py.md#standardcircuits-ghz_state) staticmethod of `StandardCircuits` in `quantum_visualizer`
+- [`GHZState`](modules/entangled_hydrogen.py.md#ghzstate) class in `entangled_hydrogen`
+- [`givens_single_excitation`](modules/app.py.md#givens_single_excitation) function in `app`
+- [`givens_single_excitation`](modules/polarizability_v3.py.md#givens_single_excitation) function in `polarizability_v3`
+- [`GLOSSARY`](modules/quantum_lab.py.md#glossary) constant in `quantum_lab`
+- [`glossary`](modules/quantum_lab.py.md#quantumlab-glossary) method of `QuantumLab` in `quantum_lab`
+- [`glow_intensity`](modules/quantum_3dview.py.md#brutalconfig-glow_intensity) attribute of `BrutalConfig` in `quantum_3dview`
+- [`glow_intensity`](modules/quantum_dash.py.md#brutalistconfig-glow_intensity) attribute of `BrutalistConfig` in `quantum_dash`
+- [`go`](modules/immersive.app.py.md#app-go) method of `App` in `immersive.app`
+- [`gradient_tol`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-gradient_tol) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`GRID`](modules/immersive.matter.py.md#grid) constant in `immersive.matter`
+- [`grid_alpha`](modules/quantum_dash.py.md#brutalistconfig-grid_alpha) attribute of `BrutalistConfig` in `quantum_dash`
+- [`GRID_COLOR`](modules/higgs_four_lepton_analysis.py.md#config-grid_color) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`GRID_COLOR`](modules/higgs_quantum_analysis.py.md#config-grid_color) attribute of `Config` in `higgs_quantum_analysis`
+- [`grid_color`](modules/quantum_visualizer.py.md#visualizerconfig-grid_color) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`grid_search_phi`](modules/quantum_framework_core.py.md#frameworkconfig-grid_search_phi) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`grid_search_phi`](modules/quantum_simulator.py.md#frameworkconfig-grid_search_phi) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`grid_search_r`](modules/quantum_framework_core.py.md#frameworkconfig-grid_search_r) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`grid_search_r`](modules/quantum_simulator.py.md#frameworkconfig-grid_search_r) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`grid_search_theta`](modules/quantum_framework_core.py.md#frameworkconfig-grid_search_theta) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`grid_search_theta`](modules/quantum_simulator.py.md#frameworkconfig-grid_search_theta) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`grid_size`](modules/quantum_dash.py.md#brutalistconfig-grid_size) attribute of `BrutalistConfig` in `quantum_dash`
+- [`GRID_SIZE`](modules/higgs_four_lepton_analysis.py.md#config-grid_size) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`GRID_SIZE`](modules/higgs_quantum_analysis.py.md#config-grid_size) attribute of `Config` in `higgs_quantum_analysis`
+- [`GRID_SIZE`](modules/orbital_visualizer2.py.md#config-grid_size) attribute of `Config` in `orbital_visualizer2`
+- [`GRID_SIZE`](modules/relativistic_hydrogen.py.md#config-grid_size) attribute of `Config` in `relativistic_hydrogen`
+- [`grid_size`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-grid_size) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`grid_size`](modules/quantum_framework_core.py.md#frameworkconfig-grid_size) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`grid_size`](modules/quantum_simulator.py.md#frameworkconfig-grid_size) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`grid_size`](modules/advanced_experiments.py.md#groverconfig-grid_size) attribute of `GroverConfig` in `advanced_experiments`
+- [`grid_size`](modules/advanced_experiments.py.md#qedconfig-grid_size) attribute of `QEDConfig` in `advanced_experiments`
+- [`grid_size`](modules/quantum_computer.py.md#simulatorconfig-grid_size) attribute of `SimulatorConfig` in `quantum_computer`
+- [`grid_size`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-grid_size) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`grid_size`](modules/quantum_visualizer.py.md#visualizerconfig-grid_size) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`grover`](modules/qc_integration.py.md#standardcircuitfactory-grover) staticmethod of `StandardCircuitFactory` in `qc_integration`
+- [`grover_diffusion`](modules/quantum_dash.py.md#standardcircuits-grover_diffusion) staticmethod of `StandardCircuits` in `quantum_dash`
+- [`grover_diffusion`](modules/quantum_visualizer.py.md#standardcircuits-grover_diffusion) staticmethod of `StandardCircuits` in `quantum_visualizer`
+- [`grover_iterations`](modules/quantum_dash.py.md#brutalistconfig-grover_iterations) attribute of `BrutalistConfig` in `quantum_dash`
+- [`grover_iterations`](modules/quantum_visualizer.py.md#visualizerconfig-grover_iterations) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`grover_marked_state`](modules/quantum_dash.py.md#brutalistconfig-grover_marked_state) attribute of `BrutalistConfig` in `quantum_dash`
+- [`grover_marked_state`](modules/quantum_visualizer.py.md#visualizerconfig-grover_marked_state) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`grover_oracle`](modules/quantum_dash.py.md#standardcircuits-grover_oracle) staticmethod of `StandardCircuits` in `quantum_dash`
+- [`grover_oracle`](modules/quantum_visualizer.py.md#standardcircuits-grover_oracle) staticmethod of `StandardCircuits` in `quantum_visualizer`
+- [`grover_oracle_search`](modules/quantum_computer.py.md#quantumcomputer-grover_oracle_search) method of `QuantumComputer` in `quantum_computer`
+- [`GroverConfig`](modules/advanced_experiments.py.md#groverconfig) class in `advanced_experiments`
+- [`GroverDiffusionOperator`](modules/advanced_experiments.py.md#groverdiffusionoperator) class in `advanced_experiments`
+- [`GroverOracle`](modules/advanced_experiments.py.md#groveroracle) class in `advanced_experiments`
+- [`GroverSearch`](modules/advanced_experiments.py.md#groversearch) class in `advanced_experiments`
+
+<a id="h"></a>
+
+## H
+
+- [`h`](modules/quantum_computer.py.md#quantumcircuit-h) method of `QuantumCircuit` in `quantum_computer`
+- [`h`](modules/quantum_framework_core.py.md#quantumcircuit-h) method of `QuantumCircuit` in `quantum_framework_core`
+- [`h`](modules/quantum_simulator.py.md#quantumcircuit-h) method of `QuantumCircuit` in `quantum_simulator`
+- [`h`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-h) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`h2`](modules/quantum_framework_molecular_v2.py.md#moleculebuilder-h2) staticmethod of `MoleculeBuilder` in `quantum_framework_molecular_v2`
+- [`H2_BOND_BOHR`](modules/quantum_lab.py.md#h2_bond_bohr) constant in `quantum_lab`
+- [`h2_nuclear_repulsion`](modules/qc_dashboard.py.md#dashboardconfig-h2_nuclear_repulsion) attribute of `DashboardConfig` in `qc_dashboard`
+- [`h2_sto3g`](modules/quantum_framework_molecular.py.md#moleculebuilder-h2_sto3g) staticmethod of `MoleculeBuilder` in `quantum_framework_molecular`
+- [`h2_xx_coeff`](modules/qc_dashboard.py.md#dashboardconfig-h2_xx_coeff) attribute of `DashboardConfig` in `qc_dashboard`
+- [`h2_yy_coeff`](modules/qc_dashboard.py.md#dashboardconfig-h2_yy_coeff) attribute of `DashboardConfig` in `qc_dashboard`
+- [`h2_zz_coeff`](modules/qc_dashboard.py.md#dashboardconfig-h2_zz_coeff) attribute of `DashboardConfig` in `qc_dashboard`
+- [`h2o`](modules/advanced_experiments.py.md#moleculebuilder-h2o) staticmethod of `MoleculeBuilder` in `advanced_experiments`
+- [`h2o`](modules/quantum_framework_molecular_v2.py.md#moleculebuilder-h2o) staticmethod of `MoleculeBuilder` in `quantum_framework_molecular_v2`
+- [`H2VQEEngine`](modules/quantum_lab.py.md#h2vqeengine) class in `quantum_lab`
+- [`H2VQESolver`](modules/qc_dashboard.py.md#h2vqesolver) class in `qc_dashboard`
+- [`h_core`](modules/molecular_sim.py.md#moleculedata-h_core) attribute of `MoleculeData` in `molecular_sim`
+- [`h_core`](modules/quantum_framework_core.py.md#moleculedata-h_core) attribute of `MoleculeData` in `quantum_framework_core`
+- [`h_core`](modules/quantum_framework_molecular.py.md#moleculedata-h_core) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`h_core`](modules/quantum_simulator.py.md#moleculedata-h_core) attribute of `MoleculeData` in `quantum_simulator`
+- [`HadamardGate`](modules/quantum_computer.py.md#hadamardgate) class in `quantum_computer`
+- [`HadamardGate`](modules/quantum_framework_core.py.md#hadamardgate) class in `quantum_framework_core`
+- [`HadamardGate`](modules/quantum_simulator.py.md#hadamardgate) class in `quantum_simulator`
+- [`half`](modules/immersive.matter.py.md#solved-half) attribute of `Solved` in `immersive.matter`
+- [`hamiltonian_checkpoint`](modules/quantum_dash.py.md#brutalistconfig-hamiltonian_checkpoint) attribute of `BrutalistConfig` in `quantum_dash`
+- [`hamiltonian_checkpoint`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-hamiltonian_checkpoint) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`hamiltonian_checkpoint`](modules/quantum_framework_core.py.md#frameworkconfig-hamiltonian_checkpoint) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`hamiltonian_checkpoint`](modules/quantum_simulator.py.md#frameworkconfig-hamiltonian_checkpoint) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`hamiltonian_checkpoint`](modules/advanced_experiments.py.md#groverconfig-hamiltonian_checkpoint) attribute of `GroverConfig` in `advanced_experiments`
+- [`hamiltonian_checkpoint`](modules/quantum_computer.py.md#simulatorconfig-hamiltonian_checkpoint) attribute of `SimulatorConfig` in `quantum_computer`
+- [`hamiltonian_checkpoint`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-hamiltonian_checkpoint) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`hamiltonian_checkpoint`](modules/quantum_visualizer.py.md#visualizerconfig-hamiltonian_checkpoint) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`HAMILTONIAN_DT`](modules/orbital_visualizer2.py.md#config-hamiltonian_dt) attribute of `Config` in `orbital_visualizer2`
+- [`HAMILTONIAN_EVOLUTION_STEPS`](modules/orbital_visualizer2.py.md#config-hamiltonian_evolution_steps) attribute of `Config` in `orbital_visualizer2`
+- [`hamiltonian_matrix`](modules/quantum_framework_molecular_v2.py.md#moleculedata-hamiltonian_matrix) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`hamiltonian_terms`](modules/quantum_framework_molecular_v2.py.md#moleculedata-hamiltonian_terms) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`HamiltonianBackboneNet`](modules/quantum_framework_physics.py.md#hamiltonianbackbonenet) class in `quantum_framework_physics`
+- [`HamiltonianBackend`](modules/quantum_framework_physics.py.md#hamiltonianbackend) class in `quantum_framework_physics`
+- [`HamiltonianBuilder`](modules/quantum_framework_molecular_v2.py.md#hamiltonianbuilder) class in `quantum_framework_molecular_v2`
+- [`HamiltonianNNProcessor`](modules/orbital_visualizer2.py.md#hamiltoniannnprocessor) class in `orbital_visualizer2`
+- [`handle_event`](modules/immersive.app.py.md#app-handle_event) method of `App` in `immersive.app`
+- [`harmonic`](modules/quantum_computer.py.md#potentialgenerator-harmonic) method of `PotentialGenerator` in `quantum_computer`
+- [`harmonic`](modules/quantum_framework_physics.py.md#potentialgenerator-harmonic) method of `PotentialGenerator` in `quantum_framework_physics`
+- [`harmonic`](modules/quantum_simulator.py.md#potentialgenerator-harmonic) method of `PotentialGenerator` in `quantum_simulator`
+- [`HARTREE_EV`](modules/immersive.matter.py.md#hartree_ev) constant in `immersive.matter`
+- [`HARTREE_EV`](modules/immersive.physics.py.md#hartree_ev) constant in `immersive.physics`
+- [`HARTREE_HZ`](modules/immersive.spin.py.md#hartree_hz) constant in `immersive.spin`
+- [`HBAR`](modules/relativistic_hydrogen.py.md#config-hbar) attribute of `Config` in `relativistic_hydrogen`
+- [`hbar`](modules/quantum_framework_core.py.md#frameworkconfig-hbar) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`hbar`](modules/quantum_simulator.py.md#frameworkconfig-hbar) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`hbar`](modules/advanced_experiments.py.md#qedconfig-hbar) attribute of `QEDConfig` in `advanced_experiments`
+- [`HEADLINE`](modules/immersive.scenes.py.md#matterscene-headline) attribute of `MatterScene` in `immersive.scenes`
+- [`heatmap`](modules/immersive.hud.py.md#hud-heatmap) method of `Hud` in `immersive.hud`
+- [`hf_energy`](modules/molecular_sim.py.md#moleculedata-hf_energy) attribute of `MoleculeData` in `molecular_sim`
+- [`hf_energy`](modules/quantum_framework_molecular.py.md#moleculedata-hf_energy) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`hf_energy`](modules/quantum_framework_molecular_v2.py.md#moleculedata-hf_energy) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`hf_energy`](modules/advanced_experiments.py.md#polyatomicmoleculedata-hf_energy) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`hf_energy`](modules/molecular_sim.py.md#vqeresult-hf_energy) attribute of `VQEResult` in `molecular_sim`
+- [`hf_energy`](modules/quantum_framework_molecular.py.md#vqeresult-hf_energy) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`hf_energy`](modules/quantum_framework_molecular_v2.py.md#vqeresult-hf_energy) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`hf_energy_hartree`](modules/quantum_framework_core.py.md#moleculedata-hf_energy_hartree) attribute of `MoleculeData` in `quantum_framework_core`
+- [`hf_energy_hartree`](modules/quantum_simulator.py.md#moleculedata-hf_energy_hartree) attribute of `MoleculeData` in `quantum_simulator`
+- [`hf_state`](modules/quantum_framework_molecular_v2.py.md#particleconservingstate-hf_state) method of `ParticleConservingState` in `quantum_framework_molecular_v2`
+- [`hidden_dim`](modules/quantum_dash.py.md#brutalistconfig-hidden_dim) attribute of `BrutalistConfig` in `quantum_dash`
+- [`HIDDEN_DIM`](modules/higgs_four_lepton_analysis.py.md#config-hidden_dim) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`HIDDEN_DIM`](modules/higgs_quantum_analysis.py.md#config-hidden_dim) attribute of `Config` in `higgs_quantum_analysis`
+- [`HIDDEN_DIM`](modules/orbital_visualizer2.py.md#config-hidden_dim) attribute of `Config` in `orbital_visualizer2`
+- [`HIDDEN_DIM`](modules/relativistic_hydrogen.py.md#config-hidden_dim) attribute of `Config` in `relativistic_hydrogen`
+- [`hidden_dim`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-hidden_dim) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`hidden_dim`](modules/quantum_framework_core.py.md#frameworkconfig-hidden_dim) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`hidden_dim`](modules/quantum_simulator.py.md#frameworkconfig-hidden_dim) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`hidden_dim`](modules/advanced_experiments.py.md#groverconfig-hidden_dim) attribute of `GroverConfig` in `advanced_experiments`
+- [`hidden_dim`](modules/advanced_experiments.py.md#qedconfig-hidden_dim) attribute of `QEDConfig` in `advanced_experiments`
+- [`hidden_dim`](modules/quantum_computer.py.md#simulatorconfig-hidden_dim) attribute of `SimulatorConfig` in `quantum_computer`
+- [`hidden_dim`](modules/quantum_visualizer.py.md#visualizerconfig-hidden_dim) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`HIGGS_MASS_GEV`](modules/higgs_four_lepton_analysis.py.md#config-higgs_mass_gev) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`HIGGS_MASS_GEV`](modules/higgs_quantum_analysis.py.md#config-higgs_mass_gev) attribute of `Config` in `higgs_quantum_analysis`
+- [`HiggsQuantumAnalysis`](modules/higgs_four_lepton_analysis.py.md#higgsquantumanalysis) class in `higgs_four_lepton_analysis`
+- [`HiggsQuantumAnalysis`](modules/higgs_quantum_analysis.py.md#higgsquantumanalysis) class in `higgs_quantum_analysis`
+- [`HilbertPhase`](modules/quantum_framework_core.py.md#hilbertphase) enum in `quantum_framework_core`
+- [`HilbertPhase`](modules/topological_hilbert_compression2.py.md#hilbertphase) enum in `topological_hilbert_compression2`
+- [`hint_key`](modules/immersive.scenes.py.md#atomscene-hint_key) attribute of `AtomScene` in `immersive.scenes`
+- [`hint_key`](modules/immersive.scenes.py.md#blochscene-hint_key) attribute of `BlochScene` in `immersive.scenes`
+- [`hint_key`](modules/immersive.scenes.py.md#entanglescene-hint_key) attribute of `EntangleScene` in `immersive.scenes`
+- [`hint_key`](modules/immersive.scenes.py.md#matterscene-hint_key) attribute of `MatterScene` in `immersive.scenes`
+- [`hint_key`](modules/immersive.scenes.py.md#scene-hint_key) attribute of `Scene` in `immersive.scenes`
+- [`hint_key`](modules/immersive.scenes.py.md#spinscene-hint_key) attribute of `SpinScene` in `immersive.scenes`
+- [`HISTOGRAM_BINS`](modules/higgs_four_lepton_analysis.py.md#config-histogram_bins) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`HISTOGRAM_BINS`](modules/higgs_quantum_analysis.py.md#config-histogram_bins) attribute of `Config` in `higgs_quantum_analysis`
+- [`HISTOGRAM_BINS`](modules/orbital_visualizer2.py.md#config-histogram_bins) attribute of `Config` in `orbital_visualizer2`
+- [`histogram_bins`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-histogram_bins) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`histogram_bins`](modules/quantum_framework_core.py.md#frameworkconfig-histogram_bins) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`histogram_bins`](modules/quantum_simulator.py.md#frameworkconfig-histogram_bins) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`histogram_bins`](modules/quantum_visualizer.py.md#visualizerconfig-histogram_bins) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`hit`](modules/immersive.hud.py.md#hud-hit) method of `Hud` in `immersive.hud`
+- [`hologram_available`](modules/qc_dashboard.py.md#brutalvizengine-hologram_available) property of `BrutalVizEngine` in `qc_dashboard`
+- [`hologram_opacity`](modules/quantum_3dview.py.md#brutalconfig-hologram_opacity) attribute of `BrutalConfig` in `quantum_3dview`
+- [`hologram_opacity`](modules/quantum_dash.py.md#brutalistconfig-hologram_opacity) attribute of `BrutalistConfig` in `quantum_dash`
+- [`HOME_YAW`](modules/immersive.scenes.py.md#entanglescene-home_yaw) attribute of `EntangleScene` in `immersive.scenes`
+- [`homo`](modules/immersive.matter.py.md#solved-homo) attribute of `Solved` in `immersive.matter`
+- [`HOT_GLASS`](modules/quantum_framework_core.py.md#hilbertphase-hot_glass) attribute of `HilbertPhase` in `quantum_framework_core`
+- [`HOT_GLASS`](modules/topological_hilbert_compression2.py.md#hilbertphase-hot_glass) attribute of `HilbertPhase` in `topological_hilbert_compression2`
+- [`html_path`](modules/quantum_dash.py.md#visualizationoutput-html_path) attribute of `VisualizationOutput` in `quantum_dash`
+- [`Hud`](modules/immersive.hud.py.md#hud) class in `immersive.hud`
+- [`HUD_FRAGMENT`](modules/immersive.shaders.py.md#hud_fragment) constant in `immersive.shaders`
+- [`hue_color`](modules/immersive.hud.py.md#hud-hue_color) method of `Hud` in `immersive.hud`
+- [`HybridBackend`](modules/topological_hilbert_compression2.py.md#hybridbackend) class in `topological_hilbert_compression2`
+
+<a id="i"></a>
+
+## I
+
+- [`i1`](modules/immersive.glkit.py.md#program-i1) method of `Program` in `immersive.glkit`
+- [`I2`](modules/immersive.physics.py.md#i2) constant in `immersive.physics`
+- [`IEntangledState`](modules/entangled_hydrogen.py.md#ientangledstate) class in `entangled_hydrogen`
+- [`import_`](modules/qc_integration.py.md#iqcadapter-import_) method of `IQCAdapter` in `qc_integration`
+- [`import_`](modules/qc_integration.py.md#openqasmadapter-import_) method of `OpenQasmAdapter` in `qc_integration`
+- [`import_`](modules/qc_integration.py.md#pennylaneadapter-import_) method of `PennyLaneAdapter` in `qc_integration`
+- [`import_`](modules/qc_integration.py.md#qiskitadapter-import_) method of `QiskitAdapter` in `qc_integration`
+- [`import_qasm`](modules/qc_integration.py.md#integrationbridge-import_qasm) method of `IntegrationBridge` in `qc_integration`
+- [`import_qasm_to_framework`](modules/qc_integration.py.md#integrationbridge-import_qasm_to_framework) method of `IntegrationBridge` in `qc_integration`
+- [`include_anomalous_moment`](modules/advanced_experiments.py.md#qedconfig-include_anomalous_moment) attribute of `QEDConfig` in `advanced_experiments`
+- [`include_lamb_shift`](modules/advanced_experiments.py.md#qedconfig-include_lamb_shift) attribute of `QEDConfig` in `advanced_experiments`
+- [`include_vacuum_polarization`](modules/advanced_experiments.py.md#qedconfig-include_vacuum_polarization) attribute of `QEDConfig` in `advanced_experiments`
+- [`indent_qasm`](modules/qc_integration.py.md#integrationconfig-indent_qasm) attribute of `IntegrationConfig` in `qc_integration`
+- [`index`](modules/immersive.matter.py.md#orbitalinfo-index) attribute of `OrbitalInfo` in `immersive.matter`
+- [`__init__`](modules/advanced_experiments.py.md#advancedexperimentrunner-__init__) constructor of `AdvancedExperimentRunner` in `advanced_experiments`
+- [`__init__`](modules/advanced_experiments.py.md#anomalousmagneticmoment-__init__) constructor of `AnomalousMagneticMoment` in `advanced_experiments`
+- [`__init__`](modules/quantum_framework_physics.py.md#anomalousmagneticmoment-__init__) constructor of `AnomalousMagneticMoment` in `quantum_framework_physics`
+- [`__init__`](modules/immersive.app.py.md#app-__init__) constructor of `App` in `immersive.app`
+- [`__init__`](modules/immersive.matter.py.md#asyncsolver-__init__) constructor of `AsyncSolver` in `immersive.matter`
+- [`__init__`](modules/immersive.scenes.py.md#atomscene-__init__) constructor of `AtomScene` in `immersive.scenes`
+- [`__init__`](modules/qc_dashboard.py.md#backendcomparator-__init__) constructor of `BackendComparator` in `qc_dashboard`
+- [`__init__`](modules/immersive.backend.py.md#backendhub-__init__) constructor of `BackendHub` in `immersive.backend`
+- [`__init__`](modules/quantum_framework_molecular_v2.py.md#backendintegrator-__init__) constructor of `BackendIntegrator` in `quantum_framework_molecular_v2`
+- [`__init__`](modules/immersive.backend.py.md#backendregister-__init__) constructor of `BackendRegister` in `immersive.backend`
+- [`__init__`](modules/immersive.scenes.py.md#blochscene-__init__) constructor of `BlochScene` in `immersive.scenes`
+- [`__init__`](modules/quantum_3dview.py.md#brutaldashboard-__init__) constructor of `BrutalDashboard` in `quantum_3dview`
+- [`__init__`](modules/qc_dashboard.py.md#brutalvizengine-__init__) constructor of `BrutalVizEngine` in `qc_dashboard`
+- [`__init__`](modules/quantum_framework_molecular_v2.py.md#cachedhamiltonianevaluator-__init__) constructor of `CachedHamiltonianEvaluator` in `quantum_framework_molecular_v2`
+- [`__init__`](modules/quantum_dash.py.md#circuitexecutor-__init__) constructor of `CircuitExecutor` in `quantum_dash`
+- [`__init__`](modules/quantum_visualizer.py.md#circuitexecutor-__init__) constructor of `CircuitExecutor` in `quantum_visualizer`
+- [`__init__`](modules/quantum_framework_core.py.md#configloader-__init__) constructor of `ConfigLoader` in `quantum_framework_core`
+- [`__init__`](modules/quantum_simulator.py.md#configloader-__init__) constructor of `ConfigLoader` in `quantum_simulator`
+- [`__init__`](modules/qc_dashboard.py.md#dashboardapp-__init__) constructor of `DashboardApp` in `qc_dashboard`
+- [`__init__`](modules/app.py.md#dipoleoperatorbuilder-__init__) constructor of `DipoleOperatorBuilder` in `app`
+- [`__init__`](modules/polarizability_v3.py.md#dipoleoperatorbuilder-__init__) constructor of `DipoleOperatorBuilder` in `polarizability_v3`
+- [`__init__`](modules/quantum_framework_physics.py.md#diracbackend-__init__) constructor of `DiracBackend` in `quantum_framework_physics`
+- [`__init__`](modules/immersive.spin.py.md#diracbackendlink-__init__) constructor of `DiracBackendLink` in `immersive.spin`
+- [`__init__`](modules/quantum_framework_physics.py.md#dirachamiltonianoperator-__init__) constructor of `DiracHamiltonianOperator` in `quantum_framework_physics`
+- [`__init__`](modules/relativistic_hydrogen.py.md#dirachamiltonianoperator-__init__) constructor of `DiracHamiltonianOperator` in `relativistic_hydrogen`
+- [`__init__`](modules/quantum_framework_physics.py.md#dirachydrogenatom-__init__) constructor of `DiracHydrogenAtom` in `quantum_framework_physics`
+- [`__init__`](modules/quantum_simulator.py.md#dirachydrogenatom-__init__) constructor of `DiracHydrogenAtom` in `quantum_simulator`
+- [`__init__`](modules/relativistic_hydrogen.py.md#dirachydrogenatom-__init__) constructor of `DiracHydrogenAtom` in `relativistic_hydrogen`
+- [`__init__`](modules/relativistic_hydrogen.py.md#diracmodelwrapper-__init__) constructor of `DiracModelWrapper` in `relativistic_hydrogen`
+- [`__init__`](modules/relativistic_hydrogen.py.md#diracmontecarlosampler-__init__) constructor of `DiracMonteCarloSampler` in `relativistic_hydrogen`
+- [`__init__`](modules/quantum_framework_physics.py.md#diracspectralnet-__init__) constructor of `DiracSpectralNet` in `quantum_framework_physics`
+- [`__init__`](modules/relativistic_hydrogen.py.md#diracspectralnetwork-__init__) constructor of `DiracSpectralNetwork` in `relativistic_hydrogen`
+- [`__init__`](modules/relativistic_hydrogen.py.md#diracvalidationsuite-__init__) constructor of `DiracValidationSuite` in `relativistic_hydrogen`
+- [`__init__`](modules/relativistic_hydrogen.py.md#diracvisualizer-__init__) constructor of `DiracVisualizer` in `relativistic_hydrogen`
+- [`__init__`](modules/relativistic_hydrogen.py.md#diracwavefunctioncalculator-__init__) constructor of `DiracWavefunctionCalculator` in `relativistic_hydrogen`
+- [`__init__`](modules/topological_hilbert_compression2.py.md#directbackend-__init__) constructor of `DirectBackend` in `topological_hilbert_compression2`
+- [`__init__`](modules/immersive.scenes.py.md#entanglescene-__init__) constructor of `EntangleScene` in `immersive.scenes`
+- [`__init__`](modules/entangled_hydrogen.py.md#entangledhydrogenexperiment-__init__) constructor of `EntangledHydrogenExperiment` in `entangled_hydrogen`
+- [`__init__`](modules/entangled_hydrogen.py.md#entangledhydrogensampler-__init__) constructor of `EntangledHydrogenSampler` in `entangled_hydrogen`
+- [`__init__`](modules/quantum_framework_visualization.py.md#entangledhydrogensampler-__init__) constructor of `EntangledHydrogenSampler` in `quantum_framework_visualization`
+- [`__init__`](modules/entangled_hydrogen.py.md#entangledhydrogenvisualizer-__init__) constructor of `EntangledHydrogenVisualizer` in `entangled_hydrogen`
+- [`__init__`](modules/quantum_framework_visualization.py.md#entangledhydrogenvisualizer-__init__) constructor of `EntangledHydrogenVisualizer` in `quantum_framework_visualization`
+- [`__init__`](modules/quantum_simulator.py.md#entangledvisualizer-__init__) constructor of `EntangledVisualizer` in `quantum_simulator`
+- [`__init__`](modules/higgs_four_lepton_analysis.py.md#eventparser-__init__) constructor of `EventParser` in `higgs_four_lepton_analysis`
+- [`__init__`](modules/higgs_quantum_analysis.py.md#eventparser-__init__) constructor of `EventParser` in `higgs_quantum_analysis`
+- [`__init__`](modules/molecular_sim.py.md#exactjwenergy-__init__) constructor of `ExactJWEnergy` in `molecular_sim`
+- [`__init__`](modules/quantum_framework_molecular.py.md#exactjwenergy-__init__) constructor of `ExactJWEnergy` in `quantum_framework_molecular`
+- [`__init__`](modules/quantum_dash.py.md#figurebuilder-__init__) constructor of `FigureBuilder` in `quantum_dash`
+- [`__init__`](modules/quantum_visualizer.py.md#figurebuilder-__init__) constructor of `FigureBuilder` in `quantum_visualizer`
+- [`__init__`](modules/qc_integration.py.md#frameworkadapter-__init__) constructor of `FrameworkAdapter` in `qc_integration`
+- [`__init__`](modules/immersive.glkit.py.md#fullscreenpass-__init__) constructor of `FullscreenPass` in `immersive.glkit`
+- [`__init__`](modules/entangled_hydrogen.py.md#ghzstate-__init__) constructor of `GHZState` in `entangled_hydrogen`
+- [`__init__`](modules/quantum_framework_physics.py.md#gammamatrices-__init__) constructor of `GammaMatrices` in `quantum_framework_physics`
+- [`__init__`](modules/relativistic_hydrogen.py.md#gammamatrices-__init__) constructor of `GammaMatrices` in `relativistic_hydrogen`
+- [`__init__`](modules/immersive.physics.py.md#gate-__init__) constructor of `Gate` in `immersive.physics`
+- [`__init__`](modules/advanced_experiments.py.md#groverdiffusionoperator-__init__) constructor of `GroverDiffusionOperator` in `advanced_experiments`
+- [`__init__`](modules/advanced_experiments.py.md#groveroracle-__init__) constructor of `GroverOracle` in `advanced_experiments`
+- [`__init__`](modules/advanced_experiments.py.md#groversearch-__init__) constructor of `GroverSearch` in `advanced_experiments`
+- [`__init__`](modules/quantum_lab.py.md#h2vqeengine-__init__) constructor of `H2VQEEngine` in `quantum_lab`
+- [`__init__`](modules/qc_dashboard.py.md#h2vqesolver-__init__) constructor of `H2VQESolver` in `qc_dashboard`
+- [`__init__`](modules/quantum_framework_physics.py.md#hamiltonianbackbonenet-__init__) constructor of `HamiltonianBackboneNet` in `quantum_framework_physics`
+- [`__init__`](modules/quantum_framework_physics.py.md#hamiltonianbackend-__init__) constructor of `HamiltonianBackend` in `quantum_framework_physics`
+- [`__init__`](modules/orbital_visualizer2.py.md#hamiltoniannnprocessor-__init__) constructor of `HamiltonianNNProcessor` in `orbital_visualizer2`
+- [`__init__`](modules/higgs_four_lepton_analysis.py.md#higgsquantumanalysis-__init__) constructor of `HiggsQuantumAnalysis` in `higgs_four_lepton_analysis`
+- [`__init__`](modules/higgs_quantum_analysis.py.md#higgsquantumanalysis-__init__) constructor of `HiggsQuantumAnalysis` in `higgs_quantum_analysis`
+- [`__init__`](modules/immersive.hud.py.md#hud-__init__) constructor of `Hud` in `immersive.hud`
+- [`__init__`](modules/qc_integration.py.md#integrationbridge-__init__) constructor of `IntegrationBridge` in `qc_integration`
+- [`__init__`](modules/quantum_simulator.py.md#interactivemenu-__init__) constructor of `InteractiveMenu` in `quantum_simulator`
+- [`__init__`](modules/quantum_computer.py.md#jointhilbertstate-__init__) constructor of `JointHilbertState` in `quantum_computer`
+- [`__init__`](modules/quantum_simulator.py.md#jointhilbertstate-__init__) constructor of `JointHilbertState` in `quantum_simulator`
+- [`__init__`](modules/quantum_computer.py.md#jointstatefactory-__init__) constructor of `JointStateFactory` in `quantum_computer`
+- [`__init__`](modules/quantum_simulator.py.md#jointstatefactory-__init__) constructor of `JointStateFactory` in `quantum_simulator`
+- [`__init__`](modules/advanced_experiments.py.md#lambshiftcalculator-__init__) constructor of `LambShiftCalculator` in `advanced_experiments`
+- [`__init__`](modules/quantum_framework_physics.py.md#lambshiftcalculator-__init__) constructor of `LambShiftCalculator` in `quantum_framework_physics`
+- [`__init__`](modules/immersive.hud.py.md#lang-__init__) constructor of `Lang` in `immersive.hud`
+- [`__init__`](modules/qc_launcher.py.md#launcher-__init__) constructor of `Launcher` in `qc_launcher`
+- [`__init__`](modules/topological_hilbert_compression2.py.md#mpsbackend-__init__) constructor of `MPSBackend` in `topological_hilbert_compression2`
+- [`__init__`](modules/quantum_framework_core.py.md#mpscore-__init__) constructor of `MPSCore` in `quantum_framework_core`
+- [`__init__`](modules/topological_hilbert_compression2.py.md#mpscore-__init__) constructor of `MPSCore` in `topological_hilbert_compression2`
+- [`__init__`](modules/quantum_framework_core.py.md#mpsquantumcomputer-__init__) constructor of `MPSQuantumComputer` in `quantum_framework_core`
+- [`__init__`](modules/quantum_framework_core.py.md#mpsstate-__init__) constructor of `MPSState` in `quantum_framework_core`
+- [`__init__`](modules/quantum_framework_molecular_v2.py.md#mpsstate-__init__) constructor of `MPSState` in `quantum_framework_molecular_v2`
+- [`__init__`](modules/topological_hilbert_compression2.py.md#mpsstate-__init__) constructor of `MPSState` in `topological_hilbert_compression2`
+- [`__init__`](modules/immersive.scenes.py.md#matterscene-__init__) constructor of `MatterScene` in `immersive.scenes`
+- [`__init__`](modules/quantum_framework_menu.py.md#menusystem-__init__) constructor of `MenuSystem` in `quantum_framework_menu`
+- [`__init__`](modules/orbital_visualizer2.py.md#montecarlosampler-__init__) constructor of `MonteCarloSampler` in `orbital_visualizer2`
+- [`__init__`](modules/quantum_framework_visualization.py.md#montecarlosampler-__init__) constructor of `MonteCarloSampler` in `quantum_framework_visualization`
+- [`__init__`](modules/quantum_simulator.py.md#montecarlosampler-__init__) constructor of `MonteCarloSampler` in `quantum_simulator`
+- [`__init__`](modules/qc_integration.py.md#openqasmadapter-__init__) constructor of `OpenQasmAdapter` in `qc_integration`
+- [`__init__`](modules/immersive.glkit.py.md#orbitcamera-__init__) constructor of `OrbitCamera` in `immersive.glkit`
+- [`__init__`](modules/quantum_framework_visualization.py.md#orbitalvisualizer-__init__) constructor of `OrbitalVisualizer` in `quantum_framework_visualization`
+- [`__init__`](modules/quantum_simulator.py.md#orbitalvisualizer-__init__) constructor of `OrbitalVisualizer` in `quantum_simulator`
+- [`__init__`](modules/quantum_framework_molecular_v2.py.md#particleconservingstate-__init__) constructor of `ParticleConservingState` in `quantum_framework_molecular_v2`
+- [`__init__`](modules/qc_integration.py.md#pennylaneadapter-__init__) constructor of `PennyLaneAdapter` in `qc_integration`
+- [`__init__`](modules/qc_dashboard.py.md#plotly3dengine-__init__) constructor of `Plotly3DEngine` in `qc_dashboard`
+- [`__init__`](modules/app.py.md#polarizabilitycalculator-__init__) constructor of `PolarizabilityCalculator` in `app`
+- [`__init__`](modules/polarizability_v3.py.md#polarizabilitycalculator-__init__) constructor of `PolarizabilityCalculator` in `polarizability_v3`
+- [`__init__`](modules/advanced_experiments.py.md#polyatomicexperiment-__init__) constructor of `PolyatomicExperiment` in `advanced_experiments`
+- [`__init__`](modules/advanced_experiments.py.md#polyatomicvqe-__init__) constructor of `PolyatomicVQE` in `advanced_experiments`
+- [`__init__`](modules/immersive.postfx.py.md#postprocess-__init__) constructor of `PostProcess` in `immersive.postfx`
+- [`__init__`](modules/quantum_computer.py.md#potentialgenerator-__init__) constructor of `PotentialGenerator` in `quantum_computer`
+- [`__init__`](modules/quantum_framework_physics.py.md#potentialgenerator-__init__) constructor of `PotentialGenerator` in `quantum_framework_physics`
+- [`__init__`](modules/quantum_simulator.py.md#potentialgenerator-__init__) constructor of `PotentialGenerator` in `quantum_simulator`
+- [`__init__`](modules/immersive.glkit.py.md#program-__init__) constructor of `Program` in `immersive.glkit`
+- [`__init__`](modules/advanced_experiments.py.md#qedeffectsexperiment-__init__) constructor of `QEDEffectsExperiment` in `advanced_experiments`
+- [`__init__`](modules/qc_integration.py.md#qiskitadapter-__init__) constructor of `QiskitAdapter` in `qc_integration`
+- [`__init__`](modules/quantum_computer.py.md#quantumcircuit-__init__) constructor of `QuantumCircuit` in `quantum_computer`
+- [`__init__`](modules/quantum_framework_core.py.md#quantumcircuit-__init__) constructor of `QuantumCircuit` in `quantum_framework_core`
+- [`__init__`](modules/quantum_simulator.py.md#quantumcircuit-__init__) constructor of `QuantumCircuit` in `quantum_simulator`
+- [`__init__`](modules/quantum_computer.py.md#quantumcomputer-__init__) constructor of `QuantumComputer` in `quantum_computer`
+- [`__init__`](modules/quantum_simulator.py.md#quantumcomputer-__init__) constructor of `QuantumComputer` in `quantum_simulator`
+- [`__init__`](modules/quantum_3dview.py.md#quantumhologram-__init__) constructor of `QuantumHologram` in `quantum_3dview`
+- [`__init__`](modules/quantum_lab.py.md#quantumlab-__init__) constructor of `QuantumLab` in `quantum_lab`
+- [`__init__`](modules/quantum_3dview.py.md#quantumneuraltopology-__init__) constructor of `QuantumNeuralTopology` in `quantum_3dview`
+- [`__init__`](modules/quantum_simulator.py.md#quantumresult-__init__) constructor of `QuantumResult` in `quantum_simulator`
+- [`__init__`](modules/quantum_simulator.py.md#quantumsimulationframework-__init__) constructor of `QuantumSimulationFramework` in `quantum_simulator`
+- [`__init__`](modules/quantum_3dview.py.md#quantumsonification-__init__) constructor of `QuantumSonification` in `quantum_3dview`
+- [`__init__`](modules/higgs_four_lepton_analysis.py.md#quantumspinorprocessor-__init__) constructor of `QuantumSpinorProcessor` in `higgs_four_lepton_analysis`
+- [`__init__`](modules/higgs_quantum_analysis.py.md#quantumspinorprocessor-__init__) constructor of `QuantumSpinorProcessor` in `higgs_quantum_analysis`
+- [`__init__`](modules/quantum_dash.py.md#quantumstateanalyzer-__init__) constructor of `QuantumStateAnalyzer` in `quantum_dash`
+- [`__init__`](modules/quantum_visualizer.py.md#quantumstateanalyzer-__init__) constructor of `QuantumStateAnalyzer` in `quantum_visualizer`
+- [`__init__`](modules/quantum_dash.py.md#quantumvisualizer-__init__) constructor of `QuantumVisualizer` in `quantum_dash`
+- [`__init__`](modules/quantum_visualizer.py.md#quantumvisualizer-__init__) constructor of `QuantumVisualizer` in `quantum_visualizer`
+- [`__init__`](modules/immersive.physics.py.md#qubitregister-__init__) constructor of `QubitRegister` in `immersive.physics`
+- [`__init__`](modules/qc_dashboard.py.md#realorbitalengine-__init__) constructor of `RealOrbitalEngine` in `qc_dashboard`
+- [`__init__`](modules/immersive.scenes.py.md#scene-__init__) constructor of `Scene` in `immersive.scenes`
+- [`__init__`](modules/topological_hilbert_compression2.py.md#schrodinger20experiment-__init__) constructor of `Schrodinger20Experiment` in `topological_hilbert_compression2`
+- [`__init__`](modules/quantum_framework_physics.py.md#schrodingerbackend-__init__) constructor of `SchrodingerBackend` in `quantum_framework_physics`
+- [`__init__`](modules/quantum_framework_physics.py.md#schrodingerspectralnet-__init__) constructor of `SchrodingerSpectralNet` in `quantum_framework_physics`
+- [`__init__`](modules/qc_dashboard.py.md#simulatorbackend-__init__) constructor of `SimulatorBackend` in `qc_dashboard`
+- [`__init__`](modules/quantum_framework_molecular_v2.py.md#smartinitializer-__init__) constructor of `SmartInitializer` in `quantum_framework_molecular_v2`
+- [`__init__`](modules/quantum_framework_physics.py.md#spectrallayer-__init__) constructor of `SpectralLayer` in `quantum_framework_physics`
+- [`__init__`](modules/relativistic_hydrogen.py.md#spectrallayer-__init__) constructor of `SpectralLayer` in `relativistic_hydrogen`
+- [`__init__`](modules/immersive.scenes.py.md#spinscene-__init__) constructor of `SpinScene` in `immersive.scenes`
+- [`__init__`](modules/app.py.md#starkevaluator-__init__) constructor of `StarkEvaluator` in `app`
+- [`__init__`](modules/polarizability_v3.py.md#starkevaluator-__init__) constructor of `StarkEvaluator` in `polarizability_v3`
+- [`__init__`](modules/molecular_sim.py.md#surrogateenergy-__init__) constructor of `SurrogateEnergy` in `molecular_sim`
+- [`__init__`](modules/immersive.postfx.py.md#target-__init__) constructor of `Target` in `immersive.postfx`
+- [`__init__`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-__init__) constructor of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`__init__`](modules/quantum_framework_core.py.md#topologicalprotector-__init__) constructor of `TopologicalProtector` in `quantum_framework_core`
+- [`__init__`](modules/topological_hilbert_compression2.py.md#topologicalprotector-__init__) constructor of `TopologicalProtector` in `topological_hilbert_compression2`
+- [`__init__`](modules/quantum_framework_molecular.py.md#uccsdansatz-__init__) constructor of `UCCSDAnsatz` in `quantum_framework_molecular`
+- [`__init__`](modules/quantum_framework_molecular_v2.py.md#uccsdansatz-__init__) constructor of `UCCSDAnsatz` in `quantum_framework_molecular_v2`
+- [`__init__`](modules/molecular_sim.py.md#vqesolver-__init__) constructor of `VQESolver` in `molecular_sim`
+- [`__init__`](modules/quantum_framework_molecular.py.md#vqesolver-__init__) constructor of `VQESolver` in `quantum_framework_molecular`
+- [`__init__`](modules/quantum_framework_molecular_v2.py.md#vqesolver-__init__) constructor of `VQESolver` in `quantum_framework_molecular_v2`
+- [`__init__`](modules/quantum_framework_core.py.md#vacuumcore-__init__) constructor of `VacuumCore` in `quantum_framework_core`
+- [`__init__`](modules/topological_hilbert_compression2.py.md#vacuumcore-__init__) constructor of `VacuumCore` in `topological_hilbert_compression2`
+- [`__init__`](modules/qc_dashboard.py.md#visualisationengine-__init__) constructor of `VisualisationEngine` in `qc_dashboard`
+- [`__init__`](modules/higgs_four_lepton_analysis.py.md#visualizer-__init__) constructor of `Visualizer` in `higgs_four_lepton_analysis`
+- [`__init__`](modules/higgs_quantum_analysis.py.md#visualizer-__init__) constructor of `Visualizer` in `higgs_quantum_analysis`
+- [`__init__`](modules/immersive.scenes.py.md#volumescene-__init__) constructor of `VolumeScene` in `immersive.scenes`
+- [`__init__`](modules/entangled_hydrogen.py.md#wstate-__init__) constructor of `WState` in `entangled_hydrogen`
+- [`__init__`](modules/entangled_hydrogen.py.md#wavefunctioncalculator-__init__) constructor of `WavefunctionCalculator` in `entangled_hydrogen`
+- [`__init__`](modules/quantum_framework_visualization.py.md#wavefunctioncalculator-__init__) constructor of `WavefunctionCalculator` in `quantum_framework_visualization`
+- [`__init__`](modules/quantum_simulator.py.md#wavefunctioncalculator-__init__) constructor of `WavefunctionCalculator` in `quantum_simulator`
+- [`__init__`](modules/quantum_framework_physics.py.md#zitterbewegungsimulator-__init__) constructor of `ZitterbewegungSimulator` in `quantum_framework_physics`
+- [`__init__`](modules/quantum_simulator.py.md#zitterbewegungsimulator-__init__) constructor of `ZitterbewegungSimulator` in `quantum_simulator`
+- [`__init__`](modules/relativistic_hydrogen.py.md#zitterbewegungsimulator-__init__) constructor of `ZitterbewegungSimulator` in `relativistic_hydrogen`
+- [`initial_sidebar_state`](modules/qc_dashboard.py.md#dashboardconfig-initial_sidebar_state) attribute of `DashboardConfig` in `qc_dashboard`
+- [`initialize`](modules/quantum_framework_molecular_v2.py.md#smartinitializer-initialize) method of `SmartInitializer` in `quantum_framework_molecular_v2`
+- [`INK`](modules/immersive.hud.py.md#ink) constant in `immersive.hud`
+- [`instructions`](modules/qc_integration.py.md#circuitir-instructions) attribute of `CircuitIR` in `qc_integration`
+- [`IntegrationBridge`](modules/qc_integration.py.md#integrationbridge) class in `qc_integration`
+- [`IntegrationConfig`](modules/qc_integration.py.md#integrationconfig) class in `qc_integration`
+- [`interactive_mode`](modules/relativistic_hydrogen.py.md#diracvalidationsuite-interactive_mode) method of `DiracValidationSuite` in `relativistic_hydrogen`
+- [`InteractiveMenu`](modules/quantum_simulator.py.md#interactivemenu) class in `quantum_simulator`
+- [`inv_mass`](modules/higgs_four_lepton_analysis.py.md#event-inv_mass) attribute of `Event` in `higgs_four_lepton_analysis`
+- [`inv_mass`](modules/higgs_quantum_analysis.py.md#event-inv_mass) attribute of `Event` in `higgs_quantum_analysis`
+- [`IPhysicsBackend`](modules/quantum_framework_physics.py.md#iphysicsbackend) class in `quantum_framework_physics`
+- [`IQCAdapter`](modules/qc_integration.py.md#iqcadapter) class in `qc_integration`
+- [`IQuantumGate`](modules/quantum_computer.py.md#iquantumgate) class in `quantum_computer`
+- [`IQuantumGate`](modules/quantum_framework_core.py.md#iquantumgate) class in `quantum_framework_core`
+- [`IQuantumGate`](modules/quantum_simulator.py.md#iquantumgate) class in `quantum_simulator`
+- [`is_higgs`](modules/higgs_four_lepton_analysis.py.md#event-is_higgs) attribute of `Event` in `higgs_four_lepton_analysis`
+- [`is_higgs`](modules/higgs_quantum_analysis.py.md#event-is_higgs) attribute of `Event` in `higgs_quantum_analysis`
+- [`is_model_loaded`](modules/orbital_visualizer2.py.md#hamiltoniannnprocessor-is_model_loaded) method of `HamiltonianNNProcessor` in `orbital_visualizer2`
+- [`is_protected`](modules/quantum_framework_core.py.md#topologicalprotector-is_protected) method of `TopologicalProtector` in `quantum_framework_core`
+- [`is_protected`](modules/topological_hilbert_compression2.py.md#topologicalprotector-is_protected) method of `TopologicalProtector` in `topological_hilbert_compression2`
+- [`is_topologically_protected`](modules/quantum_framework_core.py.md#vacuumcore-is_topologically_protected) method of `VacuumCore` in `quantum_framework_core`
+- [`is_topologically_protected`](modules/topological_hilbert_compression2.py.md#vacuumcore-is_topologically_protected) method of `VacuumCore` in `topological_hilbert_compression2`
+- [`isosurface_count`](modules/quantum_dash.py.md#brutalistconfig-isosurface_count) attribute of `BrutalistConfig` in `quantum_dash`
+- [`ITensorNetwork`](modules/quantum_framework_core.py.md#itensornetwork) class in `quantum_framework_core`
+- [`ITensorNetwork`](modules/topological_hilbert_compression2.py.md#itensornetwork) class in `topological_hilbert_compression2`
+- [`IVisualComponent`](modules/quantum_dash.py.md#ivisualcomponent) class in `quantum_dash`
+- [`IVisualizationComponent`](modules/quantum_visualizer.py.md#ivisualizationcomponent) class in `quantum_visualizer`
+
+<a id="j"></a>
+
+## J
+
+- [`j`](modules/immersive.spin.py.md#spinorcomponent-j) property of `SpinorComponent` in `immersive.spin`
+- [`JointHilbertState`](modules/quantum_computer.py.md#jointhilbertstate) class in `quantum_computer`
+- [`JointHilbertState`](modules/quantum_simulator.py.md#jointhilbertstate) class in `quantum_simulator`
+- [`JointStateFactory`](modules/quantum_computer.py.md#jointstatefactory) class in `quantum_computer`
+- [`JointStateFactory`](modules/quantum_simulator.py.md#jointstatefactory) class in `quantum_simulator`
+
+<a id="k"></a>
+
+## K
+
+- [`kappa`](modules/immersive.spin.py.md#spinorcomponent-kappa) property of `SpinorComponent` in `immersive.spin`
+- [`key`](modules/immersive.scenes.py.md#atomscene-key) attribute of `AtomScene` in `immersive.scenes`
+- [`key`](modules/immersive.scenes.py.md#blochscene-key) attribute of `BlochScene` in `immersive.scenes`
+- [`key`](modules/immersive.scenes.py.md#entanglescene-key) attribute of `EntangleScene` in `immersive.scenes`
+- [`key`](modules/qc_launcher.py.md#experience-key) attribute of `Experience` in `qc_launcher`
+- [`key`](modules/immersive.scenes.py.md#matterscene-key) attribute of `MatterScene` in `immersive.scenes`
+- [`key`](modules/immersive.physics.py.md#orbitalpreset-key) attribute of `OrbitalPreset` in `immersive.physics`
+- [`key`](modules/immersive.scenes.py.md#scene-key) attribute of `Scene` in `immersive.scenes`
+- [`key`](modules/immersive.spin.py.md#spinpreset-key) attribute of `SpinPreset` in `immersive.spin`
+- [`key`](modules/immersive.scenes.py.md#spinscene-key) attribute of `SpinScene` in `immersive.scenes`
+- [`key`](modules/immersive.matter.py.md#system-key) attribute of `System` in `immersive.matter`
+
+<a id="l"></a>
+
+## L
+
+- [`l`](modules/quantum_framework_core.py.md#orbitaldata-l) attribute of `OrbitalData` in `quantum_framework_core`
+- [`l`](modules/quantum_simulator.py.md#orbitaldata-l) attribute of `OrbitalData` in `quantum_simulator`
+- [`l`](modules/quantum_lab.py.md#orbitalspec-l) attribute of `OrbitalSpec` in `quantum_lab`
+- [`l`](modules/immersive.spin.py.md#spinorcomponent-l) attribute of `SpinorComponent` in `immersive.spin`
+- [`LAB`](modules/qc_launcher.py.md#lab) constant in `qc_launcher`
+- [`label`](modules/immersive.spin.py.md#spinorcomponent-label) property of `SpinorComponent` in `immersive.spin`
+- [`LambShiftCalculator`](modules/advanced_experiments.py.md#lambshiftcalculator) class in `advanced_experiments`
+- [`LambShiftCalculator`](modules/quantum_framework_physics.py.md#lambshiftcalculator) class in `quantum_framework_physics`
+- [`lande_g`](modules/immersive.spin.py.md#lande_g) function in `immersive.spin`
+- [`landscape`](modules/quantum_lab.py.md#h2vqeengine-landscape) method of `H2VQEEngine` in `quantum_lab`
+- [`landscape_plot`](modules/quantum_lab.py.md#landscape_plot) function in `quantum_lab`
+- [`Lang`](modules/immersive.hud.py.md#lang) class in `immersive.hud`
+- [`LATTICE`](modules/immersive.spin.py.md#lattice) constant in `immersive.spin`
+- [`launch_quantum_lab`](modules/quantum_lab.py.md#launch_quantum_lab) function in `quantum_lab`
+- [`Launcher`](modules/qc_launcher.py.md#launcher) class in `qc_launcher`
+- [`layout`](modules/qc_dashboard.py.md#dashboardconfig-layout) attribute of `DashboardConfig` in `qc_dashboard`
+- [`left_canonicalize`](modules/quantum_framework_core.py.md#mpscore-left_canonicalize) method of `MPSCore` in `quantum_framework_core`
+- [`left_canonicalize`](modules/topological_hilbert_compression2.py.md#mpscore-left_canonicalize) method of `MPSCore` in `topological_hilbert_compression2`
+- [`__len__`](modules/quantum_framework_core.py.md#quantumcircuit-__len__) method of `QuantumCircuit` in `quantum_framework_core`
+- [`Lepton`](modules/higgs_four_lepton_analysis.py.md#lepton) class in `higgs_four_lepton_analysis`
+- [`Lepton`](modules/higgs_quantum_analysis.py.md#lepton) class in `higgs_quantum_analysis`
+- [`lepton_type`](modules/higgs_four_lepton_analysis.py.md#lepton-lepton_type) attribute of `Lepton` in `higgs_four_lepton_analysis`
+- [`lepton_type`](modules/higgs_quantum_analysis.py.md#lepton-lepton_type) attribute of `Lepton` in `higgs_quantum_analysis`
+- [`leptons`](modules/higgs_four_lepton_analysis.py.md#event-leptons) attribute of `Event` in `higgs_four_lepton_analysis`
+- [`leptons`](modules/higgs_quantum_analysis.py.md#event-leptons) attribute of `Event` in `higgs_quantum_analysis`
+- [`LeptonType`](modules/higgs_four_lepton_analysis.py.md#leptontype) enum in `higgs_four_lepton_analysis`
+- [`LeptonType`](modules/higgs_quantum_analysis.py.md#leptontype) enum in `higgs_quantum_analysis`
+- [`Lesson`](modules/quantum_lab.py.md#lesson) class in `quantum_lab`
+- [`lessons`](modules/quantum_lab.py.md#quantumlab-lessons) method of `QuantumLab` in `quantum_lab`
+- [`lessons_menu`](modules/quantum_lab.py.md#quantumlab-lessons_menu) method of `QuantumLab` in `quantum_lab`
+- [`LETTERBOX`](modules/immersive.app.py.md#letterbox) constant in `immersive.app`
+- [`LEVELS`](modules/immersive.postfx.py.md#postprocess-levels) attribute of `PostProcess` in `immersive.postfx`
+- [`LIBRARY`](modules/immersive.matter.py.md#library) constant in `immersive.matter`
+- [`lih`](modules/quantum_framework_molecular_v2.py.md#moleculebuilder-lih) staticmethod of `MoleculeBuilder` in `quantum_framework_molecular_v2`
+- [`line_width_base`](modules/quantum_dash.py.md#brutalistconfig-line_width_base) attribute of `BrutalistConfig` in `quantum_dash`
+- [`list_available_atoms`](modules/quantum_simulator.py.md#quantumsimulationframework-list_available_atoms) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`list_available_molecules`](modules/quantum_simulator.py.md#quantumsimulationframework-list_available_molecules) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`list_available_orbitals`](modules/quantum_simulator.py.md#quantumsimulationframework-list_available_orbitals) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`load`](modules/immersive.scenes.py.md#spinscene-load) method of `SpinScene` in `immersive.scenes`
+- [`load_checkpoint`](modules/quantum_framework_physics.py.md#load_checkpoint) function in `quantum_framework_physics`
+- [`load_events`](modules/higgs_four_lepton_analysis.py.md#higgsquantumanalysis-load_events) method of `HiggsQuantumAnalysis` in `higgs_four_lepton_analysis`
+- [`load_events`](modules/higgs_quantum_analysis.py.md#higgsquantumanalysis-load_events) method of `HiggsQuantumAnalysis` in `higgs_quantum_analysis`
+- [`load_preset`](modules/immersive.scenes.py.md#atomscene-load_preset) method of `AtomScene` in `immersive.scenes`
+- [`loading`](modules/immersive.scenes.py.md#matterscene-loading) method of `MatterScene` in `immersive.scenes`
+- [`loading`](modules/immersive.scenes.py.md#scene-loading) method of `Scene` in `immersive.scenes`
+- [`loc`](modules/immersive.glkit.py.md#program-loc) method of `Program` in `immersive.glkit`
+- [`LOG_LEVEL`](modules/relativistic_hydrogen.py.md#config-log_level) attribute of `Config` in `relativistic_hydrogen`
+- [`LoggerFactory`](modules/relativistic_hydrogen.py.md#loggerfactory) class in `relativistic_hydrogen`
+- [`LOGO`](modules/qc_launcher.py.md#logo) constant in `qc_launcher`
+
+<a id="m"></a>
+
+## M
+
+- [`m`](modules/quantum_framework_core.py.md#orbitaldata-m) attribute of `OrbitalData` in `quantum_framework_core`
+- [`m`](modules/quantum_simulator.py.md#orbitaldata-m) attribute of `OrbitalData` in `quantum_simulator`
+- [`main`](modules/advanced_experiments.py.md#main) function in `advanced_experiments`
+- [`main`](modules/demo_molecular_vqe.py.md#main) function in `demo_molecular_vqe`
+- [`main`](modules/entangled_hydrogen.py.md#main) function in `entangled_hydrogen`
+- [`main`](modules/higgs_four_lepton_analysis.py.md#main) function in `higgs_four_lepton_analysis`
+- [`main`](modules/higgs_quantum_analysis.py.md#main) function in `higgs_quantum_analysis`
+- [`main`](modules/immersive.app.py.md#main) function in `immersive.app`
+- [`main`](modules/orbital_visualizer2.py.md#main) function in `orbital_visualizer2`
+- [`main`](modules/qc_dashboard.py.md#main) function in `qc_dashboard`
+- [`main`](modules/qc_integration.py.md#main) function in `qc_integration`
+- [`main`](modules/quantum_dash.py.md#main) function in `quantum_dash`
+- [`main`](modules/quantum_framework_main.py.md#main) function in `quantum_framework_main`
+- [`main`](modules/quantum_lab.py.md#main) function in `quantum_lab`
+- [`main`](modules/quantum_simulator.py.md#main) function in `quantum_simulator`
+- [`main`](modules/quantum_visualizer.py.md#main) function in `quantum_visualizer`
+- [`main`](modules/relativistic_hydrogen.py.md#main) function in `relativistic_hydrogen`
+- [`main`](modules/topological_hilbert_compression2.py.md#main) function in `topological_hilbert_compression2`
+- [`main_menu`](modules/quantum_lab.py.md#quantumlab-main_menu) method of `QuantumLab` in `quantum_lab`
+- [`make_texture`](modules/immersive.glkit.py.md#make_texture) function in `immersive.glkit`
+- [`MARGIN`](modules/immersive.matter.py.md#margin) constant in `immersive.matter`
+- [`marginal_p1`](modules/quantum_computer.py.md#measurementresult-marginal_p1) attribute of `MeasurementResult` in `quantum_computer`
+- [`marginal_probability_one`](modules/quantum_computer.py.md#jointhilbertstate-marginal_probability_one) method of `JointHilbertState` in `quantum_computer`
+- [`marked_state`](modules/advanced_experiments.py.md#groverconfig-marked_state) attribute of `GroverConfig` in `advanced_experiments`
+- [`mass`](modules/quantum_framework_core.py.md#atomdata-mass) attribute of `AtomData` in `quantum_framework_core`
+- [`mass`](modules/quantum_simulator.py.md#atomdata-mass) attribute of `AtomData` in `quantum_simulator`
+- [`mass`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-mass) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`mass`](modules/higgs_quantum_analysis.py.md#fourmomentum-mass) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`mass`](modules/higgs_four_lepton_analysis.py.md#lepton-mass) property of `Lepton` in `higgs_four_lepton_analysis`
+- [`mass`](modules/higgs_quantum_analysis.py.md#lepton-mass) property of `Lepton` in `higgs_quantum_analysis`
+- [`MASS_WINDOW_LOWER_GEV`](modules/higgs_four_lepton_analysis.py.md#config-mass_window_lower_gev) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`MASS_WINDOW_LOWER_GEV`](modules/higgs_quantum_analysis.py.md#config-mass_window_lower_gev) attribute of `Config` in `higgs_quantum_analysis`
+- [`MASS_WINDOW_UPPER_GEV`](modules/higgs_four_lepton_analysis.py.md#config-mass_window_upper_gev) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`MASS_WINDOW_UPPER_GEV`](modules/higgs_quantum_analysis.py.md#config-mass_window_upper_gev) attribute of `Config` in `higgs_quantum_analysis`
+- [`MATRIX`](modules/quantum_3dview.py.md#brutaltheme-matrix) attribute of `BrutalTheme` in `quantum_3dview`
+- [`MATRIX`](modules/quantum_dash.py.md#colorscheme-matrix) attribute of `ColorScheme` in `quantum_dash`
+- [`MatterScene`](modules/immersive.scenes.py.md#matterscene) class in `immersive.scenes`
+- [`max_bond_dimension`](modules/quantum_framework_core.py.md#frameworkconfig-max_bond_dimension) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`max_bond_dimension`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-max_bond_dimension) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`max_bond_dimension`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-max_bond_dimension) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`max_iterations`](modules/quantum_framework_core.py.md#frameworkconfig-max_iterations) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`max_iterations`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-max_iterations) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`MAX_PLAYGROUND_QUBITS`](modules/quantum_lab.py.md#max_playground_qubits) constant in `quantum_lab`
+- [`MAX_PLOTLY_POINTS`](modules/orbital_visualizer2.py.md#config-max_plotly_points) attribute of `Config` in `orbital_visualizer2`
+- [`max_probabilities_qubits`](modules/quantum_framework_core.py.md#frameworkconfig-max_probabilities_qubits) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`max_qubits`](modules/quantum_dash.py.md#brutalistconfig-max_qubits) attribute of `BrutalistConfig` in `quantum_dash`
+- [`max_qubits`](modules/qc_dashboard.py.md#dashboardconfig-max_qubits) attribute of `DashboardConfig` in `qc_dashboard`
+- [`max_qubits`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-max_qubits) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`max_qubits`](modules/quantum_framework_core.py.md#frameworkconfig-max_qubits) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`max_qubits`](modules/quantum_simulator.py.md#frameworkconfig-max_qubits) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`max_qubits`](modules/quantum_computer.py.md#simulatorconfig-max_qubits) attribute of `SimulatorConfig` in `quantum_computer`
+- [`max_qubits`](modules/quantum_visualizer.py.md#visualizerconfig-max_qubits) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`max_qubits_direct`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-max_qubits_direct) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`max_qubits_direct`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-max_qubits_direct) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`max_qubits_mps`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-max_qubits_mps) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`max_qubits_needed`](modules/quantum_framework_core.py.md#atomdata-max_qubits_needed) attribute of `AtomData` in `quantum_framework_core`
+- [`max_qubits_pennylane`](modules/qc_integration.py.md#integrationconfig-max_qubits_pennylane) attribute of `IntegrationConfig` in `qc_integration`
+- [`max_qubits_qasm`](modules/qc_integration.py.md#integrationconfig-max_qubits_qasm) attribute of `IntegrationConfig` in `qc_integration`
+- [`max_qubits_qiskit`](modules/qc_integration.py.md#integrationconfig-max_qubits_qiskit) attribute of `IntegrationConfig` in `qc_integration`
+- [`MAX_STATES`](modules/immersive.physics.py.md#max_states) constant in `immersive.physics`
+- [`mc_batch_size`](modules/quantum_framework_core.py.md#frameworkconfig-mc_batch_size) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`mc_batch_size`](modules/quantum_simulator.py.md#frameworkconfig-mc_batch_size) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`mc_max_particles`](modules/quantum_framework_core.py.md#frameworkconfig-mc_max_particles) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`mc_max_particles`](modules/quantum_simulator.py.md#frameworkconfig-mc_max_particles) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`mc_min_particles`](modules/quantum_framework_core.py.md#frameworkconfig-mc_min_particles) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`mc_min_particles`](modules/quantum_simulator.py.md#frameworkconfig-mc_min_particles) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`MCZGate`](modules/quantum_computer.py.md#mczgate) class in `quantum_computer`
+- [`measure`](modules/immersive.backend.py.md#backendregister-measure) method of `BackendRegister` in `immersive.backend`
+- [`measure`](modules/immersive.physics.py.md#qubitregister-measure) method of `QubitRegister` in `immersive.physics`
+- [`measure`](modules/immersive.spin.py.md#measure) function in `immersive.spin`
+- [`MeasurementResult`](modules/quantum_computer.py.md#measurementresult) class in `quantum_computer`
+- [`memory_bytes`](modules/quantum_framework_core.py.md#itensornetwork-memory_bytes) method of `ITensorNetwork` in `quantum_framework_core`
+- [`memory_bytes`](modules/topological_hilbert_compression2.py.md#itensornetwork-memory_bytes) method of `ITensorNetwork` in `topological_hilbert_compression2`
+- [`memory_bytes`](modules/quantum_framework_core.py.md#mpsstate-memory_bytes) method of `MPSState` in `quantum_framework_core`
+- [`memory_bytes`](modules/topological_hilbert_compression2.py.md#mpsstate-memory_bytes) method of `MPSState` in `topological_hilbert_compression2`
+- [`memory_usage`](modules/quantum_framework_core.py.md#mpsquantumcomputer-memory_usage) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`memory_usage`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-memory_usage) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`MenuSystem`](modules/quantum_framework_menu.py.md#menusystem) class in `quantum_framework_menu`
+- [`metadata`](modules/quantum_dash.py.md#visualizationoutput-metadata) attribute of `VisualizationOutput` in `quantum_dash`
+- [`mf`](modules/immersive.matter.py.md#solved-mf) attribute of `Solved` in `immersive.matter`
+- [`mixed`](modules/quantum_computer.py.md#potentialgenerator-mixed) method of `PotentialGenerator` in `quantum_computer`
+- [`mixed`](modules/quantum_framework_physics.py.md#potentialgenerator-mixed) method of `PotentialGenerator` in `quantum_framework_physics`
+- [`mixed`](modules/quantum_simulator.py.md#potentialgenerator-mixed) method of `PotentialGenerator` in `quantum_simulator`
+- [`mj2`](modules/immersive.spin.py.md#spinorcomponent-mj2) attribute of `SpinorComponent` in `immersive.spin`
+- [`mol`](modules/immersive.matter.py.md#solved-mol) attribute of `Solved` in `immersive.matter`
+- [`molecular_menu`](modules/quantum_simulator.py.md#interactivemenu-molecular_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`MolecularConfig`](modules/quantum_framework_molecular_v2.py.md#molecularconfig) class in `quantum_framework_molecular_v2`
+- [`molecule`](modules/molecular_sim.py.md#vqeresult-molecule) attribute of `VQEResult` in `molecular_sim`
+- [`molecule`](modules/quantum_framework_molecular.py.md#vqeresult-molecule) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`molecule`](modules/quantum_framework_molecular_v2.py.md#vqeresult-molecule) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`molecule_bond_max`](modules/qc_dashboard.py.md#dashboardconfig-molecule_bond_max) attribute of `DashboardConfig` in `qc_dashboard`
+- [`molecule_bond_min`](modules/qc_dashboard.py.md#dashboardconfig-molecule_bond_min) attribute of `DashboardConfig` in `qc_dashboard`
+- [`molecule_bond_steps`](modules/qc_dashboard.py.md#dashboardconfig-molecule_bond_steps) attribute of `DashboardConfig` in `qc_dashboard`
+- [`molecule_explorer`](modules/quantum_lab.py.md#quantumlab-molecule_explorer) method of `QuantumLab` in `quantum_lab`
+- [`molecule_vqe_max_iter`](modules/qc_dashboard.py.md#dashboardconfig-molecule_vqe_max_iter) attribute of `DashboardConfig` in `qc_dashboard`
+- [`MoleculeBuilder`](modules/advanced_experiments.py.md#moleculebuilder) class in `advanced_experiments`
+- [`MoleculeBuilder`](modules/quantum_framework_molecular.py.md#moleculebuilder) class in `quantum_framework_molecular`
+- [`MoleculeBuilder`](modules/quantum_framework_molecular_v2.py.md#moleculebuilder) class in `quantum_framework_molecular_v2`
+- [`MoleculeData`](modules/molecular_sim.py.md#moleculedata) class in `molecular_sim`
+- [`MoleculeData`](modules/quantum_framework_core.py.md#moleculedata) class in `quantum_framework_core`
+- [`MoleculeData`](modules/quantum_framework_molecular.py.md#moleculedata) class in `quantum_framework_molecular`
+- [`MoleculeData`](modules/quantum_framework_molecular_v2.py.md#moleculedata) class in `quantum_framework_molecular_v2`
+- [`MoleculeData`](modules/quantum_simulator.py.md#moleculedata) class in `quantum_simulator`
+- [`molecules`](modules/quantum_framework_core.py.md#configloader-molecules) property of `ConfigLoader` in `quantum_framework_core`
+- [`molecules`](modules/quantum_simulator.py.md#configloader-molecules) property of `ConfigLoader` in `quantum_simulator`
+- [`MOLECULES`](modules/immersive.matter.py.md#molecules) constant in `immersive.matter`
+- [`MOLECULES`](modules/molecular_sim.py.md#molecules) constant in `molecular_sim`
+- [`MOLECULES`](modules/quantum_framework_molecular.py.md#molecules) constant in `quantum_framework_molecular`
+- [`momentum_to_spinor_wavefunction`](modules/higgs_four_lepton_analysis.py.md#quantumspinorprocessor-momentum_to_spinor_wavefunction) method of `QuantumSpinorProcessor` in `higgs_four_lepton_analysis`
+- [`momentum_to_spinor_wavefunction`](modules/higgs_quantum_analysis.py.md#quantumspinorprocessor-momentum_to_spinor_wavefunction) method of `QuantumSpinorProcessor` in `higgs_quantum_analysis`
+- [`MONTE_CARLO_BATCH_SIZE`](modules/orbital_visualizer2.py.md#config-monte_carlo_batch_size) attribute of `Config` in `orbital_visualizer2`
+- [`MONTE_CARLO_BATCH_SIZE`](modules/relativistic_hydrogen.py.md#config-monte_carlo_batch_size) attribute of `Config` in `relativistic_hydrogen`
+- [`monte_carlo_batch_size`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-monte_carlo_batch_size) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`MONTE_CARLO_MAX_PARTICLES`](modules/orbital_visualizer2.py.md#config-monte_carlo_max_particles) attribute of `Config` in `orbital_visualizer2`
+- [`MONTE_CARLO_MAX_PARTICLES`](modules/relativistic_hydrogen.py.md#config-monte_carlo_max_particles) attribute of `Config` in `relativistic_hydrogen`
+- [`monte_carlo_max_particles`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-monte_carlo_max_particles) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`MONTE_CARLO_MIN_PARTICLES`](modules/orbital_visualizer2.py.md#config-monte_carlo_min_particles) attribute of `Config` in `orbital_visualizer2`
+- [`MONTE_CARLO_MIN_PARTICLES`](modules/relativistic_hydrogen.py.md#config-monte_carlo_min_particles) attribute of `Config` in `relativistic_hydrogen`
+- [`monte_carlo_min_particles`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-monte_carlo_min_particles) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`MonteCarloSampler`](modules/orbital_visualizer2.py.md#montecarlosampler) class in `orbital_visualizer2`
+- [`MonteCarloSampler`](modules/quantum_framework_visualization.py.md#montecarlosampler) class in `quantum_framework_visualization`
+- [`MonteCarloSampler`](modules/quantum_simulator.py.md#montecarlosampler) class in `quantum_simulator`
+- [`most_probable`](modules/quantum_visualizer.py.md#backendcomparisonresult-most_probable) attribute of `BackendComparisonResult` in `quantum_visualizer`
+- [`most_probable`](modules/quantum_dash.py.md#quantumsnapshot-most_probable) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`most_probable`](modules/quantum_visualizer.py.md#quantumstatesnapshot-most_probable) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`most_probable_basis_state`](modules/quantum_computer.py.md#jointhilbertstate-most_probable_basis_state) method of `JointHilbertState` in `quantum_computer`
+- [`most_probable_bitstring`](modules/quantum_simulator.py.md#jointhilbertstate-most_probable_bitstring) method of `JointHilbertState` in `quantum_simulator`
+- [`most_probable_bitstring`](modules/quantum_framework_core.py.md#mpsstate-most_probable_bitstring) method of `MPSState` in `quantum_framework_core`
+- [`most_probable_bitstring`](modules/quantum_computer.py.md#measurementresult-most_probable_bitstring) method of `MeasurementResult` in `quantum_computer`
+- [`most_probable_bitstring`](modules/quantum_simulator.py.md#quantumresult-most_probable_bitstring) method of `QuantumResult` in `quantum_simulator`
+- [`most_probable_state`](modules/quantum_dash.py.md#backendcomparison-most_probable_state) attribute of `BackendComparison` in `quantum_dash`
+- [`MPSBackend`](modules/topological_hilbert_compression2.py.md#mpsbackend) class in `topological_hilbert_compression2`
+- [`MPSCore`](modules/quantum_framework_core.py.md#mpscore) class in `quantum_framework_core`
+- [`MPSCore`](modules/topological_hilbert_compression2.py.md#mpscore) class in `topological_hilbert_compression2`
+- [`MPSQuantumComputer`](modules/quantum_framework_core.py.md#mpsquantumcomputer) class in `quantum_framework_core`
+- [`MPSState`](modules/quantum_framework_core.py.md#mpsstate) class in `quantum_framework_core`
+- [`MPSState`](modules/quantum_framework_molecular_v2.py.md#mpsstate) class in `quantum_framework_molecular_v2`
+- [`MPSState`](modules/topological_hilbert_compression2.py.md#mpsstate) class in `topological_hilbert_compression2`
+- [`multiplicity`](modules/quantum_framework_molecular_v2.py.md#moleculedata-multiplicity) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`MUON`](modules/higgs_four_lepton_analysis.py.md#leptontype-muon) attribute of `LeptonType` in `higgs_four_lepton_analysis`
+- [`MUON`](modules/higgs_quantum_analysis.py.md#leptontype-muon) attribute of `LeptonType` in `higgs_quantum_analysis`
+- [`MUON_MASS_GEV`](modules/higgs_four_lepton_analysis.py.md#config-muon_mass_gev) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`MUON_MASS_GEV`](modules/higgs_quantum_analysis.py.md#config-muon_mass_gev) attribute of `Config` in `higgs_quantum_analysis`
+
+<a id="n"></a>
+
+## N
+
+- [`n`](modules/quantum_framework_core.py.md#orbitaldata-n) attribute of `OrbitalData` in `quantum_framework_core`
+- [`n`](modules/quantum_simulator.py.md#orbitaldata-n) attribute of `OrbitalData` in `quantum_simulator`
+- [`n`](modules/quantum_lab.py.md#orbitalspec-n) attribute of `OrbitalSpec` in `quantum_lab`
+- [`n`](modules/immersive.spin.py.md#spinorcomponent-n) attribute of `SpinorComponent` in `immersive.spin`
+- [`n_electrons`](modules/molecular_sim.py.md#moleculedata-n_electrons) attribute of `MoleculeData` in `molecular_sim`
+- [`n_electrons`](modules/quantum_framework_core.py.md#moleculedata-n_electrons) attribute of `MoleculeData` in `quantum_framework_core`
+- [`n_electrons`](modules/quantum_framework_molecular.py.md#moleculedata-n_electrons) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`n_electrons`](modules/quantum_framework_molecular_v2.py.md#moleculedata-n_electrons) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`n_electrons`](modules/quantum_simulator.py.md#moleculedata-n_electrons) attribute of `MoleculeData` in `quantum_simulator`
+- [`n_electrons`](modules/advanced_experiments.py.md#polyatomicmoleculedata-n_electrons) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`n_evaluations`](modules/quantum_framework_molecular_v2.py.md#vqeresult-n_evaluations) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`n_iter`](modules/app.py.md#vqeresult-n_iter) attribute of `VQEResult` in `app`
+- [`n_iter`](modules/polarizability_v3.py.md#vqeresult-n_iter) attribute of `VQEResult` in `polarizability_v3`
+- [`n_iterations`](modules/molecular_sim.py.md#vqeresult-n_iterations) attribute of `VQEResult` in `molecular_sim`
+- [`n_iterations`](modules/quantum_framework_molecular.py.md#vqeresult-n_iterations) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`n_max`](modules/advanced_experiments.py.md#qedconfig-n_max) attribute of `QEDConfig` in `advanced_experiments`
+- [`n_orbitals`](modules/molecular_sim.py.md#moleculedata-n_orbitals) attribute of `MoleculeData` in `molecular_sim`
+- [`n_orbitals`](modules/quantum_framework_core.py.md#moleculedata-n_orbitals) attribute of `MoleculeData` in `quantum_framework_core`
+- [`n_orbitals`](modules/quantum_framework_molecular.py.md#moleculedata-n_orbitals) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`n_orbitals`](modules/quantum_framework_molecular_v2.py.md#moleculedata-n_orbitals) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`n_orbitals`](modules/quantum_simulator.py.md#moleculedata-n_orbitals) attribute of `MoleculeData` in `quantum_simulator`
+- [`n_orbitals`](modules/advanced_experiments.py.md#polyatomicmoleculedata-n_orbitals) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`n_parameters`](modules/molecular_sim.py.md#vqeresult-n_parameters) attribute of `VQEResult` in `molecular_sim`
+- [`n_parameters`](modules/quantum_framework_molecular.py.md#vqeresult-n_parameters) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`n_parameters`](modules/quantum_framework_molecular_v2.py.md#vqeresult-n_parameters) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`n_qubits`](modules/qc_integration.py.md#circuitir-n_qubits) attribute of `CircuitIR` in `qc_integration`
+- [`n_qubits`](modules/advanced_experiments.py.md#groverconfig-n_qubits) attribute of `GroverConfig` in `advanced_experiments`
+- [`n_qubits`](modules/quantum_framework_core.py.md#itensornetwork-n_qubits) property of `ITensorNetwork` in `quantum_framework_core`
+- [`n_qubits`](modules/quantum_framework_core.py.md#mpsstate-n_qubits) property of `MPSState` in `quantum_framework_core`
+- [`n_qubits`](modules/quantum_computer.py.md#measurementresult-n_qubits) attribute of `MeasurementResult` in `quantum_computer`
+- [`n_qubits`](modules/molecular_sim.py.md#moleculedata-n_qubits) attribute of `MoleculeData` in `molecular_sim`
+- [`n_qubits`](modules/quantum_framework_core.py.md#moleculedata-n_qubits) attribute of `MoleculeData` in `quantum_framework_core`
+- [`n_qubits`](modules/quantum_framework_molecular.py.md#moleculedata-n_qubits) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`n_qubits`](modules/quantum_framework_molecular_v2.py.md#moleculedata-n_qubits) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`n_qubits`](modules/quantum_simulator.py.md#moleculedata-n_qubits) attribute of `MoleculeData` in `quantum_simulator`
+- [`n_qubits`](modules/advanced_experiments.py.md#polyatomicmoleculedata-n_qubits) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`n_qubits`](modules/quantum_dash.py.md#quantumsnapshot-n_qubits) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`n_qubits`](modules/qc_dashboard.py.md#snapshotdata-n_qubits) attribute of `SnapshotData` in `qc_dashboard`
+- [`n_qubits`](modules/molecular_sim.py.md#vqeresult-n_qubits) attribute of `VQEResult` in `molecular_sim`
+- [`n_qubits`](modules/quantum_framework_molecular.py.md#vqeresult-n_qubits) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`n_qubits`](modules/quantum_framework_molecular_v2.py.md#vqeresult-n_qubits) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`n_qubits_default`](modules/quantum_visualizer.py.md#visualizerconfig-n_qubits_default) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`name`](modules/quantum_framework_core.py.md#atomdata-name) attribute of `AtomData` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#atomdata-name) attribute of `AtomData` in `quantum_simulator`
+- [`name`](modules/entangled_hydrogen.py.md#bellstate-name) property of `BellState` in `entangled_hydrogen`
+- [`name`](modules/quantum_computer.py.md#cnotgate-name) property of `CNOTGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#cnotgate-name) property of `CNOTGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#cnotgate-name) property of `CNOTGate` in `quantum_simulator`
+- [`name`](modules/quantum_framework_core.py.md#crzgate-name) property of `CRzGate` in `quantum_framework_core`
+- [`name`](modules/quantum_computer.py.md#czgate-name) property of `CZGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#czgate-name) property of `CZGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#czgate-name) property of `CZGate` in `quantum_simulator`
+- [`name`](modules/qc_integration.py.md#circuitir-name) attribute of `CircuitIR` in `qc_integration`
+- [`name`](modules/quantum_computer.py.md#evolvegate-name) property of `EvolveGate` in `quantum_computer`
+- [`name`](modules/entangled_hydrogen.py.md#ghzstate-name) property of `GHZState` in `entangled_hydrogen`
+- [`name`](modules/qc_integration.py.md#gateinstruction-name) attribute of `GateInstruction` in `qc_integration`
+- [`name`](modules/qc_dashboard.py.md#gateitem-name) attribute of `GateItem` in `qc_dashboard`
+- [`name`](modules/quantum_computer.py.md#hadamardgate-name) property of `HadamardGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#hadamardgate-name) property of `HadamardGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#hadamardgate-name) property of `HadamardGate` in `quantum_simulator`
+- [`name`](modules/entangled_hydrogen.py.md#ientangledstate-name) property of `IEntangledState` in `entangled_hydrogen`
+- [`name`](modules/quantum_computer.py.md#iquantumgate-name) property of `IQuantumGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#iquantumgate-name) property of `IQuantumGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#iquantumgate-name) property of `IQuantumGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#mczgate-name) property of `MCZGate` in `quantum_computer`
+- [`name`](modules/molecular_sim.py.md#moleculedata-name) attribute of `MoleculeData` in `molecular_sim`
+- [`name`](modules/quantum_framework_core.py.md#moleculedata-name) attribute of `MoleculeData` in `quantum_framework_core`
+- [`name`](modules/quantum_framework_molecular.py.md#moleculedata-name) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`name`](modules/quantum_framework_molecular_v2.py.md#moleculedata-name) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`name`](modules/quantum_simulator.py.md#moleculedata-name) attribute of `MoleculeData` in `quantum_simulator`
+- [`name`](modules/quantum_framework_core.py.md#orbitaldata-name) attribute of `OrbitalData` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#orbitaldata-name) attribute of `OrbitalData` in `quantum_simulator`
+- [`name`](modules/quantum_lab.py.md#orbitalspec-name) attribute of `OrbitalSpec` in `quantum_lab`
+- [`name`](modules/quantum_computer.py.md#paulixgate-name) property of `PauliXGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#paulixgate-name) property of `PauliXGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#paulixgate-name) property of `PauliXGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#pauliygate-name) property of `PauliYGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#pauliygate-name) property of `PauliYGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#pauliygate-name) property of `PauliYGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#paulizgate-name) property of `PauliZGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#paulizgate-name) property of `PauliZGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#paulizgate-name) property of `PauliZGate` in `quantum_simulator`
+- [`name`](modules/advanced_experiments.py.md#polyatomicmoleculedata-name) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`name`](modules/quantum_computer.py.md#rxgate-name) property of `RxGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#rxgate-name) property of `RxGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#rxgate-name) property of `RxGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#rygate-name) property of `RyGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#rygate-name) property of `RyGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#rygate-name) property of `RyGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#rzgate-name) property of `RzGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#rzgate-name) property of `RzGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#rzgate-name) property of `RzGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#sgate-name) property of `SGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#sgate-name) property of `SGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#sgate-name) property of `SGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#swapgate-name) property of `SWAPGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#swapgate-name) property of `SWAPGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#swapgate-name) property of `SWAPGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#tgate-name) property of `TGate` in `quantum_computer`
+- [`name`](modules/quantum_framework_core.py.md#tgate-name) property of `TGate` in `quantum_framework_core`
+- [`name`](modules/quantum_simulator.py.md#tgate-name) property of `TGate` in `quantum_simulator`
+- [`name`](modules/quantum_computer.py.md#toffoligate-name) property of `ToffoliGate` in `quantum_computer`
+- [`name`](modules/quantum_simulator.py.md#toffoligate-name) property of `ToffoliGate` in `quantum_simulator`
+- [`name`](modules/entangled_hydrogen.py.md#wstate-name) property of `WState` in `entangled_hydrogen`
+- [`name_en`](modules/immersive.physics.py.md#orbitalpreset-name_en) attribute of `OrbitalPreset` in `immersive.physics`
+- [`name_en`](modules/immersive.spin.py.md#spinpreset-name_en) attribute of `SpinPreset` in `immersive.spin`
+- [`name_es`](modules/immersive.physics.py.md#orbitalpreset-name_es) attribute of `OrbitalPreset` in `immersive.physics`
+- [`name_es`](modules/immersive.spin.py.md#spinpreset-name_es) attribute of `SpinPreset` in `immersive.spin`
+- [`NEON_NOIR`](modules/quantum_3dview.py.md#brutaltheme-neon_noir) attribute of `BrutalTheme` in `quantum_3dview`
+- [`NEON_NOIR`](modules/quantum_dash.py.md#colorscheme-neon_noir) attribute of `ColorScheme` in `quantum_dash`
+- [`new_state`](modules/immersive.backend.py.md#backendhub-new_state) method of `BackendHub` in `immersive.backend`
+- [`nh3`](modules/advanced_experiments.py.md#moleculebuilder-nh3) staticmethod of `MoleculeBuilder` in `advanced_experiments`
+- [`norm`](modules/quantum_framework_core.py.md#itensornetwork-norm) method of `ITensorNetwork` in `quantum_framework_core`
+- [`norm`](modules/topological_hilbert_compression2.py.md#itensornetwork-norm) method of `ITensorNetwork` in `topological_hilbert_compression2`
+- [`norm`](modules/quantum_framework_core.py.md#mpsstate-norm) method of `MPSState` in `quantum_framework_core`
+- [`norm`](modules/topological_hilbert_compression2.py.md#mpsstate-norm) method of `MPSState` in `topological_hilbert_compression2`
+- [`norm`](modules/quantum_dash.py.md#quantumsnapshot-norm) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`norm`](modules/quantum_visualizer.py.md#quantumstatesnapshot-norm) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`norm`](modules/immersive.spin.py.md#spinmeasurement-norm) attribute of `SpinMeasurement` in `immersive.spin`
+- [`normalization_eps`](modules/quantum_dash.py.md#brutalistconfig-normalization_eps) attribute of `BrutalistConfig` in `quantum_dash`
+- [`NORMALIZATION_EPS`](modules/orbital_visualizer2.py.md#config-normalization_eps) attribute of `Config` in `orbital_visualizer2`
+- [`NORMALIZATION_EPS`](modules/relativistic_hydrogen.py.md#config-normalization_eps) attribute of `Config` in `relativistic_hydrogen`
+- [`normalization_eps`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-normalization_eps) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`normalization_eps`](modules/quantum_framework_core.py.md#frameworkconfig-normalization_eps) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`normalization_eps`](modules/quantum_simulator.py.md#frameworkconfig-normalization_eps) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`normalization_eps`](modules/quantum_computer.py.md#simulatorconfig-normalization_eps) attribute of `SimulatorConfig` in `quantum_computer`
+- [`normalization_eps`](modules/quantum_visualizer.py.md#visualizerconfig-normalization_eps) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`normalize_`](modules/quantum_computer.py.md#jointhilbertstate-normalize_) method of `JointHilbertState` in `quantum_computer`
+- [`normalize_`](modules/quantum_simulator.py.md#jointhilbertstate-normalize_) method of `JointHilbertState` in `quantum_simulator`
+- [`note_en`](modules/immersive.physics.py.md#orbitalpreset-note_en) attribute of `OrbitalPreset` in `immersive.physics`
+- [`note_en`](modules/immersive.spin.py.md#spinpreset-note_en) attribute of `SpinPreset` in `immersive.spin`
+- [`note_en`](modules/immersive.matter.py.md#system-note_en) attribute of `System` in `immersive.matter`
+- [`note_es`](modules/immersive.physics.py.md#orbitalpreset-note_es) attribute of `OrbitalPreset` in `immersive.physics`
+- [`note_es`](modules/immersive.spin.py.md#spinpreset-note_es) attribute of `SpinPreset` in `immersive.spin`
+- [`note_es`](modules/immersive.matter.py.md#system-note_es) attribute of `System` in `immersive.matter`
+- [`npz_data_path`](modules/quantum_dash.py.md#visualizationoutput-npz_data_path) attribute of `VisualizationOutput` in `quantum_dash`
+- [`nuance`](modules/immersive.spin.py.md#spinpreset-nuance) attribute of `SpinPreset` in `immersive.spin`
+- [`nuclear_charge`](modules/quantum_framework_core.py.md#atomdata-nuclear_charge) attribute of `AtomData` in `quantum_framework_core`
+- [`nuclear_charge`](modules/quantum_simulator.py.md#atomdata-nuclear_charge) attribute of `AtomData` in `quantum_simulator`
+- [`nuclear_repulsion`](modules/molecular_sim.py.md#moleculedata-nuclear_repulsion) attribute of `MoleculeData` in `molecular_sim`
+- [`nuclear_repulsion`](modules/quantum_framework_molecular.py.md#moleculedata-nuclear_repulsion) attribute of `MoleculeData` in `quantum_framework_molecular`
+- [`nuclear_repulsion`](modules/quantum_framework_molecular_v2.py.md#moleculedata-nuclear_repulsion) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`nuclear_repulsion`](modules/advanced_experiments.py.md#polyatomicmoleculedata-nuclear_repulsion) attribute of `PolyatomicMoleculeData` in `advanced_experiments`
+- [`nuclear_repulsion_hartree`](modules/quantum_framework_core.py.md#moleculedata-nuclear_repulsion_hartree) attribute of `MoleculeData` in `quantum_framework_core`
+- [`nuclear_repulsion_hartree`](modules/quantum_simulator.py.md#moleculedata-nuclear_repulsion_hartree) attribute of `MoleculeData` in `quantum_simulator`
+- [`num_iterations`](modules/advanced_experiments.py.md#groverconfig-num_iterations) attribute of `GroverConfig` in `advanced_experiments`
+- [`num_qubits`](modules/qc_integration.py.md#gateinstruction-num_qubits) property of `GateInstruction` in `qc_integration`
+- [`num_spectral_layers`](modules/quantum_dash.py.md#brutalistconfig-num_spectral_layers) attribute of `BrutalistConfig` in `quantum_dash`
+- [`NUM_SPECTRAL_LAYERS`](modules/higgs_four_lepton_analysis.py.md#config-num_spectral_layers) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`NUM_SPECTRAL_LAYERS`](modules/higgs_quantum_analysis.py.md#config-num_spectral_layers) attribute of `Config` in `higgs_quantum_analysis`
+- [`NUM_SPECTRAL_LAYERS`](modules/orbital_visualizer2.py.md#config-num_spectral_layers) attribute of `Config` in `orbital_visualizer2`
+- [`NUM_SPECTRAL_LAYERS`](modules/relativistic_hydrogen.py.md#config-num_spectral_layers) attribute of `Config` in `relativistic_hydrogen`
+- [`num_spectral_layers`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-num_spectral_layers) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`num_spectral_layers`](modules/quantum_framework_core.py.md#frameworkconfig-num_spectral_layers) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`num_spectral_layers`](modules/quantum_simulator.py.md#frameworkconfig-num_spectral_layers) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`num_spectral_layers`](modules/advanced_experiments.py.md#groverconfig-num_spectral_layers) attribute of `GroverConfig` in `advanced_experiments`
+- [`num_spectral_layers`](modules/advanced_experiments.py.md#qedconfig-num_spectral_layers) attribute of `QEDConfig` in `advanced_experiments`
+- [`num_spectral_layers`](modules/quantum_computer.py.md#simulatorconfig-num_spectral_layers) attribute of `SimulatorConfig` in `quantum_computer`
+- [`num_spectral_layers`](modules/quantum_visualizer.py.md#visualizerconfig-num_spectral_layers) attribute of `VisualizerConfig` in `quantum_visualizer`
+
+<a id="o"></a>
+
+## O
+
+- [`occupation`](modules/immersive.matter.py.md#orbitalinfo-occupation) attribute of `OrbitalInfo` in `immersive.matter`
+- [`ok`](modules/immersive.spin.py.md#diracbackendlink-ok) property of `DiracBackendLink` in `immersive.spin`
+- [`on_key`](modules/immersive.scenes.py.md#scene-on_key) method of `Scene` in `immersive.scenes`
+- [`on_mount`](modules/qc_launcher.py.md#launcher-on_mount) method of `Launcher` in `qc_launcher`
+- [`on_option_list_option_highlighted`](modules/qc_launcher.py.md#launcher-on_option_list_option_highlighted) method of `Launcher` in `qc_launcher`
+- [`on_option_list_option_selected`](modules/qc_launcher.py.md#launcher-on_option_list_option_selected) method of `Launcher` in `qc_launcher`
+- [`one_body_integrals`](modules/quantum_framework_molecular_v2.py.md#moleculedata-one_body_integrals) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`OpenQasmAdapter`](modules/qc_integration.py.md#openqasmadapter) class in `qc_integration`
+- [`optimal_thetas`](modules/molecular_sim.py.md#vqeresult-optimal_thetas) attribute of `VQEResult` in `molecular_sim`
+- [`optimal_thetas`](modules/quantum_framework_molecular.py.md#vqeresult-optimal_thetas) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`optimal_thetas`](modules/quantum_framework_molecular_v2.py.md#vqeresult-optimal_thetas) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`optimize`](modules/quantum_lab.py.md#h2vqeengine-optimize) method of `H2VQEEngine` in `quantum_lab`
+- [`options`](modules/quantum_lab.py.md#quiz-options) attribute of `Quiz` in `quantum_lab`
+- [`ORBITAL_BODY`](modules/immersive.shaders.py.md#orbital_body) constant in `immersive.shaders`
+- [`orbital_energies`](modules/quantum_framework_molecular_v2.py.md#moleculedata-orbital_energies) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`orbital_fragment`](modules/immersive.shaders.py.md#orbital_fragment) function in `immersive.shaders`
+- [`ORBITAL_GRID_SEARCH_PHI`](modules/orbital_visualizer2.py.md#config-orbital_grid_search_phi) attribute of `Config` in `orbital_visualizer2`
+- [`ORBITAL_GRID_SEARCH_PHI`](modules/relativistic_hydrogen.py.md#config-orbital_grid_search_phi) attribute of `Config` in `relativistic_hydrogen`
+- [`ORBITAL_GRID_SEARCH_R`](modules/orbital_visualizer2.py.md#config-orbital_grid_search_r) attribute of `Config` in `orbital_visualizer2`
+- [`ORBITAL_GRID_SEARCH_R`](modules/relativistic_hydrogen.py.md#config-orbital_grid_search_r) attribute of `Config` in `relativistic_hydrogen`
+- [`ORBITAL_GRID_SEARCH_THETA`](modules/orbital_visualizer2.py.md#config-orbital_grid_search_theta) attribute of `Config` in `orbital_visualizer2`
+- [`ORBITAL_GRID_SEARCH_THETA`](modules/relativistic_hydrogen.py.md#config-orbital_grid_search_theta) attribute of `Config` in `relativistic_hydrogen`
+- [`orbital_label`](modules/immersive.physics.py.md#orbital_label) function in `immersive.physics`
+- [`orbital_menu`](modules/quantum_simulator.py.md#interactivemenu-orbital_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`ORBITAL_PROBABILITY_SAFETY_FACTOR`](modules/orbital_visualizer2.py.md#config-orbital_probability_safety_factor) attribute of `Config` in `orbital_visualizer2`
+- [`ORBITAL_PROBABILITY_SAFETY_FACTOR`](modules/relativistic_hydrogen.py.md#config-orbital_probability_safety_factor) attribute of `Config` in `relativistic_hydrogen`
+- [`orbital_probability_safety_factor`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-orbital_probability_safety_factor) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`ORBITAL_R_MAX_FACTOR`](modules/orbital_visualizer2.py.md#config-orbital_r_max_factor) attribute of `Config` in `orbital_visualizer2`
+- [`ORBITAL_R_MAX_FACTOR`](modules/relativistic_hydrogen.py.md#config-orbital_r_max_factor) attribute of `Config` in `relativistic_hydrogen`
+- [`orbital_r_max_factor`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-orbital_r_max_factor) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`ORBITAL_R_MAX_OFFSET`](modules/orbital_visualizer2.py.md#config-orbital_r_max_offset) attribute of `Config` in `orbital_visualizer2`
+- [`ORBITAL_R_MAX_OFFSET`](modules/relativistic_hydrogen.py.md#config-orbital_r_max_offset) attribute of `Config` in `relativistic_hydrogen`
+- [`orbital_r_max_offset`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-orbital_r_max_offset) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`ORBITAL_SPECS`](modules/quantum_lab.py.md#orbital_specs) constant in `quantum_lab`
+- [`orbital_viewer`](modules/quantum_lab.py.md#quantumlab-orbital_viewer) method of `QuantumLab` in `quantum_lab`
+- [`orbital_wavefunction`](modules/qc_dashboard.py.md#h2vqesolver-orbital_wavefunction) staticmethod of `H2VQESolver` in `qc_dashboard`
+- [`OrbitalData`](modules/quantum_framework_core.py.md#orbitaldata) class in `quantum_framework_core`
+- [`OrbitalData`](modules/quantum_simulator.py.md#orbitaldata) class in `quantum_simulator`
+- [`OrbitalInfo`](modules/immersive.matter.py.md#orbitalinfo) class in `immersive.matter`
+- [`OrbitalPreset`](modules/immersive.physics.py.md#orbitalpreset) class in `immersive.physics`
+- [`orbitals`](modules/quantum_framework_core.py.md#configloader-orbitals) property of `ConfigLoader` in `quantum_framework_core`
+- [`orbitals`](modules/quantum_simulator.py.md#configloader-orbitals) property of `ConfigLoader` in `quantum_simulator`
+- [`ORBITALS`](modules/orbital_visualizer2.py.md#orbitals) constant in `orbital_visualizer2`
+- [`ORBITALS`](modules/qc_launcher.py.md#orbitals) constant in `qc_launcher`
+- [`orbitals`](modules/immersive.matter.py.md#solved-orbitals) attribute of `Solved` in `immersive.matter`
+- [`OrbitalSpec`](modules/quantum_lab.py.md#orbitalspec) class in `quantum_lab`
+- [`OrbitalVisualizer`](modules/orbital_visualizer2.py.md#orbitalvisualizer) class in `orbital_visualizer2`
+- [`OrbitalVisualizer`](modules/quantum_framework_visualization.py.md#orbitalvisualizer) class in `quantum_framework_visualization`
+- [`OrbitalVisualizer`](modules/quantum_simulator.py.md#orbitalvisualizer) class in `quantum_simulator`
+- [`OrbitCamera`](modules/immersive.glkit.py.md#orbitcamera) class in `immersive.glkit`
+- [`ORDER`](modules/immersive.backend.py.md#backendhub-order) attribute of `BackendHub` in `immersive.backend`
+- [`output_dir`](modules/quantum_dash.py.md#brutalistconfig-output_dir) attribute of `BrutalistConfig` in `quantum_dash`
+- [`OUTPUT_DIR`](modules/higgs_four_lepton_analysis.py.md#config-output_dir) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`OUTPUT_DIR`](modules/higgs_quantum_analysis.py.md#config-output_dir) attribute of `Config` in `higgs_quantum_analysis`
+- [`output_dir`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-output_dir) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`output_dir`](modules/quantum_framework_core.py.md#frameworkconfig-output_dir) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`output_dir`](modules/quantum_simulator.py.md#frameworkconfig-output_dir) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`output_dir`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-output_dir) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`output_dir`](modules/quantum_visualizer.py.md#visualizerconfig-output_dir) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`output_path`](modules/quantum_visualizer.py.md#visualizationresult-output_path) attribute of `VisualizationResult` in `quantum_visualizer`
+- [`overlap_1s`](modules/immersive.physics.py.md#overlap_1s) function in `immersive.physics`
+
+<a id="p"></a>
+
+## P
+
+- [`P1`](modules/immersive.physics.py.md#p1) constant in `immersive.physics`
+- [`p_mag`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-p_mag) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`p_mag`](modules/higgs_quantum_analysis.py.md#fourmomentum-p_mag) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`panel`](modules/immersive.hud.py.md#hud-panel) method of `Hud` in `immersive.hud`
+- [`PANEL`](modules/immersive.hud.py.md#panel) constant in `immersive.hud`
+- [`panel`](modules/quantum_lab.py.md#quantumlab-panel) method of `QuantumLab` in `quantum_lab`
+- [`PANEL_EDGE`](modules/immersive.hud.py.md#panel_edge) constant in `immersive.hud`
+- [`panel_rect`](modules/immersive.scenes.py.md#scene-panel_rect) method of `Scene` in `immersive.scenes`
+- [`param`](modules/qc_dashboard.py.md#gateitem-param) attribute of `GateItem` in `qc_dashboard`
+- [`parameter_precision`](modules/qc_integration.py.md#integrationconfig-parameter_precision) attribute of `IntegrationConfig` in `qc_integration`
+- [`params`](modules/quantum_computer.py.md#circuitinstruction-params) attribute of `CircuitInstruction` in `quantum_computer`
+- [`params`](modules/quantum_framework_core.py.md#circuitinstruction-params) attribute of `CircuitInstruction` in `quantum_framework_core`
+- [`params`](modules/quantum_simulator.py.md#circuitinstruction-params) attribute of `CircuitInstruction` in `quantum_simulator`
+- [`params`](modules/qc_integration.py.md#gateinstruction-params) attribute of `GateInstruction` in `qc_integration`
+- [`parse_angle`](modules/quantum_lab.py.md#parse_angle) function in `quantum_lab`
+- [`parse_args`](modules/immersive.app.py.md#parse_args) function in `immersive.app`
+- [`parse_file`](modules/higgs_four_lepton_analysis.py.md#eventparser-parse_file) method of `EventParser` in `higgs_four_lepton_analysis`
+- [`parse_file`](modules/higgs_quantum_analysis.py.md#eventparser-parse_file) method of `EventParser` in `higgs_quantum_analysis`
+- [`particle_conserving_ansatz`](modules/app.py.md#particle_conserving_ansatz) function in `app`
+- [`particle_conserving_ansatz`](modules/polarizability_v3.py.md#particle_conserving_ansatz) function in `polarizability_v3`
+- [`particle_count`](modules/quantum_3dview.py.md#brutalconfig-particle_count) attribute of `BrutalConfig` in `quantum_3dview`
+- [`particle_count`](modules/quantum_dash.py.md#brutalistconfig-particle_count) attribute of `BrutalistConfig` in `quantum_dash`
+- [`ParticleConservingState`](modules/quantum_framework_molecular_v2.py.md#particleconservingstate) class in `quantum_framework_molecular_v2`
+- [`PAULI`](modules/immersive.physics.py.md#pauli) constant in `immersive.physics`
+- [`PauliXGate`](modules/quantum_computer.py.md#paulixgate) class in `quantum_computer`
+- [`PauliXGate`](modules/quantum_framework_core.py.md#paulixgate) class in `quantum_framework_core`
+- [`PauliXGate`](modules/quantum_simulator.py.md#paulixgate) class in `quantum_simulator`
+- [`PauliYGate`](modules/quantum_computer.py.md#pauliygate) class in `quantum_computer`
+- [`PauliYGate`](modules/quantum_framework_core.py.md#pauliygate) class in `quantum_framework_core`
+- [`PauliYGate`](modules/quantum_simulator.py.md#pauliygate) class in `quantum_simulator`
+- [`PauliZGate`](modules/quantum_computer.py.md#paulizgate) class in `quantum_computer`
+- [`PauliZGate`](modules/quantum_framework_core.py.md#paulizgate) class in `quantum_framework_core`
+- [`PauliZGate`](modules/quantum_simulator.py.md#paulizgate) class in `quantum_simulator`
+- [`pause`](modules/quantum_framework_menu.py.md#menusystem-pause) method of `MenuSystem` in `quantum_framework_menu`
+- [`pause`](modules/quantum_lab.py.md#quantumlab-pause) method of `QuantumLab` in `quantum_lab`
+- [`pennylane_device`](modules/qc_integration.py.md#integrationconfig-pennylane_device) attribute of `IntegrationConfig` in `qc_integration`
+- [`PennyLaneAdapter`](modules/qc_integration.py.md#pennylaneadapter) class in `qc_integration`
+- [`PERFECT_CRYSTAL`](modules/quantum_framework_core.py.md#hilbertphase-perfect_crystal) attribute of `HilbertPhase` in `quantum_framework_core`
+- [`PERFECT_CRYSTAL`](modules/topological_hilbert_compression2.py.md#hilbertphase-perfect_crystal) attribute of `HilbertPhase` in `topological_hilbert_compression2`
+- [`periodic_lattice`](modules/quantum_computer.py.md#potentialgenerator-periodic_lattice) method of `PotentialGenerator` in `quantum_computer`
+- [`periodic_lattice`](modules/quantum_framework_physics.py.md#potentialgenerator-periodic_lattice) method of `PotentialGenerator` in `quantum_framework_physics`
+- [`periodic_lattice`](modules/quantum_simulator.py.md#potentialgenerator-periodic_lattice) method of `PotentialGenerator` in `quantum_simulator`
+- [`PHASE_BAR_STOPS`](modules/immersive.scenes.py.md#phase_bar_stops) constant in `immersive.scenes`
+- [`phase_legend`](modules/immersive.scenes.py.md#volumescene-phase_legend) method of `VolumeScene` in `immersive.scenes`
+- [`phase_normalization`](modules/quantum_dash.py.md#brutalistconfig-phase_normalization) attribute of `BrutalistConfig` in `quantum_dash`
+- [`phase_normalization`](modules/quantum_visualizer.py.md#visualizerconfig-phase_normalization) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`phase_point_size_base`](modules/qc_dashboard.py.md#dashboardconfig-phase_point_size_base) attribute of `DashboardConfig` in `qc_dashboard`
+- [`PhasePlotRenderer`](modules/quantum_visualizer.py.md#phaseplotrenderer) class in `quantum_visualizer`
+- [`phases`](modules/quantum_dash.py.md#quantumsnapshot-phases) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`phases`](modules/quantum_visualizer.py.md#quantumstatesnapshot-phases) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`phases`](modules/qc_dashboard.py.md#snapshotdata-phases) attribute of `SnapshotData` in `qc_dashboard`
+- [`phases_imag`](modules/quantum_framework_molecular_v2.py.md#cachedpaulioperation-phases_imag) attribute of `CachedPauliOperation` in `quantum_framework_molecular_v2`
+- [`phases_real`](modules/quantum_framework_molecular_v2.py.md#cachedpaulioperation-phases_real) attribute of `CachedPauliOperation` in `quantum_framework_molecular_v2`
+- [`PhaseSpaceVisualizer`](modules/quantum_dash.py.md#phasespacevisualizer) class in `quantum_dash`
+- [`phi`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-phi) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`phi`](modules/higgs_quantum_analysis.py.md#fourmomentum-phi) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`phi`](modules/higgs_four_lepton_analysis.py.md#lepton-phi) property of `Lepton` in `higgs_four_lepton_analysis`
+- [`phi`](modules/higgs_quantum_analysis.py.md#lepton-phi) property of `Lepton` in `higgs_quantum_analysis`
+- [`pid`](modules/higgs_four_lepton_analysis.py.md#lepton-pid) attribute of `Lepton` in `higgs_four_lepton_analysis`
+- [`pid`](modules/higgs_quantum_analysis.py.md#lepton-pid) attribute of `Lepton` in `higgs_quantum_analysis`
+- [`plane`](modules/quantum_lab.py.md#orbitalspec-plane) attribute of `OrbitalSpec` in `quantum_lab`
+- [`PLASMA`](modules/quantum_dash.py.md#colorscheme-plasma) attribute of `ColorScheme` in `quantum_dash`
+- [`playground`](modules/quantum_lab.py.md#quantumlab-playground) method of `QuantumLab` in `quantum_lab`
+- [`Plotly3DEngine`](modules/qc_dashboard.py.md#plotly3dengine) class in `qc_dashboard`
+- [`plotly_marker_size`](modules/qc_dashboard.py.md#dashboardconfig-plotly_marker_size) attribute of `DashboardConfig` in `qc_dashboard`
+- [`plotly_template`](modules/quantum_dash.py.md#brutalistconfig-plotly_template) property of `BrutalistConfig` in `quantum_dash`
+- [`PMINUS`](modules/immersive.physics.py.md#pminus) constant in `immersive.physics`
+- [`png_path`](modules/quantum_dash.py.md#visualizationoutput-png_path) attribute of `VisualizationOutput` in `quantum_dash`
+- [`PolarizabilityCalculator`](modules/app.py.md#polarizabilitycalculator) class in `app`
+- [`PolarizabilityCalculator`](modules/polarizability_v3.py.md#polarizabilitycalculator) class in `polarizability_v3`
+- [`PolyatomicExperiment`](modules/advanced_experiments.py.md#polyatomicexperiment) class in `advanced_experiments`
+- [`PolyatomicMoleculeData`](modules/advanced_experiments.py.md#polyatomicmoleculedata) class in `advanced_experiments`
+- [`PolyatomicVQE`](modules/advanced_experiments.py.md#polyatomicvqe) class in `advanced_experiments`
+- [`POLYCRYSTAL`](modules/quantum_framework_core.py.md#hilbertphase-polycrystal) attribute of `HilbertPhase` in `quantum_framework_core`
+- [`POLYCRYSTAL`](modules/topological_hilbert_compression2.py.md#hilbertphase-polycrystal) attribute of `HilbertPhase` in `topological_hilbert_compression2`
+- [`__post_init__`](modules/quantum_framework_core.py.md#frameworkconfig-__post_init__) method of `FrameworkConfig` in `quantum_framework_core`
+- [`PostProcess`](modules/immersive.postfx.py.md#postprocess) class in `immersive.postfx`
+- [`potential_depth`](modules/quantum_dash.py.md#brutalistconfig-potential_depth) attribute of `BrutalistConfig` in `quantum_dash`
+- [`potential_depth`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-potential_depth) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`potential_depth`](modules/quantum_framework_core.py.md#frameworkconfig-potential_depth) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`potential_depth`](modules/quantum_simulator.py.md#frameworkconfig-potential_depth) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`potential_depth`](modules/quantum_computer.py.md#simulatorconfig-potential_depth) attribute of `SimulatorConfig` in `quantum_computer`
+- [`potential_depth`](modules/quantum_visualizer.py.md#visualizerconfig-potential_depth) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`potential_width`](modules/quantum_dash.py.md#brutalistconfig-potential_width) attribute of `BrutalistConfig` in `quantum_dash`
+- [`potential_width`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-potential_width) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`potential_width`](modules/quantum_framework_core.py.md#frameworkconfig-potential_width) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`potential_width`](modules/quantum_simulator.py.md#frameworkconfig-potential_width) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`potential_width`](modules/quantum_computer.py.md#simulatorconfig-potential_width) attribute of `SimulatorConfig` in `quantum_computer`
+- [`potential_width`](modules/quantum_visualizer.py.md#visualizerconfig-potential_width) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`PotentialGenerator`](modules/quantum_computer.py.md#potentialgenerator) class in `quantum_computer`
+- [`PotentialGenerator`](modules/quantum_framework_physics.py.md#potentialgenerator) class in `quantum_framework_physics`
+- [`PotentialGenerator`](modules/quantum_simulator.py.md#potentialgenerator) class in `quantum_simulator`
+- [`precision_mode`](modules/quantum_framework_core.py.md#frameworkconfig-precision_mode) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`precision_mode`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-precision_mode) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`precision_mode`](modules/quantum_framework_molecular_v2.py.md#vqeresult-precision_mode) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`prefer_mps_for_low_entanglement`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-prefer_mps_for_low_entanglement) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`prefetch`](modules/immersive.matter.py.md#asyncsolver-prefetch) method of `AsyncSolver` in `immersive.matter`
+- [`preload`](modules/immersive.backend.py.md#backendhub-preload) classmethod of `BackendHub` in `immersive.backend`
+- [`prepare`](modules/immersive.backend.py.md#backendregister-prepare) method of `BackendRegister` in `immersive.backend`
+- [`prepare`](modules/entangled_hydrogen.py.md#bellstate-prepare) method of `BellState` in `entangled_hydrogen`
+- [`prepare`](modules/entangled_hydrogen.py.md#ghzstate-prepare) method of `GHZState` in `entangled_hydrogen`
+- [`prepare`](modules/entangled_hydrogen.py.md#ientangledstate-prepare) method of `IEntangledState` in `entangled_hydrogen`
+- [`prepare`](modules/entangled_hydrogen.py.md#wstate-prepare) method of `WState` in `entangled_hydrogen`
+- [`prepare_ghz_state`](modules/topological_hilbert_compression2.py.md#schrodinger20experiment-prepare_ghz_state) method of `Schrodinger20Experiment` in `topological_hilbert_compression2`
+- [`prepare_hf`](modules/molecular_sim.py.md#prepare_hf) function in `molecular_sim`
+- [`prepare_hf_state`](modules/quantum_framework_molecular.py.md#vqesolver-prepare_hf_state) method of `VQESolver` in `quantum_framework_molecular`
+- [`prepare_hf_state`](modules/quantum_framework_molecular_v2.py.md#vqesolver-prepare_hf_state) method of `VQESolver` in `quantum_framework_molecular_v2`
+- [`present`](modules/immersive.postfx.py.md#postprocess-present) method of `PostProcess` in `immersive.postfx`
+- [`PRESETS`](modules/immersive.physics.py.md#presets) constant in `immersive.physics`
+- [`print_header`](modules/relativistic_hydrogen.py.md#diracvalidationsuite-print_header) method of `DiracValidationSuite` in `relativistic_hydrogen`
+- [`print_header`](modules/quantum_framework_menu.py.md#menusystem-print_header) method of `MenuSystem` in `quantum_framework_menu`
+- [`print_header`](modules/demo_molecular_vqe.py.md#print_header) function in `demo_molecular_vqe`
+- [`print_info`](modules/quantum_framework_main.py.md#print_info) function in `quantum_framework_main`
+- [`print_menu`](modules/quantum_framework_menu.py.md#menusystem-print_menu) method of `MenuSystem` in `quantum_framework_menu`
+- [`prob_safety_factor`](modules/quantum_framework_core.py.md#frameworkconfig-prob_safety_factor) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`prob_safety_factor`](modules/quantum_simulator.py.md#frameworkconfig-prob_safety_factor) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`probabilities`](modules/quantum_visualizer.py.md#backendcomparisonresult-probabilities) attribute of `BackendComparisonResult` in `quantum_visualizer`
+- [`probabilities`](modules/immersive.backend.py.md#backendregister-probabilities) method of `BackendRegister` in `immersive.backend`
+- [`probabilities`](modules/quantum_framework_core.py.md#itensornetwork-probabilities) method of `ITensorNetwork` in `quantum_framework_core`
+- [`probabilities`](modules/topological_hilbert_compression2.py.md#itensornetwork-probabilities) method of `ITensorNetwork` in `topological_hilbert_compression2`
+- [`probabilities`](modules/quantum_computer.py.md#jointhilbertstate-probabilities) method of `JointHilbertState` in `quantum_computer`
+- [`probabilities`](modules/quantum_simulator.py.md#jointhilbertstate-probabilities) method of `JointHilbertState` in `quantum_simulator`
+- [`probabilities`](modules/quantum_framework_core.py.md#mpsstate-probabilities) method of `MPSState` in `quantum_framework_core`
+- [`probabilities`](modules/topological_hilbert_compression2.py.md#mpsstate-probabilities) method of `MPSState` in `topological_hilbert_compression2`
+- [`probabilities`](modules/quantum_computer.py.md#measurementresult-probabilities) property of `MeasurementResult` in `quantum_computer`
+- [`probabilities`](modules/quantum_simulator.py.md#quantumresult-probabilities) method of `QuantumResult` in `quantum_simulator`
+- [`probabilities`](modules/quantum_dash.py.md#quantumsnapshot-probabilities) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`probabilities`](modules/quantum_visualizer.py.md#quantumstatesnapshot-probabilities) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`probabilities`](modules/immersive.physics.py.md#qubitregister-probabilities) method of `QubitRegister` in `immersive.physics`
+- [`probabilities`](modules/qc_dashboard.py.md#snapshotdata-probabilities) attribute of `SnapshotData` in `qc_dashboard`
+- [`probabilities`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-probabilities) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`probability_bars`](modules/quantum_lab.py.md#probability_bars) function in `quantum_lab`
+- [`probability_threshold`](modules/quantum_dash.py.md#brutalistconfig-probability_threshold) attribute of `BrutalistConfig` in `quantum_dash`
+- [`probability_threshold`](modules/qc_dashboard.py.md#dashboardconfig-probability_threshold) attribute of `DashboardConfig` in `qc_dashboard`
+- [`probability_threshold`](modules/quantum_visualizer.py.md#visualizerconfig-probability_threshold) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`ProbabilityBarRenderer`](modules/quantum_visualizer.py.md#probabilitybarrenderer) class in `quantum_visualizer`
+- [`ProbabilityVisualizer`](modules/quantum_dash.py.md#probabilityvisualizer) class in `quantum_dash`
+- [`Program`](modules/immersive.glkit.py.md#program) class in `immersive.glkit`
+- [`progress`](modules/immersive.backend.py.md#backendregister-progress) property of `BackendRegister` in `immersive.backend`
+- [`progress`](modules/immersive.physics.py.md#qubitregister-progress) property of `QubitRegister` in `immersive.physics`
+- [`project`](modules/immersive.glkit.py.md#orbitcamera-project) method of `OrbitCamera` in `immersive.glkit`
+- [`project_to_active`](modules/quantum_framework_core.py.md#vacuumcore-project_to_active) method of `VacuumCore` in `quantum_framework_core`
+- [`project_to_active`](modules/topological_hilbert_compression2.py.md#vacuumcore-project_to_active) method of `VacuumCore` in `topological_hilbert_compression2`
+- [`propagator_dt`](modules/quantum_framework_core.py.md#frameworkconfig-propagator_dt) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`propagator_dt`](modules/quantum_computer.py.md#simulatorconfig-propagator_dt) attribute of `SimulatorConfig` in `quantum_computer`
+- [`proton_mass`](modules/quantum_framework_core.py.md#frameworkconfig-proton_mass) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`psi`](modules/immersive.backend.py.md#backendregister-psi) property of `BackendRegister` in `immersive.backend`
+- [`psi_3d`](modules/entangled_hydrogen.py.md#wavefunctioncalculator-psi_3d) method of `WavefunctionCalculator` in `entangled_hydrogen`
+- [`psi_3d`](modules/quantum_framework_visualization.py.md#wavefunctioncalculator-psi_3d) method of `WavefunctionCalculator` in `quantum_framework_visualization`
+- [`psi_3d`](modules/quantum_simulator.py.md#wavefunctioncalculator-psi_3d) method of `WavefunctionCalculator` in `quantum_simulator`
+- [`psi_on_grid`](modules/entangled_hydrogen.py.md#wavefunctioncalculator-psi_on_grid) method of `WavefunctionCalculator` in `entangled_hydrogen`
+- [`psi_on_grid`](modules/orbital_visualizer2.py.md#wavefunctioncalculator-psi_on_grid) staticmethod of `WavefunctionCalculator` in `orbital_visualizer2`
+- [`psi_on_grid`](modules/quantum_framework_visualization.py.md#wavefunctioncalculator-psi_on_grid) method of `WavefunctionCalculator` in `quantum_framework_visualization`
+- [`psi_samples`](modules/immersive.physics.py.md#psi_samples) function in `immersive.physics`
+- [`pt`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-pt) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`pt`](modules/higgs_quantum_analysis.py.md#fourmomentum-pt) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`pt`](modules/higgs_four_lepton_analysis.py.md#lepton-pt) property of `Lepton` in `higgs_four_lepton_analysis`
+- [`pt`](modules/higgs_quantum_analysis.py.md#lepton-pt) property of `Lepton` in `higgs_quantum_analysis`
+- [`px`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-px) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`px`](modules/higgs_quantum_analysis.py.md#fourmomentum-px) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`PX`](modules/immersive.physics.py.md#px) constant in `immersive.physics`
+- [`py`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-py) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`py`](modules/higgs_quantum_analysis.py.md#fourmomentum-py) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`PY`](modules/immersive.physics.py.md#py) constant in `immersive.physics`
+- [`pyscf_available`](modules/immersive.matter.py.md#pyscf_available) function in `immersive.matter`
+- [`PYTHON`](modules/qc_launcher.py.md#python) constant in `qc_launcher`
+- [`pz`](modules/higgs_four_lepton_analysis.py.md#fourmomentum-pz) attribute of `FourMomentum` in `higgs_four_lepton_analysis`
+- [`pz`](modules/higgs_quantum_analysis.py.md#fourmomentum-pz) attribute of `FourMomentum` in `higgs_quantum_analysis`
+- [`PZ`](modules/immersive.physics.py.md#pz) constant in `immersive.physics`
+
+<a id="q"></a>
+
+## Q
+
+- [`qasm_include_stdgates`](modules/qc_integration.py.md#integrationconfig-qasm_include_stdgates) attribute of `IntegrationConfig` in `qc_integration`
+- [`qasm_initial`](modules/qc_dashboard.py.md#dashboardconfig-qasm_initial) attribute of `DashboardConfig` in `qc_dashboard`
+- [`qasm_version`](modules/qc_integration.py.md#integrationconfig-qasm_version) attribute of `IntegrationConfig` in `qc_integration`
+- [`QEDConfig`](modules/advanced_experiments.py.md#qedconfig) class in `advanced_experiments`
+- [`QEDEffectsExperiment`](modules/advanced_experiments.py.md#qedeffectsexperiment) class in `advanced_experiments`
+- [`qft`](modules/qc_integration.py.md#standardcircuitfactory-qft) staticmethod of `StandardCircuitFactory` in `qc_integration`
+- [`qft`](modules/quantum_dash.py.md#standardcircuits-qft) staticmethod of `StandardCircuits` in `quantum_dash`
+- [`qft`](modules/quantum_visualizer.py.md#standardcircuits-qft) staticmethod of `StandardCircuits` in `quantum_visualizer`
+- [`QiskitAdapter`](modules/qc_integration.py.md#qiskitadapter) class in `qc_integration`
+- [`quantum_circuit_menu`](modules/quantum_simulator.py.md#interactivemenu-quantum_circuit_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`QUANTUM_DEVICE`](modules/higgs_four_lepton_analysis.py.md#config-quantum_device) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`QUANTUM_DEVICE`](modules/higgs_quantum_analysis.py.md#config-quantum_device) attribute of `Config` in `higgs_quantum_analysis`
+- [`quantum_fourier_transform`](modules/quantum_computer.py.md#quantumcomputer-quantum_fourier_transform) method of `QuantumComputer` in `quantum_computer`
+- [`QUANTUM_VOID`](modules/quantum_3dview.py.md#brutaltheme-quantum_void) attribute of `BrutalTheme` in `quantum_3dview`
+- [`QUANTUM_VOID`](modules/quantum_dash.py.md#colorscheme-quantum_void) attribute of `ColorScheme` in `quantum_dash`
+- [`QuantumCircuit`](modules/quantum_computer.py.md#quantumcircuit) class in `quantum_computer`
+- [`QuantumCircuit`](modules/quantum_framework_core.py.md#quantumcircuit) class in `quantum_framework_core`
+- [`QuantumCircuit`](modules/quantum_simulator.py.md#quantumcircuit) class in `quantum_simulator`
+- [`QuantumComputer`](modules/quantum_computer.py.md#quantumcomputer) class in `quantum_computer`
+- [`QuantumComputer`](modules/quantum_simulator.py.md#quantumcomputer) class in `quantum_simulator`
+- [`QuantumHologram`](modules/quantum_3dview.py.md#quantumhologram) class in `quantum_3dview`
+- [`QuantumLab`](modules/quantum_lab.py.md#quantumlab) class in `quantum_lab`
+- [`QuantumNeuralTopology`](modules/quantum_3dview.py.md#quantumneuraltopology) class in `quantum_3dview`
+- [`QuantumResult`](modules/quantum_simulator.py.md#quantumresult) class in `quantum_simulator`
+- [`QuantumSimulationFramework`](modules/quantum_simulator.py.md#quantumsimulationframework) class in `quantum_simulator`
+- [`QuantumSnapshot`](modules/quantum_dash.py.md#quantumsnapshot) class in `quantum_dash`
+- [`QuantumSonification`](modules/quantum_3dview.py.md#quantumsonification) class in `quantum_3dview`
+- [`QuantumSpinorProcessor`](modules/higgs_four_lepton_analysis.py.md#quantumspinorprocessor) class in `higgs_four_lepton_analysis`
+- [`QuantumSpinorProcessor`](modules/higgs_quantum_analysis.py.md#quantumspinorprocessor) class in `higgs_quantum_analysis`
+- [`QuantumStateAnalyzer`](modules/quantum_dash.py.md#quantumstateanalyzer) class in `quantum_dash`
+- [`QuantumStateAnalyzer`](modules/quantum_visualizer.py.md#quantumstateanalyzer) class in `quantum_visualizer`
+- [`QuantumStateSnapshot`](modules/quantum_visualizer.py.md#quantumstatesnapshot) class in `quantum_visualizer`
+- [`QuantumVisualizer`](modules/quantum_dash.py.md#quantumvisualizer) class in `quantum_dash`
+- [`QuantumVisualizer`](modules/quantum_visualizer.py.md#quantumvisualizer) class in `quantum_visualizer`
+- [`QubitRegister`](modules/immersive.physics.py.md#qubitregister) class in `immersive.physics`
+- [`question`](modules/quantum_lab.py.md#quiz-question) attribute of `Quiz` in `quantum_lab`
+- [`queue`](modules/immersive.backend.py.md#backendregister-queue) method of `BackendRegister` in `immersive.backend`
+- [`queue`](modules/immersive.physics.py.md#qubitregister-queue) method of `QubitRegister` in `immersive.physics`
+- [`Quiz`](modules/quantum_lab.py.md#quiz) class in `quantum_lab`
+
+<a id="r"></a>
+
+## R
+
+- [`R2`](modules/immersive.spin.py.md#r2) constant in `immersive.spin`
+- [`r_max_factor`](modules/quantum_framework_core.py.md#frameworkconfig-r_max_factor) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`r_max_factor`](modules/quantum_simulator.py.md#frameworkconfig-r_max_factor) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`r_max_offset`](modules/quantum_framework_core.py.md#frameworkconfig-r_max_offset) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`r_max_offset`](modules/quantum_simulator.py.md#frameworkconfig-r_max_offset) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`radial_function`](modules/immersive.physics.py.md#radial_function) function in `immersive.physics`
+- [`radial_norm`](modules/immersive.physics.py.md#radial_norm) function in `immersive.physics`
+- [`RADIAL_SAMPLES`](modules/immersive.physics.py.md#radial_samples) constant in `immersive.physics`
+- [`radial_table`](modules/immersive.physics.py.md#radial_table) function in `immersive.physics`
+- [`radial_wavefunction`](modules/entangled_hydrogen.py.md#wavefunctioncalculator-radial_wavefunction) staticmethod of `WavefunctionCalculator` in `entangled_hydrogen`
+- [`radial_wavefunction`](modules/orbital_visualizer2.py.md#wavefunctioncalculator-radial_wavefunction) staticmethod of `WavefunctionCalculator` in `orbital_visualizer2`
+- [`radial_wavefunction`](modules/quantum_framework_visualization.py.md#wavefunctioncalculator-radial_wavefunction) staticmethod of `WavefunctionCalculator` in `quantum_framework_visualization`
+- [`radial_wavefunction`](modules/quantum_simulator.py.md#wavefunctioncalculator-radial_wavefunction) staticmethod of `WavefunctionCalculator` in `quantum_simulator`
+- [`radial_wavefunction_dirac`](modules/relativistic_hydrogen.py.md#diracwavefunctioncalculator-radial_wavefunction_dirac) method of `DiracWavefunctionCalculator` in `relativistic_hydrogen`
+- [`radial_wavefunction_schrodinger`](modules/relativistic_hydrogen.py.md#diracwavefunctioncalculator-radial_wavefunction_schrodinger) staticmethod of `DiracWavefunctionCalculator` in `relativistic_hydrogen`
+- [`random_seed`](modules/quantum_dash.py.md#brutalistconfig-random_seed) attribute of `BrutalistConfig` in `quantum_dash`
+- [`random_seed`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-random_seed) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`random_seed`](modules/quantum_framework_core.py.md#frameworkconfig-random_seed) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`random_seed`](modules/quantum_simulator.py.md#frameworkconfig-random_seed) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`random_seed`](modules/quantum_computer.py.md#simulatorconfig-random_seed) attribute of `SimulatorConfig` in `quantum_computer`
+- [`random_seed`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-random_seed) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`random_seed`](modules/quantum_visualizer.py.md#visualizerconfig-random_seed) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`real_time_label`](modules/immersive.spin.py.md#real_time_label) function in `immersive.spin`
+- [`RealOrbitalEngine`](modules/qc_dashboard.py.md#realorbitalengine) class in `qc_dashboard`
+- [`reduced_density`](modules/immersive.backend.py.md#backendregister-reduced_density) method of `BackendRegister` in `immersive.backend`
+- [`reduced_density`](modules/immersive.physics.py.md#qubitregister-reduced_density) method of `QubitRegister` in `immersive.physics`
+- [`refresh`](modules/immersive.scenes.py.md#spinscene-refresh) method of `SpinScene` in `immersive.scenes`
+- [`refresh_detail`](modules/qc_launcher.py.md#launcher-refresh_detail) method of `Launcher` in `qc_launcher`
+- [`register_gate`](modules/quantum_computer.py.md#register_gate) function in `quantum_computer`
+- [`regularization_lambda`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-regularization_lambda) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`relativistic_menu`](modules/quantum_simulator.py.md#interactivemenu-relativistic_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`render`](modules/immersive.scenes.py.md#atomscene-render) method of `AtomScene` in `immersive.scenes`
+- [`render`](modules/quantum_visualizer.py.md#backendcomparisonrenderer-render) method of `BackendComparisonRenderer` in `quantum_visualizer`
+- [`render`](modules/quantum_dash.py.md#backendcomparisonvisualizer-render) method of `BackendComparisonVisualizer` in `quantum_dash`
+- [`render`](modules/immersive.scenes.py.md#blochscene-render) method of `BlochScene` in `immersive.scenes`
+- [`render`](modules/quantum_visualizer.py.md#blochsphererenderer-render) method of `BlochSphereRenderer` in `quantum_visualizer`
+- [`render`](modules/quantum_dash.py.md#blochspherevisualizer-render) method of `BlochSphereVisualizer` in `quantum_dash`
+- [`render`](modules/immersive.scenes.py.md#entanglescene-render) method of `EntangleScene` in `immersive.scenes`
+- [`render`](modules/quantum_visualizer.py.md#entropyplotrenderer-render) method of `EntropyPlotRenderer` in `quantum_visualizer`
+- [`render`](modules/quantum_dash.py.md#entropyvisualizer-render) method of `EntropyVisualizer` in `quantum_dash`
+- [`render`](modules/quantum_dash.py.md#fidelityvisualizer-render) method of `FidelityVisualizer` in `quantum_dash`
+- [`render`](modules/quantum_dash.py.md#ivisualcomponent-render) method of `IVisualComponent` in `quantum_dash`
+- [`render`](modules/quantum_visualizer.py.md#ivisualizationcomponent-render) method of `IVisualizationComponent` in `quantum_visualizer`
+- [`render`](modules/immersive.scenes.py.md#matterscene-render) method of `MatterScene` in `immersive.scenes`
+- [`render`](modules/quantum_visualizer.py.md#phaseplotrenderer-render) method of `PhasePlotRenderer` in `quantum_visualizer`
+- [`render`](modules/quantum_dash.py.md#phasespacevisualizer-render) method of `PhaseSpaceVisualizer` in `quantum_dash`
+- [`render`](modules/quantum_visualizer.py.md#probabilitybarrenderer-render) method of `ProbabilityBarRenderer` in `quantum_visualizer`
+- [`render`](modules/quantum_dash.py.md#probabilityvisualizer-render) method of `ProbabilityVisualizer` in `quantum_dash`
+- [`render`](modules/immersive.scenes.py.md#scene-render) method of `Scene` in `immersive.scenes`
+- [`render`](modules/immersive.scenes.py.md#spinscene-render) method of `SpinScene` in `immersive.scenes`
+- [`render_bloch_3d`](modules/qc_dashboard.py.md#plotly3dengine-render_bloch_3d) method of `Plotly3DEngine` in `qc_dashboard`
+- [`render_energy_landscape`](modules/qc_dashboard.py.md#visualisationengine-render_energy_landscape) method of `VisualisationEngine` in `qc_dashboard`
+- [`render_entangled_to_bytes`](modules/qc_dashboard.py.md#realorbitalengine-render_entangled_to_bytes) method of `RealOrbitalEngine` in `qc_dashboard`
+- [`render_entanglement_profile`](modules/qc_dashboard.py.md#visualisationengine-render_entanglement_profile) method of `VisualisationEngine` in `qc_dashboard`
+- [`render_entropy_chart`](modules/qc_dashboard.py.md#visualisationengine-render_entropy_chart) method of `VisualisationEngine` in `qc_dashboard`
+- [`render_entropy_scaling`](modules/qc_dashboard.py.md#visualisationengine-render_entropy_scaling) method of `VisualisationEngine` in `qc_dashboard`
+- [`render_full_dashboard`](modules/qc_dashboard.py.md#visualisationengine-render_full_dashboard) method of `VisualisationEngine` in `qc_dashboard`
+- [`render_h2_molecular_orbital`](modules/quantum_lab.py.md#render_h2_molecular_orbital) function in `quantum_lab`
+- [`render_hologram`](modules/qc_dashboard.py.md#brutalvizengine-render_hologram) method of `BrutalVizEngine` in `qc_dashboard`
+- [`render_orbital`](modules/quantum_lab.py.md#render_orbital) function in `quantum_lab`
+- [`render_orbital_2d_projections`](modules/qc_dashboard.py.md#visualisationengine-render_orbital_2d_projections) method of `VisualisationEngine` in `qc_dashboard`
+- [`render_orbital_plot`](modules/qc_dashboard.py.md#visualisationengine-render_orbital_plot) method of `VisualisationEngine` in `qc_dashboard`
+- [`render_probability_3d`](modules/qc_dashboard.py.md#plotly3dengine-render_probability_3d) method of `Plotly3DEngine` in `qc_dashboard`
+- [`render_state_3d`](modules/qc_dashboard.py.md#plotly3dengine-render_state_3d) method of `Plotly3DEngine` in `qc_dashboard`
+- [`render_to_bytes`](modules/qc_dashboard.py.md#realorbitalengine-render_to_bytes) method of `RealOrbitalEngine` in `qc_dashboard`
+- [`render_vqe_convergence`](modules/qc_dashboard.py.md#visualisationengine-render_vqe_convergence) method of `VisualisationEngine` in `qc_dashboard`
+- [`request`](modules/immersive.matter.py.md#asyncsolver-request) method of `AsyncSolver` in `immersive.matter`
+- [`request_field`](modules/immersive.matter.py.md#asyncsolver-request_field) method of `AsyncSolver` in `immersive.matter`
+- [`reset`](modules/immersive.backend.py.md#backendregister-reset) method of `BackendRegister` in `immersive.backend`
+- [`reset`](modules/immersive.physics.py.md#qubitregister-reset) method of `QubitRegister` in `immersive.physics`
+- [`resize`](modules/immersive.hud.py.md#hud-resize) method of `Hud` in `immersive.hud`
+- [`resize`](modules/immersive.postfx.py.md#postprocess-resize) method of `PostProcess` in `immersive.postfx`
+- [`RESOLUTIONS`](modules/qc_launcher.py.md#resolutions) constant in `qc_launcher`
+- [`reverse_gate_name_map`](modules/qc_integration.py.md#integrationconfig-reverse_gate_name_map) attribute of `IntegrationConfig` in `qc_integration`
+- [`right_canonicalize`](modules/quantum_framework_core.py.md#mpscore-right_canonicalize) method of `MPSCore` in `quantum_framework_core`
+- [`right_canonicalize`](modules/topological_hilbert_compression2.py.md#mpscore-right_canonicalize) method of `MPSCore` in `topological_hilbert_compression2`
+- [`ROOT`](modules/immersive.backend.py.md#root) constant in `immersive.backend`
+- [`ROOT`](modules/qc_launcher.py.md#root) constant in `qc_launcher`
+- [`ROTATION_GATES`](modules/quantum_lab.py.md#quantumlab-rotation_gates) attribute of `QuantumLab` in `quantum_lab`
+- [`run`](modules/immersive.app.py.md#app-run) method of `App` in `immersive.app`
+- [`run`](modules/qc_dashboard.py.md#dashboardapp-run) method of `DashboardApp` in `qc_dashboard`
+- [`run`](modules/higgs_four_lepton_analysis.py.md#event-run) attribute of `Event` in `higgs_four_lepton_analysis`
+- [`run`](modules/higgs_quantum_analysis.py.md#event-run) attribute of `Event` in `higgs_quantum_analysis`
+- [`run`](modules/advanced_experiments.py.md#groversearch-run) method of `GroverSearch` in `advanced_experiments`
+- [`run`](modules/higgs_four_lepton_analysis.py.md#higgsquantumanalysis-run) method of `HiggsQuantumAnalysis` in `higgs_four_lepton_analysis`
+- [`run`](modules/higgs_quantum_analysis.py.md#higgsquantumanalysis-run) method of `HiggsQuantumAnalysis` in `higgs_quantum_analysis`
+- [`run`](modules/quantum_simulator.py.md#interactivemenu-run) method of `InteractiveMenu` in `quantum_simulator`
+- [`run`](modules/quantum_framework_menu.py.md#menusystem-run) method of `MenuSystem` in `quantum_framework_menu`
+- [`run`](modules/app.py.md#polarizabilitycalculator-run) method of `PolarizabilityCalculator` in `app`
+- [`run`](modules/polarizability_v3.py.md#polarizabilitycalculator-run) method of `PolarizabilityCalculator` in `polarizability_v3`
+- [`run`](modules/quantum_framework_core.py.md#quantumcircuit-run) method of `QuantumCircuit` in `quantum_framework_core`
+- [`run`](modules/quantum_simulator.py.md#quantumcircuit-run) method of `QuantumCircuit` in `quantum_simulator`
+- [`run`](modules/quantum_computer.py.md#quantumcomputer-run) method of `QuantumComputer` in `quantum_computer`
+- [`run`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-run) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`run`](modules/molecular_sim.py.md#vqesolver-run) method of `VQESolver` in `molecular_sim`
+- [`run`](modules/quantum_framework_molecular.py.md#vqesolver-run) method of `VQESolver` in `quantum_framework_molecular`
+- [`run`](modules/quantum_framework_molecular_v2.py.md#vqesolver-run) method of `VQESolver` in `quantum_framework_molecular_v2`
+- [`run_all`](modules/advanced_experiments.py.md#advancedexperimentrunner-run_all) method of `AdvancedExperimentRunner` in `advanced_experiments`
+- [`run_all`](modules/advanced_experiments.py.md#polyatomicexperiment-run_all) method of `PolyatomicExperiment` in `advanced_experiments`
+- [`run_all`](modules/quantum_dash.py.md#quantumvisualizer-run_all) method of `QuantumVisualizer` in `quantum_dash`
+- [`run_all`](modules/topological_hilbert_compression2.py.md#schrodinger20experiment-run_all) method of `Schrodinger20Experiment` in `topological_hilbert_compression2`
+- [`run_all_demonstrations`](modules/entangled_hydrogen.py.md#entangledhydrogenexperiment-run_all_demonstrations) method of `EntangledHydrogenExperiment` in `entangled_hydrogen`
+- [`run_all_demonstrations`](modules/quantum_simulator.py.md#quantumsimulationframework-run_all_demonstrations) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`run_all_experiments`](modules/quantum_framework_menu.py.md#run_all_experiments) function in `quantum_framework_menu`
+- [`run_all_visualizations`](modules/quantum_visualizer.py.md#quantumvisualizer-run_all_visualizations) method of `QuantumVisualizer` in `quantum_visualizer`
+- [`run_analysis`](modules/advanced_experiments.py.md#polyatomicexperiment-run_analysis) method of `PolyatomicExperiment` in `advanced_experiments`
+- [`run_bell_entangled_hydrogen`](modules/entangled_hydrogen.py.md#entangledhydrogenexperiment-run_bell_entangled_hydrogen) method of `EntangledHydrogenExperiment` in `entangled_hydrogen`
+- [`run_bell_state`](modules/topological_hilbert_compression2.py.md#schrodinger20experiment-run_bell_state) method of `Schrodinger20Experiment` in `topological_hilbert_compression2`
+- [`run_benchmark`](modules/quantum_framework_main.py.md#run_benchmark) function in `quantum_framework_main`
+- [`run_brutal_viz`](modules/qc_dashboard.py.md#brutalvizengine-run_brutal_viz) method of `BrutalVizEngine` in `qc_dashboard`
+- [`run_circuit`](modules/quantum_framework_core.py.md#mpsquantumcomputer-run_circuit) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`run_circuit`](modules/quantum_simulator.py.md#quantumcomputer-run_circuit) method of `QuantumComputer` in `quantum_simulator`
+- [`run_command`](modules/immersive.app.py.md#app-run_command) method of `App` in `immersive.app`
+- [`run_comparison`](modules/qc_dashboard.py.md#backendcomparator-run_comparison) method of `BackendComparator` in `qc_dashboard`
+- [`run_entangled_h_with_molecular_energy`](modules/entangled_hydrogen.py.md#entangledhydrogenexperiment-run_entangled_h_with_molecular_energy) method of `EntangledHydrogenExperiment` in `entangled_hydrogen`
+- [`run_experiment`](modules/quantum_framework_main.py.md#run_experiment) function in `quantum_framework_main`
+- [`run_full_analysis`](modules/advanced_experiments.py.md#qedeffectsexperiment-run_full_analysis) method of `QEDEffectsExperiment` in `advanced_experiments`
+- [`run_full_validation`](modules/relativistic_hydrogen.py.md#diracvalidationsuite-run_full_validation) method of `DiracValidationSuite` in `relativistic_hydrogen`
+- [`run_ghz_entangled_hydrogen`](modules/entangled_hydrogen.py.md#entangledhydrogenexperiment-run_ghz_entangled_hydrogen) method of `EntangledHydrogenExperiment` in `entangled_hydrogen`
+- [`run_ghz_state`](modules/topological_hilbert_compression2.py.md#schrodinger20experiment-run_ghz_state) method of `Schrodinger20Experiment` in `topological_hilbert_compression2`
+- [`run_grover`](modules/advanced_experiments.py.md#advancedexperimentrunner-run_grover) method of `AdvancedExperimentRunner` in `advanced_experiments`
+- [`run_grover_search`](modules/quantum_framework_core.py.md#run_grover_search) function in `quantum_framework_core`
+- [`run_interactive_menu`](modules/quantum_framework_menu.py.md#run_interactive_menu) function in `quantum_framework_menu`
+- [`run_lesson`](modules/quantum_lab.py.md#quantumlab-run_lesson) method of `QuantumLab` in `quantum_lab`
+- [`run_molecular_simulation`](modules/quantum_framework_main.py.md#run_molecular_simulation) function in `quantum_framework_main`
+- [`run_orbital_visualization`](modules/quantum_framework_main.py.md#run_orbital_visualization) function in `quantum_framework_main`
+- [`run_phase_tests`](modules/quantum_computer.py.md#run_phase_tests) function in `quantum_computer`
+- [`run_polyatomic`](modules/advanced_experiments.py.md#advancedexperimentrunner-run_polyatomic) method of `AdvancedExperimentRunner` in `advanced_experiments`
+- [`run_project_vqe`](modules/immersive.backend.py.md#run_project_vqe) function in `immersive.backend`
+- [`run_pyscf`](modules/advanced_experiments.py.md#polyatomicvqe-run_pyscf) method of `PolyatomicVQE` in `advanced_experiments`
+- [`run_qed`](modules/advanced_experiments.py.md#advancedexperimentrunner-run_qed) method of `AdvancedExperimentRunner` in `advanced_experiments`
+- [`run_quantum_circuit`](modules/quantum_simulator.py.md#quantumsimulationframework-run_quantum_circuit) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`run_quiz`](modules/quantum_lab.py.md#quantumlab-run_quiz) method of `QuantumLab` in `quantum_lab`
+- [`run_relativistic_entangled_hydrogen`](modules/entangled_hydrogen.py.md#entangledhydrogenexperiment-run_relativistic_entangled_hydrogen) method of `EntangledHydrogenExperiment` in `entangled_hydrogen`
+- [`run_scaling_benchmark`](modules/topological_hilbert_compression2.py.md#schrodinger20experiment-run_scaling_benchmark) method of `Schrodinger20Experiment` in `topological_hilbert_compression2`
+- [`run_scaling_benchmark`](modules/quantum_framework_core.py.md#run_scaling_benchmark) function in `quantum_framework_core`
+- [`run_vqe`](modules/qc_dashboard.py.md#h2vqesolver-run_vqe) method of `H2VQESolver` in `qc_dashboard`
+- [`run_vqe`](modules/quantum_framework_molecular_v2.py.md#run_vqe) function in `quantum_framework_molecular_v2`
+- [`run_vqe_h2`](modules/quantum_framework_molecular.py.md#run_vqe_h2) function in `quantum_framework_molecular`
+- [`run_w_state`](modules/topological_hilbert_compression2.py.md#schrodinger20experiment-run_w_state) method of `Schrodinger20Experiment` in `topological_hilbert_compression2`
+- [`run_with_state_snapshots`](modules/quantum_computer.py.md#quantumcomputer-run_with_state_snapshots) method of `QuantumComputer` in `quantum_computer`
+- [`run_zitterbewegung_simulation`](modules/quantum_simulator.py.md#quantumsimulationframework-run_zitterbewegung_simulation) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`rx`](modules/quantum_computer.py.md#quantumcircuit-rx) method of `QuantumCircuit` in `quantum_computer`
+- [`rx`](modules/quantum_framework_core.py.md#quantumcircuit-rx) method of `QuantumCircuit` in `quantum_framework_core`
+- [`rx`](modules/quantum_simulator.py.md#quantumcircuit-rx) method of `QuantumCircuit` in `quantum_simulator`
+- [`rx`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-rx) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`RxGate`](modules/quantum_computer.py.md#rxgate) class in `quantum_computer`
+- [`RxGate`](modules/quantum_framework_core.py.md#rxgate) class in `quantum_framework_core`
+- [`RxGate`](modules/quantum_simulator.py.md#rxgate) class in `quantum_simulator`
+- [`ry`](modules/quantum_computer.py.md#quantumcircuit-ry) method of `QuantumCircuit` in `quantum_computer`
+- [`ry`](modules/quantum_framework_core.py.md#quantumcircuit-ry) method of `QuantumCircuit` in `quantum_framework_core`
+- [`ry`](modules/quantum_simulator.py.md#quantumcircuit-ry) method of `QuantumCircuit` in `quantum_simulator`
+- [`ry`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-ry) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`RYDBERG_EV`](modules/immersive.physics.py.md#rydberg_ev) constant in `immersive.physics`
+- [`RyGate`](modules/quantum_computer.py.md#rygate) class in `quantum_computer`
+- [`RyGate`](modules/quantum_framework_core.py.md#rygate) class in `quantum_framework_core`
+- [`RyGate`](modules/quantum_simulator.py.md#rygate) class in `quantum_simulator`
+- [`rz`](modules/quantum_computer.py.md#quantumcircuit-rz) method of `QuantumCircuit` in `quantum_computer`
+- [`rz`](modules/quantum_framework_core.py.md#quantumcircuit-rz) method of `QuantumCircuit` in `quantum_framework_core`
+- [`rz`](modules/quantum_simulator.py.md#quantumcircuit-rz) method of `QuantumCircuit` in `quantum_simulator`
+- [`rz`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-rz) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`RzGate`](modules/quantum_computer.py.md#rzgate) class in `quantum_computer`
+- [`RzGate`](modules/quantum_framework_core.py.md#rzgate) class in `quantum_framework_core`
+- [`RzGate`](modules/quantum_simulator.py.md#rzgate) class in `quantum_simulator`
+
+<a id="s"></a>
+
+## S
+
+- [`s`](modules/immersive.hud.py.md#hud-s) method of `Hud` in `immersive.hud`
+- [`s`](modules/quantum_computer.py.md#quantumcircuit-s) method of `QuantumCircuit` in `quantum_computer`
+- [`s`](modules/quantum_framework_core.py.md#quantumcircuit-s) method of `QuantumCircuit` in `quantum_framework_core`
+- [`s`](modules/quantum_simulator.py.md#quantumcircuit-s) method of `QuantumCircuit` in `quantum_simulator`
+- [`sample`](modules/orbital_visualizer2.py.md#montecarlosampler-sample) method of `MonteCarloSampler` in `orbital_visualizer2`
+- [`sample`](modules/quantum_framework_visualization.py.md#montecarlosampler-sample) method of `MonteCarloSampler` in `quantum_framework_visualization`
+- [`sample`](modules/qc_dashboard.py.md#realorbitalengine-sample) method of `RealOrbitalEngine` in `qc_dashboard`
+- [`sample_entangled`](modules/qc_dashboard.py.md#realorbitalengine-sample_entangled) method of `RealOrbitalEngine` in `qc_dashboard`
+- [`sample_entangled_state`](modules/entangled_hydrogen.py.md#entangledhydrogensampler-sample_entangled_state) method of `EntangledHydrogenSampler` in `entangled_hydrogen`
+- [`sample_entangled_state`](modules/quantum_framework_visualization.py.md#entangledhydrogensampler-sample_entangled_state) method of `EntangledHydrogenSampler` in `quantum_framework_visualization`
+- [`sample_entangled_state`](modules/quantum_simulator.py.md#montecarlosampler-sample_entangled_state) method of `MonteCarloSampler` in `quantum_simulator`
+- [`sample_measurements`](modules/quantum_lab.py.md#sample_measurements) function in `quantum_lab`
+- [`sample_orbital`](modules/relativistic_hydrogen.py.md#diracmontecarlosampler-sample_orbital) method of `DiracMonteCarloSampler` in `relativistic_hydrogen`
+- [`sample_orbital`](modules/entangled_hydrogen.py.md#entangledhydrogensampler-sample_orbital) method of `EntangledHydrogenSampler` in `entangled_hydrogen`
+- [`sample_orbital`](modules/quantum_simulator.py.md#montecarlosampler-sample_orbital) method of `MonteCarloSampler` in `quantum_simulator`
+- [`scan_bond_length`](modules/advanced_experiments.py.md#polyatomicexperiment-scan_bond_length) method of `PolyatomicExperiment` in `advanced_experiments`
+- [`scan_parameter_space`](modules/quantum_framework_molecular_v2.py.md#smartinitializer-scan_parameter_space) method of `SmartInitializer` in `quantum_framework_molecular_v2`
+- [`scan_range`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-scan_range) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`scan_samples`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-scan_samples) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`scatter_point_size_max`](modules/quantum_dash.py.md#brutalistconfig-scatter_point_size_max) attribute of `BrutalistConfig` in `quantum_dash`
+- [`scatter_point_size_max`](modules/qc_dashboard.py.md#dashboardconfig-scatter_point_size_max) attribute of `DashboardConfig` in `qc_dashboard`
+- [`scatter_point_size_min`](modules/quantum_dash.py.md#brutalistconfig-scatter_point_size_min) attribute of `BrutalistConfig` in `quantum_dash`
+- [`scatter_point_size_min`](modules/qc_dashboard.py.md#dashboardconfig-scatter_point_size_min) attribute of `DashboardConfig` in `qc_dashboard`
+- [`SCATTER_SIZE_MAX`](modules/orbital_visualizer2.py.md#config-scatter_size_max) attribute of `Config` in `orbital_visualizer2`
+- [`scatter_size_max`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-scatter_size_max) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`scatter_size_max`](modules/quantum_framework_core.py.md#frameworkconfig-scatter_size_max) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`scatter_size_max`](modules/quantum_simulator.py.md#frameworkconfig-scatter_size_max) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`SCATTER_SIZE_MIN`](modules/orbital_visualizer2.py.md#config-scatter_size_min) attribute of `Config` in `orbital_visualizer2`
+- [`scatter_size_min`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-scatter_size_min) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`scatter_size_min`](modules/quantum_framework_core.py.md#frameworkconfig-scatter_size_min) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`scatter_size_min`](modules/quantum_simulator.py.md#frameworkconfig-scatter_size_min) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`Scene`](modules/immersive.scenes.py.md#scene) class in `immersive.scenes`
+- [`scene`](modules/immersive.app.py.md#step-scene) attribute of `Step` in `immersive.app`
+- [`SCENE_ORDER`](modules/immersive.app.py.md#scene_order) constant in `immersive.app`
+- [`Schrodinger20Experiment`](modules/topological_hilbert_compression2.py.md#schrodinger20experiment) class in `topological_hilbert_compression2`
+- [`schrodinger_checkpoint`](modules/quantum_dash.py.md#brutalistconfig-schrodinger_checkpoint) attribute of `BrutalistConfig` in `quantum_dash`
+- [`schrodinger_checkpoint`](modules/entangled_hydrogen.py.md#entangledhydrogenconfig-schrodinger_checkpoint) attribute of `EntangledHydrogenConfig` in `entangled_hydrogen`
+- [`schrodinger_checkpoint`](modules/quantum_framework_core.py.md#frameworkconfig-schrodinger_checkpoint) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`schrodinger_checkpoint`](modules/quantum_simulator.py.md#frameworkconfig-schrodinger_checkpoint) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`schrodinger_checkpoint`](modules/advanced_experiments.py.md#groverconfig-schrodinger_checkpoint) attribute of `GroverConfig` in `advanced_experiments`
+- [`schrodinger_checkpoint`](modules/quantum_computer.py.md#simulatorconfig-schrodinger_checkpoint) attribute of `SimulatorConfig` in `quantum_computer`
+- [`schrodinger_checkpoint`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-schrodinger_checkpoint) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`schrodinger_checkpoint`](modules/quantum_visualizer.py.md#visualizerconfig-schrodinger_checkpoint) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`SchrodingerBackend`](modules/quantum_framework_physics.py.md#schrodingerbackend) class in `quantum_framework_physics`
+- [`SchrodingerSpectralNet`](modules/quantum_framework_physics.py.md#schrodingerspectralnet) class in `quantum_framework_physics`
+- [`schwinger_term`](modules/advanced_experiments.py.md#anomalousmagneticmoment-schwinger_term) method of `AnomalousMagneticMoment` in `advanced_experiments`
+- [`schwinger_term`](modules/quantum_framework_physics.py.md#anomalousmagneticmoment-schwinger_term) method of `AnomalousMagneticMoment` in `quantum_framework_physics`
+- [`screenshot`](modules/immersive.app.py.md#app-screenshot) method of `App` in `immersive.app`
+- [`SCREENSHOT_DT`](modules/immersive.app.py.md#screenshot_dt) constant in `immersive.app`
+- [`second_order`](modules/advanced_experiments.py.md#anomalousmagneticmoment-second_order) method of `AnomalousMagneticMoment` in `advanced_experiments`
+- [`second_order`](modules/quantum_framework_physics.py.md#anomalousmagneticmoment-second_order) method of `AnomalousMagneticMoment` in `quantum_framework_physics`
+- [`SEPARATION`](modules/immersive.scenes.py.md#entanglescene-separation) attribute of `EntangleScene` in `immersive.scenes`
+- [`session_state_key`](modules/qc_dashboard.py.md#dashboardconfig-session_state_key) attribute of `DashboardConfig` in `qc_dashboard`
+- [`set_state`](modules/immersive.physics.py.md#qubitregister-set_state) method of `QubitRegister` in `immersive.physics`
+- [`set_states`](modules/immersive.scenes.py.md#atomscene-set_states) method of `AtomScene` in `immersive.scenes`
+- [`set_uniforms`](modules/immersive.glkit.py.md#orbitcamera-set_uniforms) method of `OrbitCamera` in `immersive.glkit`
+- [`set_volume_uniforms`](modules/immersive.scenes.py.md#volumescene-set_volume_uniforms) method of `VolumeScene` in `immersive.scenes`
+- [`setup_logging`](modules/quantum_framework_main.py.md#setup_logging) function in `quantum_framework_main`
+- [`SGate`](modules/quantum_computer.py.md#sgate) class in `quantum_computer`
+- [`SGate`](modules/quantum_framework_core.py.md#sgate) class in `quantum_framework_core`
+- [`SGate`](modules/quantum_simulator.py.md#sgate) class in `quantum_simulator`
+- [`shared`](modules/immersive.backend.py.md#backendhub-shared) classmethod of `BackendHub` in `immersive.backend`
+- [`shared_link`](modules/immersive.spin.py.md#shared_link) function in `immersive.spin`
+- [`show_state`](modules/quantum_lab.py.md#quantumlab-show_state) method of `QuantumLab` in `quantum_lab`
+- [`sigma`](modules/immersive.spin.py.md#spinmeasurement-sigma) attribute of `SpinMeasurement` in `immersive.spin`
+- [`sign`](modules/immersive.spin.py.md#spinorcomponent-sign) attribute of `SpinorComponent` in `immersive.spin`
+- [`simulate`](modules/quantum_simulator.py.md#zitterbewegungsimulator-simulate) method of `ZitterbewegungSimulator` in `quantum_simulator`
+- [`simulate`](modules/relativistic_hydrogen.py.md#zitterbewegungsimulator-simulate) method of `ZitterbewegungSimulator` in `relativistic_hydrogen`
+- [`SimulatorBackend`](modules/qc_dashboard.py.md#simulatorbackend) class in `qc_dashboard`
+- [`SimulatorConfig`](modules/quantum_computer.py.md#simulatorconfig) class in `quantum_computer`
+- [`single`](modules/immersive.backend.py.md#backendregister-single) method of `BackendRegister` in `immersive.backend`
+- [`single`](modules/immersive.physics.py.md#qubitregister-single) method of `QubitRegister` in `immersive.physics`
+- [`SINGLE_GATES`](modules/quantum_lab.py.md#quantumlab-single_gates) attribute of `QuantumLab` in `quantum_lab`
+- [`SINGLE_GATES`](modules/immersive.physics.py.md#single_gates) constant in `immersive.physics`
+- [`SmartInitializer`](modules/quantum_framework_molecular_v2.py.md#smartinitializer) class in `quantum_framework_molecular_v2`
+- [`SnapshotData`](modules/qc_dashboard.py.md#snapshotdata) class in `qc_dashboard`
+- [`snapshots`](modules/quantum_dash.py.md#backendcomparison-snapshots) attribute of `BackendComparison` in `quantum_dash`
+- [`snapshots`](modules/quantum_visualizer.py.md#visualizationresult-snapshots) attribute of `VisualizationResult` in `quantum_visualizer`
+- [`solve`](modules/immersive.matter.py.md#solve) function in `immersive.matter`
+- [`Solved`](modules/immersive.matter.py.md#solved) class in `immersive.matter`
+- [`source_size`](modules/immersive.postfx.py.md#source_size) function in `immersive.postfx`
+- [`sparsity`](modules/quantum_framework_core.py.md#vacuumcore-sparsity) method of `VacuumCore` in `quantum_framework_core`
+- [`sparsity`](modules/topological_hilbert_compression2.py.md#vacuumcore-sparsity) method of `VacuumCore` in `topological_hilbert_compression2`
+- [`SpectralLayer`](modules/quantum_framework_physics.py.md#spectrallayer) class in `quantum_framework_physics`
+- [`SpectralLayer`](modules/relativistic_hydrogen.py.md#spectrallayer) class in `relativistic_hydrogen`
+- [`sphere_labels`](modules/immersive.scenes.py.md#blochscene-sphere_labels) method of `BlochScene` in `immersive.scenes`
+- [`sphere_resolution`](modules/quantum_dash.py.md#brutalistconfig-sphere_resolution) attribute of `BrutalistConfig` in `quantum_dash`
+- [`spherical_harmonic_real`](modules/relativistic_hydrogen.py.md#diracwavefunctioncalculator-spherical_harmonic_real) method of `DiracWavefunctionCalculator` in `relativistic_hydrogen`
+- [`spherical_harmonic_real`](modules/entangled_hydrogen.py.md#wavefunctioncalculator-spherical_harmonic_real) staticmethod of `WavefunctionCalculator` in `entangled_hydrogen`
+- [`spherical_harmonic_real`](modules/orbital_visualizer2.py.md#wavefunctioncalculator-spherical_harmonic_real) staticmethod of `WavefunctionCalculator` in `orbital_visualizer2`
+- [`spherical_harmonic_real`](modules/quantum_framework_visualization.py.md#wavefunctioncalculator-spherical_harmonic_real) staticmethod of `WavefunctionCalculator` in `quantum_framework_visualization`
+- [`spherical_harmonic_real`](modules/quantum_simulator.py.md#wavefunctioncalculator-spherical_harmonic_real) staticmethod of `WavefunctionCalculator` in `quantum_simulator`
+- [`spin`](modules/immersive.matter.py.md#system-spin) attribute of `System` in `immersive.matter`
+- [`spin_angular_function`](modules/relativistic_hydrogen.py.md#diracwavefunctioncalculator-spin_angular_function) method of `DiracWavefunctionCalculator` in `relativistic_hydrogen`
+- [`spin_inset`](modules/immersive.scenes.py.md#spinscene-spin_inset) method of `SpinScene` in `immersive.scenes`
+- [`spin_label`](modules/immersive.matter.py.md#orbitalinfo-spin_label) attribute of `OrbitalInfo` in `immersive.matter`
+- [`SPIN_PRESETS`](modules/immersive.spin.py.md#spin_presets) constant in `immersive.spin`
+- [`SpinMeasurement`](modules/immersive.spin.py.md#spinmeasurement) class in `immersive.spin`
+- [`SPINOR_COMPONENTS`](modules/relativistic_hydrogen.py.md#config-spinor_components) attribute of `Config` in `relativistic_hydrogen`
+- [`spinor_components`](modules/quantum_framework_core.py.md#frameworkconfig-spinor_components) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`spinor_components`](modules/quantum_simulator.py.md#frameworkconfig-spinor_components) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`spinor_field`](modules/immersive.spin.py.md#spinor_field) function in `immersive.spin`
+- [`SpinorComponent`](modules/immersive.spin.py.md#spinorcomponent) class in `immersive.spin`
+- [`SpinPreset`](modules/immersive.spin.py.md#spinpreset) class in `immersive.spin`
+- [`SpinScene`](modules/immersive.scenes.py.md#spinscene) class in `immersive.scenes`
+- [`SPIRAL_RESOLUTION`](modules/higgs_four_lepton_analysis.py.md#config-spiral_resolution) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`SPIRAL_RESOLUTION`](modules/higgs_quantum_analysis.py.md#config-spiral_resolution) attribute of `Config` in `higgs_quantum_analysis`
+- [`SPIRAL_SCALE`](modules/higgs_four_lepton_analysis.py.md#config-spiral_scale) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`SPIRAL_SCALE`](modules/higgs_quantum_analysis.py.md#config-spiral_scale) attribute of `Config` in `higgs_quantum_analysis`
+- [`StandardCircuitFactory`](modules/qc_integration.py.md#standardcircuitfactory) class in `qc_integration`
+- [`StandardCircuits`](modules/quantum_dash.py.md#standardcircuits) class in `quantum_dash`
+- [`StandardCircuits`](modules/quantum_visualizer.py.md#standardcircuits) class in `quantum_visualizer`
+- [`StarkEvaluator`](modules/app.py.md#starkevaluator) class in `app`
+- [`StarkEvaluator`](modules/polarizability_v3.py.md#starkevaluator) class in `polarizability_v3`
+- [`start_tour`](modules/immersive.app.py.md#app-start_tour) method of `App` in `immersive.app`
+- [`state_to_audio`](modules/quantum_3dview.py.md#quantumsonification-state_to_audio) method of `QuantumSonification` in `quantum_3dview`
+- [`states`](modules/immersive.physics.py.md#orbitalpreset-states) attribute of `OrbitalPreset` in `immersive.physics`
+- [`STATEVECTOR_DISPLAY_LIMIT`](modules/quantum_lab.py.md#statevector_display_limit) constant in `quantum_lab`
+- [`step`](modules/quantum_dash.py.md#quantumsnapshot-step) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`step`](modules/quantum_visualizer.py.md#quantumstatesnapshot-step) attribute of `QuantumStateSnapshot` in `quantum_visualizer`
+- [`step`](modules/qc_dashboard.py.md#snapshotdata-step) attribute of `SnapshotData` in `qc_dashboard`
+- [`Step`](modules/immersive.app.py.md#step) class in `immersive.app`
+- [`steps`](modules/quantum_lab.py.md#lesson-steps) attribute of `Lesson` in `quantum_lab`
+- [`stop_tour`](modules/immersive.app.py.md#app-stop_tour) method of `App` in `immersive.app`
+- [`supported_gates`](modules/qc_dashboard.py.md#dashboardconfig-supported_gates) attribute of `DashboardConfig` in `qc_dashboard`
+- [`supported_gates`](modules/qc_integration.py.md#integrationconfig-supported_gates) attribute of `IntegrationConfig` in `qc_integration`
+- [`SurrogateEnergy`](modules/molecular_sim.py.md#surrogateenergy) class in `molecular_sim`
+- [`svd_threshold`](modules/quantum_framework_core.py.md#frameworkconfig-svd_threshold) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`svd_threshold`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-svd_threshold) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`svd_threshold`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-svd_threshold) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`swap`](modules/quantum_computer.py.md#quantumcircuit-swap) method of `QuantumCircuit` in `quantum_computer`
+- [`swap`](modules/quantum_framework_core.py.md#quantumcircuit-swap) method of `QuantumCircuit` in `quantum_framework_core`
+- [`swap`](modules/quantum_simulator.py.md#quantumcircuit-swap) method of `QuantumCircuit` in `quantum_simulator`
+- [`swap`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-swap) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`SWAPGate`](modules/quantum_computer.py.md#swapgate) class in `quantum_computer`
+- [`SWAPGate`](modules/quantum_framework_core.py.md#swapgate) class in `quantum_framework_core`
+- [`SWAPGate`](modules/quantum_simulator.py.md#swapgate) class in `quantum_simulator`
+- [`symbol`](modules/quantum_framework_core.py.md#atomdata-symbol) attribute of `AtomData` in `quantum_framework_core`
+- [`symbol`](modules/quantum_simulator.py.md#atomdata-symbol) attribute of `AtomData` in `quantum_simulator`
+- [`symbols`](modules/immersive.matter.py.md#solved-symbols) attribute of `Solved` in `immersive.matter`
+- [`system`](modules/immersive.scenes.py.md#matterscene-system) property of `MatterScene` in `immersive.scenes`
+- [`system`](modules/immersive.matter.py.md#solved-system) attribute of `Solved` in `immersive.matter`
+- [`System`](modules/immersive.matter.py.md#system) class in `immersive.matter`
+
+<a id="t"></a>
+
+## T
+
+- [`t`](modules/qc_launcher.py.md#launcher-t) method of `Launcher` in `qc_launcher`
+- [`t`](modules/quantum_computer.py.md#quantumcircuit-t) method of `QuantumCircuit` in `quantum_computer`
+- [`t`](modules/quantum_framework_core.py.md#quantumcircuit-t) method of `QuantumCircuit` in `quantum_framework_core`
+- [`t`](modules/quantum_simulator.py.md#quantumcircuit-t) method of `QuantumCircuit` in `quantum_simulator`
+- [`t`](modules/quantum_lab.py.md#quantumlab-t) method of `QuantumLab` in `quantum_lab`
+- [`tab_key`](modules/immersive.scenes.py.md#atomscene-tab_key) attribute of `AtomScene` in `immersive.scenes`
+- [`tab_key`](modules/immersive.scenes.py.md#blochscene-tab_key) attribute of `BlochScene` in `immersive.scenes`
+- [`tab_key`](modules/immersive.scenes.py.md#entanglescene-tab_key) attribute of `EntangleScene` in `immersive.scenes`
+- [`tab_key`](modules/immersive.scenes.py.md#matterscene-tab_key) attribute of `MatterScene` in `immersive.scenes`
+- [`tab_key`](modules/immersive.scenes.py.md#scene-tab_key) attribute of `Scene` in `immersive.scenes`
+- [`tab_key`](modules/immersive.scenes.py.md#spinscene-tab_key) attribute of `SpinScene` in `immersive.scenes`
+- [`target`](modules/qc_dashboard.py.md#gateitem-target) attribute of `GateItem` in `qc_dashboard`
+- [`Target`](modules/immersive.postfx.py.md#target) class in `immersive.postfx`
+- [`target_b`](modules/qc_dashboard.py.md#gateitem-target_b) attribute of `GateItem` in `qc_dashboard`
+- [`targets`](modules/quantum_computer.py.md#circuitinstruction-targets) attribute of `CircuitInstruction` in `quantum_computer`
+- [`targets`](modules/quantum_framework_core.py.md#circuitinstruction-targets) attribute of `CircuitInstruction` in `quantum_framework_core`
+- [`targets`](modules/quantum_simulator.py.md#circuitinstruction-targets) attribute of `CircuitInstruction` in `quantum_simulator`
+- [`targets`](modules/qc_integration.py.md#gateinstruction-targets) attribute of `GateInstruction` in `qc_integration`
+- [`teleportation`](modules/quantum_computer.py.md#quantumcomputer-teleportation) method of `QuantumComputer` in `quantum_computer`
+- [`tensor`](modules/quantum_framework_core.py.md#mpscore-tensor) property of `MPSCore` in `quantum_framework_core`
+- [`tensor`](modules/topological_hilbert_compression2.py.md#mpscore-tensor) property of `MPSCore` in `topological_hilbert_compression2`
+- [`TESLA_AU`](modules/immersive.spin.py.md#tesla_au) constant in `immersive.spin`
+- [`text`](modules/immersive.hud.py.md#hud-text) method of `Hud` in `immersive.hud`
+- [`TEXT`](modules/immersive.scenes.py.md#text) constant in `immersive.scenes`
+- [`TEXT`](modules/quantum_lab.py.md#text) constant in `quantum_lab`
+- [`TEXT_COLOR`](modules/higgs_four_lepton_analysis.py.md#config-text_color) attribute of `Config` in `higgs_four_lepton_analysis`
+- [`TEXT_COLOR`](modules/higgs_quantum_analysis.py.md#config-text_color) attribute of `Config` in `higgs_quantum_analysis`
+- [`text_color`](modules/quantum_visualizer.py.md#visualizerconfig-text_color) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`TGate`](modules/quantum_computer.py.md#tgate) class in `quantum_computer`
+- [`TGate`](modules/quantum_framework_core.py.md#tgate) class in `quantum_framework_core`
+- [`TGate`](modules/quantum_simulator.py.md#tgate) class in `quantum_simulator`
+- [`theme`](modules/quantum_3dview.py.md#brutalconfig-theme) attribute of `BrutalConfig` in `quantum_3dview`
+- [`theta`](modules/app.py.md#vqeresult-theta) attribute of `VQEResult` in `app`
+- [`theta`](modules/polarizability_v3.py.md#vqeresult-theta) attribute of `VQEResult` in `polarizability_v3`
+- [`third_order`](modules/advanced_experiments.py.md#anomalousmagneticmoment-third_order) method of `AnomalousMagneticMoment` in `advanced_experiments`
+- [`third_order`](modules/quantum_framework_physics.py.md#anomalousmagneticmoment-third_order) method of `AnomalousMagneticMoment` in `quantum_framework_physics`
+- [`time_evolution`](modules/quantum_framework_physics.py.md#dirachamiltonianoperator-time_evolution) method of `DiracHamiltonianOperator` in `quantum_framework_physics`
+- [`time_evolution`](modules/relativistic_hydrogen.py.md#dirachamiltonianoperator-time_evolution) method of `DiracHamiltonianOperator` in `relativistic_hydrogen`
+- [`time_scale`](modules/immersive.spin.py.md#time_scale) function in `immersive.spin`
+- [`timestamp`](modules/quantum_dash.py.md#quantumsnapshot-timestamp) attribute of `QuantumSnapshot` in `quantum_dash`
+- [`title`](modules/qc_launcher.py.md#experience-title) attribute of `Experience` in `qc_launcher`
+- [`title`](modules/quantum_lab.py.md#lesson-title) attribute of `Lesson` in `quantum_lab`
+- [`title`](modules/immersive.matter.py.md#system-title) attribute of `System` in `immersive.matter`
+- [`title_size`](modules/quantum_visualizer.py.md#visualizerconfig-title_size) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`to`](modules/quantum_framework_physics.py.md#gammamatrices-to) method of `GammaMatrices` in `quantum_framework_physics`
+- [`to_circuit_ir`](modules/qc_integration.py.md#frameworkadapter-to_circuit_ir) method of `FrameworkAdapter` in `qc_integration`
+- [`to_circuit_ir`](modules/qc_integration.py.md#integrationbridge-to_circuit_ir) method of `IntegrationBridge` in `qc_integration`
+- [`to_complex`](modules/immersive.backend.py.md#to_complex) function in `immersive.backend`
+- [`to_full_statevector`](modules/quantum_framework_molecular_v2.py.md#particleconservingstate-to_full_statevector) method of `ParticleConservingState` in `quantum_framework_molecular_v2`
+- [`to_pennylane`](modules/qc_integration.py.md#integrationbridge-to_pennylane) method of `IntegrationBridge` in `qc_integration`
+- [`to_qiskit`](modules/qc_integration.py.md#integrationbridge-to_qiskit) method of `IntegrationBridge` in `qc_integration`
+- [`to_statevector`](modules/quantum_framework_core.py.md#mpsstate-to_statevector) method of `MPSState` in `quantum_framework_core`
+- [`to_statevector`](modules/quantum_framework_molecular_v2.py.md#mpsstate-to_statevector) method of `MPSState` in `quantum_framework_molecular_v2`
+- [`toffoli`](modules/quantum_computer.py.md#quantumcircuit-toffoli) method of `QuantumCircuit` in `quantum_computer`
+- [`ToffoliGate`](modules/quantum_computer.py.md#toffoligate) class in `quantum_computer`
+- [`ToffoliGate`](modules/quantum_simulator.py.md#toffoligate) class in `quantum_simulator`
+- [`toggle`](modules/immersive.hud.py.md#lang-toggle) method of `Lang` in `immersive.hud`
+- [`top_states`](modules/quantum_dash.py.md#backendcomparison-top_states) attribute of `BackendComparison` in `quantum_dash`
+- [`top_states`](modules/quantum_visualizer.py.md#backendcomparisonresult-top_states) attribute of `BackendComparisonResult` in `quantum_visualizer`
+- [`TOPOLOGICAL_INSULATOR`](modules/quantum_framework_core.py.md#hilbertphase-topological_insulator) attribute of `HilbertPhase` in `quantum_framework_core`
+- [`TOPOLOGICAL_INSULATOR`](modules/topological_hilbert_compression2.py.md#hilbertphase-topological_insulator) attribute of `HilbertPhase` in `topological_hilbert_compression2`
+- [`TopologicalCompressionConfig`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig) class in `topological_hilbert_compression2`
+- [`TopologicalHilbertSimulator`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator) class in `topological_hilbert_compression2`
+- [`TopologicalProtector`](modules/quantum_framework_core.py.md#topologicalprotector) class in `quantum_framework_core`
+- [`TopologicalProtector`](modules/topological_hilbert_compression2.py.md#topologicalprotector) class in `topological_hilbert_compression2`
+- [`total_steps`](modules/quantum_visualizer.py.md#visualizationresult-total_steps) attribute of `VisualizationResult` in `quantum_visualizer`
+- [`TOUR_TEXT`](modules/immersive.app.py.md#tour_text) constant in `immersive.app`
+- [`TRAIL`](modules/immersive.scenes.py.md#blochscene-trail) attribute of `BlochScene` in `immersive.scenes`
+- [`TRAIL`](modules/immersive.scenes.py.md#entanglescene-trail) attribute of `EntangleScene` in `immersive.scenes`
+- [`trail_length`](modules/quantum_dash.py.md#brutalistconfig-trail_length) attribute of `BrutalistConfig` in `quantum_dash`
+- [`truncation_error`](modules/quantum_framework_core.py.md#frameworkconfig-truncation_error) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`truncation_error`](modules/quantum_framework_core.py.md#mpsstate-truncation_error) property of `MPSState` in `quantum_framework_core`
+- [`truncation_error`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-truncation_error) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`truncation_error`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-truncation_error) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`two_body_integrals`](modules/quantum_framework_molecular_v2.py.md#moleculedata-two_body_integrals) attribute of `MoleculeData` in `quantum_framework_molecular_v2`
+- [`TWO_ELECTRONS_TWO_MUONS`](modules/higgs_four_lepton_analysis.py.md#eventtype-two_electrons_two_muons) attribute of `EventType` in `higgs_four_lepton_analysis`
+- [`TWO_ELECTRONS_TWO_MUONS`](modules/higgs_quantum_analysis.py.md#eventtype-two_electrons_two_muons) attribute of `EventType` in `higgs_quantum_analysis`
+
+<a id="u"></a>
+
+## U
+
+- [`uccsd`](modules/molecular_sim.py.md#uccsd) function in `molecular_sim`
+- [`UCCSDAnsatz`](modules/quantum_framework_molecular.py.md#uccsdansatz) class in `quantum_framework_molecular`
+- [`UCCSDAnsatz`](modules/quantum_framework_molecular_v2.py.md#uccsdansatz) class in `quantum_framework_molecular_v2`
+- [`uncertainty_ring_radius`](modules/quantum_dash.py.md#brutalistconfig-uncertainty_ring_radius) attribute of `BrutalistConfig` in `quantum_dash`
+- [`unit_vector_poly_args`](modules/immersive.physics.py.md#unit_vector_poly_args) function in `immersive.physics`
+- [`unitary`](modules/immersive.physics.py.md#gate-unitary) method of `Gate` in `immersive.physics`
+- [`UNKNOWN`](modules/higgs_four_lepton_analysis.py.md#eventtype-unknown) attribute of `EventType` in `higgs_four_lepton_analysis`
+- [`UNKNOWN`](modules/higgs_quantum_analysis.py.md#eventtype-unknown) attribute of `EventType` in `higgs_quantum_analysis`
+- [`UNKNOWN`](modules/higgs_four_lepton_analysis.py.md#leptontype-unknown) attribute of `LeptonType` in `higgs_four_lepton_analysis`
+- [`UNKNOWN`](modules/higgs_quantum_analysis.py.md#leptontype-unknown) attribute of `LeptonType` in `higgs_quantum_analysis`
+- [`UNPAIRED`](modules/immersive.matter.py.md#unpaired) constant in `immersive.matter`
+- [`unrestricted`](modules/immersive.matter.py.md#solved-unrestricted) attribute of `Solved` in `immersive.matter`
+- [`update`](modules/immersive.app.py.md#app-update) method of `App` in `immersive.app`
+- [`update`](modules/immersive.scenes.py.md#atomscene-update) method of `AtomScene` in `immersive.scenes`
+- [`update`](modules/immersive.backend.py.md#backendregister-update) method of `BackendRegister` in `immersive.backend`
+- [`update`](modules/immersive.scenes.py.md#blochscene-update) method of `BlochScene` in `immersive.scenes`
+- [`update`](modules/immersive.scenes.py.md#entanglescene-update) method of `EntangleScene` in `immersive.scenes`
+- [`update`](modules/immersive.scenes.py.md#matterscene-update) method of `MatterScene` in `immersive.scenes`
+- [`update`](modules/immersive.glkit.py.md#orbitcamera-update) method of `OrbitCamera` in `immersive.glkit`
+- [`update`](modules/immersive.physics.py.md#qubitregister-update) method of `QubitRegister` in `immersive.physics`
+- [`update`](modules/immersive.scenes.py.md#scene-update) method of `Scene` in `immersive.scenes`
+- [`update`](modules/immersive.scenes.py.md#spinscene-update) method of `SpinScene` in `immersive.scenes`
+- [`update`](modules/immersive.scenes.py.md#volumescene-update) method of `VolumeScene` in `immersive.scenes`
+- [`update_tour`](modules/immersive.app.py.md#app-update_tour) method of `App` in `immersive.app`
+- [`UPLOAD_DIR`](modules/advanced_experiments.py.md#upload_dir) constant in `advanced_experiments`
+- [`UPLOAD_DIR`](modules/quantum_dash.py.md#upload_dir) constant in `quantum_dash`
+- [`UPLOAD_DIR`](modules/quantum_visualizer.py.md#upload_dir) constant in `quantum_visualizer`
+- [`upload_radial`](modules/immersive.glkit.py.md#upload_radial) function in `immersive.glkit`
+- [`upload_volume`](modules/immersive.glkit.py.md#upload_volume) function in `immersive.glkit`
+- [`use`](modules/immersive.glkit.py.md#program-use) method of `Program` in `immersive.glkit`
+- [`use_cache`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-use_cache) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`use_mp2_init`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-use_mp2_init) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`uses_orbital`](modules/qc_launcher.py.md#experience-uses_orbital) attribute of `Experience` in `qc_launcher`
+
+<a id="v"></a>
+
+## V
+
+- [`v2`](modules/immersive.glkit.py.md#program-v2) method of `Program` in `immersive.glkit`
+- [`v2a`](modules/immersive.glkit.py.md#program-v2a) method of `Program` in `immersive.glkit`
+- [`v3`](modules/immersive.glkit.py.md#program-v3) method of `Program` in `immersive.glkit`
+- [`v3a`](modules/immersive.glkit.py.md#program-v3a) method of `Program` in `immersive.glkit`
+- [`v3ia`](modules/immersive.glkit.py.md#program-v3ia) method of `Program` in `immersive.glkit`
+- [`v4ia`](modules/immersive.glkit.py.md#program-v4ia) method of `Program` in `immersive.glkit`
+- [`vacuum_sparsity_target`](modules/quantum_framework_core.py.md#frameworkconfig-vacuum_sparsity_target) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`vacuum_sparsity_target`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-vacuum_sparsity_target) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`VacuumCore`](modules/quantum_framework_core.py.md#vacuumcore) class in `quantum_framework_core`
+- [`VacuumCore`](modules/topological_hilbert_compression2.py.md#vacuumcore) class in `topological_hilbert_compression2`
+- [`valid`](modules/immersive.spin.py.md#spinorcomponent-valid) method of `SpinorComponent` in `immersive.spin`
+- [`validate_energy_spectrum`](modules/relativistic_hydrogen.py.md#diracvalidationsuite-validate_energy_spectrum) method of `DiracValidationSuite` in `relativistic_hydrogen`
+- [`validate_fine_structure`](modules/relativistic_hydrogen.py.md#diracvalidationsuite-validate_fine_structure) method of `DiracValidationSuite` in `relativistic_hydrogen`
+- [`validate_orbital`](modules/relativistic_hydrogen.py.md#diracvalidationsuite-validate_orbital) method of `DiracValidationSuite` in `relativistic_hydrogen`
+- [`validate_zitterbewegung`](modules/relativistic_hydrogen.py.md#diracvalidationsuite-validate_zitterbewegung) method of `DiracValidationSuite` in `relativistic_hydrogen`
+- [`variational_ansatz`](modules/quantum_computer.py.md#quantumcomputer-variational_ansatz) method of `QuantumComputer` in `quantum_computer`
+- [`vector_scale`](modules/quantum_dash.py.md#brutalistconfig-vector_scale) attribute of `BrutalistConfig` in `quantum_dash`
+- [`verbose`](modules/quantum_framework_molecular_v2.py.md#molecularconfig-verbose) attribute of `MolecularConfig` in `quantum_framework_molecular_v2`
+- [`verify_identity`](modules/quantum_framework_molecular_v2.py.md#uccsdansatz-verify_identity) method of `UCCSDAnsatz` in `quantum_framework_molecular_v2`
+- [`view_radius`](modules/immersive.physics.py.md#view_radius) function in `immersive.physics`
+- [`VIEWER`](modules/qc_launcher.py.md#viewer) constant in `qc_launcher`
+- [`VisualisationEngine`](modules/qc_dashboard.py.md#visualisationengine) class in `qc_dashboard`
+- [`VisualizationOutput`](modules/quantum_dash.py.md#visualizationoutput) class in `quantum_dash`
+- [`VisualizationResult`](modules/quantum_visualizer.py.md#visualizationresult) class in `quantum_visualizer`
+- [`visualize`](modules/entangled_hydrogen.py.md#entangledhydrogenvisualizer-visualize) method of `EntangledHydrogenVisualizer` in `entangled_hydrogen`
+- [`visualize`](modules/quantum_framework_visualization.py.md#entangledhydrogenvisualizer-visualize) method of `EntangledHydrogenVisualizer` in `quantum_framework_visualization`
+- [`visualize`](modules/quantum_simulator.py.md#entangledvisualizer-visualize) method of `EntangledVisualizer` in `quantum_simulator`
+- [`visualize`](modules/orbital_visualizer2.py.md#orbitalvisualizer-visualize) method of `OrbitalVisualizer` in `orbital_visualizer2`
+- [`visualize`](modules/quantum_framework_visualization.py.md#orbitalvisualizer-visualize) method of `OrbitalVisualizer` in `quantum_framework_visualization`
+- [`visualize`](modules/quantum_simulator.py.md#orbitalvisualizer-visualize) method of `OrbitalVisualizer` in `quantum_simulator`
+- [`visualize_atom_orbitals`](modules/quantum_simulator.py.md#quantumsimulationframework-visualize_atom_orbitals) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`visualize_bell_state`](modules/quantum_dash.py.md#quantumvisualizer-visualize_bell_state) method of `QuantumVisualizer` in `quantum_dash`
+- [`visualize_bell_state`](modules/quantum_visualizer.py.md#quantumvisualizer-visualize_bell_state) method of `QuantumVisualizer` in `quantum_visualizer`
+- [`visualize_custom_circuit`](modules/quantum_visualizer.py.md#quantumvisualizer-visualize_custom_circuit) method of `QuantumVisualizer` in `quantum_visualizer`
+- [`visualize_energy_spectrum`](modules/relativistic_hydrogen.py.md#diracvisualizer-visualize_energy_spectrum) method of `DiracVisualizer` in `relativistic_hydrogen`
+- [`visualize_entangled_state`](modules/quantum_simulator.py.md#quantumsimulationframework-visualize_entangled_state) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`visualize_ghz_state`](modules/quantum_dash.py.md#quantumvisualizer-visualize_ghz_state) method of `QuantumVisualizer` in `quantum_dash`
+- [`visualize_ghz_state`](modules/quantum_visualizer.py.md#quantumvisualizer-visualize_ghz_state) method of `QuantumVisualizer` in `quantum_visualizer`
+- [`visualize_grover`](modules/quantum_dash.py.md#quantumvisualizer-visualize_grover) method of `QuantumVisualizer` in `quantum_dash`
+- [`visualize_grover`](modules/quantum_visualizer.py.md#quantumvisualizer-visualize_grover) method of `QuantumVisualizer` in `quantum_visualizer`
+- [`visualize_orbital`](modules/relativistic_hydrogen.py.md#diracvisualizer-visualize_orbital) method of `DiracVisualizer` in `relativistic_hydrogen`
+- [`visualize_orbital`](modules/quantum_simulator.py.md#quantumsimulationframework-visualize_orbital) method of `QuantumSimulationFramework` in `quantum_simulator`
+- [`visualize_qft`](modules/quantum_dash.py.md#quantumvisualizer-visualize_qft) method of `QuantumVisualizer` in `quantum_dash`
+- [`visualize_qft`](modules/quantum_visualizer.py.md#quantumvisualizer-visualize_qft) method of `QuantumVisualizer` in `quantum_visualizer`
+- [`visualize_zitterbewegung`](modules/relativistic_hydrogen.py.md#diracvisualizer-visualize_zitterbewegung) method of `DiracVisualizer` in `relativistic_hydrogen`
+- [`Visualizer`](modules/higgs_four_lepton_analysis.py.md#visualizer) class in `higgs_four_lepton_analysis`
+- [`Visualizer`](modules/higgs_quantum_analysis.py.md#visualizer) class in `higgs_quantum_analysis`
+- [`VisualizerConfig`](modules/quantum_visualizer.py.md#visualizerconfig) class in `quantum_visualizer`
+- [`VolumeScene`](modules/immersive.scenes.py.md#volumescene) class in `immersive.scenes`
+- [`vqe_energy`](modules/molecular_sim.py.md#vqeresult-vqe_energy) attribute of `VQEResult` in `molecular_sim`
+- [`vqe_energy`](modules/quantum_framework_molecular.py.md#vqeresult-vqe_energy) attribute of `VQEResult` in `quantum_framework_molecular`
+- [`vqe_energy`](modules/quantum_framework_molecular_v2.py.md#vqeresult-vqe_energy) attribute of `VQEResult` in `quantum_framework_molecular_v2`
+- [`vqe_max_iterations`](modules/quantum_dash.py.md#brutalistconfig-vqe_max_iterations) attribute of `BrutalistConfig` in `quantum_dash`
+- [`vqe_max_iterations`](modules/quantum_visualizer.py.md#visualizerconfig-vqe_max_iterations) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`vqe_tolerance`](modules/quantum_dash.py.md#brutalistconfig-vqe_tolerance) attribute of `BrutalistConfig` in `quantum_dash`
+- [`vqe_tolerance`](modules/quantum_visualizer.py.md#visualizerconfig-vqe_tolerance) attribute of `VisualizerConfig` in `quantum_visualizer`
+- [`VQEResult`](modules/app.py.md#vqeresult) class in `app`
+- [`VQEResult`](modules/molecular_sim.py.md#vqeresult) class in `molecular_sim`
+- [`VQEResult`](modules/polarizability_v3.py.md#vqeresult) class in `polarizability_v3`
+- [`VQEResult`](modules/quantum_framework_molecular.py.md#vqeresult) class in `quantum_framework_molecular`
+- [`VQEResult`](modules/quantum_framework_molecular_v2.py.md#vqeresult) class in `quantum_framework_molecular_v2`
+- [`VQESolver`](modules/molecular_sim.py.md#vqesolver) class in `molecular_sim`
+- [`VQESolver`](modules/quantum_framework_molecular.py.md#vqesolver) class in `quantum_framework_molecular`
+- [`VQESolver`](modules/quantum_framework_molecular_v2.py.md#vqesolver) class in `quantum_framework_molecular_v2`
+
+<a id="w"></a>
+
+## W
+
+- [`w_state`](modules/quantum_framework_core.py.md#mpsquantumcomputer-w_state) method of `MPSQuantumComputer` in `quantum_framework_core`
+- [`w_state`](modules/qc_integration.py.md#standardcircuitfactory-w_state) staticmethod of `StandardCircuitFactory` in `qc_integration`
+- [`wanted_kind`](modules/immersive.scenes.py.md#matterscene-wanted_kind) method of `MatterScene` in `immersive.scenes`
+- [`WARM`](modules/immersive.hud.py.md#warm) constant in `immersive.hud`
+- [`warm_up`](modules/immersive.scenes.py.md#matterscene-warm_up) method of `MatterScene` in `immersive.scenes`
+- [`WavefunctionCalculator`](modules/entangled_hydrogen.py.md#wavefunctioncalculator) class in `entangled_hydrogen`
+- [`WavefunctionCalculator`](modules/orbital_visualizer2.py.md#wavefunctioncalculator) class in `orbital_visualizer2`
+- [`WavefunctionCalculator`](modules/quantum_framework_visualization.py.md#wavefunctioncalculator) class in `quantum_framework_visualization`
+- [`WavefunctionCalculator`](modules/quantum_simulator.py.md#wavefunctioncalculator) class in `quantum_simulator`
+- [`winding_number_threshold`](modules/quantum_framework_core.py.md#frameworkconfig-winding_number_threshold) attribute of `FrameworkConfig` in `quantum_framework_core`
+- [`winding_number_threshold`](modules/topological_hilbert_compression2.py.md#topologicalcompressionconfig-winding_number_threshold) attribute of `TopologicalCompressionConfig` in `topological_hilbert_compression2`
+- [`wrap`](modules/immersive.hud.py.md#hud-wrap) method of `Hud` in `immersive.hud`
+- [`WState`](modules/entangled_hydrogen.py.md#wstate) class in `entangled_hydrogen`
+
+<a id="x"></a>
+
+## X
+
+- [`x`](modules/quantum_computer.py.md#quantumcircuit-x) method of `QuantumCircuit` in `quantum_computer`
+- [`x`](modules/quantum_framework_core.py.md#quantumcircuit-x) method of `QuantumCircuit` in `quantum_framework_core`
+- [`x`](modules/quantum_simulator.py.md#quantumcircuit-x) method of `QuantumCircuit` in `quantum_simulator`
+- [`x`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-x) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+
+<a id="y"></a>
+
+## Y
+
+- [`y`](modules/quantum_computer.py.md#quantumcircuit-y) method of `QuantumCircuit` in `quantum_computer`
+- [`y`](modules/quantum_framework_core.py.md#quantumcircuit-y) method of `QuantumCircuit` in `quantum_framework_core`
+- [`y`](modules/quantum_simulator.py.md#quantumcircuit-y) method of `QuantumCircuit` in `quantum_simulator`
+- [`y`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-y) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`ylm_from_table`](modules/immersive.physics.py.md#ylm_from_table) function in `immersive.physics`
+
+<a id="z"></a>
+
+## Z
+
+- [`z`](modules/quantum_computer.py.md#quantumcircuit-z) method of `QuantumCircuit` in `quantum_computer`
+- [`z`](modules/quantum_framework_core.py.md#quantumcircuit-z) method of `QuantumCircuit` in `quantum_framework_core`
+- [`z`](modules/quantum_simulator.py.md#quantumcircuit-z) method of `QuantumCircuit` in `quantum_simulator`
+- [`z`](modules/topological_hilbert_compression2.py.md#topologicalhilbertsimulator-z) method of `TopologicalHilbertSimulator` in `topological_hilbert_compression2`
+- [`z1_mass`](modules/higgs_four_lepton_analysis.py.md#event-z1_mass) attribute of `Event` in `higgs_four_lepton_analysis`
+- [`z1_mass`](modules/higgs_quantum_analysis.py.md#event-z1_mass) attribute of `Event` in `higgs_quantum_analysis`
+- [`z2_mass`](modules/higgs_four_lepton_analysis.py.md#event-z2_mass) attribute of `Event` in `higgs_four_lepton_analysis`
+- [`z2_mass`](modules/higgs_quantum_analysis.py.md#event-z2_mass) attribute of `Event` in `higgs_quantum_analysis`
+- [`z_max`](modules/advanced_experiments.py.md#qedconfig-z_max) attribute of `QEDConfig` in `advanced_experiments`
+- [`ZBW_DT`](modules/relativistic_hydrogen.py.md#config-zbw_dt) attribute of `Config` in `relativistic_hydrogen`
+- [`zbw_dt`](modules/quantum_simulator.py.md#frameworkconfig-zbw_dt) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`ZBW_PACKET_WIDTH`](modules/relativistic_hydrogen.py.md#config-zbw_packet_width) attribute of `Config` in `relativistic_hydrogen`
+- [`zbw_packet_width`](modules/quantum_simulator.py.md#frameworkconfig-zbw_packet_width) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`ZBW_TIME_STEPS`](modules/relativistic_hydrogen.py.md#config-zbw_time_steps) attribute of `Config` in `relativistic_hydrogen`
+- [`zbw_time_steps`](modules/quantum_simulator.py.md#frameworkconfig-zbw_time_steps) attribute of `FrameworkConfig` in `quantum_simulator`
+- [`zitterbewegung_menu`](modules/quantum_simulator.py.md#interactivemenu-zitterbewegung_menu) method of `InteractiveMenu` in `quantum_simulator`
+- [`ZitterbewegungSimulator`](modules/quantum_framework_physics.py.md#zitterbewegungsimulator) class in `quantum_framework_physics`
+- [`ZitterbewegungSimulator`](modules/quantum_simulator.py.md#zitterbewegungsimulator) class in `quantum_simulator`
+- [`ZitterbewegungSimulator`](modules/relativistic_hydrogen.py.md#zitterbewegungsimulator) class in `relativistic_hydrogen`
+- [`zoom`](modules/immersive.glkit.py.md#orbitcamera-zoom) method of `OrbitCamera` in `immersive.glkit`

@@ -2,17 +2,18 @@
 """
 Quantum Framework Molecular Module - Production Version
 ========================================================
-Molecular VQE simulation with OpenFermion integration, MPS optimization,
-and multiple precision modes.
+Molecular VQE simulation with OpenFermion integration.
+
+HONEST SCOPE NOTE: the VQE solver runs on an exact statevector
+(2^n amplitudes).  The ``MPSState`` class below is experimental and is
+NOT used by the solver (``use_mps`` only gates validation warnings).
+The UCCSD ansatz carries exact Jordan-Wigner parity signs.
 
 Features:
 - OpenFermion for all Hamiltonians (NO hardcoded values)
-- Precision mode flag: direct statevector vs MPS compression
 - Integration with Schrodinger, Dirac, Hamiltonian backends
 - Smart initialization with MP2 + parameter scan
 - Cached Pauli operations for x10-100 speedup
-- Particle-conserving MPS for stability
-- Adaptive bond dimension
 - TOML configuration
 
 Author: Gris Iscomeback
@@ -814,50 +815,59 @@ class UCCSDAnsatz:
         
         return result
     
+    def _jw_excitation(self, k: int, create: list, annihilate: list):
+        """
+        Action of a fermionic excitation on basis state |k> in the
+        Jordan-Wigner encoding: returns (k', sign) or None.
+        Each (anti)operator contributes the JW parity sign
+        (-1)^{occupations of qubits l < j} on the current bit vector.
+        """
+        n = self.n_qubits
+        bits = [(k >> (n - 1 - q)) & 1 for q in range(n)]
+        sign = 1.0
+        for q in annihilate:
+            if bits[q] != 1:
+                return None
+            if sum(bits[:q]) % 2 == 1:
+                sign = -sign
+            bits[q] = 0
+        for q in create:
+            if bits[q] != 0:
+                return None
+            if sum(bits[:q]) % 2 == 1:
+                sign = -sign
+            bits[q] = 1
+        k_new = 0
+        for q in range(n):
+            if bits[q]:
+                k_new |= 1 << (n - 1 - q)
+        return k_new, sign
+
+    def _apply_signed_rotation(self, state: np.ndarray, create: list,
+                               annihilate: list, theta: float) -> np.ndarray:
+        """Apply exp(theta * (T - T^dagger)) as a JW-signed Givens rotation."""
+        result = state.copy()
+        c, s = np.cos(theta), np.sin(theta)
+        for k in range(len(state)):
+            mapped = self._jw_excitation(k, create, annihilate)
+            if mapped is None:
+                continue
+            k_new, sign = mapped
+            result[k] = c * state[k] - sign * s * state[k_new]
+            result[k_new] = sign * s * state[k] + c * state[k_new]
+        return result
+
     def _apply_single(self, state: np.ndarray, i: int, a: int, theta: float) -> np.ndarray:
-        """Apply single excitation as Givens rotation."""
-        n = len(state)
-        result = state.copy()
-        c, s = np.cos(theta), np.sin(theta)
-        
-        for k in range(n):
-            # Check if state has electron at i but not at a
-            bit_i = (k >> (self.n_qubits - 1 - i)) & 1
-            bit_a = (k >> (self.n_qubits - 1 - a)) & 1
-            
-            if bit_i == 1 and bit_a == 0:
-                # Flip bits
-                k_new = k ^ (1 << (self.n_qubits - 1 - i))
-                k_new = k_new ^ (1 << (self.n_qubits - 1 - a))
-                
-                result[k] = c * state[k] - s * state[k_new]
-                result[k_new] = s * state[k] + c * state[k_new]
-        
-        return result
-    
+        """Apply fermionic single excitation exp(theta * (a^_a a_i - a^_i a_a))."""
+        return self._apply_signed_rotation(state, create=[a], annihilate=[i], theta=theta)
+
     def _apply_double(self, state: np.ndarray, i: int, j: int, a: int, b: int, theta: float) -> np.ndarray:
-        """Apply double excitation."""
-        n = len(state)
-        result = state.copy()
-        c, s = np.cos(theta), np.sin(theta)
-        
-        for k in range(n):
-            bit_i = (k >> (self.n_qubits - 1 - i)) & 1
-            bit_j = (k >> (self.n_qubits - 1 - j)) & 1
-            bit_a = (k >> (self.n_qubits - 1 - a)) & 1
-            bit_b = (k >> (self.n_qubits - 1 - b)) & 1
-            
-            if bit_i == 1 and bit_j == 1 and bit_a == 0 and bit_b == 0:
-                k_new = k
-                k_new ^= (1 << (self.n_qubits - 1 - i))
-                k_new ^= (1 << (self.n_qubits - 1 - j))
-                k_new ^= (1 << (self.n_qubits - 1 - a))
-                k_new ^= (1 << (self.n_qubits - 1 - b))
-                
-                result[k] = c * state[k] - s * state[k_new]
-                result[k_new] = s * state[k] + c * state[k_new]
-        
-        return result
+        """
+        Apply fermionic double excitation
+        exp(theta * (a^_a a^_b a_i a_j - h.c.)).
+        Convention: T = a^_a a^_b a_i a_j (rightmost acts first).
+        """
+        return self._apply_signed_rotation(state, create=[b, a], annihilate=[j, i], theta=theta)
     
     def verify_identity(self, hf_state: np.ndarray, evaluator: CachedHamiltonianEvaluator, hf_energy: float) -> bool:
         """Verify that θ=0 gives HF state."""
@@ -1118,13 +1128,21 @@ class VQESolver:
         self.mol = mol
         self.config = config
         
-        # Check precision mode
+        # Check precision mode.  NOTE: the solver always runs on an exact
+        # statevector; ``use_mps`` only records the user preference.
         if config.precision_mode and mol.n_qubits > config.max_qubits_direct:
-            _LOG.warning("Precision mode requested but %d qubits > %d max. Using MPS.",
-                        mol.n_qubits, config.max_qubits_direct)
+            _LOG.warning(
+                "Precision mode requested but %d qubits > %d max.",
+                mol.n_qubits, config.max_qubits_direct,
+            )
             self.use_mps = True
         else:
             self.use_mps = not config.precision_mode
+        if self.use_mps:
+            _LOG.warning(
+                "MPS mode requested: VQE currently runs on an exact "
+                "statevector regardless (MPSState is experimental/unused)."
+            )
         
         # Initialize components
         self.evaluator = CachedHamiltonianEvaluator(mol, config)
@@ -1187,9 +1205,8 @@ class VQESolver:
         start_time = time.time()
         
         _LOG.info("=" * 60)
-        _LOG.info("Starting VQE for %s (%d qubits, %s)",
-                  self.mol.name, self.mol.n_qubits,
-                  "MPS" if self.use_mps else "DIRECT")
+        _LOG.info("Starting VQE for %s (%d qubits, statevector)",
+                  self.mol.name, self.mol.n_qubits)
         _LOG.info("=" * 60)
         
         # Prepare HF state
@@ -1340,7 +1357,8 @@ def run_vqe(
     
     Args:
         molecule: Molecule name ("H2", "H2O", "LiH")
-        precision_mode: Use direct statevector (True) or MPS (False)
+        precision_mode: Kept for API compatibility. The VQE always runs on
+            an exact statevector; this flag only controls validation warnings.
         config_path: Path to TOML config file
         **kwargs: Additional config overrides
     

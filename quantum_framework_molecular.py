@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """
-Quantum Framework Molecular Module - CORRECTED VERSION
-=======================================================
-Molecular simulation with VQE and UCCSD ansatz using MPS representation.
+Quantum Framework Molecular Module
+===================================
+Molecular simulation with VQE and a fermionic UCCSD ansatz on an exact
+statevector (2^n amplitudes; the MPS engine is NOT used here -- labels
+now reflect this honestly).
 
-CRITICAL FIXES:
-- Corrected H2 Hamiltonian coefficients (verified against PySCF/OpenFermion)
-- Fixed OpenFermion compatibility (InteractionOperator API)
-- Proper nuclear repulsion handling
-- UCCSD ansatz with correct excitation operators
+- UCCSD excitations carry the proper Jordan-Wigner parity signs (they
+  are exact signed Givens rotations, not sign-less orbital rotations).
+- Analytic parameter-shift gradients (no finite-difference noise).
+- Ab initio Hamiltonians via PySCF/OpenFermion when available; the
+  offline fallback is a calibrated toy model and is labeled as such.
 
 Author: Gris Iscomeback
 License: AGPL v3
@@ -32,7 +34,7 @@ try:
 except ImportError:
     TORCH_AVAILABLE = False
 
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("once", category=DeprecationWarning)
 
 try:
     from pyscf import gto, scf, fci, ao2mo
@@ -230,22 +232,17 @@ class ExactJWEnergy:
 
     def _build_hardcoded_hamiltonian(self) -> None:
         """
-        Build hardcoded H2 Hamiltonian - CORRECTED COEFFICIENTS.
-        
-        The H2/STO-3G Hamiltonian in the minimal active space (2 qubits)
-        with Jordan-Wigner transformation.
-        
-        Derived from reference energies:
-        - E_HF = -1.11675928 Ha
-        - E_FCI = -1.13728383 Ha
-        - E_nuc = 0.71996899 Ha
-        
-        The Hamiltonian has the form:
-        H = E_nuc + h1*Z0 + h2*Z1 + h3*Z0*Z1 + h4*X0*X1 + h5*Y0*Y1
-        
-        For the 2-qubit active space model where:
-        - |10> is the HF state (bonding orbital occupied)
-        - The ground state is a superposition of |10> and |01>
+        Build the fallback H2 Hamiltonian.
+
+        WARNING -- this is a CALIBRATED TOY MODEL, not ab initio: its
+        coefficients are derived algebraically from the known reference
+        energies (E_HF = -1.11675928, E_FCI = -1.13728383 Ha), so a VQE
+        run against it reproduces FCI *by construction*.  It is only
+        meant as an offline demo of the optimizer machinery.  Install
+        PySCF + OpenFermion (+ openfermionpyscf) for genuine ab initio
+        Hamiltonians.
+
+        H = E_nuc + h3*Z0*Z1 + h4*X0*X1 + h5*Y0*Y1   (2-qubit active space)
         """
         # Nuclear repulsion energy
         self.e_nuc = 0.71996899
@@ -392,53 +389,75 @@ class UCCSDAnsatz:
         
         return result
 
-    def apply_single_excitation(self, state: np.ndarray, o: int, v: int, theta: float) -> np.ndarray:
-        """Apply single excitation as Givens rotation."""
-        n = len(state)
+    def _jw_excitation(self, k: int, create: List[int], annihilate: List[int]) -> Optional[Tuple[int, float]]:
+        """
+        Apply a fermionic excitation operator to the computational basis
+        state |k> in the Jordan-Wigner encoding and return (k', sign) or
+        None if the excitation does not apply.
+
+        Operators act right-to-left: first the annihilations (in the order
+        listed in ``annihilate``), then the creations.  Each (anti)operator
+        a_j contributes the JW parity sign (-1)^{sum of occupations of
+        qubits l < j} computed on the CURRENT bit vector.
+
+        This yields the exact action of a UCC excitation
+        T - T^dagger as a signed Givens rotation in the {|k>, |k'>}
+        subspace -- previously the parity signs were missing, so the
+        "UCCSD" was not the fermionic UCCSD outside the minimal subspace.
+        """
+        n = self.n_qubits
+        bits = [(k >> (n - 1 - q)) & 1 for q in range(n)]
+        sign = 1.0
+        for q in annihilate:
+            if bits[q] != 1:
+                return None
+            if sum(bits[:q]) % 2 == 1:
+                sign = -sign
+            bits[q] = 0
+        for q in create:
+            if bits[q] != 0:
+                return None
+            if sum(bits[:q]) % 2 == 1:
+                sign = -sign
+            bits[q] = 1
+        k_new = 0
+        for q in range(n):
+            if bits[q]:
+                k_new |= 1 << (n - 1 - q)
+        return k_new, sign
+
+    def _apply_signed_rotation(self, state: np.ndarray, create: List[int],
+                               annihilate: List[int], theta: float) -> np.ndarray:
+        """
+        Apply exp(theta * (T - T^dagger)) as a signed Givens rotation over
+        all basis pairs coupled by the excitation T.
+        """
         result = state.copy()
-        
         c = np.cos(theta)
         s = np.sin(theta)
-        
-        for k in range(n):
-            bit_o = (k >> (self.n_qubits - 1 - o)) & 1
-            bit_v = (k >> (self.n_qubits - 1 - v)) & 1
-            
-            if bit_o == 1 and bit_v == 0:
-                k_new = k ^ (1 << (self.n_qubits - 1 - o))
-                k_new = k_new ^ (1 << (self.n_qubits - 1 - v))
-                
-                result[k] = c * state[k] - s * state[k_new]
-                result[k_new] = s * state[k] + c * state[k_new]
-        
+        for k in range(len(state)):
+            mapped = self._jw_excitation(k, create, annihilate)
+            if mapped is None:
+                continue
+            k_new, sign = mapped
+            result[k] = c * state[k] - sign * s * state[k_new]
+            result[k_new] = sign * s * state[k] + c * state[k_new]
         return result
+
+    def apply_single_excitation(self, state: np.ndarray, o: int, v: int, theta: float) -> np.ndarray:
+        """Apply fermionic single excitation exp(theta * (a^_v a_o - a^_o a_v))."""
+        return self._apply_signed_rotation(state, create=[v], annihilate=[o], theta=theta)
 
     def apply_double_excitation(self, state: np.ndarray, o1: int, o2: int,
                                  v1: int, v2: int, theta: float) -> np.ndarray:
-        """Apply double excitation for 4+ qubit systems."""
-        n = len(state)
-        result = state.copy()
-        
-        c = np.cos(theta)
-        s = np.sin(theta)
-        
-        for k in range(n):
-            bit_o1 = (k >> (self.n_qubits - 1 - o1)) & 1
-            bit_o2 = (k >> (self.n_qubits - 1 - o2)) & 1
-            bit_v1 = (k >> (self.n_qubits - 1 - v1)) & 1
-            bit_v2 = (k >> (self.n_qubits - 1 - v2)) & 1
-            
-            if bit_o1 == 1 and bit_o2 == 1 and bit_v1 == 0 and bit_v2 == 0:
-                k_new = k
-                k_new ^= (1 << (self.n_qubits - 1 - o1))
-                k_new ^= (1 << (self.n_qubits - 1 - o2))
-                k_new ^= (1 << (self.n_qubits - 1 - v1))
-                k_new ^= (1 << (self.n_qubits - 1 - v2))
-                
-                result[k] = c * state[k] - s * state[k_new]
-                result[k_new] = s * state[k] + c * state[k_new]
-        
-        return result
+        """
+        Apply fermionic double excitation
+        exp(theta * (a^_v1 a^_v2 a_o1 a_o2 - h.c.)).
+        Convention: T = a^_v1 a^_v2 a_o1 a_o2 (rightmost acts first).
+        """
+        return self._apply_signed_rotation(
+            state, create=[v2, v1], annihilate=[o2, o1], theta=theta
+        )
 
     def apply(self, state: np.ndarray, thetas: np.ndarray) -> np.ndarray:
         """Apply UCCSD ansatz to state."""
@@ -563,29 +582,54 @@ class VQESolver:
         best_thetas = theta0.copy()
         n_evals = 0
 
+        def energy(thetas: np.ndarray) -> float:
+            state = self.ansatz.apply(hf_state.copy(), thetas)
+            return float(self.evaluator(state))
+
         def cost(thetas: np.ndarray) -> float:
             nonlocal best_e, best_thetas, n_evals
             n_evals += 1
-            
-            state = self.ansatz.apply(hf_state.copy(), thetas)
-            e = self.evaluator(state)
-            
+            e = energy(thetas)
             if e < best_e:
                 best_e = e
                 best_thetas = thetas.copy()
-            
             if n_evals % 25 == 1:
                 _LOG.info("  iter %3d: E=%.8f Ha  Δ_FCI=%.2e",
                           n_evals, e, abs(e - self.mol.fci_energy))
-            
-            return float(e)
+            return e
 
-        # Run optimization
+        def grad(thetas: np.ndarray) -> np.ndarray:
+            """
+            Exact analytic gradient via the generalized parameter-shift
+            rule.  Each ansatz parameter enters a single Givens rotation
+            exp(theta * G) whose Hermitian generator iG has eigenvalues
+            {-1, 0, +1}, so E(theta) is a trigonometric polynomial with
+            frequencies {1, 2} and
+
+                dE/dθ = D(π/4) + ((1-√2)/2) · D(π/2),
+                D(φ) = E(θ+φ) − E(θ−φ)
+
+            (4 energy evaluations per parameter, machine-precision exact,
+            replacing the previous finite-difference eps=1e-6 gradients).
+            """
+            g = np.zeros_like(thetas, dtype=float)
+            c1 = (1.0 - math.sqrt(2.0)) / 2.0
+            for i in range(len(thetas)):
+                base = thetas.copy()
+                ep4 = energy(np.where(np.arange(len(thetas)) == i, base + math.pi / 4, base))
+                em4 = energy(np.where(np.arange(len(thetas)) == i, base - math.pi / 4, base))
+                ep2 = energy(np.where(np.arange(len(thetas)) == i, base + math.pi / 2, base))
+                em2 = energy(np.where(np.arange(len(thetas)) == i, base - math.pi / 2, base))
+                g[i] = (ep4 - em4) + c1 * (ep2 - em2)
+            return g
+
+        # Run optimization with exact analytic gradients
         res = minimize(
             cost,
             theta0,
             method="L-BFGS-B",
-            options={"maxiter": max_iter, "ftol": tol, "gtol": 1e-7, "eps": 1e-6}
+            jac=grad,
+            options={"maxiter": max_iter, "ftol": tol, "gtol": 1e-7}
         )
         
         _LOG.info("Optimizer: %s (%d evals)", res.message, n_evals)
@@ -613,7 +657,7 @@ class VQESolver:
         
         return VQEResult(
             molecule=self.mol.name,
-            backend="UCCSD-MPS",
+            backend="UCCSD-statevector",
             n_qubits=self.n_qubits,
             n_parameters=self.ansatz.n_params,
             vqe_energy=vqe_e,
